@@ -1,0 +1,34 @@
+import type { MetadataRoute } from 'next'
+import { SITE } from '@/lib/content/site'
+import { caseStudies } from '@/lib/content/caseStudies'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date()
+  const base = SITE.url
+
+  const staticRoutes: { path: string; priority: number; changeFreq: 'monthly' | 'weekly' }[] = [
+    { path: '/', priority: 1.0, changeFreq: 'weekly' },
+    { path: '/amc', priority: 0.95, changeFreq: 'monthly' },
+    { path: '/hardware', priority: 0.85, changeFreq: 'monthly' },
+    { path: '/software', priority: 0.85, changeFreq: 'monthly' },
+    { path: '/automation', priority: 0.9, changeFreq: 'monthly' },
+    { path: '/work', priority: 0.8, changeFreq: 'monthly' },
+    { path: '/about', priority: 0.6, changeFreq: 'monthly' },
+    { path: '/contact', priority: 0.8, changeFreq: 'monthly' },
+  ]
+
+  return [
+    ...staticRoutes.map((r) => ({
+      url: `${base}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.changeFreq,
+      priority: r.priority,
+    })),
+    ...caseStudies.map((cs) => ({
+      url: `${base}${cs.href}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ]
+}

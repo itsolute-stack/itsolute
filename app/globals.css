@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/* ============================================================================
+ * ITSolute Systems — design tokens
+ * Tailwind v4 uses CSS-first config. All brand colors, fonts, and type tokens
+ * are defined here in @theme. Tailwind generates utility classes from them.
+ * ========================================================================= */
+
+@theme inline {
+  /* Fonts (loaded via next/font in app/layout.tsx) */
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Brand colors */
+  --color-ink: #0a0f1c;
+  --color-ink-900: #0a0f1c;
+  --color-ink-800: #111827;
+  --color-ink-700: #1f2937;
+
+  --color-electric: #1e40af;
+  --color-electric-light: #2c52cc;
+  --color-cyan: #06b6d4;
+  --color-amber: #f59e0b;
+
+  --color-surface: #fafaf9;
+  --color-surface-cream: #f5f4ef;
+  --color-surface-white: #ffffff;
+
+  /* Type scale tokens (used by custom utilities below) */
+  --tracking-display: -0.04em;
+  --tracking-section: -0.03em;
+  --tracking-eyebrow: 0.15em;
+}
+
+/* Base layer */
+:root {
+  --background: #ffffff;
+  --foreground: #0a0f1c;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-electric);
+  color: white;
+}
+
+/* Focus rings — visible, branded */
+*:focus-visible {
+  outline: 2px solid var(--color-electric);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Honor reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Subtle dot-grid background — used on dark hero etc. via .bg-dot-grid */
+.bg-dot-grid {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+.bg-dot-grid-light {
+  background-image: radial-gradient(
+    rgba(10, 15, 28, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Hairline */
+.hairline {
+  border-color: rgb(226 232 240); /* slate-200 */
+}
+.dark .hairline,
+.theme-dark .hairline {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================================
+ * Animation primitives — for Radix-based components.
+ * ========================================================================= */
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes slide-in-from-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes slide-out-to-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+.data-\[state\=open\]\:animate-in[data-state='open'] {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.data-\[state\=closed\]\:animate-out[data-state='closed'] {
+  animation-duration: 250ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+.data-\[state\=open\]\:fade-in-0[data-state='open'] { animation-name: fade-in; }
+.data-\[state\=closed\]\:fade-out-0[data-state='closed'] { animation-name: fade-out; }
+.data-\[state\=open\]\:slide-in-from-right[data-state='open'] { animation-name: slide-in-from-right; }
+.data-\[state\=closed\]\:slide-out-to-right[data-state='closed'] { animation-name: slide-out-to-right; }
+
+/* WhatsApp floating button pulse on first appearance */
+@keyframes pulse-once {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  50% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+}
+.animate-pulse-once {
+  animation: pulse-once 2s ease-out 2;
+}

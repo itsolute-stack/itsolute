@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { organizationSchema } from '@/lib/schema'
-import { SITE } from '@/lib/content/site'
+import { SITE, SITE_URL, KEYWORDS } from '@/lib/content/site'
 import './globals.css'
 
 const geistSans = Geist({
@@ -18,47 +18,40 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'ITSolute Systems · IT services, AMC, and automation for Kerala SMBs',
-    template: '%s · ITSolute Systems',
+    default:
+      'Computer Hardware, Laptops & IT Services in Kottayam | ITSolute Systems',
+    template: '%s | ITSolute Systems',
   },
   description:
-    'Hardware, software, support, and automation — under one roof. Serving SMBs across Kochi, Kottayam, Pathanamthitta, and the rest of Kerala.',
-  keywords: [
-    'IT services Kerala',
-    'AMC services Kochi',
-    'AMC services Kottayam',
-    'laptop dealer Kerala',
-    'Zoho partner Kerala',
-    'Microsoft 365 reseller Kerala',
-    'office IT setup Kerala',
-    'computer maintenance Kerala',
-    'IT support clinics Kerala',
-  ],
+    'Business laptops, software, networking, laptop repair, and automation for Kerala SMBs. Based in Kottayam — serving offices, clinics, schools across Kerala. Free quote.',
+  keywords: [...KEYWORDS],
   authors: [{ name: 'ITSolute Systems' }],
   creator: 'ITSolute Systems',
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: SITE.url,
+    url: SITE_URL,
     siteName: 'ITSolute Systems',
-    title: 'ITSolute Systems · IT services for Kerala businesses',
+    title:
+      'Computer Hardware, Laptops & IT Services in Kottayam | ITSolute Systems',
     description:
-      'Hardware, software, support, and automation — under one roof. One vendor. One number.',
+      'Business laptops, software, networking, laptop repair, and automation for Kerala SMBs. Based in Kottayam.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'ITSolute Systems',
+        alt: 'ITSolute Systems — IT services for Kerala',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ITSolute Systems',
-    description: 'IT services, AMC, and automation for Kerala SMBs.',
+    description:
+      'Computer hardware, laptop repair, software, networking, and automation for Kerala SMBs.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -76,7 +69,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   alternates: {
-    canonical: SITE.url,
+    canonical: SITE_URL,
   },
 }
 

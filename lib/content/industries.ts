@@ -16,46 +16,50 @@ export type Industry = {
   href: string
 }
 
+/**
+ * Each description leads with the hardware / software / setup action — AMC
+ * is positioned as the outcome ("for uptime"), not the lead.
+ */
 export const industries: Industry[] = [
   {
     slug: 'clinics',
     title: 'Clinics & Healthcare',
-    description: 'Reception PCs, billing software, secure patient records, reliable WiFi.',
+    description: 'Billing PCs, EMR setup, secure WiFi for patient data, AMC for uptime.',
     icon: Stethoscope,
     href: '/industries/clinics',
   },
   {
     slug: 'schools',
     title: 'Schools & Colleges',
-    description: 'Computer labs, staff laptops, Google Workspace for Education, exam systems.',
+    description: 'Lab laptops, staff workstations, Google Workspace for Education, AMC support.',
     icon: GraduationCap,
     href: '/industries/schools',
   },
   {
     slug: 'professional-services',
     title: 'CA & Law Firms',
-    description: 'Secure file storage, Tally and DMS support, encrypted client communications.',
+    description: 'Office laptops, Tally and DMS setup, secure cloud storage, repair on call.',
     icon: Scale,
     href: '/industries/professional-services',
   },
   {
     slug: 'real-estate',
     title: 'Real Estate',
-    description: 'Multi-branch dashboards, CRM, WhatsApp lead flows, document automation.',
+    description: 'Branch hardware, CRM rollout, WhatsApp lead flows, automation that scales.',
     icon: Building2,
     href: '/industries/real-estate',
   },
   {
     slug: 'retail',
     title: 'Retail & Restaurants',
-    description: 'POS, billing, inventory, CCTV integration, branch reporting.',
+    description: 'POS systems, billing software, CCTV integration, multi-branch reporting.',
     icon: ShoppingBag,
     href: '/industries/retail',
   },
   {
     slug: 'logistics',
     title: 'Logistics',
-    description: 'Fleet tracking integrations, dispatch tools, branch connectivity, backups.',
+    description: 'Branch laptops, dispatch tools, fleet integrations, AMC for always-on operations.',
     icon: Truck,
     href: '/industries/logistics',
   },

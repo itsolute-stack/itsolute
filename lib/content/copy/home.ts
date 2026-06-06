@@ -5,14 +5,14 @@
 
 export const homeCopy = {
   hero: {
-    eyebrow: 'IT SERVICES · KERALA · 10+ YEARS',
+    eyebrow: 'LAPTOPS · SOFTWARE · NETWORKING · KERALA',
     headlineLineOne: 'IT that just works.',
     headlineLineTwo: 'For businesses that mean business.',
-    sub: 'Hardware, software, support, and automation — under one roof. Serving SMBs across Kochi, Kottayam, Pathanamthitta, and the rest of Kerala.',
-    primaryCta: 'Get a free IT audit',
+    sub: 'Laptops, networks, software, repairs, automation — and the team to keep it all running. Serving Kottayam, Kochi, and businesses across Kerala.',
+    primaryCta: 'Get a free IT consultation',
     secondaryCta: 'Talk on WhatsApp',
     whatsappMessage:
-      "Hi ITSolute, I’d like to know more about your services.",
+      "Hi ITSolute, I'd like to know more about your services.",
     trustStrip: 'Trusted by clinics · schools · offices · shops · across Kerala',
   },
   problem: {
@@ -66,16 +66,23 @@ export const homeCopy = {
       },
     ],
   },
-  featuredAmc: {
-    eyebrow: 'OUR FLAGSHIP SERVICE',
-    headline: 'The IT team your business needs, without hiring one.',
-    body: 'For a single monthly retainer, ITSolute becomes your in-house IT department. We handle hardware, software, networks, backups — and we pick up the phone when something breaks.',
+  featuredHardware: {
+    eyebrow: 'WHAT MOST CLIENTS START WITH',
+    headline: 'Hardware that’s right-sized for Kerala SMBs.',
+    body: 'We supply business-grade laptops, desktops, servers, and peripherals — new or refurbished. From a single laptop for your CA to a 50-machine rollout for a school. Authorised resellers, GST invoicing, doorstep delivery across Kerala.',
     metrics: [
-      { value: '< 2hr', label: 'Response time' },
-      { value: '24/7', label: 'WhatsApp support' },
-      { value: '10+', label: 'Years in Kerala' },
+      { value: '100+', label: 'Models in stock or sourcable' },
+      { value: '48hr', label: 'Typical Kerala delivery' },
+      { value: '12mo', label: 'Manufacturer warranty' },
     ],
-    cta: 'See AMC plans',
+    cta: 'Browse hardware',
+  },
+  featuredLaptopCare: {
+    eyebrow: 'EVERYDAY SUPPORT',
+    headline: 'Your laptop, fixed today. Not “sometime next week.”',
+    body: 'Screen replacements, keyboard fixes, battery swaps, SSD upgrades, data recovery — done by technicians, not guesswork. Most repairs ready in 24–72 hours. Free diagnosis for businesses.',
+    note: 'Walk-ins welcome at our Parthas Lane workshop',
+    cta: 'See repair pricing',
   },
   featuredAutomation: {
     eyebrow: 'PREMIUM CAPABILITY',
@@ -100,14 +107,26 @@ export const homeCopy = {
     eyebrow: 'WHAT CLIENTS SAY',
     headline: 'The work speaks. Sometimes the clients do too.',
   },
+  amcClosing: {
+    eyebrow: 'THE LONG-TERM RELATIONSHIP',
+    headline: 'Stop calling four vendors. Get one IT team on retainer.',
+    body: 'Most of our hardware, software, and repair clients move to an AMC after the first project. Predictable monthly cost, < 2hr response, onsite + remote support, written SLAs.',
+    metrics: [
+      { value: '< 2hr', label: 'Response time' },
+      { value: '24/7', label: 'WhatsApp support' },
+      { value: 'Written', label: 'SLA + scope' },
+    ],
+    cta: 'See AMC plans',
+  },
   faq: {
     eyebrow: 'COMMON QUESTIONS',
     headline: 'Everything you wanted to ask before you call.',
   },
   finalCta: {
-    headline: 'Stop firefighting IT issues. Start running your business.',
-    sub: 'Free IT audit. No commitment. We’ll review your hardware, software, network, and backup — and tell you what’s working and what isn’t.',
-    primary: 'Book a free audit',
+    headline:
+      'Whether you need a laptop, a network, or a fix — we’re 10 minutes away in Kottayam.',
+    sub: 'Walk into our Parthas Lane office. WhatsApp us a photo of the problem. Or book a free onsite consultation anywhere in Kerala.',
+    primary: 'Book a free consultation',
     secondary: 'WhatsApp us',
   },
 } as const

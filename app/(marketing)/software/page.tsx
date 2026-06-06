@@ -9,9 +9,11 @@ import { softwareCopy } from '@/lib/content/copy/software'
 import { serviceSchema } from '@/lib/schema'
 
 export const metadata = {
-  title: 'Software Licensing & Implementation',
+  title: {
+    absolute: 'Microsoft 365, Zoho & Software Licensing in Kerala | ITSolute',
+  },
   description:
-    'Microsoft 365, Google Workspace, Zoho One, Tally — authorised reseller and implementation partner for Kerala SMBs.',
+    'Microsoft 365, Google Workspace, Zoho One, Tally, and antivirus licensing — setup, migration, and training included. For SMBs across Kerala.',
 }
 
 export default function SoftwarePage() {
@@ -127,6 +129,8 @@ export default function SoftwarePage() {
               description:
                 'Microsoft 365, Google Workspace, Zoho One implementations and migrations for Kerala SMBs.',
               slug: 'software',
+              serviceType: 'Software Licensing',
+              priceRange: { low: '500', high: '200000' },
             }),
           ),
         }}

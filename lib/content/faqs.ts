@@ -1,17 +1,17 @@
 export type FAQ = { q: string; a: string }
 
+/**
+ * Home FAQ order — leads with hardware / repair / licensing questions
+ * (where cold visitors land), then moves into AMC questions further down.
+ */
 export const homeFAQs: FAQ[] = [
   {
-    q: 'What does an AMC contract typically cover?',
-    a: 'A standard AMC covers your hardware (laptops, desktops, printers, networking gear), the software running on them (operating systems, Microsoft 365 or Google Workspace, business apps), your office network and WiFi, and backups. You also get a guaranteed response time for support requests. Exact scope is written into the contract — no verbal promises.',
-  },
-  {
-    q: 'How quickly do you respond when something breaks?',
-    a: 'Most AMC clients get a response within 2 hours during business hours, and a resolution path (remote fix, onsite visit, or workaround) within the same business day. Critical outages — your network down, billing system unable to invoice — are escalated immediately, regardless of the time.',
-  },
-  {
     q: 'Do you supply only new laptops, or refurbished too?',
-    a: 'Both. New laptops come with manufacturer warranty and GST invoicing. Refurbished laptops are tested, reset, and shipped with a 6-month ITSolute warranty — great for stretching budgets without compromising on reliability. We tell you honestly which option fits your use case.',
+    a: 'Both. New laptops come with full manufacturer warranty and GST invoicing. Refurbished laptops are tested, reset, and shipped with a 6-month ITSolute warranty — great for stretching budgets without compromising on reliability. We tell you honestly which option fits your use case.',
+  },
+  {
+    q: 'What kind of laptop repair do you handle?',
+    a: 'Everything common in a business environment — screen replacements, keyboard and battery swaps, SSD/RAM upgrades, data recovery, virus and malware cleanup, OS reinstalls, charging port and motherboard work. We service HP, Dell, Lenovo, Asus, Acer, MSI, Apple, Microsoft Surface, Samsung and LG. Most repairs are ready in 24–72 hours.',
   },
   {
     q: 'Are you an authorised Microsoft, Zoho, or Google Workspace partner?',
@@ -19,11 +19,19 @@ export const homeFAQs: FAQ[] = [
   },
   {
     q: 'Do you serve all of Kerala, or only specific districts?',
-    a: 'We serve businesses across Kerala — primary onsite coverage is in Kochi, Kottayam, Pathanamthitta, Alappuzha, Ernakulam, and Thiruvananthapuram. Remote support reaches anywhere in the state. For areas outside our regular onsite radius, we plan visits in advance and offer extended remote coverage.',
+    a: 'We serve businesses across Kerala — primary onsite coverage is in Kottayam, Kochi, Ernakulam, Pathanamthitta, Alappuzha, and Thiruvananthapuram. Remote support reaches anywhere in the state. Walk-ins are welcome at our Parthas Lane workshop in Kottayam.',
   },
   {
     q: 'Can I get a one-time setup without committing to an AMC?',
     a: 'Yes. We do fixed-price project work — office setups, network installations, software migrations, repairs — without requiring an AMC. Many clients start with a one-off project and move to AMC once they see how we work.',
+  },
+  {
+    q: 'How quickly do you respond when something breaks?',
+    a: 'For AMC clients, most issues get a response within 2 hours during business hours, and a resolution path the same business day. For one-off and walk-in customers, response time depends on workload but we’re fast on WhatsApp — message us and we’ll triage immediately.',
+  },
+  {
+    q: 'What does an AMC contract typically cover?',
+    a: 'A standard AMC covers your hardware (laptops, desktops, printers, networking gear), the software running on them (operating systems, Microsoft 365 or Google Workspace, business apps), your office network and WiFi, and backups. You also get a guaranteed response time for support requests. Exact scope is written into the contract — no verbal promises.',
   },
   {
     q: 'Can you migrate us from our current IT vendor?',
@@ -32,6 +40,10 @@ export const homeFAQs: FAQ[] = [
   {
     q: 'Do you handle CCTV too?',
     a: 'Yes — through our sister brand CCTVPROS. If you need surveillance, access control, or security systems alongside your IT, we handle both ends without making you talk to two companies. CCTVPROS is run by the same team, on the same standards.',
+  },
+  {
+    q: 'Where is your office located?',
+    a: 'Parthas Lane, Kottayam – 686001. Walk-ins welcome Mon–Sat, 9 AM – 7 PM. Pickup and drop service available across Kottayam, Kochi, Pathanamthitta, and Alappuzha.',
   },
 ]
 

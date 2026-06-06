@@ -1,4 +1,4 @@
-import { SITE } from '@/lib/content/site'
+import { SITE, SITE_URL } from '@/lib/content/site'
 
 /* ============================================================================
  * JSON-LD generators. Each returns a plain object — JSON.stringify in <Script>.
@@ -9,16 +9,18 @@ export function organizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: SITE.name,
-    url: SITE.url,
-    logo: `${SITE.url}/logo.svg`,
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.svg`,
     foundingDate: String(SITE.founded),
     email: SITE.contact.email,
     telephone: SITE.contact.phoneTel,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: SITE.hq.street,
       addressLocality: SITE.hq.city,
       addressRegion: SITE.hq.state,
-      addressCountry: SITE.hq.country,
+      postalCode: SITE.hq.postalCode,
+      addressCountry: SITE.hq.countryCode,
     },
     sameAs: [SITE.social.linkedin, SITE.social.instagram, SITE.sister.url],
   }
@@ -29,21 +31,36 @@ export function localBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: SITE.name,
+    image: `${SITE_URL}/og-image.png`,
     description: SITE.description,
-    url: SITE.url,
+    url: SITE_URL,
     telephone: SITE.contact.phoneTel,
     email: SITE.contact.email,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: SITE.hq.street,
       addressLocality: SITE.hq.city,
       addressRegion: SITE.hq.state,
-      addressCountry: SITE.hq.country,
+      postalCode: SITE.hq.postalCode,
+      addressCountry: SITE.hq.countryCode,
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: SITE.geo.latitude,
+      longitude: SITE.geo.longitude,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: SITE.hours.days,
+        opens: SITE.hours.opens,
+        closes: SITE.hours.closes,
+      },
+    ],
     areaServed: SITE.serviceAreas.map((area) => ({
       '@type': 'City',
       name: area,
     })),
-    openingHours: SITE.hours.structured,
     priceRange: '₹₹',
   }
 }
@@ -52,23 +69,38 @@ export function serviceSchema(opts: {
   name: string
   description: string
   slug: string
+  serviceType?: string
+  priceRange?: { low: string; high: string; currency?: string }
 }) {
-  return {
+  const base = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: opts.name,
     description: opts.description,
+    serviceType: opts.serviceType ?? opts.name,
     provider: {
-      '@type': 'Organization',
+      '@type': 'LocalBusiness',
       name: SITE.name,
-      url: SITE.url,
+      url: SITE_URL,
     },
     areaServed: SITE.serviceAreas.map((area) => ({
       '@type': 'City',
       name: area,
     })),
-    url: `${SITE.url}/${opts.slug}`,
+    url: `${SITE_URL}/${opts.slug}`,
   }
+  if (opts.priceRange) {
+    return {
+      ...base,
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: opts.priceRange.currency ?? 'INR',
+        lowPrice: opts.priceRange.low,
+        highPrice: opts.priceRange.high,
+      },
+    }
+  }
+  return base
 }
 
 export function breadcrumbSchema(items: { name: string; url: string }[]) {

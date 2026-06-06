@@ -10,9 +10,11 @@ import { contactCopy } from '@/lib/content/copy/contact'
 import { localBusinessSchema } from '@/lib/schema'
 
 export const metadata = {
-  title: 'Contact',
+  title: {
+    absolute: 'Contact ITSolute · Parthas Lane, Kottayam | IT Services Kerala',
+  },
   description:
-    'Get in touch with ITSolute Systems — WhatsApp, phone, email, or send a message. Serving businesses across Kerala.',
+    'Contact ITSolute Systems — Parthas Lane, Kottayam. WhatsApp +91 92076 40404, hello@itsolute.com. Serving offices, clinics, schools, shops across Kerala.',
 }
 
 type SearchParams = Promise<{ service?: string }>
@@ -138,14 +140,18 @@ function ContactRow({
 
 function mapServiceParam(p?: string) {
   switch (p) {
-    case 'amc':
-      return 'AMC contract'
     case 'hardware':
       return 'Hardware purchase'
+    case 'laptop-care':
+      return 'Laptop repair / care'
     case 'software':
       return 'Software licensing'
+    case 'networking':
+      return 'Networking / WiFi setup'
     case 'automation':
       return 'Automation / custom build'
+    case 'amc':
+      return 'AMC contract'
     default:
       return undefined
   }

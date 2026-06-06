@@ -52,8 +52,8 @@ All variables live in `.env.example`. Copy to `.env.local` for development and s
 | `RESEND_API_KEY` | Yes (prod) | https://resend.com/api-keys — create a project, generate a key |
 | `RESEND_FROM_EMAIL` | Yes (prod) | The verified sender on Resend (e.g. `"ITSolute Systems <hello@itsolute.com>"`). Domain must be verified in Resend before send. |
 | `RESEND_TO_EMAIL` | Yes (prod) | The inbox that receives enquiries — default `hello@itsolute.com` |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | Digits only with country code: `917034455665` |
-| `NEXT_PUBLIC_PHONE_NUMBER` | Yes | With `+`: `+917034455665` |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | Digits only with country code: `919207640404` |
+| `NEXT_PUBLIC_PHONE_NUMBER` | Yes | With `+`: `+919207640404` |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional | Google Analytics 4 measurement ID. Leave blank to skip. |
 | `NEXT_PUBLIC_SITE_URL` | Yes (prod) | Canonical URL — used for metadata, sitemap, schema. e.g. `https://itsolute.com` |
 
@@ -72,6 +72,7 @@ app/
 │   ├── hardware/page.tsx
 │   ├── software/page.tsx
 │   ├── automation/page.tsx
+│   ├── laptop-care/page.tsx
 │   ├── about/page.tsx
 │   ├── work/
 │   │   ├── page.tsx
@@ -97,7 +98,7 @@ lib/
 ├── content/                  # All copy — structured data + page prose
 │   ├── site.ts               # Phone, email, address, hours, social
 │   ├── nav.ts                # Nav + footer columns
-│   ├── services.ts           # 6 services
+│   ├── services.ts           # 6 services (hardware-first order)
 │   ├── industries.ts         # 6 industries
 │   ├── caseStudies.ts        # 3 case studies (long-form)
 │   ├── testimonials.ts       # Pull-quotes
@@ -133,6 +134,7 @@ lib/
 | Home page prose (headlines, subs, CTAs) | `lib/content/copy/home.ts` |
 | AMC page prose | `lib/content/copy/amc.ts` |
 | Hardware / Software / Automation page prose | `lib/content/copy/{hardware,software,automation}.ts` |
+| Laptop Care page prose + FAQ | `lib/content/copy/laptopCare.ts` |
 | About page story, mission, principles | `lib/content/copy/about.ts` |
 | Contact page copy + form service dropdown | `lib/content/copy/contact.ts` |
 | Case-studies index page hero | `lib/content/copy/work.ts` |
@@ -337,10 +339,73 @@ If LCP misses, check that the hero placeholder image has been replaced with a pr
 
 ---
 
+## Strategic positioning
+
+The site is hardware-first. AMC is positioned as the natural upsell after a
+client's first project — not as the cold-visitor pitch. If you ever want to
+revert to AMC-first messaging:
+
+1. Reorder `lib/content/services.ts` to put `amc` first
+2. Swap the bento cells in `components/home/ServicesBento.tsx`
+3. Replace the Hardware feature row in `app/(marketing)/page.tsx` with AMC
+4. Drop the "AMC closing" Section block from `page.tsx`
+5. Re-run `pnpm build`
+
+All copy lives in `lib/content/copy/home.ts` — no JSX changes needed for tone.
+
+---
+
+## Local SEO setup (off-site, do this before launch)
+
+The website is only one half of local discoverability. Do these too:
+
+### Google Business Profile
+
+1. Claim a Business Profile at `business.google.com`
+2. **Business name:** `ITSolute Systems`
+3. **Address:** `Parthas Lane, Kottayam, Kerala – 686001` — must be character-for-character identical to what's in `lib/content/site.ts` and the LocalBusiness schema
+4. **Phone:** `+91 92076 40404` — same number as everywhere on site
+5. **Primary category:** Computer Store
+6. **Secondary categories:** Computer repair service, Software company, Computer networking center
+7. **Hours:** Mon–Sat, 9:00 – 19:00
+8. **Services:** add each one — Hardware, Laptop Repair, Software Licensing, Networking, Automation, AMC
+9. Add photos of: storefront, workshop, team, product/repair work
+10. **Note for sister brand:** Google allows multiple businesses at one address with different categories. CCTVPROS can be listed separately if it operates from the same Parthas Lane address.
+
+### Directory listings (NAP consistency)
+
+Use the **exact** string `Parthas Lane, Kottayam, Kerala – 686001` and phone
+`+91 92076 40404` everywhere — search engines cross-reference these for trust.
+
+- Justdial (Kottayam, Kochi listings)
+- Sulekha (Kerala IT services)
+- IndiaMART (B2B procurement leads)
+- LinkedIn Company Page
+- Bing Places (yes, still used)
+
+### Track this
+
+Set up Google Search Console for `itsolute.com` once the domain is live:
+1. Verify ownership via DNS TXT or HTML file
+2. Submit `https://itsolute.com/sitemap.xml`
+3. Check Mobile Usability, Core Web Vitals, and Coverage weekly for the first month
+
+### Canonical URL caveat
+
+While `itsolute.com` is not yet pointed at the Vercel deployment, set
+`NEXT_PUBLIC_SITE_URL` in Vercel to the live `*.vercel.app` URL — that prevents
+search engines from seeing a canonical pointing to a 404. Flip back to
+`https://itsolute.com` once DNS is configured.
+
+---
+
 ## Pre-launch checklist
 
 Walk through this before flipping the DNS:
 
+- [ ] Google Business Profile claimed at the Parthas Lane address (see Local SEO Setup above)
+- [ ] Justdial / Sulekha / IndiaMART listings created with identical NAP
+- [ ] `NEXT_PUBLIC_SITE_URL` in Vercel matches the actually-live URL (not 404 itsolute.com)
 - [ ] All `TODO:` chips on images replaced with real photographs
 - [ ] All `TODO: Replace with real testimonial` markers resolved
 - [ ] All `TODO: verify` notes on case-study metrics confirmed or corrected

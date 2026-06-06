@@ -9,9 +9,11 @@ import { aboutCopy } from '@/lib/content/copy/about'
 import { cn } from '@/lib/utils'
 
 export const metadata = {
-  title: 'About',
+  title: {
+    absolute: 'About ITSolute Systems · IT Company in Kottayam, Kerala',
+  },
   description:
-    'ITSolute Systems — a Kerala-rooted IT services company. We started this to be the opposite of the four-vendor circus most SMBs deal with.',
+    'ITSolute Systems is a Kottayam-based IT services company serving SMBs across Kerala. Hardware, software, repair, networking, automation — under one roof.',
 }
 
 export default function AboutPage() {

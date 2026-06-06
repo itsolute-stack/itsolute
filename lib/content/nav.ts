@@ -1,10 +1,16 @@
 export type NavLink = { label: string; href: string }
 
+/**
+ * Primary nav — order is intentional. Hardware and Laptop Care are explicit
+ * items (not buried under a Services dropdown) so they earn SEO surface for
+ * "laptop dealer Kottayam" and "laptop repair Kottayam" searches.
+ */
 export const primaryNav: NavLink[] = [
-  { label: 'Services', href: '/#services' },
-  { label: 'AMC', href: '/amc' },
+  { label: 'Hardware', href: '/hardware' },
+  { label: 'Laptop Care', href: '/laptop-care' },
+  { label: 'Software', href: '/software' },
+  { label: 'Automation', href: '/automation' },
   { label: 'Work', href: '/work' },
-  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -12,12 +18,12 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
   {
     heading: 'Services',
     links: [
-      { label: 'AMC Contracts', href: '/amc' },
-      { label: 'Hardware', href: '/hardware' },
-      { label: 'Software', href: '/software' },
+      { label: 'Computer Hardware', href: '/hardware' },
+      { label: 'Software & Licensing', href: '/software' },
+      { label: 'Laptop Care & Repair', href: '/laptop-care' },
+      { label: 'Networking & WiFi', href: '/hardware#networking' },
       { label: 'Automation', href: '/automation' },
-      { label: 'Networking', href: '/hardware#networking' },
-      { label: 'Repair', href: '/hardware#repair' },
+      { label: 'AMC Contracts', href: '/amc' },
     ],
   },
   {

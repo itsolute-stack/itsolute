@@ -12,9 +12,9 @@ import { fadeUp, inView, stagger } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 export function ServicesBento() {
-  const amc = services.find((s) => s.slug === 'amc')!
   const hardware = services.find((s) => s.slug === 'hardware')!
   const software = services.find((s) => s.slug === 'software')!
+  const laptopCare = services.find((s) => s.slug === 'laptop-care')!
   const automation = services.find((s) => s.slug === 'automation')!
 
   return (
@@ -33,19 +33,19 @@ export function ServicesBento() {
           viewport={inView}
           variants={stagger(0.08)}
         >
-          {/* Cell 1 — AMC, large feature, spans 2 cols + 2 rows */}
+          {/* Cell 1 — Hardware, large feature, spans 2 cols + 2 rows */}
           <motion.div variants={fadeUp} className="md:col-span-2 md:row-span-2">
-            <BentoCard service={amc} featured />
+            <BentoCard service={hardware} featured />
           </motion.div>
 
-          {/* Cell 2 — Hardware (top right) */}
-          <motion.div variants={fadeUp}>
-            <BentoCard service={hardware} />
-          </motion.div>
-
-          {/* Cell 3 — Software (mid right) */}
+          {/* Cell 2 — Software (top right) */}
           <motion.div variants={fadeUp}>
             <BentoCard service={software} />
+          </motion.div>
+
+          {/* Cell 3 — Laptop Care (mid right) */}
+          <motion.div variants={fadeUp}>
+            <BentoCard service={laptopCare} />
           </motion.div>
 
           {/* Cell 4 — Automation, secondary feature, spans 3 cols on bottom */}

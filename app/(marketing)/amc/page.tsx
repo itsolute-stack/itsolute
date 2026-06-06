@@ -18,9 +18,11 @@ import { SITE } from '@/lib/content/site'
 import { cn } from '@/lib/utils'
 
 export const metadata = {
-  title: 'AMC Contracts',
+  title: {
+    absolute: 'IT AMC Contracts for Kerala Businesses | ITSolute Systems',
+  },
   description:
-    'AMC services in Kerala — monthly retainers covering hardware, software, networks, backups, and support. Written SLA, no surprises.',
+    'IT AMC contracts in Kottayam and across Kerala. Hardware, software, network, and support covered under one monthly retainer. Written SLA, no surprises.',
 }
 
 export default function AMCPage() {
@@ -206,10 +208,11 @@ export default function AMCPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             serviceSchema({
-              name: 'AMC Contracts',
+              name: 'IT AMC Contracts',
               description:
                 'Annual maintenance contracts for SMBs across Kerala. Hardware, software, network, and support — under one accountable partner.',
               slug: 'amc',
+              serviceType: 'IT Maintenance Contract',
             }),
           ),
         }}

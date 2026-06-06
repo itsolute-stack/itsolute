@@ -11,7 +11,7 @@ import { fadeUp, inView, stagger } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 type FeatureRowProps = {
-  theme: 'dark' | 'light'
+  theme: 'dark' | 'light' | 'cream'
   imageSide: 'left' | 'right'
   eyebrow: string
   headline: string
@@ -33,9 +33,12 @@ export function FeatureRow({
   metrics,
   image,
 }: FeatureRowProps) {
-  const sectionTheme = theme === 'dark' ? 'dark' : 'light'
+  // For text/border styling, treat anything non-dark as light.
+  const isDark = theme === 'dark'
+  const textTheme = isDark ? 'dark' : 'light'
+
   return (
-    <Section theme={sectionTheme}>
+    <Section theme={theme}>
       <Container>
         <motion.div
           className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16"
@@ -54,7 +57,7 @@ export function FeatureRow({
             <div
               className={cn(
                 'relative aspect-[4/3] w-full overflow-hidden rounded-lg',
-                theme === 'dark' ? 'border border-white/10' : 'border border-slate-200',
+                isDark ? 'border border-white/10' : 'border border-slate-200',
               )}
             >
               <PlaceholderImage
@@ -67,7 +70,7 @@ export function FeatureRow({
                 sizes="(max-width: 1024px) 100vw, 60vw"
                 className="absolute inset-0"
               />
-              {theme === 'dark' ? (
+              {isDark ? (
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0"
@@ -87,11 +90,11 @@ export function FeatureRow({
               imageSide === 'right' && 'lg:order-0',
             )}
           >
-            <Eyebrow theme={theme}>{eyebrow}</Eyebrow>
+            <Eyebrow theme={textTheme}>{eyebrow}</Eyebrow>
             <h2
               className={cn(
                 'text-4xl md:text-5xl font-medium tracking-[-0.03em] leading-[1.05]',
-                theme === 'dark' ? 'text-white' : 'text-[color:var(--color-ink)]',
+                isDark ? 'text-white' : 'text-[color:var(--color-ink)]',
               )}
             >
               {headline}
@@ -99,7 +102,7 @@ export function FeatureRow({
             <p
               className={cn(
                 'text-base md:text-lg leading-relaxed',
-                theme === 'dark' ? 'text-slate-300' : 'text-slate-600',
+                isDark ? 'text-slate-300' : 'text-slate-600',
               )}
             >
               {body}
@@ -108,7 +111,9 @@ export function FeatureRow({
               <p
                 className={cn(
                   'font-mono text-xs md:text-sm uppercase tracking-[0.15em]',
-                  theme === 'dark' ? 'text-[color:var(--color-cyan)]' : 'text-[color:var(--color-electric)]',
+                  isDark
+                    ? 'text-[color:var(--color-cyan)]'
+                    : 'text-[color:var(--color-electric)]',
                 )}
               >
                 {note}
@@ -116,17 +121,28 @@ export function FeatureRow({
             ) : null}
 
             {metrics ? (
-              <div className="mt-2 grid grid-cols-3 gap-6 border-t border-b py-6"
-                style={{ borderColor: theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgb(226 232 240)' }}
+              <div
+                className="mt-2 grid grid-cols-3 gap-6 border-t border-b py-6"
+                style={{
+                  borderColor: isDark
+                    ? 'rgba(255,255,255,0.1)'
+                    : 'rgb(226 232 240)',
+                }}
               >
                 {metrics.map((m) => (
-                  <Metric key={m.label} value={m.value} label={m.label} size="sm" theme={theme} />
+                  <Metric
+                    key={m.label}
+                    value={m.value}
+                    label={m.label}
+                    size="sm"
+                    theme={textTheme}
+                  />
                 ))}
               </div>
             ) : null}
 
             <div>
-              <ArrowLink href={cta.href} theme={theme === 'dark' ? 'dark' : 'accent'}>
+              <ArrowLink href={cta.href} theme={isDark ? 'dark' : 'accent'}>
                 {cta.label}
               </ArrowLink>
             </div>

@@ -48,7 +48,13 @@ export function PageHero({ eyebrow, headline, sub, primaryCta, secondaryCta }: P
             <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-4">
               {primaryCta ? (
                 <Button asChild size="lg" variant="primary">
-                  <Link href={primaryCta.href}>{primaryCta.label}</Link>
+                  {primaryCta.href.startsWith('http') ? (
+                    <a href={primaryCta.href} target="_blank" rel="noopener noreferrer">
+                      {primaryCta.label}
+                    </a>
+                  ) : (
+                    <Link href={primaryCta.href}>{primaryCta.label}</Link>
+                  )}
                 </Button>
               ) : null}
               {secondaryCta ? (

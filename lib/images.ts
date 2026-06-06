@@ -25,6 +25,21 @@ export const images = {
     alt: 'IT technician working at a workstation',
     intent: 'Office IT setup with documentation/checklist on desk, blue color grade',
   },
+  hardwareFeature: {
+    src: u('photo-1517336714731-489689fd1ca8'),
+    alt: 'Open laptop on a workspace desk',
+    intent: 'Business laptop on a clean Kerala office desk, warm light',
+  },
+  laptopCareFeature: {
+    src: u('photo-1612442058529-22e34ae29ff7'),
+    alt: 'Laptop being repaired with tools on a workbench',
+    intent: 'Technician hands repairing a laptop — screwdrivers, opened chassis, organized workbench',
+  },
+  laptopCareWorkshop: {
+    src: u('photo-1517694712202-14dd9538aa97'),
+    alt: 'Repair workshop with components and tools',
+    intent: 'ITSolute Kottayam workshop interior — repair bench, parts shelf, branded',
+  },
   automationFeature: {
     src: u('photo-1551288049-bebda4e38f71'),
     alt: 'Analytics dashboard on a laptop screen',

@@ -10,9 +10,11 @@ import { workCopy } from '@/lib/content/copy/work'
 import { images } from '@/lib/images'
 
 export const metadata = {
-  title: 'Case Studies',
+  title: {
+    absolute: 'Case Studies · IT Builds for Kerala SMBs | ITSolute Systems',
+  },
   description:
-    'Real systems running in real businesses. Multi-city operations, automated catalogs, WhatsApp booking flows — built by ITSolute.',
+    'Real systems running in real Kerala businesses. Multi-city operations, automated product catalogs, WhatsApp booking flows — built by ITSolute.',
 }
 
 const csImages = {

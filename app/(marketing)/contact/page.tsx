@@ -14,7 +14,7 @@ export const metadata = {
     absolute: 'Contact ITSolute · Parthas Lane, Kottayam | IT Services Kerala',
   },
   description:
-    'Contact ITSolute Systems — Parthas Lane, Kottayam. WhatsApp +91 92076 40404, hello@itsolute.com. Serving offices, clinics, schools, shops across Kerala.',
+    'Contact ITSolute Systems — Parthas Lane, Kottayam. WhatsApp +91 85475 33005, hello@itsolute.com. Serving offices, clinics, schools, shops across Kerala.',
   alternates: { canonical: `${SITE_URL}/contact` },
 }
 

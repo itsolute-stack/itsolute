@@ -48,9 +48,11 @@ export const SITE = {
   },
   geo: GEO,
   contact: {
-    phoneDisplay: '+91 92076 40404',
-    phoneTel: '+919207640404',
-    whatsappNumber: '919207640404',
+    phoneDisplay: '+91 85475 33005',
+    phoneTel: '+918547533005',
+    /** Dashed form for schema.org telephone (Google Knowledge Panel prefers this). */
+    phoneSchema: '+91-85475-33005',
+    whatsappNumber: '918547533005',
     email: 'hello@itsolute.com',
   },
   hours: {
@@ -73,11 +75,33 @@ export const SITE = {
     tagline: 'Surveillance & Security',
     url: 'https://cctvpros.in',
   },
-  social: {
-    linkedin: 'https://linkedin.com/company/itsolute-systems',
-    instagram: 'https://instagram.com/itsolute.systems',
+} as const
+
+/**
+ * Official social channels. Each entry feeds the footer icon row AND the
+ * schema.org `sameAs` array (which Google uses to verify entity identity
+ * and build the Knowledge Graph entry for the business).
+ */
+export const SOCIAL = {
+  instagram: {
+    url: 'https://www.instagram.com/itsolutesystems/',
+    handle: '@itsolutesystems',
+    label: 'Instagram',
+  },
+  x: {
+    url: 'https://x.com/ITSoluteSystems',
+    handle: '@ITSoluteSystems',
+    label: 'X',
+  },
+  facebook: {
+    url: 'https://www.facebook.com/itsolutesystems',
+    handle: 'itsolutesystems',
+    label: 'Facebook',
   },
 } as const
+
+/** URLs only — drop into schema.org `sameAs` arrays. */
+export const SOCIAL_URLS = Object.values(SOCIAL).map((s) => s.url)
 
 /**
  * SEO keywords — used in root metadata. Hardware/laptop-care first because

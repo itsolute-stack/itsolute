@@ -1,4 +1,4 @@
-import { SITE, SITE_URL } from '@/lib/content/site'
+import { SITE, SITE_URL, SOCIAL_URLS } from '@/lib/content/site'
 
 /* ============================================================================
  * JSON-LD generators. Each returns a plain object — JSON.stringify in <Script>.
@@ -13,7 +13,7 @@ export function organizationSchema() {
     logo: `${SITE_URL}/logo.svg`,
     foundingDate: String(SITE.founded),
     email: SITE.contact.email,
-    telephone: SITE.contact.phoneTel,
+    telephone: SITE.contact.phoneSchema,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE.hq.street,
@@ -22,7 +22,7 @@ export function organizationSchema() {
       postalCode: SITE.hq.postalCode,
       addressCountry: SITE.hq.countryCode,
     },
-    sameAs: [SITE.social.linkedin, SITE.social.instagram, SITE.sister.url],
+    sameAs: [...SOCIAL_URLS, SITE.sister.url],
   }
 }
 
@@ -38,7 +38,7 @@ export function localBusinessSchema() {
     image: `${SITE_URL}/og-image.png`,
     description: SITE.description,
     url: SITE_URL,
-    telephone: SITE.contact.phoneTel,
+    telephone: SITE.contact.phoneSchema,
     email: SITE.contact.email,
     address: {
       '@type': 'PostalAddress',
@@ -65,6 +65,7 @@ export function localBusinessSchema() {
       '@type': 'City',
       name: area,
     })),
+    sameAs: [...SOCIAL_URLS, SITE.sister.url],
     priceRange: '₹₹',
   }
 }

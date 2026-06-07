@@ -52,8 +52,8 @@ All variables live in `.env.example`. Copy to `.env.local` for development and s
 | `RESEND_API_KEY` | Yes (prod) | https://resend.com/api-keys — create a project, generate a key |
 | `RESEND_FROM_EMAIL` | Yes (prod) | The verified sender on Resend (e.g. `"ITSolute Systems <hello@itsolute.com>"`). Domain must be verified in Resend before send. |
 | `RESEND_TO_EMAIL` | Yes (prod) | The inbox that receives enquiries — default `hello@itsolute.com` |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | Digits only with country code: `919207640404` |
-| `NEXT_PUBLIC_PHONE_NUMBER` | Yes | With `+`: `+919207640404` |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | Digits only with country code: `918547533005` |
+| `NEXT_PUBLIC_PHONE_NUMBER` | Yes | With `+`: `+918547533005` |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional | Google Analytics 4 measurement ID. Leave blank to skip. |
 | `NEXT_PUBLIC_SITE_URL` | Yes (prod) | Canonical URL — used for metadata, sitemap, schema. e.g. `https://itsolute.com` |
 
@@ -343,7 +343,7 @@ The website is only one half of local discoverability. Do these too:
 1. Claim a Business Profile at `business.google.com`
 2. **Business name:** `ITSolute Systems`
 3. **Address:** `Parthas Lane, Kottayam, Kerala – 686001` — must be character-for-character identical to what's in `lib/content/site.ts` and the LocalBusiness schema
-4. **Phone:** `+91 92076 40404` — same number as everywhere on site
+4. **Phone:** `+91 85475 33005` — same number as everywhere on site
 5. **Primary category:** Computer Store
 6. **Secondary categories:** Computer repair service, Software company, Computer networking center
 7. **Hours:** Mon–Sat, 9:00 – 19:00
@@ -354,7 +354,7 @@ The website is only one half of local discoverability. Do these too:
 ### Directory listings (NAP consistency)
 
 Use the **exact** string `Parthas Lane, Kottayam, Kerala – 686001` and phone
-`+91 92076 40404` everywhere — search engines cross-reference these for trust.
+`+91 85475 33005` everywhere — search engines cross-reference these for trust.
 
 - Justdial (Kottayam, Kochi listings)
 - Sulekha (Kerala IT services)
@@ -426,6 +426,35 @@ Walk through this before flipping the DNS:
 - [ ] Submit `sitemap.xml` to Google Search Console
 - [ ] Test the contact form end-to-end (form → email lands in inbox → reply-to works)
 - [ ] Test WhatsApp floating button on a real mobile device
+
+---
+
+## Social media
+
+Three official ITSolute Systems channels — wired via `SOCIAL` in
+`lib/content/site.ts`. Update there to change everywhere.
+
+- Instagram: https://www.instagram.com/itsolutesystems/
+- X (Twitter): https://x.com/ITSoluteSystems
+- Facebook: https://www.facebook.com/itsolutesystems
+
+These URLs propagate to:
+
+- **Footer icons** — `components/layout/Footer.tsx` reads `SOCIAL.{instagram,x,facebook}.url`
+- **Schema.org `sameAs`** — both Organization and LocalBusiness JSON-LD include the three URLs (`SOCIAL_URLS`). Google uses this for Knowledge Graph entity matching.
+- **Twitter Card metadata** — `app/layout.tsx` sets `twitter.site` and `twitter.creator` to `@ITSoluteSystems`.
+
+### Off-site reciprocal links
+
+Add `https://itsolute.com` as the website URL on each profile (Instagram bio,
+X profile, Facebook About → Website). The reciprocal link strengthens the
+`sameAs` signal — Google verifies the relationship goes both ways.
+
+### After a deploy
+
+- Run https://itsolute.com through https://search.google.com/test/rich-results — Organization should now show the three social URLs under `sameAs`.
+- Refresh Facebook's cache via https://developers.facebook.com/tools/debug/ → paste the URL → "Scrape Again".
+- Share the URL once on X to confirm the card renders with `@ITSoluteSystems` attribution.
 
 ---
 

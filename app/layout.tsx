@@ -53,6 +53,8 @@ export const metadata: Metadata = {
     description:
       'Computer hardware, laptop repair, software, networking, and automation for Kerala SMBs.',
     images: ['/og-image.png'],
+    site: '@ITSoluteSystems',
+    creator: '@ITSoluteSystems',
   },
   robots: {
     index: true,

@@ -1,10 +1,19 @@
 import Link from 'next/link'
-import { Linkedin, Instagram, MessageCircle, Mail, Phone, MapPin, Clock } from 'lucide-react'
+import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin, Clock } from 'lucide-react'
 import { Container } from './Container'
 import { Logo } from '@/components/shared/Logo'
 import { whatsappLink } from '@/lib/whatsapp'
-import { SITE } from '@/lib/content/site'
+import { SITE, SOCIAL } from '@/lib/content/site'
 import { footerNav } from '@/lib/content/nav'
+
+/** Minimal inline X (Twitter) glyph — Lucide doesn't ship one. */
+function XIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
 
 export function Footer() {
   return (
@@ -92,31 +101,31 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href={SITE.social.linkedin}
+                href={SOCIAL.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="text-slate-400 hover:text-white"
+                aria-label="ITSolute Systems on Instagram"
+                className="text-slate-400 transition-colors hover:text-white"
               >
-                <Linkedin className="h-5 w-5" />
+                <Instagram className="h-5 w-5" aria-hidden />
               </a>
               <a
-                href={SITE.social.instagram}
+                href={SOCIAL.x.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-slate-400 hover:text-white"
+                aria-label="ITSolute Systems on X"
+                className="text-slate-400 transition-colors hover:text-white"
               >
-                <Instagram className="h-5 w-5" />
+                <XIcon className="h-5 w-5" />
               </a>
               <a
-                href={whatsappLink()}
+                href={SOCIAL.facebook.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                className="text-slate-400 hover:text-white"
+                aria-label="ITSolute Systems on Facebook"
+                className="text-slate-400 transition-colors hover:text-white"
               >
-                <MessageCircle className="h-5 w-5" />
+                <Facebook className="h-5 w-5" aria-hidden />
               </a>
             </div>
           </div>

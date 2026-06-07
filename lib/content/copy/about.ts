@@ -14,7 +14,8 @@ export const aboutCopy = {
       'We’re Kerala-rooted because we believe local businesses deserve local IT partners who speak their language, understand their context, and show up onsite when it matters. We’ve been doing this for more than a decade across the state, and the model works.',
     ],
   },
-  mission: 'To be the IT partner Kerala SMBs trust the way they trust their CA: deeply, locally, and for the long haul.',
+  mission:
+    'To be the IT partner Kerala SMBs trust the way they trust their CA: deeply, locally, and for the long haul.',
   team: {
     eyebrow: 'THE TEAM',
     headline: 'A small team of full-stack technical operators.',
@@ -27,30 +28,17 @@ export const aboutCopy = {
       { initials: 'OP', name: 'Operations', role: 'Onsite support & client success' },
     ],
   },
-  otherBusinesses: {
-    eyebrow: 'WE EAT OUR OWN COOKING',
-    headline: 'We run other operating businesses on the same stack we sell.',
-    sub: 'Most IT companies have never run a business themselves. We’ve scaled three, and that experience shapes how we build for clients.',
-    items: [
-      {
-        name: 'Clean Warks',
-        body: 'Multi-city service operations across Kerala — the platform that runs it is the same operations stack we deploy for clients.',
-        href: '/work/clean-warks',
-        external: false,
-      },
-      {
-        name: 'CCTVPROS',
-        body: 'Sister brand: surveillance and security systems. AI-powered catalog, lead automation, and end-to-end fulfillment.',
-        href: 'https://cctvpros.in',
-        external: true,
-      },
-      {
-        name: 'Senza Aura',
-        body: 'A salon brand with WhatsApp-first booking and automated retention flows. 4× booking volume in six months.',
-        href: '/work/senza-aura',
-        external: false,
-      },
+  workshop: {
+    eyebrow: 'THE WORKSHOP',
+    headline: 'Built in Kottayam. By technicians, not salespeople.',
+    paragraphs: [
+      'Parthas Lane is where the work happens. A real workshop with benches, parts, scopes, anti-static mats, and a team that has been fixing and building computers across Kerala for over a decade.',
+      'You can walk in. You can call us. You can WhatsApp a photo of your broken laptop and we will tell you what is possible. Most diagnoses happen the same day. Most repairs go out within 72 hours.',
+      'The team behind ITSolute Systems has been quietly running IT operations for Kerala businesses for years — through clinics, schools, offices, and homes. ITSolute is what we put on the door when we decided it deserved its own brand.',
     ],
+    sisterLine:
+      'For surveillance and security systems, see our sister brand CCTVPROS.',
+    sisterHref: 'https://cctvpros.in',
   },
   principles: {
     eyebrow: 'WHAT WE BELIEVE',

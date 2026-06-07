@@ -42,10 +42,6 @@ export const homeFAQs: FAQ[] = [
     a: 'Absolutely. We handle vendor transitions all the time. We audit the existing setup, document what we find, talk to the outgoing vendor where useful, and take over cleanly — without losing data, accounts, or licenses. Most transitions complete in 2–4 weeks.',
   },
   {
-    q: 'Do you handle CCTV too?',
-    a: 'Yes — through our sister brand CCTVPROS. If you need surveillance, access control, or security systems alongside your IT, we handle both ends without making you talk to two companies. CCTVPROS is run by the same team, on the same standards.',
-  },
-  {
     q: 'Where is your office located?',
     a: 'Parthas Lane, Kottayam – 686001. Walk-ins welcome Mon–Sat, 9 AM – 7 PM. Pickup and drop service available across Kottayam, Kochi, Pathanamthitta, and Alappuzha.',
   },

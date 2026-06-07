@@ -63,7 +63,7 @@ export const networkingCopy = {
       {
         icon: Camera,
         title: 'CCTV network integration',
-        body: 'Combined network + camera install with our sister brand CCTVPROS.',
+        body: 'Combined network + camera installs with our affiliated surveillance team — one project, one bill.',
       },
     ] as { icon: LucideIcon; title: string; body: string }[],
   },
@@ -101,7 +101,7 @@ export const networkingCopy = {
       },
       {
         title: 'Save 30–40% on combined CCTV + networking',
-        body: 'Networking + CCTV installed together (via our sister brand CCTVPROS) is significantly cheaper than two vendors.',
+        body: 'Networking + surveillance installed by one team in one visit is significantly cheaper than hiring two vendors.',
       },
       {
         title: 'Optional AMC after install',
@@ -197,7 +197,7 @@ export const networkingFAQs = [
   },
   {
     q: 'Can you connect our CCTV cameras to the same network?',
-    a: 'Yes — and it’s the right way to do it. We integrate IP cameras through our sister brand CCTVPROS using PoE switches, network video recorders, and proper VLAN isolation so CCTV traffic doesn’t slow down your business network. Combined installs are 30–40% cheaper than hiring two separate vendors.',
+    a: 'Yes — and it’s the right way to do it. We integrate IP cameras alongside the LAN using PoE switches, network video recorders, and proper VLAN isolation so CCTV traffic doesn’t slow down your business network. Combined network + surveillance installs are 30–40% cheaper than hiring two separate vendors.',
   },
   {
     q: 'Do you offer AMC for ongoing network maintenance?',

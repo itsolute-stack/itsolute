@@ -1,5 +1,3 @@
-import { ExternalLink } from 'lucide-react'
-import Link from 'next/link'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
@@ -91,34 +89,32 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Our other businesses */}
+      {/* The Workshop */}
       <Section theme="light">
         <Container>
-          <SectionHeader
-            eyebrow={aboutCopy.otherBusinesses.eyebrow}
-            headline={aboutCopy.otherBusinesses.headline}
-            sub={aboutCopy.otherBusinesses.sub}
-          />
-
-          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">
-            {aboutCopy.otherBusinesses.items.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="group flex flex-col gap-3 rounded-lg border border-slate-200 bg-white p-6 md:p-8 transition-all hover:-translate-y-0.5 hover:border-[color:var(--color-electric)]"
-              >
-                <div className="flex items-center gap-2">
-                  <h3 className="text-2xl font-medium tracking-tight text-[color:var(--color-ink)]">
-                    {item.name}
-                  </h3>
-                  {item.external ? (
-                    <ExternalLink className="h-4 w-4 text-slate-400" />
-                  ) : null}
-                </div>
-                <p className="text-base text-slate-600 leading-relaxed">{item.body}</p>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <SectionHeader
+                eyebrow={aboutCopy.workshop.eyebrow}
+                headline={aboutCopy.workshop.headline}
+              />
+            </div>
+            <div className="lg:col-span-7 flex flex-col gap-5 text-base md:text-lg text-slate-600 leading-relaxed">
+              {aboutCopy.workshop.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+              <p className="pt-4 mt-2 border-t border-slate-200 text-sm md:text-base text-slate-500">
+                {aboutCopy.workshop.sisterLine}{' '}
+                <a
+                  href={aboutCopy.workshop.sisterHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[color:var(--color-electric)] hover:underline"
+                >
+                  Visit CCTVPROS →
+                </a>
+              </p>
+            </div>
           </div>
         </Container>
       </Section>

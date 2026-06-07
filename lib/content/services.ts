@@ -95,7 +95,7 @@ export const services: Service[] = [
     title: 'Automation & Custom Tools',
     tagline: 'Stop doing IT work that software should do for you.',
     description:
-      'WhatsApp flows, lead capture, dashboards, custom workflows. Built on the stack that runs our own businesses.',
+      'WhatsApp flows, lead capture, dashboards, custom workflows. Built by a team that has been deploying these systems across Kerala for years.',
     icon: Workflow,
     features: [
       'WhatsApp & CRM flows',

@@ -88,21 +88,6 @@ export const images = {
     alt: 'Team meeting in an office',
     intent: 'Modern Indian office, team meeting, warm and real',
   },
-  cleanWarksHero: {
-    src: u('photo-1581094271901-8022df4466f9'),
-    alt: 'Operations dashboard at a desk',
-    intent: 'Multi-branch operations dashboard screenshot or visual',
-  },
-  cctvprosHero: {
-    src: u('photo-1518770660439-4636190af475'),
-    alt: 'Electronics circuit board close-up',
-    intent: 'Surveillance product catalog mockup or product photography',
-  },
-  senzaAuraHero: {
-    src: u('photo-1556228720-195a672e8a03'),
-    alt: 'Salon interior with soft lighting',
-    intent: 'WhatsApp chat mockup with booking flow, or salon interior',
-  },
   industryClinic: {
     src: u('photo-1576091160550-2173dba999ef'),
     alt: 'Clinic reception area',

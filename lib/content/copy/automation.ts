@@ -2,7 +2,7 @@ export const automationCopy = {
   hero: {
     eyebrow: 'AUTOMATION',
     headline: 'Stop doing IT work that software should do for you.',
-    sub: 'WhatsApp flows, lead capture, invoicing, multi-branch dashboards, custom workflows. Built on what already runs our own businesses.',
+    sub: 'WhatsApp flows, lead capture, invoicing, multi-branch dashboards, custom workflows. Built by a team that has been deploying these systems across Kerala for years.',
     primaryCta: 'Discuss your workflow',
     secondaryCta: 'WhatsApp us',
   },
@@ -55,10 +55,42 @@ export const automationCopy = {
       },
     ],
   },
-  caseStudiesIntro: {
-    eyebrow: 'PROOF',
-    headline: 'We built these for our own companies first.',
-    body: 'Clean Warks runs on the same operations stack we deploy for clients. Senza Aura’s WhatsApp booking flow is the same one we install. CCTVPROS’ catalog system is the same approach we bring to retail clients.',
+  scenarios: {
+    eyebrow: 'PROOF · ANONYMIZED',
+    headline: 'A few automations we have shipped recently.',
+    body: 'Names and identifying details removed. The metrics and outcomes are real. We can walk you through each of these in a call if you want to dig in.',
+    items: [
+      {
+        title: 'A multi-branch service business on one dashboard',
+        industry: 'Services · 4 cities',
+        problem:
+          'Each branch was on its own paperwork. Owner had no real-time view of jobs, crew, or revenue.',
+        solution:
+          'Zoho One implementation with custom dashboards. WhatsApp lead capture into the CRM. Branch-level revenue and crew-utilization reports auto-generated weekly.',
+        outcome:
+          'New branches now go live in two weeks instead of two months. Owner runs the operation from one screen.',
+      },
+      {
+        title: 'A salon chain that takes most bookings on WhatsApp — automatically',
+        industry: 'Wellness · multi-city',
+        problem:
+          'Bookings were scattered across Instagram DMs, phone calls, and walk-ins. Staff time was burned on coordination.',
+        solution:
+          'WhatsApp Business API flow: customer chooses service, location, slot. Confirmations and reminders go out automatically. CRM logs every interaction.',
+        outcome:
+          'Booking volume up 4× in six months. Staff time on coordination dropped by 70 percent.',
+      },
+      {
+        title: 'An e-commerce catalog that updates itself from supplier feeds',
+        industry: 'Retail · single brand',
+        problem:
+          'Sales team was spending six hours a week copy-pasting product specs from supplier emails into the website.',
+        solution:
+          'Custom AI-powered ingestion pipeline. Supplier feeds drop into a structured queue. Listings get generated, reviewed, and published in minutes.',
+        outcome:
+          'Catalog updates run ten times faster. Sales team got their time back.',
+      },
+    ],
   },
   finalCta: {
     headline: 'Tell us what your team is doing by hand.',

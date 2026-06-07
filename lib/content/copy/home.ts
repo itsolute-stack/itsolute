@@ -51,8 +51,8 @@ export const homeCopy = {
       },
       {
         index: '02',
-        title: 'We run our own businesses on this stack.',
-        body: 'Clean Warks, CCTVPROS, Senza Aura. We’re our own case study.',
+        title: 'A real workshop in Kottayam, not a sales counter.',
+        body: 'Parthas Lane. Walk in, see the bench, meet the technicians. Most IT problems get diagnosed while you wait.',
       },
       {
         index: '03',
@@ -88,12 +88,8 @@ export const homeCopy = {
     eyebrow: 'PREMIUM CAPABILITY',
     headline: 'Stop doing IT work that software should do for you.',
     body: 'We build automation that runs your business while you sleep. WhatsApp lead flows, automated invoicing, multi-branch dashboards, Zoho One implementations — systems that scale a business without scaling the headcount.',
-    note: 'Built on our own businesses first. Then deployed for clients.',
+    note: 'Built by a team that has been deploying these systems across Kerala for years. Ask us for a live walkthrough.',
     cta: 'See how we automate',
-  },
-  caseStudies: {
-    eyebrow: 'REAL WORK · REAL OUTCOMES',
-    headline: 'We don’t just sell IT. We build it for our own companies.',
   },
   industries: {
     eyebrow: 'WE WORK WITH',

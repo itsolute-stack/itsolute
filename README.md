@@ -91,7 +91,6 @@ components/
 ├── layout/                   # Navbar, Footer, Container, Section
 ├── home/                     # Page-section blocks (Hero, ProblemSection, etc.)
 ├── shared/                   # SectionHeader, Eyebrow, Metric, ArrowLink, etc.
-├── case-studies/             # CaseStudyDetail reusable layout
 ├── forms/                    # ContactForm
 └── ui/                       # Button, Input, Textarea, Select, Sheet, Accordion, Label
 
@@ -101,7 +100,7 @@ lib/
 │   ├── nav.ts                # Nav + footer columns
 │   ├── services.ts           # 6 services (hardware-first order)
 │   ├── industries.ts         # 6 industries
-│   ├── caseStudies.ts        # 3 case studies (long-form)
+│   ├── scenarios.ts          # Anonymized weekly scenarios for the home grid
 │   ├── testimonials.ts       # Pull-quotes
 │   ├── faqs.ts               # Home FAQ + AMC FAQ
 │   ├── plans.ts              # AMC tier definitions + includes matrix + checklist
@@ -131,15 +130,14 @@ lib/
 | Testimonials | `lib/content/testimonials.ts` |
 | FAQ questions and answers | `lib/content/faqs.ts` |
 | 5-step process | `lib/content/process.ts` |
-| Case study narratives, metrics, stack | `lib/content/caseStudies.ts` |
+| Home page weekly scenarios | `lib/content/scenarios.ts` |
 | Home page prose (headlines, subs, CTAs) | `lib/content/copy/home.ts` |
 | AMC page prose | `lib/content/copy/amc.ts` |
 | Hardware / Software / Automation page prose | `lib/content/copy/{hardware,software,automation}.ts` |
 | Laptop Care page prose + FAQ | `lib/content/copy/laptopCare.ts` |
 | Networking page prose + FAQ | `lib/content/copy/networking.ts` |
-| About page story, mission, principles | `lib/content/copy/about.ts` |
+| About page story, workshop, principles | `lib/content/copy/about.ts` |
 | Contact page copy + form service dropdown | `lib/content/copy/contact.ts` |
-| Case-studies index page hero | `lib/content/copy/work.ts` |
 
 > **No copy is hard-coded in JSX.** If you find any, please move it into `/lib/content/`.
 
@@ -169,9 +167,6 @@ Every image on the site is a placeholder from Unsplash, marked with a yellow `TO
 | `softwareScreen` | Software page (optional extension) | Team using software at desks |
 | `automationCode` | Automation page (optional) | Code editor or workflow diagram |
 | `aboutOffice` | About page extensions | Modern Kerala office, real team |
-| `cleanWarksHero` | `/work/clean-warks` + Automation case study highlight | Operations dashboard or branch network visual |
-| `cctvprosHero` | `/work/cctvpros` + Work index | Surveillance catalog or product photography |
-| `senzaAuraHero` | `/work/senza-aura` + Automation case study highlight | WhatsApp booking flow mockup or salon interior |
 | `industryClinic` / `industrySchool` / `industryRetail` | Industries section / industry pages (future) | Real-world scenes per category |
 | `contactMap` | Contact page (optional) | Map of Kerala with service-area pins, or embed Google Maps |
 
@@ -192,10 +187,6 @@ The About page renders placeholder avatar cards with initials. To replace:
 
 Every testimonial in `lib/content/testimonials.ts` has a `todo` field marking it as placeholder. **Replace with real, attributed quotes before launch** and remove the `todo` field — it surfaces on the homepage in amber when present.
 
-### Case study metric verification
-
-Each metric in `lib/content/caseStudies.ts` carries a `note: 'TODO: verify'` field. Confirm or replace the numbers, then remove the note.
-
 ---
 
 ## SEO
@@ -205,9 +196,9 @@ Each metric in `lib/content/caseStudies.ts` carries a `note: 'TODO: verify'` fie
 - **JSON-LD schema** is injected per-page via `next/script`:
   - `Organization` schema is on the root layout (every page)
   - `LocalBusiness` on Home and Contact
-  - `Service` on AMC, Hardware, Software, Automation pages
-  - `FAQPage` on Home and AMC
-  - `BreadcrumbList` on each case study detail page
+  - `Service` on AMC, Hardware, Software, Networking, Laptop Care, Automation pages
+  - `FAQPage` on Home, AMC, Laptop Care, Networking
+  - `BreadcrumbList` on Laptop Care and Networking
 
 ### Adding new schema
 
@@ -229,28 +220,14 @@ import Script from 'next/script'
 
 ## Adding new content
 
-### Add a new case study
+### Add a new weekly scenario
 
-1. Append a new entry to the `caseStudies` array in `lib/content/caseStudies.ts` (full schema: slug, index, client, category, tagline, problem[], solution[], outcome[], metrics[], stack[], imageHint).
-2. Add an image entry in `lib/images.ts` (key matches the slug, e.g. `myProjectHero`).
-3. Update the `csImages` map in **two places** to include the new key:
-   - `app/(marketing)/work/page.tsx`
-   - `components/case-studies/CaseStudyDetail.tsx`
-4. Create the route file: `app/(marketing)/work/<slug>/page.tsx`:
-   ```tsx
-   import { notFound } from 'next/navigation'
-   import { CaseStudyDetail } from '@/components/case-studies/CaseStudyDetail'
-   import { getCaseStudy } from '@/lib/content/caseStudies'
-
-   export const metadata = { title: 'My Project', description: '…' }
-
-   export default function Page() {
-     const cs = getCaseStudy('my-project')
-     if (!cs) notFound()
-     return <CaseStudyDetail caseStudy={cs} />
-   }
-   ```
-5. The sitemap regenerates automatically — no extra step.
+The home page renders three anonymized "situations we handle every week"
+cards from `lib/content/scenarios.ts`. To add a fourth, append a new entry
+to the `scenarios` array — give it a number, a Lucide icon, a title, a
+2-sentence body, a metric value, and a metric label. The grid auto-wraps
+to a 2x2 layout above three cards. Keep scenarios anonymous: no client
+names, no other-business names.
 
 ### Add a new service
 

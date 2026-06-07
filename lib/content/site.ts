@@ -35,7 +35,7 @@ export const SITE = {
   description:
     'Business laptops, software, networking, laptop repair, and automation for Kerala SMBs. Based in Kottayam.',
   url: SITE_URL,
-  founded: 2014, // 10+ years operation under the parent team (CCTVPROS lineage)
+  founded: 2014, // 10+ years operation under the parent team
   hq: {
     street: ADDRESS.street,
     city: ADDRESS.locality,

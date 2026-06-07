@@ -4,13 +4,9 @@ import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { PageHero } from '@/components/shared/PageHero'
-import { ArrowLink } from '@/components/shared/ArrowLink'
 import { Button } from '@/components/ui/button'
 import { FinalCTA } from '@/components/home/FinalCTA'
-import { PlaceholderImage } from '@/components/shared/PlaceholderImage'
 import { automationCopy } from '@/lib/content/copy/automation'
-import { caseStudies } from '@/lib/content/caseStudies'
-import { images } from '@/lib/images'
 import { serviceSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
 import { cn } from '@/lib/utils'
@@ -139,47 +135,31 @@ export default function AutomationPage() {
         </Container>
       </Section>
 
-      {/* Case studies (Clean Warks + Senza Aura highlight) */}
+      {/* Anonymized scenarios */}
       <Section theme="light">
         <Container>
           <SectionHeader
-            eyebrow={automationCopy.caseStudiesIntro.eyebrow}
-            headline={automationCopy.caseStudiesIntro.headline}
-            sub={automationCopy.caseStudiesIntro.body}
+            eyebrow={automationCopy.scenarios.eyebrow}
+            headline={automationCopy.scenarios.headline}
+            sub={automationCopy.scenarios.body}
           />
 
-          <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2">
-            {[caseStudies[0], caseStudies[2]].map((cs) => (
+          <div className="mt-16 grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5">
+            {automationCopy.scenarios.items.map((sc) => (
               <article
-                key={cs.slug}
-                className="flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white"
+                key={sc.title}
+                className="flex flex-col gap-5 rounded-lg border border-slate-200 bg-white p-6 md:p-8"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <PlaceholderImage
-                    src={cs.slug === 'clean-warks' ? images.cleanWarksHero.src : images.senzaAuraHero.src}
-                    alt={cs.slug === 'clean-warks' ? images.cleanWarksHero.alt : images.senzaAuraHero.alt}
-                    intent={cs.imageHint}
-                    width={1200}
-                    height={750}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="absolute inset-0"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col gap-4 p-8">
-                  <p className="font-mono text-xs uppercase tracking-widest text-slate-500">
-                    CASE STUDY · {cs.index}
-                  </p>
-                  <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-[color:var(--color-ink)]">
-                    {cs.client}
-                  </h3>
-                  <p className="text-base text-slate-600 leading-relaxed">{cs.shortOutcome}</p>
-                  <div className="mt-auto pt-4">
-                    <ArrowLink href={cs.href} theme="accent">
-                      Read the full story
-                    </ArrowLink>
-                  </div>
-                </div>
+                <p className="font-mono text-xs uppercase tracking-widest text-slate-500">
+                  {sc.industry}
+                </p>
+                <h3 className="text-xl md:text-2xl font-medium tracking-tight text-[color:var(--color-ink)] leading-snug">
+                  {sc.title}
+                </h3>
+
+                <ScenarioField label="Problem" body={sc.problem} />
+                <ScenarioField label="Solution" body={sc.solution} />
+                <ScenarioField label="Outcome" body={sc.outcome} accent />
               </article>
             ))}
           </div>
@@ -212,5 +192,29 @@ export default function AutomationPage() {
         }}
       />
     </>
+  )
+}
+
+function ScenarioField({
+  label,
+  body,
+  accent,
+}: {
+  label: string
+  body: string
+  accent?: boolean
+}) {
+  return (
+    <div className="flex flex-col gap-1">
+      <p
+        className={cn(
+          'font-mono text-[10px] uppercase tracking-widest',
+          accent ? 'text-[color:var(--color-electric)]' : 'text-slate-500',
+        )}
+      >
+        {label}
+      </p>
+      <p className="text-sm md:text-base text-slate-600 leading-relaxed">{body}</p>
+    </div>
   )
 }

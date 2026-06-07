@@ -5,7 +5,7 @@ import { ProblemSection } from '@/components/home/ProblemSection'
 import { ServicesBento } from '@/components/home/ServicesBento'
 import { WhyUs } from '@/components/home/WhyUs'
 import { FeatureRow } from '@/components/home/FeatureRow'
-import { CaseStudyGrid } from '@/components/home/CaseStudyGrid'
+import { ScenariosGrid } from '@/components/home/ScenariosGrid'
 import { IndustriesGrid } from '@/components/home/IndustriesGrid'
 import { ProcessSteps } from '@/components/home/ProcessSteps'
 import { TestimonialGrid } from '@/components/home/TestimonialGrid'
@@ -75,13 +75,13 @@ export default function HomePage() {
         image={images.automationFeature}
       />
 
-      <CaseStudyGrid />
+      <ScenariosGrid />
       <IndustriesGrid />
       <ProcessSteps />
       <TestimonialGrid />
 
-      {/* AMC closing — positioned AFTER case studies and testimonials so cold visitors
-          see the work first, then the retainer pitch. */}
+      {/* AMC closing — positioned AFTER the scenarios and testimonials so cold visitors
+          see proof of capability first, then the retainer pitch. */}
       <Section theme="dark">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-center">

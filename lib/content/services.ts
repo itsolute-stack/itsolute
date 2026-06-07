@@ -2,7 +2,7 @@ import {
   Laptop,
   AppWindow,
   Wrench,
-  Network,
+  Wifi,
   Workflow,
   Headphones,
   type LucideIcon,
@@ -17,6 +17,7 @@ export type Service = {
   features: string[]
   href: string
   featured?: boolean
+  startingPrice?: string
 }
 
 /**
@@ -73,18 +74,21 @@ export const services: Service[] = [
   },
   {
     slug: 'networking',
-    title: 'Networking & WiFi',
-    tagline: 'Office WiFi, switches, firewalls — done properly the first time.',
+    title: 'Networking & Office WiFi',
+    tagline: "WiFi that works in every corner. Networks that don’t quietly fail.",
     description:
-      'Office networks that don’t go down. Site survey, design, installation, documentation, ongoing support.',
-    icon: Network,
+      'Office WiFi, structured LAN cabling, firewalls, point-to-point links, and network maintenance for businesses across Kerala.',
+    icon: Wifi,
     features: [
-      'Site survey & network design',
-      'Cabling & WiFi installation',
-      'Firewall & VPN setup',
-      'Point-to-point links',
+      'Office WiFi with no dead zones',
+      'Cat6 structured cabling',
+      'Business routers and firewalls',
+      'Point-to-point inter-branch links',
+      'CCTV network integration',
+      'Site survey before quoting',
     ],
-    href: '/hardware#networking',
+    href: '/networking',
+    startingPrice: '₹15,000',
   },
   {
     slug: 'automation',

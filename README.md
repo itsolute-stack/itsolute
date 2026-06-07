@@ -73,6 +73,7 @@ app/
 │   ├── software/page.tsx
 │   ├── automation/page.tsx
 │   ├── laptop-care/page.tsx
+│   ├── networking/page.tsx
 │   ├── about/page.tsx
 │   ├── work/
 │   │   ├── page.tsx
@@ -135,6 +136,7 @@ lib/
 | AMC page prose | `lib/content/copy/amc.ts` |
 | Hardware / Software / Automation page prose | `lib/content/copy/{hardware,software,automation}.ts` |
 | Laptop Care page prose + FAQ | `lib/content/copy/laptopCare.ts` |
+| Networking page prose + FAQ | `lib/content/copy/networking.ts` |
 | About page story, mission, principles | `lib/content/copy/about.ts` |
 | Contact page copy + form service dropdown | `lib/content/copy/contact.ts` |
 | Case-studies index page hero | `lib/content/copy/work.ts` |
@@ -396,6 +398,33 @@ While `itsolute.com` is not yet pointed at the Vercel deployment, set
 `NEXT_PUBLIC_SITE_URL` in Vercel to the live `*.vercel.app` URL — that prevents
 search engines from seeing a canonical pointing to a 404. Flip back to
 `https://itsolute.com` once DNS is configured.
+
+Every page emits its own canonical via `metadata.alternates.canonical`,
+built from `SITE_URL`. Changing the env var rewrites them all.
+
+---
+
+## Post-deployment checklist (do this after pointing DNS at Vercel)
+
+- [ ] **Vercel** → Domains: add `itsolute.com` and `www.itsolute.com`. Pick one
+      as canonical and configure the other to redirect.
+- [ ] **Vercel** → Environment Variables → Production: set
+      `NEXT_PUBLIC_SITE_URL=https://itsolute.com`. Trigger a redeploy so it
+      flows into metadata, canonical, sitemap, robots, JSON-LD.
+- [ ] **DNS**: add A/CNAME records as Vercel instructs.
+- [ ] **Resend**: verify the `itsolute.com` domain so `hello@itsolute.com`
+      can send. Add SPF, DKIM, and DMARC records to DNS.
+- [ ] **Google Search Console**: add and verify `itsolute.com` (DNS TXT or
+      HTML file). Submit `https://itsolute.com/sitemap.xml`. Request indexing
+      of home + all 7 service pages.
+- [ ] **Bing Webmaster Tools**: add property, submit sitemap.
+- [ ] **Google Business Profile**: update business URL to `https://itsolute.com`.
+- [ ] **OG image**: create the actual `/public/og-image.png` (1200×630)
+      with the ITSolute wordmark + tagline. Until this exists, link previews
+      will look broken.
+- [ ] **Rich Results Test**: run `https://itsolute.com` through
+      `https://search.google.com/test/rich-results` — should show
+      Organization, LocalBusiness, FAQPage with no errors.
 
 ---
 

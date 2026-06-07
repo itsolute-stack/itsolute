@@ -23,6 +23,7 @@ export const metadata = {
   },
   description:
     'IT AMC contracts in Kottayam and across Kerala. Hardware, software, network, and support covered under one monthly retainer. Written SLA, no surprises.',
+  alternates: { canonical: `${SITE.url}/amc` },
 }
 
 export default function AMCPage() {

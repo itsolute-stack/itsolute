@@ -21,12 +21,14 @@ import { homeCopy } from '@/lib/content/copy/home'
 import { homeFAQs } from '@/lib/content/faqs'
 import { images } from '@/lib/images'
 import { localBusinessSchema, faqSchema } from '@/lib/schema'
+import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
   title:
     'Computer Hardware, Laptops & IT Services in Kottayam | ITSolute Systems',
   description:
     'Business laptops, software, networking, laptop repair, and automation for Kerala SMBs. Based in Kottayam — serving offices, clinics, schools across Kerala. Free quote.',
+  alternates: { canonical: `${SITE_URL}/` },
 }
 
 export default function HomePage() {

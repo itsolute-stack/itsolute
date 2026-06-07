@@ -15,6 +15,7 @@ export function ServicesBento() {
   const hardware = services.find((s) => s.slug === 'hardware')!
   const software = services.find((s) => s.slug === 'software')!
   const laptopCare = services.find((s) => s.slug === 'laptop-care')!
+  const networking = services.find((s) => s.slug === 'networking')!
   const automation = services.find((s) => s.slug === 'automation')!
 
   return (
@@ -48,9 +49,14 @@ export function ServicesBento() {
             <BentoCard service={laptopCare} />
           </motion.div>
 
-          {/* Cell 4 — Automation, secondary feature, spans 3 cols on bottom */}
-          <motion.div variants={fadeUp} className="md:col-span-3">
-            <BentoCard service={automation} wide />
+          {/* Cell 4 — Networking (bottom, spans 2 cols) */}
+          <motion.div variants={fadeUp} className="md:col-span-2">
+            <BentoCard service={networking} wide />
+          </motion.div>
+
+          {/* Cell 5 — Automation (bottom right) */}
+          <motion.div variants={fadeUp}>
+            <BentoCard service={automation} />
           </motion.div>
         </motion.div>
       </Container>

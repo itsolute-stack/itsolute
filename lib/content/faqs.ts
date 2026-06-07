@@ -26,6 +26,10 @@ export const homeFAQs: FAQ[] = [
     a: 'Yes. We do fixed-price project work — office setups, network installations, software migrations, repairs — without requiring an AMC. Many clients start with a one-off project and move to AMC once they see how we work.',
   },
   {
+    q: 'Do you install office WiFi and structured cabling?',
+    a: 'Yes. We design, install, and support office networks across Kerala — from small clinics to multi-floor offices and schools. Site survey is free for businesses. We supply and install structured Cat6 cabling, business-grade access points, switches, firewalls, and point-to-point links between branches.',
+  },
+  {
     q: 'How quickly do you respond when something breaks?',
     a: 'For AMC clients, most issues get a response within 2 hours during business hours, and a resolution path the same business day. For one-off and walk-in customers, response time depends on workload but we’re fast on WhatsApp — message us and we’ll triage immediately.',
   },

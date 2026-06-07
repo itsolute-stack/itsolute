@@ -6,6 +6,7 @@ import { SectionHeader } from '@/components/shared/SectionHeader'
 import { PageHero } from '@/components/shared/PageHero'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { aboutCopy } from '@/lib/content/copy/about'
+import { SITE_URL } from '@/lib/content/site'
 import { cn } from '@/lib/utils'
 
 export const metadata = {
@@ -14,6 +15,7 @@ export const metadata = {
   },
   description:
     'ITSolute Systems is a Kottayam-based IT services company serving SMBs across Kerala. Hardware, software, repair, networking, automation — under one roof.',
+  alternates: { canonical: `${SITE_URL}/about` },
 }
 
 export default function AboutPage() {

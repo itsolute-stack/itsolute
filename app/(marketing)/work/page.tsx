@@ -8,6 +8,7 @@ import { FinalCTA } from '@/components/home/FinalCTA'
 import { caseStudies } from '@/lib/content/caseStudies'
 import { workCopy } from '@/lib/content/copy/work'
 import { images } from '@/lib/images'
+import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
   title: {
@@ -15,6 +16,7 @@ export const metadata = {
   },
   description:
     'Real systems running in real Kerala businesses. Multi-city operations, automated product catalogs, WhatsApp booking flows — built by ITSolute.',
+  alternates: { canonical: `${SITE_URL}/work` },
 }
 
 const csImages = {

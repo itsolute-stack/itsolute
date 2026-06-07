@@ -26,10 +26,14 @@ export function organizationSchema() {
   }
 }
 
+/** Stable @id for the LocalBusiness — other schema blocks reference this. */
+export const LOCAL_BUSINESS_ID = `${SITE_URL}/#localbusiness`
+
 export function localBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
+    '@id': LOCAL_BUSINESS_ID,
     name: SITE.name,
     image: `${SITE_URL}/og-image.png`,
     description: SITE.description,
@@ -78,11 +82,7 @@ export function serviceSchema(opts: {
     name: opts.name,
     description: opts.description,
     serviceType: opts.serviceType ?? opts.name,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: SITE.name,
-      url: SITE_URL,
-    },
+    provider: { '@id': LOCAL_BUSINESS_ID },
     areaServed: SITE.serviceAreas.map((area) => ({
       '@type': 'City',
       name: area,

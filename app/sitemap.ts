@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/hardware', priority: 0.9, changeFreq: 'monthly' },
     { path: '/laptop-care', priority: 0.9, changeFreq: 'monthly' },
     { path: '/software', priority: 0.9, changeFreq: 'monthly' },
+    { path: '/networking', priority: 0.8, changeFreq: 'monthly' },
     { path: '/automation', priority: 0.9, changeFreq: 'monthly' },
     { path: '/amc', priority: 0.8, changeFreq: 'monthly' },
     { path: '/contact', priority: 0.8, changeFreq: 'monthly' },

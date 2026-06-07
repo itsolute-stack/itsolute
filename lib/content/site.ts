@@ -102,9 +102,15 @@ export const KEYWORDS = [
   'Zoho partner Kerala',
   'Tally licensing Kottayam',
   // Networking
+  'office WiFi Kottayam',
   'office WiFi setup Kerala',
+  'network installation Kerala',
   'network installation Kottayam',
+  'structured cabling Kottayam',
   'structured cabling Kerala',
+  'business WiFi Kerala',
+  'LAN setup Kottayam',
+  'point to point wireless Kerala',
   // Automation
   'business automation Kerala',
   'Zoho implementation Kerala',

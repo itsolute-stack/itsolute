@@ -12,6 +12,7 @@ import { automationCopy } from '@/lib/content/copy/automation'
 import { caseStudies } from '@/lib/content/caseStudies'
 import { images } from '@/lib/images'
 import { serviceSchema } from '@/lib/schema'
+import { SITE_URL } from '@/lib/content/site'
 import { cn } from '@/lib/utils'
 
 export const metadata = {
@@ -20,6 +21,7 @@ export const metadata = {
   },
   description:
     'Zoho implementations, WhatsApp Business flows, custom dashboards, invoicing automation. Scale a Kerala business without scaling the headcount.',
+  alternates: { canonical: `${SITE_URL}/automation` },
 }
 
 export default function AutomationPage() {

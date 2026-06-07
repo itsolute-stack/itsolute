@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { hardwareCopy } from '@/lib/content/copy/hardware'
 import { serviceSchema } from '@/lib/schema'
+import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
   title: {
@@ -17,6 +18,7 @@ export const metadata = {
   },
   description:
     'Buy business laptops, desktops, servers, and IT hardware in Kottayam. Bulk pricing for offices and schools. Authorised HP, Dell, Lenovo reseller. GST invoice. Kerala-wide delivery.',
+  alternates: { canonical: `${SITE_URL}/hardware` },
 }
 
 export default function HardwarePage() {

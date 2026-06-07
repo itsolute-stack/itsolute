@@ -10,13 +10,17 @@ import { FAQ } from '@/components/home/FAQ'
 import { Button } from '@/components/ui/button'
 import { whatsappLink } from '@/lib/whatsapp'
 import { laptopCareCopy, laptopCareFAQs } from '@/lib/content/copy/laptopCare'
-import { breadcrumbSchema, faqSchema } from '@/lib/schema'
-import { SITE, SITE_URL } from '@/lib/content/site'
+import { breadcrumbSchema, faqSchema, LOCAL_BUSINESS_ID } from '@/lib/schema'
+import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
-  title: 'Laptop Repair in Kottayam · Screen, Keyboard, Battery, Data Recovery | ITSolute',
+  title: {
+    absolute:
+      'Laptop Repair in Kottayam · Screen, Keyboard, Battery, Data Recovery | ITSolute',
+  },
   description:
     'Laptop repair in Kottayam — screen replacement, keyboard repair, battery, SSD upgrade, data recovery, virus removal. Free diagnosis for businesses. Most repairs in 24–72 hours.',
+  alternates: { canonical: `${SITE_URL}/laptop-care` },
 }
 
 export default function LaptopCarePage() {
@@ -229,8 +233,7 @@ export default function LaptopCarePage() {
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: 'Laptop Repair & Care',
-            provider: { '@type': 'LocalBusiness', name: SITE.name, url: SITE_URL },
-            areaServed: SITE.serviceAreas.map((a) => ({ '@type': 'City', name: a })),
+            provider: { '@id': LOCAL_BUSINESS_ID },
             serviceType: 'Laptop Repair',
             description:
               'Screen replacement, keyboard repair, battery replacement, SSD upgrades, data recovery, and virus removal in Kottayam and across Kerala.',

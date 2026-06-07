@@ -5,7 +5,7 @@ import { Section } from '@/components/layout/Section'
 import { PageHero } from '@/components/shared/PageHero'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { whatsappLink } from '@/lib/whatsapp'
-import { SITE } from '@/lib/content/site'
+import { SITE, SITE_URL } from '@/lib/content/site'
 import { contactCopy } from '@/lib/content/copy/contact'
 import { localBusinessSchema } from '@/lib/schema'
 
@@ -15,6 +15,7 @@ export const metadata = {
   },
   description:
     'Contact ITSolute Systems — Parthas Lane, Kottayam. WhatsApp +91 92076 40404, hello@itsolute.com. Serving offices, clinics, schools, shops across Kerala.',
+  alternates: { canonical: `${SITE_URL}/contact` },
 }
 
 type SearchParams = Promise<{ service?: string }>

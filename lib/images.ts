@@ -31,9 +31,12 @@ export const images = {
     intent: 'Business laptop on a clean Kerala office desk, warm light',
   },
   laptopCareFeature: {
-    src: u('photo-1612442058529-22e34ae29ff7'),
-    alt: 'Laptop being repaired with tools on a workbench',
-    intent: 'Technician hands repairing a laptop — screwdrivers, opened chassis, organized workbench',
+    // Verified live 2026-06: photo-1588872657578-7efd1f1555ed
+    // Previous ID photo-1612442058529-22e34ae29ff7 was removed from Unsplash (404)
+    src: u('photo-1588872657578-7efd1f1555ed'),
+    alt: "Laptop being repaired with precision tools on a technician's workbench",
+    intent:
+      'Hands working on an open laptop with repair tools — craftsmanship and precision. Replace with real photo of ITSolute technician at the Parthas Lane workshop.',
   },
   laptopCareWorkshop: {
     src: u('photo-1517694712202-14dd9538aa97'),
@@ -59,6 +62,16 @@ export const images = {
     src: u('photo-1544197150-b99a580bb7a8'),
     alt: 'Network cables in a patch panel',
     intent: 'Network cabling and switches, clean install',
+  },
+  networkingHero: {
+    src: u('photo-1558494949-ef010cbdcc31'),
+    alt: 'Network switches and structured cabling in a server room',
+    intent: 'Hero photo for Networking page — server rack, structured cabling, professional setup',
+  },
+  networkingWifi: {
+    src: u('photo-1573164574511-73c773193279'),
+    alt: 'WiFi access point mounted on an office ceiling',
+    intent: 'Business WiFi access point installation, modern office',
   },
   softwareScreen: {
     src: u('photo-1551434678-e076c223a692'),

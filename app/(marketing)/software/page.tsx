@@ -7,6 +7,7 @@ import { PageHero } from '@/components/shared/PageHero'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { softwareCopy } from '@/lib/content/copy/software'
 import { serviceSchema } from '@/lib/schema'
+import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
   title: {
@@ -14,6 +15,7 @@ export const metadata = {
   },
   description:
     'Microsoft 365, Google Workspace, Zoho One, Tally, and antivirus licensing — setup, migration, and training included. For SMBs across Kerala.',
+  alternates: { canonical: `${SITE_URL}/software` },
 }
 
 export default function SoftwarePage() {

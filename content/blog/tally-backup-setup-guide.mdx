@@ -1,0 +1,182 @@
+---
+title: "Tally backup setup: a complete guide for Indian businesses"
+slug: tally-backup-setup-guide
+excerpt: "Tally data loss happens. Recovery doesn't. Set up automated backup correctly the first time — here's the complete walkthrough for Tally Prime."
+date: "2026-06-17"
+cluster: software-and-productivity
+image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=85"
+imageAlt: "Accountant working with Tally software on a computer"
+keywords: ["Tally backup setup", "Tally Prime backup", "Tally data recovery", "Tally backup Kerala", "Tally cloud backup"]
+faqs:
+  - q: "Does Tally have automatic backup built in?"
+    a: "Tally Prime has a backup feature but it's manual by default — you have to remember to run it. With Tally.NET and some third-party tools, you can schedule automated backups. We set this up for Tally clients as part of onboarding."
+  - q: "How often should I back up Tally data?"
+    a: "Daily, minimum. For high-transaction businesses (retail, wholesale, restaurants), end-of-day backup is standard. For lower-volume offices, daily at close of business is enough. Anything less frequent and you risk losing days of work if data corrupts."
+  - q: "Where should Tally backups be stored?"
+    a: "Three places minimum: local drive on the Tally computer, a separate physical location (USB drive in a different room, external hard drive at home), and an encrypted cloud backup. The 3-2-1 rule — three copies, two media, one off-site."
+  - q: "What happens if Tally data corrupts and we have no backup?"
+    a: "Honest answer: in most cases, you're rebuilding from invoices and bank statements. There are 'Tally repair' services that occasionally recover partial data, but no guarantees. Don't be in that position."
+---
+
+Every Tally user in India has heard the story. The shop owner who lost three years of accounts when his hard drive failed. The CA office that opened Monday morning to find Tally wouldn't start. The retailer whose data file corrupted during a Windows update.
+
+This is preventable. Setting up Tally backup correctly takes 30 minutes. Doing it badly — or not at all — costs you everything.
+
+Here's the complete walkthrough.
+
+## What you're protecting against
+
+Tally data files (.tdl, .900, .tsm, and the company folder) are sensitive to:
+
+- Hard drive failure (mechanical failure, SSD wear-out)
+- Power outages mid-write (corrupts the data file)
+- Ransomware (now common in India, encrypts your Tally folder)
+- Windows update issues (rare but happens)
+- Accidental deletion (staff cleaning up "old files")
+- Theft of the laptop or desktop
+- Office fire, flood, or other physical damage
+
+Each of these is rare individually. Over a 5-year period, probability of at least one hitting your business is significant.
+
+## The 3-2-1 backup rule
+
+Standard data protection practice, applies perfectly to Tally:
+
+- **3** copies of your data
+- On **2** different media types
+- With **1** copy stored off-site
+
+For a Kerala SMB running Tally, this means:
+
+- Copy 1: The live Tally data file on your computer
+- Copy 2: A daily backup to an external hard drive
+- Copy 3: An encrypted cloud backup updated daily
+
+If any one fails, you have two more. If two fail, you still have one. Only a catastrophic event takes out all three.
+
+## Step 1 — Configure Tally's built-in backup
+
+Open Tally Prime. Go to:
+
+**Gateway of Tally → Company Info → Backup**
+
+You'll see a screen asking for source path and destination path. The source is your Tally data folder (usually `C:\Users\Public\Tally.ERP9\Data\` or wherever your company folder lives). The destination is where the backup goes.
+
+For step 1, point the destination to a **second internal drive** if you have one (D: drive), or a dedicated folder on the same drive. This isn't enough on its own, but it's the foundation.
+
+Click Backup, name the file with today's date (e.g., `MyCompany-20260615.bak`), and save.
+
+The backup file is a single compressed archive of all your Tally data — companies, vouchers, ledgers, masters.
+
+## Step 2 — Automate the backup
+
+Tally's manual backup is a habit nobody keeps. Within two weeks of "I'll back up every Friday," people forget. Automate it.
+
+Three options:
+
+**Option A — Windows Task Scheduler + Tally batch script**
+
+We write a small batch file that runs Tally with command-line backup parameters. Task Scheduler runs the batch at end of each business day automatically. Zero human intervention.
+
+The script looks roughly like:
+
+```
+"C:\Program Files\TallyPrime\Tally.exe" /BACKUP=YourCompanyName /BACKUPPATH=D:\Backups
+```
+
+We set this up as part of Tally configuration for clients — typically takes 20 minutes per machine.
+
+**Option B — Tally.NET subscription with backup feature**
+
+If you have a Tally.NET subscription (Tally's licensing service includes some features), there's a scheduled backup option in your Tally settings. Less common path because most users skip Tally.NET unless they need remote access.
+
+**Option C — Third-party backup tools**
+
+Tools like Acronis Backup, Veeam, or even simpler ones like AOMEI Backupper can be configured to back up your entire Tally folder daily, with incremental backups (only what changed) to save space.
+
+For most Kerala SMBs, Option A (Windows Task Scheduler with a Tally backup script) is the right choice. Free, reliable, no extra subscription.
+
+## Step 3 — Set up cloud backup
+
+Local backups protect against hard drive failure. They don't protect against ransomware (which encrypts everything connected to the computer), theft, or office fire.
+
+Cloud backup is the third copy. Options:
+
+**Backblaze Business** (₹600-1,000/month per computer) — set-and-forget, encrypts before upload, unlimited storage. Most popular for Indian SMBs.
+
+**OneDrive Business with file history** (included in Microsoft 365 Business plans) — if you already pay for M365, configure OneDrive to back up your Tally folder. File history lets you restore previous versions.
+
+**Google Drive Business with backup app** — similar to OneDrive, works if you're on Google Workspace.
+
+**Acronis Cyber Backup** (₹3,000-8,000/year) — more enterprise, full system imaging plus file backup.
+
+Critical configuration: ensure the cloud backup is **encrypted before upload** (zero-knowledge encryption). This means even the cloud provider can't read your financial data. Backblaze and Acronis support this natively.
+
+## Step 4 — Test your backup monthly
+
+This is the step everyone skips. A backup you haven't tested is a backup you don't have.
+
+Once a month, do this:
+
+1. Open your Tally backup file (the .bak)
+2. Restore it to a temporary location (not over your live data)
+3. Open the restored data in Tally
+4. Verify you can see recent transactions
+5. Close and delete the test restore
+
+If the restore fails — your backup is broken. Better to find out during a routine test than during a real disaster.
+
+We do monthly restore tests as part of AMC for Tally clients.
+
+## Step 5 — Document the recovery process
+
+If you go on holiday and your CA needs to recover Tally data while you're unreachable, can they?
+
+Write a one-page document with:
+
+- Where the backup files are stored (local path, cloud account credentials in a secure password manager)
+- The Tally version and licence key
+- The restore steps in order
+- Contact information for IT support
+
+Print this and keep it in a physical office folder. Also share a digital copy with your CA or office manager.
+
+## Common Tally backup mistakes we see
+
+**Backing up to the same drive.** If the drive fails, both copies are gone. Always use a separate physical drive minimum.
+
+**Manual backups "every Friday".** Within a month, people forget. Within three months, the last backup is two weeks old.
+
+**Backing up to USB pen drive.** USB drives die randomly. Use external HDDs or proper cloud backup.
+
+**No encryption on cloud backup.** Your financial data sits unencrypted on someone else's server. Always encrypt before upload.
+
+**Never testing restoration.** The day you need the backup is the worst day to discover it doesn't work.
+
+**Storing backup credentials on the same computer.** If ransomware hits, attackers find your cloud credentials and delete your backups too.
+
+## What this costs
+
+For a typical Kerala SMB running Tally on 2-3 machines:
+
+- External hard drive for local backup: ₹3,500-5,500 one-time
+- Backup script configuration: ₹1,500-2,500 per machine (we do this)
+- Cloud backup subscription: ₹600-1,000/month per machine
+- Initial setup time: 1-2 hours
+
+Total: ₹5,000-10,000 setup + ₹800-1,500/month ongoing.
+
+Compare this to the cost of losing your accounts data. Not just the rebuild time — the missed GST filings, the unverifiable transactions, the auditor's report next year. Backup pays for itself the first time you need it.
+
+## How we set this up for Kerala Tally clients
+
+When we onboard a new Tally client, the backup setup goes:
+
+1. **Audit current state** — what's running, what backups exist, what's missing
+2. **Install local backup script** — Windows Task Scheduler + Tally batch, scheduled for end of business day
+3. **Set up cloud backup** — Backblaze or your preferred provider, encrypted before upload
+4. **Document the system** — one-page recovery guide
+5. **Test restoration** — restore today's backup to a temp folder, verify Tally opens it
+6. **Ongoing monitoring** — for AMC clients, we verify backups monthly and run quarterly restore tests
+
+[WhatsApp us your current Tally setup](https://wa.me/918547533005?text=Hi%20ITSolute%2C%20we%20need%20Tally%20backup%20configured.) and we'll set up reliable, automated backup within a working day. Or see our broader [software services](/software).

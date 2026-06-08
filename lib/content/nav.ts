@@ -11,6 +11,7 @@ export const primaryNav: NavLink[] = [
   { label: 'Software', href: '/software' },
   { label: 'Networking', href: '/networking' },
   { label: 'Automation', href: '/automation' },
+  { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -42,6 +43,7 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     heading: 'Company',
     links: [
       { label: 'About', href: '/about' },
+      { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contact' },
       { label: 'Privacy', href: '/privacy' },
       { label: 'Terms', href: '/terms' },

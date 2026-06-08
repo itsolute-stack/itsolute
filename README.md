@@ -429,6 +429,75 @@ Walk through this before flipping the DNS:
 
 ---
 
+## Blog (MDX at `/blog`)
+
+The blog is an MDX-based content system. Posts live as `.mdx` files in
+`content/blog/` and are rendered through `next-mdx-remote/rsc` with
+`rehype-slug`, `rehype-autolink-headings`, and `remark-gfm` enabled.
+
+### Five topic clusters
+
+Each post belongs to one cluster defined in `lib/content/clusters.ts`:
+
+| Cluster slug | Hub link |
+|---|---|
+| `buying-and-sourcing` | `/hardware` |
+| `repair-and-troubleshooting` | `/laptop-care` |
+| `office-it-setup` | `/networking` |
+| `software-and-productivity` | `/software` |
+| `industry-specific` | `/amc` |
+
+The cluster powers three things: the filter pills on `/blog`, the related-posts
+section (same-cluster posts first), and the contextual hub CTA at the end of
+each post.
+
+### Add a new blog post
+
+1. Create `content/blog/<slug>.mdx`
+2. Front matter (YAML, between `---` fences):
+
+   ```yaml
+   ---
+   title: 'Post title'
+   slug: 'post-slug'           # must match the filename
+   excerpt: 'One-sentence summary used as meta description and card text.'
+   date: '2026-06-15'
+   updated: '2026-06-20'       # optional — surfaces dateModified in Article schema
+   cluster: 'repair-and-troubleshooting'   # one of the five slugs above
+   image: 'https://images.unsplash.com/photo-...?w=1600&q=85&auto=format&fit=crop'
+   imageAlt: 'Descriptive alt text'
+   keywords:
+     - 'long-tail search phrase one'
+     - 'long-tail search phrase two'
+   faqs:
+     - q: 'A question this post answers'
+       a: 'A thorough 2–3 sentence answer that also reads as standalone copy.'
+   draft: false                # set true to hide from /blog index until ready
+   ---
+   ```
+3. Write MDX body below the closing `---`. Standard Markdown plus JSX components.
+4. `pnpm build` — verify the new post compiles, the index card renders, and
+   the detail page generates static.
+5. Optional Rich Results check after deploy: run the live URL through
+   https://search.google.com/test/rich-results — Article + FAQPage should
+   validate.
+
+### What's wired automatically
+
+- `/blog` index lists all non-draft posts, newest first, with cluster filter
+- `/blog/<slug>` renders the MDX, hero image, FAQ accordion, contextual CTA,
+  share links, and related posts
+- Article + FAQPage + BreadcrumbList JSON-LD on every post detail
+- Per-post Open Graph + Twitter Card metadata using the post's `image`
+- Every post URL added to `sitemap.xml` at priority 0.7
+
+### Image strategy
+
+Posts ship with Unsplash placeholder URLs in `image:`. Swap each for a real
+ITSolute photograph by editing the front matter — no other change needed.
+
+---
+
 ## Social media
 
 Three official ITSolute Systems channels — wired via `SOCIAL` in

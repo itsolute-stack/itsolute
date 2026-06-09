@@ -89,7 +89,7 @@ export default function AMCPage() {
                   {plan.tier}
                 </h3>
                 <p className="mt-2 text-base text-slate-300">{plan.positioning}</p>
-                <p className="mt-1 font-mono text-xs uppercase tracking-widest text-[color:var(--color-cyan)]">
+                <p className="mt-1 font-mono text-xs uppercase tracking-widest text-[color:var(--color-accent)]">
                   {plan.for}
                 </p>
 
@@ -97,7 +97,7 @@ export default function AMCPage() {
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm text-slate-300">
                       <Check
-                        className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--color-cyan)]"
+                        className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--color-accent)]"
                         strokeWidth={2.5}
                       />
                       <span>{f}</span>

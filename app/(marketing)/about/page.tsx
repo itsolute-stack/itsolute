@@ -132,7 +132,7 @@ export default function AboutPage() {
             {aboutCopy.principles.items.map((p, i) => (
               <div key={p.title} className="flex flex-col gap-3">
                 <span className={cn(
-                  'font-mono text-sm tracking-widest text-[color:var(--color-cyan)]',
+                  'font-mono text-sm tracking-widest text-[color:var(--color-accent)]',
                 )}>
                   {String(i + 1).padStart(2, '0')}
                 </span>

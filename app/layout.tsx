@@ -38,21 +38,14 @@ export const metadata: Metadata = {
       'Computer Hardware, Laptops & IT Services in Kottayam | ITSolute Systems',
     description:
       'Business laptops, software, networking, laptop repair, and automation for Kerala SMBs. Based in Kottayam.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'ITSolute Systems — IT services for Kerala',
-      },
-    ],
+    // images is auto-populated from app/opengraph-image.tsx
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ITSolute Systems',
     description:
       'Computer hardware, laptop repair, software, networking, and automation for Kerala SMBs.',
-    images: ['/og-image.png'],
+    // images is auto-populated from app/twitter-image.tsx
     site: '@ITSoluteSystems',
     creator: '@ITSoluteSystems',
   },
@@ -66,10 +59,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
+  // Next 16 auto-detects app/icon.svg, app/apple-icon.tsx, app/opengraph-image.tsx,
+  // and app/twitter-image.tsx as the favicon, apple icon, OG image, and Twitter
+  // card respectively. No explicit `icons` map needed.
   alternates: {
     canonical: SITE_URL,
   },

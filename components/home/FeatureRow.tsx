@@ -76,7 +76,7 @@ export function FeatureRow({
                   className="pointer-events-none absolute inset-0"
                   style={{
                     background:
-                      'linear-gradient(135deg, rgba(10,15,28,0.45), rgba(10,15,28,0.1) 50%), linear-gradient(225deg, rgba(30,64,175,0.18), transparent 50%)',
+                      'linear-gradient(135deg, rgba(11,31,58,0.45), rgba(11,31,58,0.1) 50%), linear-gradient(225deg, rgba(30,78,216,0.18), transparent 50%)',
                   }}
                 />
               ) : null}
@@ -112,7 +112,7 @@ export function FeatureRow({
                 className={cn(
                   'font-mono text-xs md:text-sm uppercase tracking-[0.15em]',
                   isDark
-                    ? 'text-[color:var(--color-cyan)]'
+                    ? 'text-[color:var(--color-accent)]'
                     : 'text-[color:var(--color-electric)]',
                 )}
               >

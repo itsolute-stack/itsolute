@@ -13,19 +13,31 @@
   --font-display: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Brand colors */
-  --color-ink: #0a0f1c;
-  --color-ink-900: #0a0f1c;
-  --color-ink-800: #111827;
-  --color-ink-700: #1f2937;
+  /* === Brand palette ===
+   * Workshop ink (navy) for dark sections + primary text on light.
+   * Brand blue is the "IT" in the wordmark, all CTAs and links.
+   * Accent orange replaces the old cyan — used on dark surfaces only
+   * (eyebrows on dark, metrics on dark). Fails WCAG on small text + white.
+   * Surface is the light section background.
+   */
+  --color-ink: #0b1f3a;
+  --color-ink-900: #0b1f3a;
+  --color-ink-800: #122a4a;
+  --color-ink-700: #1a355d;
 
-  --color-electric: #1e40af;
-  --color-electric-light: #2c52cc;
-  --color-cyan: #06b6d4;
-  --color-amber: #f59e0b;
+  --color-electric: #1e4ed8;
+  --color-electric-500: #3b5cd9;
+  --color-electric-600: #1e4ed8;
+  --color-electric-700: #1a44bf;
+  --color-electric-light: #3b5cd9;
 
-  --color-surface: #fafaf9;
-  --color-surface-cream: #f5f4ef;
+  --color-accent: #ec8f34;
+  --color-accent-500: #ee9d4d;
+  --color-accent-600: #ec8f34;
+  --color-accent-700: #d97c1e;
+
+  --color-surface: #f7f3f5;
+  --color-surface-cream: #f7f3f5;
   --color-surface-white: #ffffff;
 
   /* Type scale tokens (used by custom utilities below) */
@@ -37,7 +49,7 @@
 /* Base layer */
 :root {
   --background: #ffffff;
-  --foreground: #0a0f1c;
+  --foreground: #0b1f3a;
 }
 
 html {
@@ -88,7 +100,7 @@ body {
 
 .bg-dot-grid-light {
   background-image: radial-gradient(
-    rgba(10, 15, 28, 0.06) 1px,
+    rgba(11, 31, 58, 0.06) 1px,
     transparent 1px
   );
   background-size: 24px 24px;

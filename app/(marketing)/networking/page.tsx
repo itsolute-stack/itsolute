@@ -91,7 +91,7 @@ export default function NetworkingPage() {
                   className="flex items-start gap-4 rounded-lg border border-white/10 bg-white/[0.02] p-5"
                 >
                   <ArrowRight
-                    className="mt-1 h-5 w-5 shrink-0 text-[color:var(--color-cyan)]"
+                    className="mt-1 h-5 w-5 shrink-0 text-[color:var(--color-accent)]"
                     strokeWidth={2}
                   />
                   <span className="text-base text-slate-200 leading-relaxed">{item}</span>
@@ -139,7 +139,7 @@ export default function NetworkingPage() {
             {networkingCopy.process.steps.map((step, i) => (
               <li key={step.index} className="relative flex flex-col gap-3">
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-sm text-[color:var(--color-cyan)] tracking-widest">
+                  <span className="font-mono text-sm text-[color:var(--color-accent)] tracking-widest">
                     {step.index}
                   </span>
                   {i < networkingCopy.process.steps.length - 1 ? (

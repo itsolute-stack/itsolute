@@ -109,7 +109,7 @@ export default async function PostPage({
     publisher: {
       '@type': 'Organization',
       name: 'ITSolute Systems',
-      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/icon.svg` },
       sameAs: SOCIAL_URLS,
     },
     mainEntityOfPage: `${SITE_URL}/blog/${slug}`,

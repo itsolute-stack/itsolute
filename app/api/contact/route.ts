@@ -60,8 +60,8 @@ export async function POST(req: Request) {
   ].join('\n')
 
   const html = `
-    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 560px; margin: 0 auto; color: #0A0F1C;">
-      <h2 style="color:#1E40AF;">New enquiry from itsolute.com</h2>
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 560px; margin: 0 auto; color: #0b1f3a;">
+      <h2 style="color:#1e4ed8;">New enquiry from itsolute.com</h2>
       <table style="width:100%;border-collapse:collapse;margin-top:16px;">
         <tr><td style="padding:8px 0;font-weight:600;width:140px;">Name</td><td>${escapeHtml(name)}</td></tr>
         <tr><td style="padding:8px 0;font-weight:600;">Business</td><td>${escapeHtml(business)}</td></tr>

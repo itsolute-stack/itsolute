@@ -85,7 +85,7 @@ export default function LaptopCarePage() {
               <div key={p.title} className="flex flex-col gap-3">
                 <Check
                   aria-hidden
-                  className="h-7 w-7 text-[color:var(--color-cyan)]"
+                  className="h-7 w-7 text-[color:var(--color-accent)]"
                   strokeWidth={2}
                 />
                 <h3 className="text-lg md:text-xl font-medium tracking-tight text-white">
@@ -131,7 +131,7 @@ export default function LaptopCarePage() {
             {laptopCareCopy.process.steps.map((step, i) => (
               <li key={step.index} className="relative flex flex-col gap-3">
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-sm text-[color:var(--color-cyan)] tracking-widest">
+                  <span className="font-mono text-sm text-[color:var(--color-accent)] tracking-widest">
                     {step.index}
                   </span>
                   {i < laptopCareCopy.process.steps.length - 1 ? (

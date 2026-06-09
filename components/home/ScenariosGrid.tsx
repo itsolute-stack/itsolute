@@ -56,7 +56,7 @@ export function ScenariosGrid() {
                   <Icon
                     aria-hidden
                     strokeWidth={1.5}
-                    className="h-5 w-5 text-[color:var(--color-cyan)]"
+                    className="h-5 w-5 text-[color:var(--color-accent)]"
                   />
                 </div>
                 <h3 className="mt-6 text-xl md:text-2xl font-medium tracking-tight text-white leading-snug">

@@ -17,13 +17,13 @@ export function Hero() {
   return (
     <section className="relative isolate min-h-[90vh] overflow-hidden bg-[color:var(--color-ink)] text-white theme-dark pt-28 pb-20 md:pt-32 md:pb-28 lg:pt-40">
       <DotGrid />
-      {/* Cyan radial accent from top-right */}
+      {/* Accent-orange radial glow from top-right */}
       <div
         aria-hidden
         className="pointer-events-none absolute -right-32 -top-32 h-[60vh] w-[60vh] rounded-full opacity-30 blur-3xl"
         style={{
           background:
-            'radial-gradient(closest-side, rgba(6,182,212,0.35), transparent)',
+            'radial-gradient(closest-side, rgba(236,143,52,0.30), transparent)',
         }}
       />
 
@@ -79,7 +79,7 @@ export function Hero() {
                 href={whatsappLink(homeCopy.hero.whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-cyan)] transition-colors"
+                className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-accent)] transition-colors"
               >
                 <span>{homeCopy.hero.secondaryCta}</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -120,7 +120,7 @@ export function Hero() {
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    'linear-gradient(135deg, rgba(30,64,175,0.25), transparent 50%), linear-gradient(225deg, rgba(6,182,212,0.15), transparent 60%)',
+                    'linear-gradient(135deg, rgba(30,78,216,0.25), transparent 50%), linear-gradient(225deg, rgba(236,143,52,0.12), transparent 60%)',
                 }}
               />
             </motion.div>

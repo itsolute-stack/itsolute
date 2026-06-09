@@ -91,7 +91,7 @@ function BentoCard({
           className="pointer-events-none absolute inset-0 rounded-lg opacity-50"
           style={{
             background:
-              'radial-gradient(60% 60% at 80% 20%, rgba(30,64,175,0.18), transparent 70%)',
+              'radial-gradient(60% 60% at 80% 20%, rgba(30,78,216,0.18), transparent 70%)',
           }}
         />
       ) : null}
@@ -100,7 +100,7 @@ function BentoCard({
         <Icon
           aria-hidden
           className={cn(
-            'text-[color:var(--color-cyan)]',
+            'text-[color:var(--color-accent)]',
             featured ? 'h-12 w-12' : 'h-10 w-10',
           )}
           strokeWidth={1.5}
@@ -134,7 +134,7 @@ function BentoCard({
                 >
                   <span
                     aria-hidden
-                    className="mt-2 h-1 w-3 bg-[color:var(--color-cyan)]"
+                    className="mt-2 h-1 w-3 bg-[color:var(--color-accent)]"
                   />
                   {f}
                 </li>
@@ -143,10 +143,10 @@ function BentoCard({
           ) : null}
 
           <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white">
-            <span className="text-[color:var(--color-cyan)] group-hover:text-white transition-colors">
+            <span className="text-[color:var(--color-accent)] group-hover:text-white transition-colors">
               Learn more
             </span>
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 text-[color:var(--color-cyan)]" />
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 text-[color:var(--color-accent)]" />
           </span>
         </div>
       </div>

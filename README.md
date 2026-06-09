@@ -6,6 +6,33 @@ The production marketing website for **ITSolute Systems**, the complete IT partn
 
 ---
 
+## Brand
+
+Colour palette (defined in `app/globals.css` under `@theme inline`):
+
+- **Workshop ink** `#0b1f3a` — dark backgrounds, primary text on light surfaces
+- **Brand blue** `#1e4ed8` — the "IT" in the wordmark, CTAs, links, focus rings
+- **Accent orange** `#ec8f34` — eyebrows on dark, metrics on dark, accents (never as small text on white — fails WCAG contrast)
+- **Surface** `#f7f3f5` — light section background
+
+Typography: Geist Sans (display + body), Geist Mono (eyebrows, numbers).
+
+Logo: `components/shared/Logo.tsx` — three variants (`wordmark`, `mark`, `lockup`).
+The icon mark is a notched-cube SVG with the orange-filled corner.
+
+Auto-generated brand assets (no static files to maintain):
+- `app/icon.svg` — favicon
+- `app/apple-icon.tsx` — iOS home-screen icon (180×180), rendered via edge runtime
+- `app/opengraph-image.tsx` — OG card (1200×630) — dark navy + wordmark + icon corner
+- `app/twitter-image.tsx` — same as OG, served as the Twitter card
+
+To change the palette: edit the four `--color-*` tokens in `globals.css`. The
+inline SVG in `Logo.tsx`, `icon.svg`, `apple-icon.tsx`, and `opengraph-image.tsx`
+hardcode the hex values directly so the brand assets remain correct even
+during a token refactor — update those four spots if the palette changes.
+
+---
+
 ## Stack
 
 | Layer | Technology |

@@ -21,7 +21,7 @@ export function Footer() {
       <Container className="py-20 lg:py-24">
         <div className="grid grid-cols-2 gap-12 md:grid-cols-4 lg:grid-cols-5">
           <div className="col-span-2 md:col-span-4 lg:col-span-2">
-            <Logo theme="dark" />
+            <Logo variant="lockup" theme="dark" size="md" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-slate-400">
               The complete IT partner for Kerala businesses. Hardware, software, support, and
               automation — under one roof.

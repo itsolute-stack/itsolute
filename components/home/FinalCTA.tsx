@@ -50,7 +50,7 @@ export function FinalCTA({
               href={whatsappLink(whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-cyan)] transition-colors"
+              className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-accent)] transition-colors"
             >
               <span>{secondary}</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

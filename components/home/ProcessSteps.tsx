@@ -32,7 +32,7 @@ export function ProcessSteps() {
               className="relative flex flex-col gap-3"
             >
               <div className="flex items-center gap-3">
-                <span className="font-mono text-sm text-[color:var(--color-cyan)] tracking-widest">
+                <span className="font-mono text-sm text-[color:var(--color-accent)] tracking-widest">
                   {step.index}
                 </span>
                 {i < processSteps.length - 1 ? (

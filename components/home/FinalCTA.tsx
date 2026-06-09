@@ -8,7 +8,7 @@ import { Section } from '@/components/layout/Section'
 import { Button } from '@/components/ui/button'
 import { DotGrid } from '@/components/shared/DotGrid'
 import { whatsappLink } from '@/lib/whatsapp'
-import { SITE } from '@/lib/content/site'
+import { SITE, GMAPS_URL } from '@/lib/content/site'
 import { fadeUp, inView } from '@/lib/motion'
 
 type Props = {
@@ -58,8 +58,16 @@ export function FinalCTA({
           </div>
 
           <p className="mt-4 font-mono text-xs md:text-sm text-slate-500 tracking-wide">
-            {SITE.contact.phoneDisplay} · {SITE.contact.email} · {SITE.hq.addressLine} ·{' '}
-            {SITE.hours.display}
+            {SITE.contact.phoneDisplay} · {SITE.contact.email} ·{' '}
+            <a
+              href={GMAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              {SITE.hq.addressLine}
+            </a>{' '}
+            · {SITE.hours.display}
           </p>
         </motion.div>
       </Container>

@@ -4,8 +4,9 @@ import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { PageHero } from '@/components/shared/PageHero'
 import { ContactForm } from '@/components/forms/ContactForm'
+import { LocationMap } from '@/components/contact/LocationMap'
 import { whatsappLink } from '@/lib/whatsapp'
-import { SITE, SITE_URL } from '@/lib/content/site'
+import { SITE, SITE_URL, GMAPS_URL } from '@/lib/content/site'
 import { contactCopy } from '@/lib/content/copy/contact'
 import { localBusinessSchema } from '@/lib/schema'
 
@@ -39,7 +40,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
               <ContactForm defaultService={defaultService} />
             </div>
 
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 flex flex-col gap-8">
               <div className="flex flex-col gap-8 rounded-lg border border-slate-200 bg-white p-6 md:p-8">
                 <h2 className="text-2xl font-medium tracking-tight text-[color:var(--color-ink)]">
                   {contactCopy.directHeading}
@@ -69,6 +70,8 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
                     icon={<MapPin className="h-5 w-5" />}
                     label="HQ"
                     value={SITE.hq.addressLine}
+                    href={GMAPS_URL}
+                    external
                   />
                   <ContactRow
                     icon={<Clock className="h-5 w-5" />}
@@ -86,6 +89,9 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
                   </p>
                 </div>
               </div>
+
+              {/* Embedded map + directions link */}
+              <LocationMap />
             </div>
           </div>
         </Container>

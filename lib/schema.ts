@@ -1,4 +1,4 @@
-import { SITE, SITE_URL, SOCIAL_URLS } from '@/lib/content/site'
+import { SITE, SITE_URL, SOCIAL_URLS, GMAPS_URL } from '@/lib/content/site'
 
 /* ============================================================================
  * JSON-LD generators. Each returns a plain object — JSON.stringify in <Script>.
@@ -65,6 +65,7 @@ export function localBusinessSchema() {
       '@type': 'City',
       name: area,
     })),
+    hasMap: GMAPS_URL,
     sameAs: [...SOCIAL_URLS, SITE.sister.url],
     priceRange: '₹₹',
   }

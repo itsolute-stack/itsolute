@@ -24,6 +24,19 @@ export const GEO = {
   longitude: 76.5222,
 } as const
 
+/**
+ * Google Maps short link to the Parthas Lane workshop — used for "Get directions"
+ * links sitewide and emitted as `hasMap` in LocalBusiness schema (local SEO signal).
+ */
+export const GMAPS_URL = 'https://maps.app.goo.gl/QekJzF5ckxFTsnjp6'
+
+/**
+ * Search-query embed URL. No API key, no billing, no Maps JS API needed.
+ * Pin shows ITSolute Systems at Parthas Lane via the query string.
+ */
+export const GMAPS_EMBED_URL =
+  'https://maps.google.com/maps?q=ITSolute+Systems+Parthas+Lane+Kottayam+686001&output=embed'
+
 /** Canonical site URL — override with NEXT_PUBLIC_SITE_URL in Vercel. */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://itsolute.com'

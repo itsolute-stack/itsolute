@@ -3,7 +3,7 @@ import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin, Clock } from '
 import { Container } from './Container'
 import { Logo } from '@/components/shared/Logo'
 import { whatsappLink } from '@/lib/whatsapp'
-import { SITE, SOCIAL } from '@/lib/content/site'
+import { SITE, SOCIAL, GMAPS_URL } from '@/lib/content/site'
 import { footerNav } from '@/lib/content/nav'
 
 /** Minimal inline X (Twitter) glyph — Lucide doesn't ship one. */
@@ -50,10 +50,16 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
                 {SITE.contact.email}
               </a>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-                {SITE.hq.addressLine}
-              </div>
+              <a
+                href={GMAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Find ITSolute Systems on Google Maps"
+                className="flex items-start gap-2 hover:text-white transition-colors"
+              >
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                <span>{SITE.hq.addressLine}</span>
+              </a>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
                 {SITE.hours.display}

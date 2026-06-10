@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="780" height="150" viewBox="0 0 780 150" xmlns="http://www.w3.org/2000/svg">
+    <g id="Group-copy">
+        <path id="Circle" fill="#ec8f34" fill-rule="evenodd" stroke="none" d="M 774 116.304657 C 774 103.668747 763.756592 93.425323 751.120667 93.425323 C 738.484741 93.425323 728.241333 103.668747 728.241333 116.304657 C 728.241333 128.940567 738.484741 139.184006 751.120667 139.184006 C 763.756592 139.184006 774 128.940567 774 116.304657 Z"/>
+        <text id="ITSolute" xml:space="preserve"><tspan x="10.508927" y="139" font-family="Geist" font-size="175.408264" font-weight="700" fill="#1e4ed8" xml:space="preserve">IT</tspan><tspan font-family="Geist" font-size="175.408264" font-weight="700" fill="#0b1f3a" xml:space="preserve">Solute</tspan></text>
+    </g>
+</svg>

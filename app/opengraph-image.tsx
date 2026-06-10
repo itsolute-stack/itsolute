@@ -5,10 +5,8 @@ export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 /**
- * Default OG card rendered at build/request time. Dark navy background,
- * orange eyebrow, big wordmark with brand-blue "IT", icon mark in the
- * bottom-right corner. No static asset to maintain — always in sync with
- * the palette.
+ * Default OG card rendered at request time. Mirrors the brand wordmark from
+ * /public/logo.svg — brand-blue "IT", cream "Solute", orange circle accent.
  */
 export default async function OGImage() {
   return new ImageResponse(
@@ -38,17 +36,31 @@ export default async function OGImage() {
           IT services · Kerala
         </div>
 
+        {/* Wordmark — IT in brand blue, Solute in surface cream, orange dot */}
         <div
           style={{
-            fontSize: 156,
-            fontWeight: 600,
+            display: 'flex',
+            alignItems: 'baseline',
+            gap: 16,
+            fontSize: 168,
+            fontWeight: 700,
             letterSpacing: '-0.04em',
             lineHeight: 1,
-            color: 'white',
-            display: 'flex',
           }}
         >
-          <span style={{ color: '#1e4ed8' }}>IT</span>Solute
+          <span style={{ color: '#1e4ed8' }}>IT</span>
+          <span style={{ color: '#f7f3f5' }}>Solute</span>
+          <span
+            style={{
+              width: 36,
+              height: 36,
+              borderRadius: '50%',
+              background: '#ec8f34',
+              alignSelf: 'flex-end',
+              marginBottom: 18,
+              display: 'flex',
+            }}
+          />
         </div>
 
         <div
@@ -64,19 +76,18 @@ export default async function OGImage() {
               color: 'rgba(255,255,255,0.6)',
               fontSize: 28,
               lineHeight: 1.3,
-              maxWidth: 760,
+              maxWidth: 820,
               display: 'flex',
             }}
           >
             Hardware · Software · Networking · Automation. Parthas Lane,
             Kottayam.
           </div>
+
+          {/* Icon mark — navy square with orange circle */}
           <svg viewBox="0 0 64 64" width="120" height="120">
             <rect width="64" height="64" rx="12" fill="#1e4ed8" />
-            <path
-              d="M 64 12 A 12 12 0 0 0 52 0 L 42 0 L 42 16 Q 42 24 50 24 L 64 24 Z"
-              fill="#ec8f34"
-            />
+            <circle cx="32" cy="32" r="11.5" fill="#ec8f34" />
           </svg>
         </div>
       </div>

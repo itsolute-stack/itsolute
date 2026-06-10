@@ -10,7 +10,7 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: SITE.name,
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.svg`,
+    logo: `${SITE_URL}/logo.svg`,
     foundingDate: String(SITE.founded),
     email: SITE.contact.email,
     telephone: SITE.contact.phoneSchema,

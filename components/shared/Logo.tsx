@@ -18,56 +18,65 @@ interface LogoProps {
   linked?: boolean
 }
 
-const sizeMap: Record<LogoSize, { text: string; mark: number; gap: string }> = {
-  sm: { text: 'text-lg', mark: 24, gap: 'gap-1.5' },
-  md: { text: 'text-2xl', mark: 32, gap: 'gap-2' },
-  lg: { text: 'text-4xl', mark: 44, gap: 'gap-2.5' },
-  xl: { text: 'text-6xl', mark: 64, gap: 'gap-3' },
+/**
+ * Per-variant height in pixels. The native SVG aspect ratios are:
+ *   wordmark / lockup → 780 × 150 (5.2 : 1)
+ *   mark              →  64 ×  64 (1 : 1)
+ * Heights below give a balanced visual weight per slot.
+ */
+const sizeMap: Record<
+  LogoSize,
+  { wordHeight: number; markSize: number; gap: string }
+> = {
+  sm: { wordHeight: 20, markSize: 22, gap: 'gap-1.5' },
+  md: { wordHeight: 28, markSize: 28, gap: 'gap-2' },
+  lg: { wordHeight: 40, markSize: 40, gap: 'gap-2.5' },
+  xl: { wordHeight: 64, markSize: 64, gap: 'gap-3' },
 }
 
 /**
- * Notched-cube icon mark. Square + a corner cut filled with the accent.
- * Rendered as inline SVG so it picks up the brand tokens consistently and
- * can be embedded in OG images without an extra HTTP fetch.
+ * The brand wordmark is a static SVG asset in /public. We ship two variants:
+ *
+ *   /public/logo.svg        ← "Solute" in surface cream — for dark backgrounds
+ *   /public/logo-light.svg  ← "Solute" in workshop ink — for light backgrounds
+ *
+ * Both have the brand-blue "IT" and the orange accent circle. Update the SVGs
+ * once and every consumer (this component, OG image, schema, etc.) updates.
  */
-function IconMark({ size }: { size: number }) {
+function WordmarkImg({
+  theme,
+  height,
+}: {
+  theme: LogoTheme
+  height: number
+}) {
+  const src = theme === 'dark' ? '/logo.svg' : '/logo-light.svg'
+  // Native ratio is 780:150 (5.2:1). Width follows automatically.
+  const width = Math.round(height * (780 / 150))
   return (
-    <svg
-      viewBox="0 0 64 64"
-      width={size}
-      height={size}
-      className="shrink-0"
-      role="img"
-      aria-label="ITSolute Systems icon"
-    >
-      <rect width="64" height="64" rx="12" fill="#1e4ed8" />
-      <path
-        d="M 64 12 A 12 12 0 0 0 52 0 L 42 0 L 42 16 Q 42 24 50 24 L 64 24 Z"
-        fill="#ec8f34"
-      />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt="ITSolute Systems"
+      width={width}
+      height={height}
+      style={{ height, width: 'auto' }}
+      className="block"
+    />
   )
 }
 
-function Wordmark({
-  textClass,
-  theme,
-}: {
-  textClass: string
-  theme: LogoTheme
-}) {
-  const restColor =
-    theme === 'dark' ? 'text-white' : 'text-[color:var(--color-ink)]'
+function MarkImg({ size }: { size: number }) {
   return (
-    <span
-      className={cn(
-        'font-medium tracking-[-0.02em] leading-none',
-        textClass,
-        restColor,
-      )}
-    >
-      <span className="text-[color:var(--color-electric)]">IT</span>Solute
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/logo-mark.svg"
+      alt="ITSolute Systems icon"
+      width={size}
+      height={size}
+      style={{ height: size, width: size }}
+      className="block shrink-0"
+    />
   )
 }
 
@@ -78,21 +87,21 @@ export function Logo({
   className,
   linked = true,
 }: LogoProps) {
-  const { text, mark, gap } = sizeMap[size]
+  const { wordHeight, markSize, gap } = sizeMap[size]
 
   const content =
     variant === 'mark' ? (
       <span className={cn('inline-flex', className)}>
-        <IconMark size={mark} />
+        <MarkImg size={markSize} />
       </span>
     ) : variant === 'wordmark' ? (
       <span className={cn('inline-flex', className)}>
-        <Wordmark textClass={text} theme={theme} />
+        <WordmarkImg theme={theme} height={wordHeight} />
       </span>
     ) : (
       <span className={cn('inline-flex items-center', gap, className)}>
-        <IconMark size={mark} />
-        <Wordmark textClass={text} theme={theme} />
+        <MarkImg size={markSize} />
+        <WordmarkImg theme={theme} height={wordHeight} />
       </span>
     )
 

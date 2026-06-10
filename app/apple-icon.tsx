@@ -4,8 +4,8 @@ export const size = { width: 180, height: 180 }
 export const contentType = 'image/png'
 
 /**
- * iOS home-screen icon. Notched-cube mark scaled to 180×180. Generated
- * dynamically by Next's edge image renderer — no static PNG to maintain.
+ * iOS home-screen icon (180×180). Matches /public/logo-mark.svg:
+ * brand-blue square with orange centered circle.
  */
 export default function AppleIcon() {
   return new ImageResponse(
@@ -15,22 +15,18 @@ export default function AppleIcon() {
           width: '100%',
           height: '100%',
           background: '#1e4ed8',
-          position: 'relative',
           borderRadius: 36,
           display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        {/* Notched corner — accent triangle */}
         <div
           style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            width: 68,
-            height: 68,
+            width: 64,
+            height: 64,
+            borderRadius: '50%',
             background: '#ec8f34',
-            borderTopRightRadius: 36,
-            borderBottomLeftRadius: 24,
           }}
         />
       </div>

@@ -38,7 +38,7 @@ export function Navbar() {
       )}
     >
       <Container className="flex h-16 items-center justify-between md:h-20">
-        <Logo variant="lockup" theme="dark" size="md" />
+        <Logo theme="dark" size="md" />
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
           {primaryNav.map((link) => (

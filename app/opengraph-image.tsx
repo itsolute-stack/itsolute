@@ -86,8 +86,8 @@ export default async function OGImage() {
 
           {/* Icon mark — navy square with orange circle */}
           <svg viewBox="0 0 64 64" width="120" height="120">
-            <rect width="64" height="64" rx="12" fill="#1e4ed8" />
-            <circle cx="32" cy="32" r="11.5" fill="#ec8f34" />
+            <path fill="#0b1f3a" fill-rule="evenodd" d="M 0 54 C 0 59.52 4.48 64 10 64 L 54 64 C 59.52 64 64 59.52 64 54 L 64 10 C 64 4.48 59.52 0 54 0 L 10 0 C 4.48 0 0 4.48 0 10 Z"/>
+            <circle cx="32" cy="32" r="17" fill="#ec8f34" />
           </svg>
         </div>
       </div>

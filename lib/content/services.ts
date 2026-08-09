@@ -5,6 +5,7 @@ import {
   Wifi,
   Workflow,
   Headphones,
+  Cctv,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -120,5 +121,20 @@ export const services: Service[] = [
       'Monthly health reports',
     ],
     href: '/amc',
+  },
+  {
+    slug: 'cctv',
+    title: 'CCTV & Surveillance',
+    tagline: 'Business CCTV that actually records when you need the footage.',
+    description:
+      'IP and HD camera installation, recording, mobile viewing, and night vision — set up on an isolated network and backed by AMC. Free site survey.',
+    icon: Cctv,
+    features: [
+      'IP & HD camera installation',
+      'Mobile & remote viewing',
+      'Night vision & recording',
+      'CCTV AMC & maintenance',
+    ],
+    href: '/cctv',
   },
 ]

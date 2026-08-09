@@ -287,7 +287,8 @@ export const industryContent: Record<string, IndustryContent> = {
     help: [
       { title: 'POS & billing hardware', href: '/hardware', body: 'Counter PCs, printers, and peripherals built for continuous, fast billing.' },
       { title: 'Billing & inventory software', href: '/software', body: 'Billing, inventory, and accounting software licensed and set up to fit your shop.' },
-      { title: 'Reliable networks & CCTV', href: '/networking', body: 'Stable in-store networks plus CCTV integration on a separate, dedicated network.' },
+      { title: 'Reliable in-store networks', href: '/networking', body: 'Stable networks and WiFi built for continuous billing and card payments.' },
+      { title: 'CCTV & surveillance', href: '/cctv', body: 'Cameras over the counter, floor, and stockroom — recording reliably on their own network.' },
       { title: 'Multi-branch reporting', href: '/automation', body: 'Automated sales and stock reporting across every outlet, pushed to you daily.' },
       { title: 'AMC for always-on counters', href: '/amc', body: 'Priority support so a peak-hour failure is handled fast, not tomorrow.' },
     ],

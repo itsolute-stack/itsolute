@@ -25,6 +25,7 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
       { label: 'Software & Licensing', href: '/software' },
       { label: 'Laptop Care & Repair', href: '/laptop-care' },
       { label: 'Networking & Office WiFi', href: '/networking' },
+      { label: 'CCTV & Surveillance', href: '/cctv' },
       { label: 'Automation', href: '/automation' },
       { label: 'ITSolute Connect', href: '/connect' },
       { label: 'AMC Contracts', href: '/amc' },

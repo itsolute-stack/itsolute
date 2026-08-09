@@ -132,3 +132,31 @@ export function faqSchema(faqs: { q: string; a: string }[]) {
     })),
   }
 }
+
+/**
+ * Blog listing schema for /blog. CollectionPage wrapping an ItemList of the
+ * published posts (position-ordered) so search engines understand the index
+ * page as a collection and can surface individual posts from it.
+ */
+export function blogListingSchema(
+  posts: { title: string; slug: string; date: string }[],
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'IT guides for Kerala businesses',
+    description:
+      'Practical IT advice for Kerala SMBs — laptop buying guides, repair walkthroughs, office network design, software comparisons.',
+    url: `${SITE_URL}/blog`,
+    isPartOf: { '@id': LOCAL_BUSINESS_ID },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${SITE_URL}/blog/${p.slug}`,
+        name: p.title,
+      })),
+    },
+  }
+}

@@ -30,6 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/blog', priority: 0.8, changeFreq: 'weekly' },
     { path: '/contact', priority: 0.8, changeFreq: 'monthly' },
     { path: '/about', priority: 0.6, changeFreq: 'monthly' },
+    { path: '/privacy', priority: 0.3, changeFreq: 'monthly' },
+    { path: '/terms', priority: 0.3, changeFreq: 'monthly' },
   ]
 
   const blogPosts = getAllPostSlugs().map((slug) => ({

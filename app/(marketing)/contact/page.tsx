@@ -8,7 +8,7 @@ import { LocationMap } from '@/components/contact/LocationMap'
 import { whatsappLink } from '@/lib/whatsapp'
 import { SITE, SITE_URL, GMAPS_URL } from '@/lib/content/site'
 import { contactCopy } from '@/lib/content/copy/contact'
-import { localBusinessSchema } from '@/lib/schema'
+import { localBusinessSchema, breadcrumbSchema } from '@/lib/schema'
 
 export const metadata = {
   title: {
@@ -102,6 +102,19 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+      />
+      <Script
+        id="contact-breadcrumb-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: 'Home', url: SITE_URL },
+              { name: 'Contact', url: `${SITE_URL}/contact` },
+            ]),
+          ),
+        }}
       />
     </>
   )

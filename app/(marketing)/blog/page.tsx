@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { PageHero } from '@/components/shared/PageHero'
 import { getAllPosts } from '@/lib/blog'
 import { SITE_URL } from '@/lib/content/site'
+import { blogListingSchema } from '@/lib/schema'
 import { PostCard } from './_components/PostCard'
 import { ClusterFilter } from './_components/ClusterFilter'
 
@@ -35,6 +37,23 @@ export default async function BlogIndex({
 
   return (
     <>
+      <Script
+        id="blog-listing-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            blogListingSchema(
+              all.map((p) => ({
+                title: p.frontmatter.title,
+                slug: p.frontmatter.slug,
+                date: p.frontmatter.date,
+              })),
+            ),
+          ),
+        }}
+      />
+
       <PageHero
         eyebrow="THE ITSOLUTE BLOG"
         headline="Practical IT advice for Kerala businesses."

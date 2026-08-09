@@ -6,7 +6,7 @@ import { SectionHeader } from '@/components/shared/SectionHeader'
 import { PageHero } from '@/components/shared/PageHero'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { softwareCopy } from '@/lib/content/copy/software'
-import { serviceSchema } from '@/lib/schema'
+import { serviceSchema, breadcrumbSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
@@ -134,6 +134,19 @@ export default function SoftwarePage() {
               serviceType: 'Software Licensing',
               priceRange: { low: '500', high: '200000' },
             }),
+          ),
+        }}
+      />
+      <Script
+        id="software-breadcrumb-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: 'Home', url: SITE_URL },
+              { name: 'Software', url: `${SITE_URL}/software` },
+            ]),
           ),
         }}
       />

@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
@@ -5,6 +6,7 @@ import { PageHero } from '@/components/shared/PageHero'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { aboutCopy } from '@/lib/content/copy/about'
 import { SITE_URL } from '@/lib/content/site'
+import { breadcrumbSchema } from '@/lib/schema'
 import { cn } from '@/lib/utils'
 
 export const metadata = {
@@ -149,6 +151,20 @@ export default function AboutPage() {
         sub={aboutCopy.finalCta.sub}
         primary={aboutCopy.finalCta.primary}
         secondary={aboutCopy.finalCta.secondary}
+      />
+
+      <Script
+        id="about-breadcrumb-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: 'Home', url: SITE_URL },
+              { name: 'About', url: `${SITE_URL}/about` },
+            ]),
+          ),
+        }}
       />
     </>
   )

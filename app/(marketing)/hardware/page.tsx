@@ -8,7 +8,7 @@ import { PageHero } from '@/components/shared/PageHero'
 import { Button } from '@/components/ui/button'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { hardwareCopy } from '@/lib/content/copy/hardware'
-import { serviceSchema } from '@/lib/schema'
+import { serviceSchema, breadcrumbSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
@@ -130,6 +130,19 @@ export default function HardwarePage() {
               serviceType: 'Computer Hardware Supply',
               priceRange: { low: '15000', high: '500000' },
             }),
+          ),
+        }}
+      />
+      <Script
+        id="hardware-breadcrumb-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: 'Home', url: SITE_URL },
+              { name: 'Hardware', url: `${SITE_URL}/hardware` },
+            ]),
           ),
         }}
       />

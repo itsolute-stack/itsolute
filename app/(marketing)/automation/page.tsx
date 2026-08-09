@@ -7,7 +7,7 @@ import { PageHero } from '@/components/shared/PageHero'
 import { Button } from '@/components/ui/button'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { automationCopy } from '@/lib/content/copy/automation'
-import { serviceSchema } from '@/lib/schema'
+import { serviceSchema, breadcrumbSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
 import { cn } from '@/lib/utils'
 
@@ -188,6 +188,19 @@ export default function AutomationPage() {
               serviceType: 'Business Process Automation',
               priceRange: { low: '25000', high: '300000' },
             }),
+          ),
+        }}
+      />
+      <Script
+        id="automation-breadcrumb-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: 'Home', url: SITE_URL },
+              { name: 'Automation', url: `${SITE_URL}/automation` },
+            ]),
           ),
         }}
       />

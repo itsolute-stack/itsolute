@@ -54,6 +54,24 @@ export const clusters = {
     hubUrl: '/amc',
     hubLabel: 'Talk about AMC',
   },
+  'managed-it-and-amc': {
+    slug: 'managed-it-and-amc',
+    name: 'Managed IT & AMC',
+    shortName: 'AMC',
+    description:
+      'IT support contracts, managed services, and keeping business systems running.',
+    hubUrl: '/amc',
+    hubLabel: 'See AMC options',
+  },
+  'security-and-surveillance': {
+    slug: 'security-and-surveillance',
+    name: 'Security & surveillance',
+    shortName: 'CCTV',
+    description:
+      'CCTV cameras, recording, remote viewing, and business security across Kerala.',
+    hubUrl: '/cctv',
+    hubLabel: 'See CCTV services',
+  },
 } as const satisfies Record<string, Cluster>
 
 export type ClusterSlug = keyof typeof clusters

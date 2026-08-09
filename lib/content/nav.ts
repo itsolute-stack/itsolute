@@ -45,6 +45,7 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     heading: 'Company',
     links: [
       { label: 'About', href: '/about' },
+      { label: 'IT Services in Kottayam', href: '/kottayam' },
       { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contact' },
       { label: 'Privacy', href: '/privacy' },

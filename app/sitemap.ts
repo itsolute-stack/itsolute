@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/automation', priority: 0.9, changeFreq: 'monthly' },
     { path: '/connect', priority: 0.9, changeFreq: 'monthly' },
     { path: '/amc', priority: 0.8, changeFreq: 'monthly' },
+    { path: '/kottayam', priority: 0.9, changeFreq: 'monthly' },
     { path: '/blog', priority: 0.8, changeFreq: 'weekly' },
     { path: '/contact', priority: 0.8, changeFreq: 'monthly' },
     { path: '/about', priority: 0.6, changeFreq: 'monthly' },

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/content/site'
 import { getAllPostSlugs } from '@/lib/blog'
+import { getAllIndustrySlugs } from '@/lib/content/copy/industries'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -42,6 +43,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  const industryPages = getAllIndustrySlugs().map((slug) => ({
+    url: `${base}/industries/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
   return [
     ...staticRoutes.map((r) => ({
       url: `${base}${r.path}`,
@@ -49,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: r.changeFreq,
       priority: r.priority,
     })),
+    ...industryPages,
     ...blogPosts,
   ]
 }

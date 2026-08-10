@@ -16,7 +16,7 @@ export const laptopCareCopy = {
   hero: {
     eyebrow: 'LAPTOP CARE · KOTTAYAM & ACROSS KERALA',
     headline: "Laptop trouble? We’ve seen it. Fixed it. Cleaned up after it.",
-    sub: 'Screen replacements, keyboard repair, battery swaps, SSD upgrades, data recovery, virus cleanup, OS reinstalls — for businesses and individuals across Kerala. Walk in, pickup, or onsite.',
+    sub: 'Screen replacements, keyboard repair, battery swaps, SSD upgrades, data recovery, virus cleanup, OS reinstalls — for students, families, professionals, and businesses across Kerala. Walk in, pickup, or onsite.',
     primaryCta: 'Request a quote on WhatsApp',
     secondaryCta: 'Drop off at our Kottayam workshop',
     whatsappMessage:
@@ -26,7 +26,7 @@ export const laptopCareCopy = {
     eyebrow: 'WHAT WE FIX',
     headline: 'The full list of laptop problems we handle every week.',
     items: [
-      { icon: Monitor, title: 'Cracked or dead screens', body: 'OEM-grade replacements for all common business laptop models.' },
+      { icon: Monitor, title: 'Cracked or dead screens', body: 'OEM-grade replacements for all common laptop models.' },
       { icon: Keyboard, title: 'Broken keyboards & keys', body: 'Individual key, full keyboard, or trackpad replacements.' },
       { icon: BatteryCharging, title: 'Dying batteries', body: 'Diagnose, source, and swap — typically same-day for popular models.' },
       { icon: Gauge, title: 'Slow performance', body: 'RAM and SSD upgrades that bring older laptops back to life.' },
@@ -51,8 +51,8 @@ export const laptopCareCopy = {
         body: 'Typically 3–6 months on the part and the work. In writing, with the bill.',
       },
       {
-        title: 'Free diagnosis for businesses',
-        body: 'Bring in any laptop your team uses — we diagnose at no cost, no commitment.',
+        title: 'No-obligation diagnosis',
+        body: 'We diagnose and quote before any work — walk-in, pickup, or onsite. Free for businesses and AMC clients.',
       },
       {
         title: 'Pickup and drop across Kerala',
@@ -70,7 +70,7 @@ export const laptopCareCopy = {
   },
   brands: {
     eyebrow: 'BRANDS WE SERVICE',
-    headline: 'Every business laptop brand sold in India.',
+    headline: 'Every laptop brand sold in India.',
     list: [
       'HP',
       'Dell',
@@ -91,7 +91,7 @@ export const laptopCareCopy = {
       {
         index: '01',
         title: 'Diagnose',
-        body: 'Free for businesses. ₹250 for walk-ins (waived if you proceed with the repair).',
+        body: '₹250 for walk-ins (waived if you proceed with the repair). Free for businesses and AMC clients.',
       },
       {
         index: '02',
@@ -101,7 +101,7 @@ export const laptopCareCopy = {
       {
         index: '03',
         title: 'Repair',
-        body: 'Most repairs completed in 24–72 hours. Faster on urgent business hardware.',
+        body: 'Most repairs completed in 24–72 hours. Faster on urgent jobs.',
       },
       {
         index: '04',

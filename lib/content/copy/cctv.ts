@@ -14,7 +14,7 @@ export const cctvCopy = {
   hero: {
     eyebrow: 'CCTV & SURVEILLANCE · KOTTAYAM · KERALA',
     headline: 'CCTV that actually records when you need the footage.',
-    sub: 'Half the cameras people rely on turn out to be offline the day something happens. We install business CCTV that works — the right cameras, reliable recording, and mobile viewing you can trust — across Kottayam and Kerala.',
+    sub: 'Half the cameras people rely on turn out to be offline the day something happens. We install CCTV that works — for homes, shops, and businesses — with the right cameras, reliable recording, and mobile viewing you can trust, across Kottayam and Kerala.',
     primaryCta: 'Request a site survey',
     secondaryCta: 'Talk on WhatsApp',
     whatsappMessage: 'Hi ITSolute, I need CCTV for my premises.',
@@ -69,6 +69,7 @@ export const cctvCopy = {
     eyebrow: 'WHO WE INSTALL FOR',
     headline: 'If footage matters when something goes wrong, this is for you.',
     items: [
+      'Homes and villas — gates, entrances, compounds, parking',
       'Shops and restaurants — counters, entrances, stockrooms, kitchens',
       'Clinics and hospitals — reception, pharmacy, corridors, parking',
       'Schools and colleges — gates, corridors, labs, hostels',
@@ -83,7 +84,7 @@ export const cctvCopy = {
     points: [
       {
         title: 'Installed by an IT team',
-        body: 'CCTV runs on your network. We put cameras on their own isolated VLAN so they record reliably without slowing your business systems.',
+        body: 'CCTV runs on a network. We put cameras on their own isolated setup so they record reliably without slowing your home or office network.',
       },
       {
         title: 'Genuine cameras, warranty preserved',
@@ -114,7 +115,7 @@ export const cctvCopy = {
       {
         index: '01',
         title: 'Site survey',
-        body: 'We walk the premises, identify blind spots, and map camera positions — free for businesses.',
+        body: 'We walk the premises, identify blind spots, and map camera positions — free, no obligation.',
       },
       {
         index: '02',
@@ -143,9 +144,9 @@ export const cctvCopy = {
     headline: 'Three CCTV setups we install all the time.',
     items: [
       {
-        title: 'Shop / small premises',
+        title: 'Home / small premises',
         scope: '4 cameras, 1 recorder',
-        details: 'HD cameras covering entrance, counter, and stockroom, with mobile viewing.',
+        details: 'HD cameras covering the gate, entrance, and key areas, with mobile viewing.',
         from: '₹14,000',
         highlight: false,
       },
@@ -169,7 +170,7 @@ export const cctvCopy = {
   },
   finalCta: {
     headline: 'Know what happened — every time. Let’s cover your blind spots.',
-    sub: 'Free site survey for businesses. Fixed written quote before you commit. Cameras, recording, and mobile viewing set up and tested properly.',
+    sub: 'Free site survey, no obligation. Fixed written quote before you commit. Cameras, recording, and mobile viewing set up and tested properly.',
     primary: 'Request a site survey',
     secondary: 'WhatsApp us',
   },
@@ -178,7 +179,7 @@ export const cctvCopy = {
 export const cctvFAQs = [
   {
     q: 'How many CCTV cameras do I need?',
-    a: 'It depends on your layout and the blind spots that matter — a small shop is usually well covered by 4 cameras (entrance, counter, stockroom), while an office or warehouse needs 8–16+. That’s exactly what the free site survey settles: we walk the premises and map the minimum cameras that leave no important gap.',
+    a: 'It depends on your layout and the blind spots that matter — a home or small shop is usually well covered by 4 cameras (gate, entrance, key areas), while an office or warehouse needs 8–16+. That’s exactly what the free site survey settles: we walk the premises and map the minimum cameras that leave no important gap.',
   },
   {
     q: 'IP or HD analog cameras — which should I choose?',

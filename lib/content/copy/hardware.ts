@@ -1,8 +1,8 @@
 export const hardwareCopy = {
   hero: {
     eyebrow: 'HARDWARE',
-    headline: 'Business hardware — supplied, set up, and supported.',
-    sub: 'New and refurbished laptops, desktops, servers, networking gear, and peripherals. Bulk pricing, GST invoicing, Kerala-wide delivery.',
+    headline: 'Laptops and computers — supplied, set up, and supported.',
+    sub: 'New and refurbished laptops, desktops, and peripherals for home, study, and work — plus servers and networking for business. Genuine warranty, GST invoicing, Kerala-wide delivery.',
     primaryCta: 'Request a quote',
     secondaryCta: 'WhatsApp us',
   },
@@ -12,7 +12,7 @@ export const hardwareCopy = {
     items: [
       {
         title: 'Laptops (new)',
-        body: 'Dell, HP, Lenovo, ASUS, Apple. Business series with proper warranty.',
+        body: 'Dell, HP, Lenovo, ASUS, Apple — genuine models with full warranty.',
       },
       {
         title: 'Laptops (refurbished)',

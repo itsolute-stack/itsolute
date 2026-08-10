@@ -14,10 +14,10 @@ import { SITE_URL } from '@/lib/content/site'
 export const metadata = {
   title: {
     absolute:
-      'Business Laptops & Computer Hardware in Kottayam, Kerala | ITSolute',
+      'Laptops & Computer Hardware in Kottayam, Kerala | ITSolute',
   },
   description:
-    'Buy business laptops, desktops, servers, and IT hardware in Kottayam. Bulk pricing for offices and schools. Authorised HP, Dell, Lenovo reseller. GST invoice. Kerala-wide delivery.',
+    'Buy laptops, desktops, and computer hardware in Kottayam — for home, students, and business. New and refurbished. Authorised HP, Dell, Lenovo reseller. GST invoice, bulk pricing, Kerala-wide delivery.',
   alternates: { canonical: `${SITE_URL}/hardware` },
 }
 
@@ -123,9 +123,9 @@ export default function HardwarePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             serviceSchema({
-              name: 'Business Laptops & Computer Hardware',
+              name: 'Laptops & Computer Hardware',
               description:
-                'Business hardware supply, setup, and support across Kerala. Laptops, desktops, servers, networking, and peripherals.',
+                'Laptops, desktops, and computer hardware supply, setup, and support across Kerala — for home, students, and business. New and refurbished.',
               slug: 'hardware',
               serviceType: 'Computer Hardware Supply',
               priceRange: { low: '15000', high: '500000' },

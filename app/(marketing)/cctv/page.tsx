@@ -15,10 +15,10 @@ import { cn } from '@/lib/utils'
 
 export const metadata = {
   title: {
-    absolute: 'CCTV Installation in Kottayam, Kerala | IP Cameras & AMC | ITSolute',
+    absolute: 'CCTV Camera Installation in Kottayam, Kerala | Homes & Business | ITSolute',
   },
   description:
-    'CCTV camera installation for businesses in Kottayam and across Kerala — IP and HD cameras, mobile viewing, night vision, recording, and AMC. Free site survey, GST invoicing.',
+    'CCTV camera installation for homes and businesses in Kottayam and across Kerala — IP and HD cameras, mobile viewing, night vision, and recording. Free site survey, GST invoicing.',
   alternates: { canonical: `${SITE_URL}/cctv` },
 }
 
@@ -229,7 +229,7 @@ export default function CctvPage() {
             serviceSchema({
               name: 'CCTV Installation & Surveillance',
               description:
-                'CCTV camera installation for businesses in Kottayam and across Kerala — IP and HD cameras, recording, mobile viewing, night vision, and AMC.',
+                'CCTV camera installation for homes and businesses in Kottayam and across Kerala — IP and HD cameras, recording, mobile viewing, and night vision.',
               slug: 'cctv',
               serviceType: 'CCTV Installation',
               priceRange: { low: '14000', high: '300000' },

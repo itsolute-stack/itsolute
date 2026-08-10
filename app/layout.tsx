@@ -83,6 +83,25 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+
+        {/* Google tag (gtag.js) — Google Ads AW-18221570748 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18221570748"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-gtag"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18221570748');
+            `,
+          }}
+        />
+
         <Script
           id="org-schema"
           type="application/ld+json"

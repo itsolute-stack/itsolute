@@ -21,6 +21,13 @@ export const metadata = {
   description:
     'Laptop repair in Kottayam — screen replacement, keyboard, battery, SSD upgrade, data recovery, virus removal for students, professionals, and businesses. Most repairs in 24–72 hours.',
   alternates: { canonical: `${SITE_URL}/laptop-care` },
+  openGraph: {
+    title:
+      'Laptop Repair in Kottayam · Screen, Keyboard, Battery, Data Recovery | ITSolute',
+    description:
+      'Laptop repair in Kottayam — screen replacement, keyboard, battery, SSD upgrade, data recovery, virus removal for students, professionals, and businesses. Most repairs in 24–72 hours.',
+    url: `${SITE_URL}/laptop-care`,
+  },
 }
 
 export default function LaptopCarePage() {

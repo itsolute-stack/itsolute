@@ -32,7 +32,7 @@ export const services: Service[] = [
     title: 'Computer Hardware',
     tagline: 'Laptops, desktops, and the gear that runs your business.',
     description:
-      'New and refurbished business hardware — laptops, desktops, servers, networking, peripherals. Bulk pricing, GST invoicing, Kerala-wide delivery.',
+      'New and refurbished laptops, desktops, and peripherals for home and business — plus servers and networking. Bulk pricing, GST invoicing, Kerala-wide delivery.',
     icon: Laptop,
     features: [
       'Business laptops (new + refurbished)',
@@ -63,7 +63,7 @@ export const services: Service[] = [
     title: 'Laptop Care & Repair',
     tagline: 'Screen, keyboard, battery, data recovery — fixed, not guessed.',
     description:
-      'Genuine parts, service warranty, free diagnosis for businesses. Most repairs ready in 24–72 hours. Walk in, pickup, or onsite.',
+      'Genuine parts, service warranty, no-obligation diagnosis. Most repairs ready in 24–72 hours. Walk in or drop off.',
     icon: Wrench,
     features: [
       'Screen, keyboard, battery repair',

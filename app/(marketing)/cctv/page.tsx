@@ -20,6 +20,13 @@ export const metadata = {
   description:
     'CCTV camera installation for homes and businesses in Kottayam and across Kerala — IP and HD cameras, mobile viewing, night vision, and recording. Free site survey, GST invoicing.',
   alternates: { canonical: `${SITE_URL}/cctv` },
+  openGraph: {
+    title:
+      'CCTV Camera Installation in Kottayam, Kerala | Homes & Business | ITSolute',
+    description:
+      'CCTV camera installation for homes and businesses in Kottayam and across Kerala — IP and HD cameras, mobile viewing, night vision, and recording. Free site survey, GST invoicing.',
+    url: `${SITE_URL}/cctv`,
+  },
 }
 
 export default function CctvPage() {

@@ -88,7 +88,7 @@ export const cctvCopy = {
       },
       {
         title: 'Genuine cameras, warranty preserved',
-        body: 'Hikvision, CP Plus, Dahua and similar — from authorised channels, with manufacturer warranty on every unit.',
+        body: 'Hikvision, CP Plus, Dahua and similar — from trusted suppliers, with manufacturer warranty on every unit.',
       },
       {
         title: 'Remote viewing set up properly',

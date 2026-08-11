@@ -16,7 +16,7 @@ export const laptopCareCopy = {
   hero: {
     eyebrow: 'LAPTOP CARE · KOTTAYAM & ACROSS KERALA',
     headline: "Laptop trouble? We’ve seen it. Fixed it. Cleaned up after it.",
-    sub: 'Screen replacements, keyboard repair, battery swaps, SSD upgrades, data recovery, virus cleanup, OS reinstalls — for students, families, professionals, and businesses across Kerala. Walk in, pickup, or onsite.',
+    sub: 'Screen replacements, keyboard repair, battery swaps, SSD upgrades, data recovery, virus cleanup, OS reinstalls — for students, families, professionals, and businesses across Kerala. Walk in or drop off at our Kottayam workshop.',
     primaryCta: 'Request a quote on WhatsApp',
     secondaryCta: 'Drop off at our Kottayam workshop',
     whatsappMessage:
@@ -44,7 +44,7 @@ export const laptopCareCopy = {
     points: [
       {
         title: 'Genuine parts only',
-        body: 'Sourced through authorised channels. We tell you when a part is OEM vs. compatible.',
+        body: 'Sourced through trusted suppliers. We tell you when a part is OEM vs. compatible.',
       },
       {
         title: 'Service warranty on every repair',
@@ -52,11 +52,11 @@ export const laptopCareCopy = {
       },
       {
         title: 'No-obligation diagnosis',
-        body: 'We diagnose and quote before any work — walk-in, pickup, or onsite. Free for businesses and AMC clients.',
+        body: 'We diagnose and quote before any work — no obligation. Free for businesses and AMC clients.',
       },
       {
-        title: 'Pickup and drop across Kerala',
-        body: 'Kottayam · Kochi · Pathanamthitta · Alappuzha. Most pickups same-day.',
+        title: 'Fast turnaround',
+        body: 'Most repairs ready in 24–72 hours. Screen and battery swaps often same-day when the part’s in stock.',
       },
       {
         title: 'Data privacy taken seriously',
@@ -133,7 +133,7 @@ export const laptopCareCopy = {
   },
   finalCta: {
     headline: "Bring it in. We’ll see what we can do.",
-    sub: 'Walk into our Parthas Lane workshop in Kottayam. WhatsApp us a photo of the problem. Or book a pickup anywhere in central Kerala.',
+    sub: 'Walk into our Parthas Lane workshop in Kottayam, or WhatsApp us a photo of the problem to get started.',
     primary: 'WhatsApp a photo',
     secondary: 'Get directions',
   },
@@ -146,7 +146,7 @@ export const laptopCareFAQs = [
   },
   {
     q: 'Do you repair MacBooks?',
-    a: 'Yes — we handle MacBook screen, keyboard, battery, SSD and logic-board repairs. We use OEM-grade parts where possible and source through authorised channels. For component-level work we’re honest about what’s economical to fix vs. replace.',
+    a: 'Yes — we handle MacBook screen, keyboard, battery, SSD and logic-board repairs. We use OEM-grade parts where possible and source through trusted suppliers. For component-level work we’re honest about what’s economical to fix vs. replace.',
   },
   {
     q: 'What if my data is on a dead hard drive?',
@@ -154,7 +154,7 @@ export const laptopCareFAQs = [
   },
   {
     q: 'Do you offer warranty on repairs?',
-    a: 'Every repair carries a written 3–6 month warranty on the part and the work, depending on the component. The warranty card comes with your bill, and we honour it on walk-in or pickup, no questions asked.',
+    a: 'Every repair carries a written 3–6 month warranty on the part and the work, depending on the component. The warranty card comes with your bill, and we honour it on any walk-in, no questions asked.',
   },
   {
     q: 'Do you do onsite repair for offices?',
@@ -166,6 +166,6 @@ export const laptopCareFAQs = [
   },
   {
     q: 'Where is your workshop?',
-    a: 'Parthas Lane, Kottayam – 686001. Walk-ins welcome Monday to Saturday, 9 AM to 7 PM. We also offer pickup and drop service across Kottayam, Kochi, Pathanamthitta and Alappuzha.',
+    a: 'Parthas Lane, Kottayam – 686001. Walk-ins welcome Monday to Saturday, 9 AM to 7 PM.',
   },
 ]

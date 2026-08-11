@@ -43,7 +43,7 @@ export const homeFAQs: FAQ[] = [
   },
   {
     q: 'Where is your office located?',
-    a: 'Parthas Lane, Kottayam – 686001. Walk-ins welcome Mon–Sat, 9 AM – 7 PM. Pickup and drop service available across Kottayam, Kochi, Pathanamthitta, and Alappuzha.',
+    a: 'Parthas Lane, Kottayam – 686001. Walk-ins welcome Mon–Sat, 9 AM – 7 PM.',
   },
 ]
 

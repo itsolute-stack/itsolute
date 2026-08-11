@@ -68,8 +68,8 @@ export const homeCopy = {
   },
   featuredHardware: {
     eyebrow: 'WHAT MOST CLIENTS START WITH',
-    headline: 'Hardware that’s right-sized for Kerala SMBs.',
-    body: 'We supply business-grade laptops, desktops, servers, and peripherals — new or refurbished. From a single laptop for your CA to a 50-machine rollout for a school. Authorised resellers, GST invoicing, doorstep delivery across Kerala.',
+    headline: 'Hardware, from a single laptop to a full office.',
+    body: 'Laptops, desktops, and peripherals — new or refurbished — for home, students, and business. From one machine to a 50-machine office rollout, with genuine warranty, GST invoicing, and delivery across Kerala.',
     metrics: [
       { value: '100+', label: 'Models in stock or sourcable' },
       { value: '48hr', label: 'Typical Kerala delivery' },
@@ -80,7 +80,7 @@ export const homeCopy = {
   featuredLaptopCare: {
     eyebrow: 'EVERYDAY SUPPORT',
     headline: 'Your laptop, fixed today. Not “sometime next week.”',
-    body: 'Screen replacements, keyboard fixes, battery swaps, SSD upgrades, data recovery — done by technicians, not guesswork. Most repairs ready in 24–72 hours. Free diagnosis for businesses.',
+    body: 'Screen replacements, keyboard fixes, battery swaps, SSD upgrades, data recovery — done by technicians, not guesswork. Most repairs ready in 24–72 hours. For students, offices, and everyone in between.',
     note: 'Walk-ins welcome at our Parthas Lane workshop',
     cta: 'See repair pricing',
   },

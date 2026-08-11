@@ -17,8 +17,14 @@ export const metadata = {
       'Laptops & Computer Hardware in Kottayam, Kerala | ITSolute',
   },
   description:
-    'Buy laptops, desktops, and computer hardware in Kottayam — for home, students, and business. New and refurbished. Authorised HP, Dell, Lenovo reseller. GST invoice, bulk pricing, Kerala-wide delivery.',
+    'Buy laptops, desktops, and computer hardware in Kottayam — for home, students, and business. New and refurbished. HP, Dell, Lenovo and more. GST invoice, bulk pricing, Kerala-wide delivery.',
   alternates: { canonical: `${SITE_URL}/hardware` },
+  openGraph: {
+    title: 'Laptops & Computer Hardware in Kottayam, Kerala | ITSolute',
+    description:
+      'Buy laptops, desktops, and computer hardware in Kottayam — for home, students, and business. New and refurbished. HP, Dell, Lenovo and more. GST invoice, bulk pricing, Kerala-wide delivery.',
+    url: `${SITE_URL}/hardware`,
+  },
 }
 
 export default function HardwarePage() {

@@ -179,7 +179,9 @@ export const industryContent: Record<string, IndustryContent> = {
       { title: 'AMC for every term', href: '/amc', body: 'One contract keeping labs, staff systems, and network running all year.' },
       { title: 'Fast repair for lab machines', href: '/laptop-care', body: 'Quick turnaround so a broken lab PC is back before the next class needs it.' },
     ],
-    relatedPosts: [],
+    relatedPosts: [
+      { slug: 'it-setup-checklist-schools-kerala', title: 'IT setup checklist for schools & colleges in Kerala' },
+    ],
     faqs: [
       {
         q: 'Do you offer bulk pricing for school computer labs?',
@@ -235,7 +237,9 @@ export const industryContent: Record<string, IndustryContent> = {
       { title: 'Multi-branch networks', href: '/networking', body: 'Reliable connectivity and secure links between your branch offices.' },
       { title: 'AMC across every branch', href: '/amc', body: 'One partner keeping hardware, software, and networks running at all locations.' },
     ],
-    relatedPosts: [],
+    relatedPosts: [
+      { slug: 'it-setup-checklist-real-estate-kerala', title: 'IT setup checklist for real estate offices in Kerala' },
+    ],
     faqs: [
       {
         q: 'Can you set up WhatsApp lead capture for our agents?',
@@ -292,7 +296,9 @@ export const industryContent: Record<string, IndustryContent> = {
       { title: 'Multi-branch reporting', href: '/automation', body: 'Automated sales and stock reporting across every outlet, pushed to you daily.' },
       { title: 'AMC for always-on counters', href: '/amc', body: 'Priority support so a peak-hour failure is handled fast, not tomorrow.' },
     ],
-    relatedPosts: [],
+    relatedPosts: [
+      { slug: 'it-setup-checklist-retail-restaurants-kerala', title: 'IT setup checklist for retail shops & restaurants in Kerala' },
+    ],
     faqs: [
       {
         q: 'Do you set up POS and billing systems?',
@@ -348,7 +354,9 @@ export const industryContent: Record<string, IndustryContent> = {
       { title: 'Integrations & automation', href: '/automation', body: 'Connect dispatch, tracking, and accounting so data flows without manual work.' },
       { title: 'AMC for always-on operations', href: '/amc', body: 'One retainer keeping every location running, with priority response.' },
     ],
-    relatedPosts: [],
+    relatedPosts: [
+      { slug: 'it-setup-checklist-logistics-kerala', title: 'IT setup checklist for logistics companies in Kerala' },
+    ],
     faqs: [
       {
         q: 'Can you connect our branches and warehouses?',

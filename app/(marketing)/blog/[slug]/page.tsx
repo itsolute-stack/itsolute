@@ -180,13 +180,13 @@ export default async function PostPage({
             {frontmatter.excerpt}
           </p>
           {frontmatter.image ? (
-            <div className="mt-10 overflow-hidden rounded-lg border border-slate-200">
+            <div className="relative mt-10 aspect-[3/2] w-full overflow-hidden rounded-lg border border-slate-200">
               <Image
                 src={frontmatter.image}
                 alt={frontmatter.imageAlt ?? frontmatter.title}
-                width={1600}
-                height={900}
-                className="h-auto w-full"
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
                 priority
               />
             </div>

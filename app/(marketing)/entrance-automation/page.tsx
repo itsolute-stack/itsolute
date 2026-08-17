@@ -33,6 +33,10 @@ export default function EntranceAutomationPage() {
         sub={entranceHubCopy.hero.sub}
         primaryCta={{ label: 'Request a site survey', href: '/contact?service=entrance-automation' }}
         secondaryCta={{ label: 'WhatsApp us', message: entranceHubCopy.hero.whatsappMessage }}
+        image={{
+          src: '/images/entrance-automation/hub.png',
+          alt: 'Automatic gate and boom barrier entrance automation by ITSolute in Kerala',
+        }}
       />
 
       {/* Intro */}

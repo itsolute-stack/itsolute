@@ -17,8 +17,9 @@ const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   images: {
     remotePatterns: [
+      // Still used by lib/images.ts (homepage Hero + FeatureRows). Once those
+      // are localized too, this whole remotePatterns block can be removed.
       { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'plus.unsplash.com' },
     ],
     formats: ['image/avif', 'image/webp'],
   },

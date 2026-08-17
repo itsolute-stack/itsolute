@@ -168,6 +168,10 @@ function mapServiceParam(p?: string) {
       return 'Software licensing'
     case 'networking':
       return 'Networking / WiFi setup'
+    case 'cctv':
+      return 'CCTV & surveillance'
+    case 'entrance-automation':
+      return 'Entrance automation (gates / barriers)'
     case 'automation':
       return 'Automation / custom build'
     case 'amc':

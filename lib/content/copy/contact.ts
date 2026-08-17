@@ -16,6 +16,8 @@ export const contactCopy = {
     'Laptop repair / care',
     'Software licensing',
     'Networking / WiFi setup',
+    'CCTV & surveillance',
+    'Entrance automation (gates / barriers)',
     'Automation / custom build',
     'Office IT setup',
     'AMC contract',

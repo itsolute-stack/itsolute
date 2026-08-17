@@ -6,6 +6,7 @@ import {
   Workflow,
   Headphones,
   Cctv,
+  Fence,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -136,5 +137,20 @@ export const services: Service[] = [
       'CCTV AMC & maintenance',
     ],
     href: '/cctv',
+  },
+  {
+    slug: 'entrance-automation',
+    title: 'Entrance Automation',
+    tagline: 'Automatic gates and boom barriers, installed and maintained.',
+    description:
+      'Automatic sliding/swing gate and boom barrier installation across Kerala — safety sensors, RFID/FASTag access, battery backup, and AMC. For homes, apartments, and commercial sites.',
+    icon: Fence,
+    features: [
+      'Automatic gates (sliding & swing)',
+      'Boom barriers (RFID / FASTag)',
+      'Safety sensors & battery backup',
+      'Entrance automation AMC',
+    ],
+    href: '/entrance-automation',
   },
 ]

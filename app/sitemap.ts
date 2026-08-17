@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/content/site'
 import { getAllPostSlugs } from '@/lib/blog'
 import { getAllIndustrySlugs } from '@/lib/content/copy/industries'
+import { getAllEntranceSlugs } from '@/lib/content/copy/entranceAutomation'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -26,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/software', priority: 0.9, changeFreq: 'monthly' },
     { path: '/networking', priority: 0.8, changeFreq: 'monthly' },
     { path: '/cctv', priority: 0.9, changeFreq: 'monthly' },
+    { path: '/entrance-automation', priority: 0.9, changeFreq: 'monthly' },
     { path: '/automation', priority: 0.9, changeFreq: 'monthly' },
     { path: '/connect', priority: 0.9, changeFreq: 'monthly' },
     { path: '/amc', priority: 0.8, changeFreq: 'monthly' },
@@ -51,6 +53,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
+  const entrancePages = getAllEntranceSlugs().map((slug) => ({
+    url: `${base}/entrance-automation/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }))
+
   return [
     ...staticRoutes.map((r) => ({
       url: `${base}${r.path}`,
@@ -58,6 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: r.changeFreq,
       priority: r.priority,
     })),
+    ...entrancePages,
     ...industryPages,
     ...blogPosts,
   ]

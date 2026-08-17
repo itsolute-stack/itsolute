@@ -11,6 +11,7 @@ import {
   Car,
   RectangleHorizontal,
   Siren,
+  Mic,
   type LucideIcon,
 } from 'lucide-react'
 import type { FAQ } from '@/lib/content/faqs'
@@ -120,13 +121,7 @@ export const entranceHubFAQs: FAQ[] = [
   },
 ]
 
-export type EntranceTier = {
-  title: string
-  scope: string
-  details: string
-  from: string
-  highlight: boolean
-}
+export type EntrancePriceRow = { label: string; from: string }
 
 export type EntranceProduct = {
   slug: string
@@ -150,7 +145,7 @@ export type EntranceProduct = {
     headline: string
     steps: { index: string; title: string; body: string }[]
   }
-  tiers: { eyebrow: string; headline: string; items: EntranceTier[]; disclaimer: string }
+  pricing: { eyebrow: string; headline: string; rows: EntrancePriceRow[]; disclaimer: string }
   amc: { eyebrow: string; headline: string; body: string; points: string[] }
   faqs: FAQ[]
 }
@@ -163,7 +158,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       'Automatic gate installation across Kerala — sliding and swing gate motors with remote, keypad, and RFID access, safety sensors, and battery backup. Free site survey, GST invoicing, AMC.',
     serviceName: 'Automatic Gate Installation',
     serviceType: 'Automatic Gate Installation',
-    priceLow: '25000',
+    priceLow: '40000',
     priceHigh: '200000',
     whatsappMessage: 'Hi ITSolute, I want to automate my gate (sliding / swing).',
     hero: {
@@ -179,6 +174,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         { icon: Fence, title: 'Swing gate motors', body: 'Arm or underground motors for single and double swing gates.' },
         { icon: RadioTower, title: 'Remote control', body: 'Handheld remotes for the whole household, added or removed as needed.' },
         { icon: ScanLine, title: 'Keypad & RFID access', body: 'Code keypads and RFID tags/cards so you control who can open it.' },
+        { icon: Mic, title: 'Voice control (Alexa / Google)', body: 'A WiFi smart-switch module wired into the motor’s existing remote-control input, giving Alexa and Google Home voice control alongside the app, RFID, and remote. Works with most standard gate motors with a remote-control input.' },
         { icon: ShieldCheck, title: 'Safety sensors', body: 'Photocells and obstacle detection so the gate never closes on a person or vehicle.' },
         { icon: BatteryCharging, title: 'Battery backup', body: 'Keeps the gate working through a power cut, with manual release as a fallback.' },
         { icon: Cctv, title: 'Intercom & CCTV integration', body: 'See and speak to visitors, and tie the gate into your camera system.' },
@@ -220,34 +216,17 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         { index: '05', title: 'Support & AMC', body: 'Optional AMC to keep the gate serviced and reliable year-round.' },
       ],
     },
-    tiers: {
+    pricing: {
       eyebrow: 'INDICATIVE PRICING',
-      headline: 'Typical automatic-gate setups.',
-      items: [
-        {
-          title: 'Home sliding gate',
-          scope: 'Single sliding gate',
-          details: 'Sliding motor sized to your gate, two remotes, safety sensors, and battery backup.',
-          from: '₹25,000',
-          highlight: false,
-        },
-        {
-          title: 'Swing / villa gate',
-          scope: 'Single or double swing gate',
-          details: 'Swing motors, remotes, keypad or RFID access, safety sensors, and backup.',
-          from: '₹35,000',
-          highlight: true,
-        },
-        {
-          title: 'Commercial / heavy-duty',
-          scope: 'High-use or large gates',
-          details: 'Heavy-duty motor, RFID/access integration, intercom and CCTV tie-in.',
-          from: '₹75,000',
-          highlight: false,
-        },
+      headline: 'Gate automation pricing, by gate type.',
+      rows: [
+        { label: 'Swing gate — single-arm', from: '₹55,000' },
+        { label: 'Swing gate — two-arm', from: '₹75,000' },
+        { label: 'Sliding gate', from: '₹40,000' },
+        { label: 'Roller gate', from: '₹48,000' },
       ],
       disclaimer:
-        'Indicative starting prices, installed. Final quote after a site survey — gate weight and length, motor type, access method, and wiring runs all affect the total.',
+        'All prices exclude GST. Indicative starting prices, installed — the final quote follows a free site survey, since gate size and weight, motor type, access method, and wiring runs all affect the total.',
     },
     amc: {
       eyebrow: 'AMC & MAINTENANCE',
@@ -296,8 +275,8 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       'Boom barrier installation across Kerala — for car parks, apartments, offices, and commercial entrances. RFID/FASTag access, loop detectors, CCTV integration, battery backup. Free survey, AMC.',
     serviceName: 'Boom Barrier Installation',
     serviceType: 'Boom Barrier Installation',
-    priceLow: '32000',
-    priceHigh: '250000',
+    priceLow: '59000',
+    priceHigh: '150000',
     whatsappMessage: 'Hi ITSolute, I want to install a boom barrier.',
     hero: {
       eyebrow: 'BOOM BARRIERS · KOTTAYAM & KERALA',
@@ -312,6 +291,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         { icon: ScanLine, title: 'RFID & FASTag access', body: 'Tags, cards, or FASTag so registered vehicles pass without stopping.' },
         { icon: Car, title: 'Loop detectors', body: 'In-ground sensors that detect vehicles for safe auto-close and free exit.' },
         { icon: RadioTower, title: 'Remote & push-button', body: 'Handheld remotes and guard-booth push-button control.' },
+        { icon: Mic, title: 'Voice control (Alexa / Google)', body: 'A WiFi smart-switch module wired into the barrier motor’s existing remote-control input, giving Alexa and Google Home voice control alongside the app, RFID, and remote. Works with most standard barrier motors with a remote-control input.' },
         { icon: ShieldCheck, title: 'Safety & anti-crash', body: 'Sensors so the arm never drops on a vehicle or person.' },
         { icon: Cctv, title: 'Access control & CCTV', body: 'Integrate with number-plate cameras, access records, and your CCTV.' },
         { icon: BatteryCharging, title: 'Battery backup', body: 'Keeps the barrier operating through power cuts.' },
@@ -353,34 +333,14 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         { index: '05', title: 'Support & AMC', body: 'Optional AMC to keep a high-cycle barrier reliable year-round.' },
       ],
     },
-    tiers: {
+    pricing: {
       eyebrow: 'INDICATIVE PRICING',
-      headline: 'Typical boom-barrier setups.',
-      items: [
-        {
-          title: 'Standard barrier',
-          scope: 'Remote / push-button',
-          details: 'Boom barrier with arm sized to your entrance, remote and push-button control, and safety sensors.',
-          from: '₹32,000',
-          highlight: false,
-        },
-        {
-          title: 'RFID / access-integrated',
-          scope: 'Automatic vehicle access',
-          details: 'Barrier with RFID/FASTag access, loop detectors, and battery backup.',
-          from: '₹55,000',
-          highlight: true,
-        },
-        {
-          title: 'High-traffic / integrated',
-          scope: 'High-duty + CCTV/access',
-          details: 'High-duty barrier, number-plate/CCTV integration, and access-record tie-in.',
-          from: '₹85,000',
-          highlight: false,
-        },
+      headline: 'Boom barrier pricing.',
+      rows: [
+        { label: 'Boom barrier', from: '₹59,000' },
       ],
       disclaimer:
-        'Indicative starting prices, installed. Final quote after a site survey — entrance width, traffic volume, access method, and integration all affect the total.',
+        'All prices exclude GST. Indicative starting price, installed — the final quote follows a free site survey, since entrance width, traffic volume, access method, and integration all affect the total.',
     },
     amc: {
       eyebrow: 'AMC & MAINTENANCE',

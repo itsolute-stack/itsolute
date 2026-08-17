@@ -16,7 +16,6 @@ import {
 } from '@/lib/content/copy/entranceAutomation'
 import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
-import { cn } from '@/lib/utils'
 
 export function generateStaticParams() {
   return getAllEntranceSlugs().map((slug) => ({ slug }))
@@ -173,45 +172,34 @@ export default async function EntranceProductPage({
       {/* Indicative pricing */}
       <Section theme="light">
         <Container>
-          <SectionHeader eyebrow={p.tiers.eyebrow} headline={p.tiers.headline} />
-          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">
-            {p.tiers.items.map((tier) => (
-              <div
-                key={tier.title}
-                className={cn(
-                  'flex flex-col gap-5 rounded-lg border bg-white p-8',
-                  tier.highlight
-                    ? 'border-[color:var(--color-electric)] shadow-[0_0_0_1px_var(--color-electric)]'
-                    : 'border-slate-200',
-                )}
-              >
-                {tier.highlight ? (
-                  <span className="self-start rounded-sm bg-[color:var(--color-electric)] px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-white">
-                    Most common
-                  </span>
-                ) : null}
-                <h3 className="text-2xl font-medium tracking-tight text-[color:var(--color-ink)]">
-                  {tier.title}
-                </h3>
-                <p className="font-mono text-xs uppercase tracking-widest text-[color:var(--color-electric)]">
-                  {tier.scope}
-                </p>
-                <p className="text-base text-slate-600 leading-relaxed">{tier.details}</p>
-                <p className="mt-2 font-mono text-3xl md:text-4xl font-medium tracking-tight text-[color:var(--color-ink)]">
-                  {tier.from}
-                  <span className="ml-2 font-sans text-sm font-normal text-slate-500">
-                    starting
-                  </span>
-                </p>
-                <Button asChild className="mt-auto" variant={tier.highlight ? 'primary' : 'secondary'}>
-                  <Link href={contactHref}>Request a site survey</Link>
-                </Button>
-              </div>
-            ))}
+          <SectionHeader eyebrow={p.pricing.eyebrow} headline={p.pricing.headline} />
+          <div className="mt-12 max-w-2xl">
+            <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+              <table className="w-full text-left">
+                <tbody>
+                  {p.pricing.rows.map((row, i) => (
+                    <tr key={row.label} className={i > 0 ? 'border-t border-slate-200' : ''}>
+                      <th
+                        scope="row"
+                        className="px-6 py-5 text-base md:text-lg font-normal text-[color:var(--color-ink)]"
+                      >
+                        {row.label}
+                      </th>
+                      <td className="whitespace-nowrap px-6 py-5 text-right font-mono text-lg md:text-xl font-medium tracking-tight text-[color:var(--color-ink)]">
+                        from {row.from}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-5 text-sm text-slate-500 leading-relaxed">
+              {p.pricing.disclaimer}
+            </p>
+            <Button asChild className="mt-6" variant="primary">
+              <Link href={contactHref}>Request a site survey</Link>
+            </Button>
           </div>
-          <p className="mt-8 max-w-2xl text-sm text-slate-500 leading-relaxed">
-            {p.tiers.disclaimer}
-          </p>
         </Container>
       </Section>
 

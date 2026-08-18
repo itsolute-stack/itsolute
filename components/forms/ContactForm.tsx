@@ -18,6 +18,7 @@ import {
 import { contactSchema, type ContactInput } from '@/lib/validation/contact'
 import { whatsappLink } from '@/lib/whatsapp'
 import { contactCopy } from '@/lib/content/copy/contact'
+import { trackLeadConversion } from '@/lib/gtag'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -54,6 +55,8 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
         setStatus('error')
         return
       }
+      // Genuine successful submission — fire the Google Ads lead conversion once.
+      trackLeadConversion()
       setStatus('success')
       reset()
     } catch {

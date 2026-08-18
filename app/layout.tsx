@@ -84,23 +84,24 @@ export default function RootLayout({
         </a>
         {children}
 
-        {/* Google tag (gtag.js) — Google Ads AW-18221570748 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18221570748"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-gtag"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-18221570748');
-            `,
-          }}
-        />
+        {/*
+          Google tag (gtag.js) — Google Ads AW-18221570748.
+          Production only, so local-dev testing never pollutes conversion data.
+        */}
+        {process.env.NODE_ENV === 'production' ? (
+          <>
+            <Script
+              src="https://www.googletagmanager.com/gtag/js?id=AW-18221570748"
+              strategy="afterInteractive"
+            />
+            <Script id="google-ads-gtag" strategy="afterInteractive">
+              {`window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'AW-18221570748');`}
+            </Script>
+          </>
+        ) : null}
 
         <Script
           id="org-schema"

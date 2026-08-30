@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRight, MessageCircle } from 'lucide-react'
@@ -25,6 +25,18 @@ type Status = 'idle' | 'submitting' | 'success' | 'error'
 export function ContactForm({ defaultService }: { defaultService?: string }) {
   const [status, setStatus] = useState<Status>('idle')
   const [serverError, setServerError] = useState<string | null>(null)
+  // Pre-filled WhatsApp link built from the visitor's own input, shown when the
+  // API fails so a broken submission becomes one click to reach us on WhatsApp.
+  const [fallbackWa, setFallbackWa] = useState<string | null>(null)
+  // Fire the lead conversion at most once per form, whether via email success
+  // or the WhatsApp fallback — so one lead never counts twice.
+  const conversionFired = useRef(false)
+
+  function fireConversionOnce() {
+    if (conversionFired.current) return
+    conversionFired.current = true
+    trackLeadConversion()
+  }
 
   const {
     register,
@@ -40,28 +52,33 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
 
   const service = watch('service')
 
+  function failToWhatsApp(values: ContactInput, message: string) {
+    setFallbackWa(whatsappLink(buildFallbackMessage(values)))
+    setServerError(message)
+    setStatus('error')
+  }
+
   async function onSubmit(values: ContactInput) {
     setStatus('submitting')
     setServerError(null)
+    setFallbackWa(null)
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
       })
-      const data = await res.json()
+      const data = await res.json().catch(() => ({}))
       if (!res.ok || !data.ok) {
-        setServerError(data.error ?? 'Something went wrong. Try WhatsApp instead.')
-        setStatus('error')
+        failToWhatsApp(values, 'We couldn’t send your message just now.')
         return
       }
       // Genuine successful submission — fire the Google Ads lead conversion once.
-      trackLeadConversion()
+      fireConversionOnce()
       setStatus('success')
       reset()
     } catch {
-      setServerError('Network error. Try WhatsApp instead.')
-      setStatus('error')
+      failToWhatsApp(values, 'We couldn’t reach the server just now.')
     }
   }
 
@@ -155,10 +172,24 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
         <input id="website" type="text" autoComplete="off" tabIndex={-1} {...register('website')} />
       </div>
 
-      {serverError ? (
-        <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-          {serverError}
-        </p>
+      {status === 'error' && fallbackWa ? (
+        <div className="flex flex-col gap-3 rounded-md border border-amber-300 bg-amber-50 px-4 py-4">
+          <p className="text-sm text-slate-700">
+            {serverError} No problem — send exactly what you wrote via WhatsApp in
+            one click, and we’ll pick it up there.
+          </p>
+          <Button asChild variant="primary" size="md" className="self-start">
+            <a
+              href={fallbackWa}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={fireConversionOnce}
+            >
+              <MessageCircle className="h-4 w-4" />
+              Send what you wrote on WhatsApp
+            </a>
+          </Button>
+        </div>
       ) : null}
 
       <div className="mt-2 flex flex-col sm:flex-row sm:items-center gap-4">
@@ -178,6 +209,25 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
       </div>
     </form>
   )
+}
+
+/**
+ * Build a WhatsApp message pre-filled with everything the visitor typed, so a
+ * failed email submission becomes a one-click handoff to WhatsApp with their
+ * enquiry intact.
+ */
+function buildFallbackMessage(v: ContactInput): string {
+  return [
+    'Hi ITSolute, I tried to send an enquiry on your website but it didn’t go through. Here’s what I wrote:',
+    '',
+    `Name: ${v.name}`,
+    `Business: ${v.business}`,
+    `Phone: +91 ${v.phone}`,
+    `Email: ${v.email}`,
+    `Service: ${v.service}`,
+    '',
+    `Message: ${v.message}`,
+  ].join('\n')
 }
 
 function Field({

@@ -13,6 +13,9 @@ type Props = {
   size?: 'sm' | 'md' | 'lg'
   label?: string
   className?: string
+  /** Optional click handler (e.g. conversion tracking). Only the callers that
+   *  pass it fire on click — every other WhatsApp button is unaffected. */
+  onClick?: () => void
 }
 
 export function WhatsAppButton({
@@ -21,6 +24,7 @@ export function WhatsAppButton({
   size = 'md',
   label = 'WhatsApp us',
   className,
+  onClick,
 }: Props) {
   const href = whatsappLink(message)
 
@@ -30,6 +34,7 @@ export function WhatsAppButton({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={onClick}
         aria-label="Chat with us on WhatsApp"
         className={cn(
           'fixed bottom-5 right-5 z-40 md:hidden',
@@ -52,7 +57,7 @@ export function WhatsAppButton({
       size={size}
       className={className}
     >
-      <a href={href} target="_blank" rel="noopener noreferrer">
+      <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick}>
         <MessageCircle className="h-4 w-4" />
         {label}
       </a>

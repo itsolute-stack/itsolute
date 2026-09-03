@@ -1,12 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Menu } from 'lucide-react'
 import { Container } from './Container'
 import { Logo } from '@/components/shared/Logo'
 import { Button } from '@/components/ui/button'
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
+import { trackWhatsAppClick } from '@/lib/gtag'
 import {
   Sheet,
   SheetContent,
@@ -20,6 +21,15 @@ import { cn } from '@/lib/utils'
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+
+  // Fire the "WhatsApp click" conversion once per click, guarded (like the lead
+  // conversion) so a re-render or a duplicate binding can't double-count.
+  const waClickFired = useRef(false)
+  function handleNavWhatsAppClick() {
+    if (waClickFired.current) return
+    waClickFired.current = true
+    trackWhatsAppClick()
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -53,7 +63,12 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:block">
-          <WhatsAppButton variant="primary" size="sm" label="WhatsApp us" />
+          <WhatsAppButton
+            variant="primary"
+            size="sm"
+            label="WhatsApp us"
+            onClick={handleNavWhatsAppClick}
+          />
         </div>
 
         <Sheet open={open} onOpenChange={setOpen}>
@@ -82,7 +97,7 @@ export function Navbar() {
                 ))}
               </div>
               <div className="mt-auto flex flex-col gap-3">
-                <WhatsAppButton variant="primary" size="lg" />
+                <WhatsAppButton variant="primary" size="lg" onClick={handleNavWhatsAppClick} />
                 <Button asChild variant="outlineDark" size="lg">
                   <Link href="/contact">Get a free audit</Link>
                 </Button>

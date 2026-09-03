@@ -1,6 +1,6 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
+import { FloatingWhatsApp } from '@/components/shared/FloatingWhatsApp'
 
 export default function MarketingLayout({
   children,
@@ -14,10 +14,7 @@ export default function MarketingLayout({
         {children}
       </main>
       <Footer />
-      <WhatsAppButton
-        variant="floating"
-        message="Hi ITSolute, I have a question."
-      />
+      <FloatingWhatsApp message="Hi ITSolute, I have a question." />
     </>
   )
 }

@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { Menu } from 'lucide-react'
 import { Container } from './Container'
+import { ServicesDropdown } from './ServicesDropdown'
 import { Logo } from '@/components/shared/Logo'
 import { Button } from '@/components/ui/button'
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
-import { trackWhatsAppClick } from '@/lib/gtag'
 import {
   Sheet,
   SheetContent,
@@ -15,7 +15,9 @@ import {
   SheetTrigger,
   SheetClose,
 } from '@/components/ui/sheet'
-import { primaryNav } from '@/lib/content/nav'
+import { primaryNav, secondaryNav } from '@/lib/content/nav'
+import { services } from '@/lib/content/services'
+import { trackWhatsAppClick } from '@/lib/gtag'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
@@ -50,7 +52,8 @@ export function Navbar() {
       <Container className="flex h-16 items-center justify-between md:h-20">
         <Logo theme="dark" size="md" />
 
-        <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
+        <nav className="hidden md:flex items-center gap-7" aria-label="Primary">
+          <ServicesDropdown />
           {primaryNav.map((link) => (
             <Link
               key={link.href}
@@ -83,21 +86,46 @@ export function Navbar() {
           </SheetTrigger>
           <SheetContent>
             <SheetTitle className="sr-only">Menu</SheetTitle>
-            <div className="flex h-full flex-col">
-              <div className="mt-12 flex flex-col gap-1">
-                {primaryNav.map((link) => (
+            <div className="flex h-full flex-col overflow-y-auto">
+              {/* Services — a flat grouped list, no nested accordion */}
+              <div className="mt-12">
+                <p className="font-mono text-xs uppercase tracking-[0.15em] text-[color:var(--color-accent)]">
+                  Services
+                </p>
+                <div className="mt-3 flex flex-col">
+                  {services.map((s) => (
+                    <SheetClose asChild key={s.slug}>
+                      <Link
+                        href={s.href}
+                        className="border-b border-white/10 py-3.5 text-lg font-medium tracking-tight text-white"
+                      >
+                        {s.title}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                </div>
+              </div>
+
+              {/* Everything else */}
+              <div className="mt-8 flex flex-col">
+                {secondaryNav.map((link) => (
                   <SheetClose asChild key={link.href}>
                     <Link
                       href={link.href}
-                      className="border-b border-white/10 py-5 text-2xl font-medium tracking-tight text-white"
+                      className="border-b border-white/10 py-4 text-xl font-medium tracking-tight text-white"
                     >
                       {link.label}
                     </Link>
                   </SheetClose>
                 ))}
               </div>
-              <div className="mt-auto flex flex-col gap-3">
-                <WhatsAppButton variant="primary" size="lg" onClick={handleNavWhatsAppClick} />
+
+              <div className="mt-auto flex flex-col gap-3 pt-8 pb-2">
+                <WhatsAppButton
+                  variant="primary"
+                  size="lg"
+                  onClick={handleNavWhatsAppClick}
+                />
                 <Button asChild variant="outlineDark" size="lg">
                   <Link href="/contact">Get a free audit</Link>
                 </Button>

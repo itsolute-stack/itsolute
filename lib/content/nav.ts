@@ -5,12 +5,27 @@ export type NavLink = { label: string; href: string }
  * items (not buried under a Services dropdown) so they earn SEO surface for
  * "laptop dealer Kottayam" and "laptop repair Kottayam" searches.
  */
+/**
+ * Desktop top-level links, shown beside the Services dropdown.
+ * Hardware and Laptop Care stay top-level (highest-revenue pages) as well as
+ * appearing inside the dropdown; the dropdown itself is driven by services.ts
+ * so new services appear automatically.
+ */
 export const primaryNav: NavLink[] = [
   { label: 'Hardware', href: '/hardware' },
   { label: 'Laptop Care', href: '/laptop-care' },
-  { label: 'Software', href: '/software' },
-  { label: 'Networking', href: '/networking' },
-  { label: 'Automation', href: '/automation' },
+  { label: 'Connect', href: '/connect' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+]
+
+/**
+ * Mobile sheet: the non-service links shown after the grouped Services list.
+ * Hardware and Laptop Care are omitted here because they already appear in the
+ * Services group above — no duplicates in the mobile menu.
+ */
+export const secondaryNav: NavLink[] = [
   { label: 'Connect', href: '/connect' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },

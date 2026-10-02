@@ -16,7 +16,13 @@ import {
   entranceAmcBlock,
   ENTRANCE_PRICE_NOTE,
 } from '@/lib/content/copy/entranceDistricts'
-import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
+import { VideoEmbed } from '@/components/shared/VideoEmbed'
+import {
+  serviceSchema,
+  faqSchema,
+  breadcrumbSchema,
+  videoObjectSchema,
+} from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
 
 const CONTACT_HREF = '/contact?service=entrance-automation'
@@ -225,6 +231,9 @@ export function EntranceDistrictPage({ slug }: { slug: string }) {
         </Container>
       </Section>
 
+      {/* Optional video */}
+      {d.video ? <VideoEmbed video={d.video} /> : null}
+
       <FAQ
         eyebrow={`${d.district.toUpperCase()} · FAQ`}
         headline={`Questions from ${d.district} customers.`}
@@ -259,6 +268,16 @@ export function EntranceDistrictPage({ slug }: { slug: string }) {
           ),
         }}
       />
+      {d.video ? (
+        <Script
+          id={`entrance-district-video-${d.slug}`}
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(videoObjectSchema(d.video)),
+          }}
+        />
+      ) : null}
       <Script
         id={`entrance-district-faq-${d.slug}`}
         type="application/ld+json"

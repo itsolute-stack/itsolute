@@ -1,4 +1,5 @@
 import type { FAQ } from '@/lib/content/faqs'
+import type { PageVideo } from '@/components/shared/VideoEmbed'
 
 /**
  * District landing pages for entrance automation (automatic gates + boom
@@ -136,6 +137,8 @@ export type EntranceDistrict = {
   angle: { eyebrow: string; headline: string; paragraphs: string[] }
   towns: string[]
   faqs: FAQ[]
+  /** Optional YouTube video. Leave undefined and nothing renders. */
+  video?: PageVideo
 }
 
 export const entranceDistricts: Record<string, EntranceDistrict> = {

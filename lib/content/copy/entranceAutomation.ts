@@ -15,6 +15,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import type { FAQ } from '@/lib/content/faqs'
+import type { PageVideo } from '@/components/shared/VideoEmbed'
 
 /**
  * Entrance Automation — physical access automation (automatic gates + boom
@@ -126,7 +127,8 @@ export const entranceHubFAQs: FAQ[] = [
   },
 ]
 
-export type EntrancePriceRow = { label: string; from: string }
+/** `from` is the display string; `minPrice` is the same figure for Offer schema. */
+export type EntrancePriceRow = { label: string; from: string; minPrice: number }
 
 export type EntranceProduct = {
   slug: string
@@ -153,14 +155,19 @@ export type EntranceProduct = {
   pricing: { eyebrow: string; headline: string; rows: EntrancePriceRow[]; disclaimer: string }
   amc: { eyebrow: string; headline: string; body: string; points: string[] }
   faqs: FAQ[]
+  /** Optional "automate the gate you already have" section (gates page). */
+  retrofit?: { eyebrow: string; headline: string; body: string; points: string[] }
+  /** Optional YouTube video. Leave undefined and nothing renders. */
+  video?: PageVideo
 }
 
 export const entranceProducts: Record<string, EntranceProduct> = {
   'automatic-gates': {
     slug: 'automatic-gates',
-    metaTitle: 'Automatic Gate Installation in Kottayam & Kerala | Sliding & Swing | ITSolute',
+    metaTitle:
+      'Automatic Gate Installation in Kottayam & Kerala — Sliding, Swing, Roller | ITSolute',
     metaDescription:
-      'Automatic gate installation across Kerala — sliding and swing gate motors with remote, keypad, and RFID access, safety sensors, and battery backup. Free site survey, GST invoicing, AMC.',
+      'Automatic gate installation from ₹40,000 — sliding, swing and roller gates with safety sensors, battery backup and RFID access. Free site survey across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
     serviceName: 'Automatic Gate Installation',
     serviceType: 'Automatic Gate Installation',
     priceLow: '40000',
@@ -225,13 +232,25 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       eyebrow: 'INDICATIVE PRICING',
       headline: 'Gate automation pricing, by gate type.',
       rows: [
-        { label: 'Swing gate — single-arm', from: '₹55,000' },
-        { label: 'Swing gate — two-arm', from: '₹75,000' },
-        { label: 'Sliding gate', from: '₹40,000' },
-        { label: 'Roller gate', from: '₹48,000' },
+        { label: 'Sliding gate', from: '₹40,000', minPrice: 40000 },
+        { label: 'Roller gate', from: '₹48,000', minPrice: 48000 },
+        { label: 'Swing gate — single-arm', from: '₹55,000', minPrice: 55000 },
+        { label: 'Swing gate — two-arm', from: '₹75,000', minPrice: 75000 },
       ],
       disclaimer:
         'All prices exclude GST. Indicative starting prices, installed — the final quote follows a free site survey, since gate size and weight, motor type, access method, and wiring runs all affect the total.',
+    },
+    retrofit: {
+      eyebrow: 'RETROFIT',
+      headline: 'Already have a gate? We can automate it.',
+      body: 'Most of what we do is motorising gates that are already there — you very rarely need a new gate to get an automatic one. At the free site survey we check whether yours is a good candidate, and we’ll tell you honestly if it isn’t rather than bolting a motor onto a gate that will fight it.',
+      points: [
+        'Sliding, swing and roller gates can all usually be retrofitted',
+        'We check weight, travel and the condition of hinges, track and rollers first',
+        'A gate that drags or sags gets corrected before the motor goes on — otherwise the motor takes the strain',
+        'Retrofitting is normally far cheaper than replacing a sound gate',
+        'Safety sensors and battery backup are fitted as standard, same as a new install',
+      ],
     },
     amc: {
       eyebrow: 'AMC & MAINTENANCE',
@@ -275,9 +294,9 @@ export const entranceProducts: Record<string, EntranceProduct> = {
 
   'boom-barriers': {
     slug: 'boom-barriers',
-    metaTitle: 'Boom Barrier Installation in Kottayam & Kerala | RFID & FASTag | ITSolute',
+    metaTitle: 'Boom Barrier Installation in Kottayam & Kerala | ITSolute',
     metaDescription:
-      'Boom barrier installation across Kerala — for car parks, apartments, offices, and commercial entrances. RFID/FASTag access, loop detectors, CCTV integration, battery backup. Free survey, AMC.',
+      'Boom barrier installation from ₹59,000 for apartments, offices and commercial parking — RFID access, loop detectors and battery backup. Free site survey across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
     serviceName: 'Boom Barrier Installation',
     serviceType: 'Boom Barrier Installation',
     priceLow: '59000',
@@ -342,7 +361,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       eyebrow: 'INDICATIVE PRICING',
       headline: 'Boom barrier pricing.',
       rows: [
-        { label: 'Boom barrier', from: '₹59,000' },
+        { label: 'Boom barrier', from: '₹59,000', minPrice: 59000 },
       ],
       disclaimer:
         'All prices exclude GST. Indicative starting price, installed — the final quote follows a free site survey, since entrance width, traffic volume, access method, and integration all affect the total.',

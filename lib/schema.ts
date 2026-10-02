@@ -113,6 +113,67 @@ export function serviceSchema(opts: {
   return base
 }
 
+/**
+ * Product/Offer markup for pages that list several priced variants (the gate
+ * types, the boom barrier). Prices are "from" figures excluding GST, so each
+ * Offer carries a priceSpecification with `minPrice` and
+ * `valueAddedTaxIncluded: false` rather than a flat `price`.
+ *
+ * Deliberately no aggregateRating/review — we don't publish self-issued ratings.
+ */
+export function productOffersSchema(opts: {
+  pageSlug: string
+  listName: string
+  items: { name: string; description: string; minPrice: number }[]
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: opts.listName,
+    itemListElement: opts.items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Product',
+        name: item.name,
+        description: item.description,
+        url: `${SITE_URL}/${opts.pageSlug}`,
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'INR',
+          availability: 'https://schema.org/InStock',
+          seller: { '@id': LOCAL_BUSINESS_ID },
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            priceCurrency: 'INR',
+            minPrice: item.minPrice,
+            valueAddedTaxIncluded: false,
+          },
+        },
+      },
+    })),
+  }
+}
+
+export function videoObjectSchema(v: {
+  youtubeId: string
+  title: string
+  description: string
+  uploadDate: string
+  thumbnailUrl?: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: v.title,
+    description: v.description,
+    uploadDate: v.uploadDate,
+    thumbnailUrl:
+      v.thumbnailUrl ?? `https://i.ytimg.com/vi/${v.youtubeId}/maxresdefault.jpg`,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${v.youtubeId}`,
+  }
+}
+
 export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     '@context': 'https://schema.org',

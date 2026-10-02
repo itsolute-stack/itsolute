@@ -63,7 +63,19 @@ export default function HomePage() {
         image={images.laptopCareFeature}
       />
 
-      {/* Feature row 3 — Automation (light, image right) */}
+      {/* Feature row 3 — Entrance Automation (dark, image left) */}
+      <FeatureRow
+        theme="dark"
+        imageSide="left"
+        eyebrow={homeCopy.featuredEntrance.eyebrow}
+        headline={homeCopy.featuredEntrance.headline}
+        body={homeCopy.featuredEntrance.body}
+        note={homeCopy.featuredEntrance.note}
+        cta={{ label: homeCopy.featuredEntrance.cta, href: '/entrance-automation' }}
+        image={images.entranceFeature}
+      />
+
+      {/* Feature row 4 — Automation (light, image right) */}
       <FeatureRow
         theme="light"
         imageSide="right"

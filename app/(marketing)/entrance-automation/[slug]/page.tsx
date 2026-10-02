@@ -15,7 +15,14 @@ import {
   getAllEntranceSlugs,
 } from '@/lib/content/copy/entranceAutomation'
 import { entranceDistricts } from '@/lib/content/copy/entranceDistricts'
-import { serviceSchema, faqSchema, breadcrumbSchema } from '@/lib/schema'
+import { VideoEmbed } from '@/components/shared/VideoEmbed'
+import {
+  serviceSchema,
+  faqSchema,
+  breadcrumbSchema,
+  productOffersSchema,
+  videoObjectSchema,
+} from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
 
 export function generateStaticParams() {
@@ -204,6 +211,47 @@ export default async function EntranceProductPage({
         </Container>
       </Section>
 
+      {/* Retrofit — only on pages that define it (gates) */}
+      {p.retrofit ? (
+        <Section theme="dark">
+          <Container>
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <SectionHeader
+                  eyebrow={p.retrofit.eyebrow}
+                  headline={p.retrofit.headline}
+                  theme="dark"
+                />
+                <p className="mt-6 text-base md:text-lg text-slate-300 leading-relaxed">
+                  {p.retrofit.body}
+                </p>
+                <Button asChild className="mt-8" variant="primary">
+                  <Link href={contactHref}>Book a free site survey</Link>
+                </Button>
+              </div>
+              <ul className="lg:col-span-7 flex flex-col gap-3">
+                {p.retrofit.points.map((point) => (
+                  <li
+                    key={point}
+                    className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.02] p-5"
+                  >
+                    <Check
+                      aria-hidden
+                      className="mt-0.5 h-5 w-5 shrink-0 text-[color:var(--color-accent)]"
+                      strokeWidth={2.5}
+                    />
+                    <span className="text-base text-slate-200 leading-relaxed">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Container>
+        </Section>
+      ) : null}
+
+      {/* Optional video */}
+      {p.video ? <VideoEmbed video={p.video} /> : null}
+
       {/* AMC */}
       <Section theme="cream">
         <Container>
@@ -290,6 +338,34 @@ export default async function EntranceProductPage({
           ),
         }}
       />
+      <Script
+        id={`entrance-offers-schema-${slug}`}
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            productOffersSchema({
+              pageSlug: `entrance-automation/${slug}`,
+              listName: p.pricing.headline,
+              items: p.pricing.rows.map((row) => ({
+                name: `${row.label} — ${p.serviceName}`,
+                description: `${row.label} installed by ITSolute across Kerala, with safety sensors and battery backup as standard. Starting price excludes GST.`,
+                minPrice: row.minPrice,
+              })),
+            }),
+          ),
+        }}
+      />
+      {p.video ? (
+        <Script
+          id={`entrance-video-schema-${slug}`}
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(videoObjectSchema(p.video)),
+          }}
+        />
+      ) : null}
       <Script
         id={`entrance-faq-schema-${slug}`}
         type="application/ld+json"

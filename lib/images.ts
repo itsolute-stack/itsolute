@@ -43,6 +43,13 @@ export const images = {
     alt: 'Repair workshop with components and tools',
     intent: 'ITSolute Kottayam workshop interior — repair bench, parts shelf, branded',
   },
+  entranceFeature: {
+    // Real local asset (not an Unsplash placeholder).
+    src: '/images/entrance-automation/hub.png',
+    alt: 'Automatic gate and boom barrier entrance automation',
+    intent:
+      'Automatic gate or boom barrier at a Kerala property — swap for a real ITSolute install photo when available',
+  },
   automationFeature: {
     src: u('photo-1551288049-bebda4e38f71'),
     alt: 'Analytics dashboard on a laptop screen',

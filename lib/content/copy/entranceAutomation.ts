@@ -56,6 +56,11 @@ export const entranceHubCopy = {
       },
     ],
   },
+  areas: {
+    eyebrow: 'AREAS WE SERVE',
+    headline: 'Entrance automation across central Kerala.',
+    sub: 'We install and service gates and boom barriers district-wide. Pick yours for local pricing, the towns we cover and answers specific to that area.',
+  },
   why: {
     eyebrow: 'WHY ITSOLUTE',
     headline: 'A motor is easy to fit. Making it safe and connected is the job.',

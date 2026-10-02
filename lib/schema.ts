@@ -77,6 +77,12 @@ export function serviceSchema(opts: {
   slug: string
   serviceType?: string
   priceRange?: { low: string; high: string; currency?: string }
+  /**
+   * Override the default sitewide `areaServed` (every service area as a City).
+   * District pages pass an AdministrativeArea for the district plus City
+   * entries for the towns they actually cover.
+   */
+  areaServed?: { '@type': string; name: string }[]
 }) {
   const base = {
     '@context': 'https://schema.org',
@@ -85,10 +91,12 @@ export function serviceSchema(opts: {
     description: opts.description,
     serviceType: opts.serviceType ?? opts.name,
     provider: { '@id': LOCAL_BUSINESS_ID },
-    areaServed: SITE.serviceAreas.map((area) => ({
-      '@type': 'City',
-      name: area,
-    })),
+    areaServed:
+      opts.areaServed ??
+      SITE.serviceAreas.map((area) => ({
+        '@type': 'City',
+        name: area,
+      })),
     url: `${SITE_URL}/${opts.slug}`,
   }
   if (opts.priceRange) {

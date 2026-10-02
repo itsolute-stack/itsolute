@@ -98,6 +98,20 @@ export default function KottayamPage() {
               )
             })}
           </div>
+
+          <div className="mt-10 flex flex-col gap-4 rounded-lg border border-white/10 bg-white/[0.02] p-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-base text-slate-300 leading-relaxed">
+              Automating a gate or fitting a boom barrier in Kottayam? We cover the
+              whole district, from Ettumanoor and Pala to Changanassery.
+            </p>
+            <Link
+              href="/entrance-automation/kottayam"
+              className="group inline-flex shrink-0 items-center gap-2 text-base font-medium text-white hover:text-[color:var(--color-accent)] transition-colors"
+            >
+              Entrance automation in Kottayam
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
         </Container>
       </Section>
 

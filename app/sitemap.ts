@@ -3,6 +3,7 @@ import { SITE_URL } from '@/lib/content/site'
 import { getAllPostSlugs } from '@/lib/blog'
 import { getAllIndustrySlugs } from '@/lib/content/copy/industries'
 import { getAllEntranceSlugs } from '@/lib/content/copy/entranceAutomation'
+import { getAllEntranceDistrictSlugs } from '@/lib/content/copy/entranceDistricts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -60,6 +61,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
+  const entranceDistrictPages = getAllEntranceDistrictSlugs().map((slug) => ({
+    url: `${base}/entrance-automation/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }))
+
   return [
     ...staticRoutes.map((r) => ({
       url: `${base}${r.path}`,
@@ -68,6 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: r.priority,
     })),
     ...entrancePages,
+    ...entranceDistrictPages,
     ...industryPages,
     ...blogPosts,
   ]

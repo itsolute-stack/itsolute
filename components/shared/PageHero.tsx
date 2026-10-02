@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/layout/Container'
 import { Eyebrow } from '@/components/shared/Eyebrow'
 import { DotGrid } from '@/components/shared/DotGrid'
+import { PlaceholderImage } from '@/components/shared/PlaceholderImage'
 import { Button } from '@/components/ui/button'
 import { whatsappLink } from '@/lib/whatsapp'
 import { easeOutQuart } from '@/lib/motion'
@@ -23,8 +24,13 @@ type Props = {
    * (text left, image right on desktop), mirroring the home Hero. When omitted,
    * the hero is the single-column text layout used across all other pages —
    * those callers are unchanged.
+   *
+   * Pass `intent` when the real photo may not exist yet: the image then renders
+   * through PlaceholderImage, which falls back to a styled block (plus a dev
+   * TODO chip) instead of a broken image, and upgrades automatically once the
+   * file is dropped in.
    */
-  image?: { src: string; alt: string }
+  image?: { src: string; alt: string; intent?: string }
 }
 
 export function PageHero({
@@ -99,16 +105,30 @@ export function PageHero({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: easeOutQuart }}
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-white/10">
-                <Image
+              {image.intent ? (
+                <PlaceholderImage
                   src={image.src}
                   alt={image.alt}
+                  intent={image.intent}
+                  width={1200}
+                  height={900}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
                   priority
+                  className="aspect-[4/3] w-full rounded-lg border border-white/10"
                 />
-              </div>
+              ) : (
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-white/10">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              )}
             </motion.div>
           </div>
         ) : (

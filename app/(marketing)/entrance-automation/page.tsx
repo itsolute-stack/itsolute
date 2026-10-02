@@ -8,6 +8,7 @@ import { PageHero } from '@/components/shared/PageHero'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { FAQ } from '@/components/home/FAQ'
 import { entranceHubCopy, entranceHubFAQs } from '@/lib/content/copy/entranceAutomation'
+import { entranceDistricts } from '@/lib/content/copy/entranceDistricts'
 import {
   serviceSchema,
   faqSchema,
@@ -82,6 +83,37 @@ export default function EntranceAutomationPage() {
                 <p className="text-base text-slate-300 leading-relaxed">{product.blurb}</p>
                 <span className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white group-hover:text-[color:var(--color-accent)] transition-colors">
                   Explore {product.title}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Areas we serve — district landing pages */}
+      <Section theme="light">
+        <Container>
+          <SectionHeader
+            eyebrow={entranceHubCopy.areas.eyebrow}
+            headline={entranceHubCopy.areas.headline}
+            sub={entranceHubCopy.areas.sub}
+          />
+          <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+            {Object.values(entranceDistricts).map((d) => (
+              <Link
+                key={d.slug}
+                href={`/entrance-automation/${d.slug}`}
+                className="group flex flex-col gap-3 rounded-lg border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-[color:var(--color-electric)]"
+              >
+                <h3 className="text-xl font-medium tracking-tight text-[color:var(--color-ink)]">
+                  {d.district}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {d.towns.slice(0, 4).join(' · ')} and more
+                </p>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-medium text-[color:var(--color-electric)]">
+                  Gates &amp; barriers in {d.district}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>

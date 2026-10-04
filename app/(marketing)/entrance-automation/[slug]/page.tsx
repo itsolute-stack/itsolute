@@ -16,6 +16,7 @@ import {
 } from '@/lib/content/copy/entranceAutomation'
 import { entranceDistricts } from '@/lib/content/copy/entranceDistricts'
 import { VideoEmbed } from '@/components/shared/VideoEmbed'
+import { RelatedGuides } from '@/components/shared/RelatedGuides'
 import {
   serviceSchema,
   faqSchema,
@@ -306,6 +307,16 @@ export default async function EntranceProductPage({
           </div>
         </Container>
       </Section>
+
+      {/* Guides — per-product picks from entranceAutomation.ts */}
+      <RelatedGuides
+        cluster="entrance-automation"
+        slugs={p.guides}
+        limit={6}
+        theme="cream"
+        eyebrow="GUIDES"
+        headline="Read before you buy."
+      />
 
       {/* FAQ */}
       <FAQ

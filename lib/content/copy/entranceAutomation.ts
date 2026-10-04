@@ -155,6 +155,8 @@ export type EntranceProduct = {
   pricing: { eyebrow: string; headline: string; rows: EntrancePriceRow[]; disclaimer: string }
   amc: { eyebrow: string; headline: string; body: string; points: string[] }
   faqs: FAQ[]
+  /** Blog guides to surface on this product page, as post slugs, in order. */
+  guides: string[]
   /** Optional "automate the gate you already have" section (gates page). */
   retrofit?: { eyebrow: string; headline: string; body: string; points: string[] }
   /** Optional YouTube video. Leave undefined and nothing renders. */
@@ -173,6 +175,14 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     priceLow: '40000',
     priceHigh: '200000',
     whatsappMessage: 'Hi ITSolute, I want to automate my gate (sliding / swing).',
+    guides: [
+      'automatic-gate-price-kerala',
+      'sliding-vs-swing-gate-kerala',
+      'automate-existing-gate-retrofit',
+      'automatic-gate-safety-sensors',
+      'automatic-gate-power-cut-battery-backup',
+      'automatic-gate-not-working-troubleshooting',
+    ],
     hero: {
       eyebrow: 'AUTOMATIC GATES · KOTTAYAM & KERALA',
       headline: 'Never get out of the car to open the gate again.',
@@ -302,6 +312,11 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     priceLow: '59000',
     priceHigh: '150000',
     whatsappMessage: 'Hi ITSolute, I want to install a boom barrier.',
+    guides: [
+      'boom-barrier-price-kerala',
+      'apartment-gate-automation-kerala',
+      'rfid-vs-remote-gate-access',
+    ],
     hero: {
       eyebrow: 'BOOM BARRIERS · KOTTAYAM & KERALA',
       headline: 'Control vehicle access without a guard at the gate.',

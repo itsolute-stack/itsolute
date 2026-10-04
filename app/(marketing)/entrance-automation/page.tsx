@@ -5,6 +5,7 @@ import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionHeader } from '@/components/shared/SectionHeader'
 import { PageHero } from '@/components/shared/PageHero'
+import { RelatedGuides } from '@/components/shared/RelatedGuides'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { FAQ } from '@/components/home/FAQ'
 import { entranceHubCopy, entranceHubFAQs } from '@/lib/content/copy/entranceAutomation'
@@ -146,6 +147,27 @@ export default function EntranceAutomationPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Guides — picked, not newest-first: the two price guides are the
+          cornerstone pages of this cluster and are also its oldest posts, so
+          a date-ordered fallback would bury exactly what the hub should lead
+          with. Order here is pricing, then choosing, then trust. */}
+      <RelatedGuides
+        cluster="entrance-automation"
+        slugs={[
+          'automatic-gate-price-kerala',
+          'boom-barrier-price-kerala',
+          'sliding-vs-swing-gate-kerala',
+          'automate-existing-gate-retrofit',
+          'automatic-gate-safety-sensors',
+          'apartment-gate-automation-kerala',
+        ]}
+        limit={6}
+        theme="light"
+        eyebrow="GUIDES"
+        headline="Read before you buy."
+        sub="Honest pricing, what's included as standard, and the questions worth asking any installer."
+      />
 
       <FAQ
         eyebrow={entranceHubCopy.faq.eyebrow}

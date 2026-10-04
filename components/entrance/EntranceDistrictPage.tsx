@@ -17,6 +17,7 @@ import {
   ENTRANCE_PRICE_NOTE,
 } from '@/lib/content/copy/entranceDistricts'
 import { VideoEmbed } from '@/components/shared/VideoEmbed'
+import { RelatedGuides } from '@/components/shared/RelatedGuides'
 import {
   serviceSchema,
   faqSchema,
@@ -233,6 +234,15 @@ export function EntranceDistrictPage({ slug }: { slug: string }) {
 
       {/* Optional video */}
       {d.video ? <VideoEmbed video={d.video} /> : null}
+
+      {/* Guides — picked per district so this isn't one shared list ×4 */}
+      <RelatedGuides
+        cluster="entrance-automation"
+        slugs={d.guides}
+        theme="light"
+        eyebrow="BEFORE YOU DECIDE"
+        headline={`Guides worth reading if you're in ${d.district}.`}
+      />
 
       <FAQ
         eyebrow={`${d.district.toUpperCase()} · FAQ`}

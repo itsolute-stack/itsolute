@@ -137,6 +137,13 @@ export type EntranceDistrict = {
   angle: { eyebrow: string; headline: string; paragraphs: string[] }
   towns: string[]
   faqs: FAQ[]
+  /**
+   * Blog guides to surface on this district page, as post slugs. Picked per
+   * district to reinforce that district's own angle — coastal maintenance for
+   * Alappuzha, shared-entrance access for Ernakulam — so the block doesn't
+   * become one shared list repeated four times.
+   */
+  guides: string[]
   /** Optional YouTube video. Leave undefined and nothing renders. */
   video?: PageVideo
 }
@@ -149,6 +156,11 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     metaDescription:
       'Automatic gate and boom barrier installation across Kottayam — sliding, swing and roller gates from ₹40,000, boom barriers from ₹59,000. Free site survey in Ettumanoor, Pala and Changanassery.',
     whatsappMessage: 'Hi ITSolute, I want a gate or boom barrier automated in Kottayam.',
+    guides: [
+      'automatic-gate-price-kerala',
+      'automate-existing-gate-retrofit',
+      'automatic-gate-maintenance-amc-kerala',
+    ],
     hero: {
       eyebrow: 'ENTRANCE AUTOMATION · KOTTAYAM',
       headline: 'Automatic Gate & Boom Barrier Installation in Kottayam',
@@ -205,6 +217,11 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     metaDescription:
       'Boom barrier and automatic gate installation across Ernakulam — barriers from ₹59,000, gates from ₹40,000. RFID access for residents and staff. Free site survey in Kakkanad, Edappally and Aluva.',
     whatsappMessage: 'Hi ITSolute, I want a boom barrier or gate automated in Ernakulam.',
+    guides: [
+      'apartment-gate-automation-kerala',
+      'rfid-vs-remote-gate-access',
+      'boom-barrier-price-kerala',
+    ],
     hero: {
       eyebrow: 'ENTRANCE AUTOMATION · ERNAKULAM',
       headline: 'Automatic Gate & Boom Barrier Installation in Ernakulam',
@@ -261,6 +278,11 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     metaDescription:
       'Automatic gate installation across Pathanamthitta — sliding, swing and roller gates from ₹40,000, boom barriers from ₹59,000. App access and battery backup. Free survey in Thiruvalla, Adoor and Ranni.',
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Pathanamthitta.',
+    guides: [
+      'automatic-gate-power-cut-battery-backup',
+      'rfid-vs-remote-gate-access',
+      'automatic-gate-not-working-troubleshooting',
+    ],
     hero: {
       eyebrow: 'ENTRANCE AUTOMATION · PATHANAMTHITTA',
       headline: 'Automatic Gate & Boom Barrier Installation in Pathanamthitta',
@@ -315,6 +337,11 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     metaDescription:
       'Automatic gate and boom barrier installation across Alappuzha — gates from ₹40,000, barriers from ₹59,000. Weather-sealed motors for coastal humidity. Free survey in Cherthala and Kayamkulam.',
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Alappuzha.',
+    guides: [
+      'automatic-gate-maintenance-amc-kerala',
+      'automatic-gate-not-working-troubleshooting',
+      'sliding-vs-swing-gate-kerala',
+    ],
     hero: {
       eyebrow: 'ENTRANCE AUTOMATION · ALAPPUZHA',
       headline: 'Automatic Gate & Boom Barrier Installation in Alappuzha',

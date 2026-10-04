@@ -48,14 +48,20 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     ],
   },
   {
+    /**
+     * Labels and slugs mirror `industries` in lib/content/industries.ts, which
+     * is what generates these /industries/[slug] pages — keep the two in step.
+     * Not imported from there on purpose: nav.ts is also pulled into the client
+     * bundle by Navbar, and industries.ts carries Lucide icon references.
+     */
     heading: 'Industries',
     links: [
-      { label: 'Clinics & Healthcare', href: '/#industries' },
-      { label: 'Schools & Colleges', href: '/#industries' },
-      { label: 'CA & Law Firms', href: '/#industries' },
-      { label: 'Real Estate', href: '/#industries' },
-      { label: 'Retail & Restaurants', href: '/#industries' },
-      { label: 'Logistics', href: '/#industries' },
+      { label: 'Clinics & Healthcare', href: '/industries/clinics' },
+      { label: 'Schools & Colleges', href: '/industries/schools' },
+      { label: 'CA & Law Firms', href: '/industries/professional-services' },
+      { label: 'Real Estate', href: '/industries/real-estate' },
+      { label: 'Retail & Restaurants', href: '/industries/retail' },
+      { label: 'Logistics', href: '/industries/logistics' },
     ],
   },
   {

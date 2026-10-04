@@ -279,9 +279,9 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       'Automatic gate installation across Pathanamthitta — sliding, swing and roller gates from ₹40,000, boom barriers from ₹59,000. App access and battery backup. Free survey in Thiruvalla, Adoor and Ranni.',
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Pathanamthitta.',
     guides: [
+      'automatic-gate-nri-homes-kerala',
       'automatic-gate-power-cut-battery-backup',
       'rfid-vs-remote-gate-access',
-      'automatic-gate-not-working-troubleshooting',
     ],
     hero: {
       eyebrow: 'ENTRANCE AUTOMATION · PATHANAMTHITTA',

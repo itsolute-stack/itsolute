@@ -72,6 +72,15 @@ export const clusters = {
     hubUrl: '/cctv',
     hubLabel: 'See CCTV services',
   },
+  'entrance-automation': {
+    slug: 'entrance-automation',
+    name: 'Entrance automation',
+    shortName: 'Gates',
+    description:
+      'Automatic gates, boom barriers, access control, and gate safety for Kerala homes and businesses.',
+    hubUrl: '/entrance-automation',
+    hubLabel: 'See entrance automation',
+  },
 } as const satisfies Record<string, Cluster>
 
 export type ClusterSlug = keyof typeof clusters

@@ -12,11 +12,15 @@ import { fadeUp, inView, stagger } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 export function ServicesBento() {
-  const hardware = services.find((s) => s.slug === 'hardware')!
-  const software = services.find((s) => s.slug === 'software')!
-  const laptopCare = services.find((s) => s.slug === 'laptop-care')!
-  const networking = services.find((s) => s.slug === 'networking')!
-  const automation = services.find((s) => s.slug === 'automation')!
+  const pick = (slug: string) => services.find((s) => s.slug === slug)!
+  const hardware = pick('hardware')
+  const software = pick('software')
+  const laptopCare = pick('laptop-care')
+  const networking = pick('networking')
+  const automation = pick('automation')
+  const cctv = pick('cctv')
+  const entrance = pick('entrance-automation')
+  const amc = pick('amc')
 
   return (
     <Section theme="dark" id="services">
@@ -28,7 +32,7 @@ export function ServicesBento() {
         />
 
         <motion.div
-          className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-[auto_auto_auto] lg:gap-5"
+          className="mt-16 grid grid-cols-1 gap-4 md:auto-rows-auto md:grid-cols-3 lg:gap-5"
           initial="initial"
           whileInView="animate"
           viewport={inView}
@@ -49,14 +53,25 @@ export function ServicesBento() {
             <BentoCard service={laptopCare} />
           </motion.div>
 
-          {/* Cell 4 — Networking (bottom, spans 2 cols) */}
+          {/* Cell 4 — Networking (spans 2 cols) */}
           <motion.div variants={fadeUp} className="md:col-span-2">
             <BentoCard service={networking} wide />
           </motion.div>
 
-          {/* Cell 5 — Automation (bottom right) */}
+          {/* Cell 5 — Automation */}
           <motion.div variants={fadeUp}>
             <BentoCard service={automation} />
+          </motion.div>
+
+          {/* Cells 6–8 — CCTV, Entrance Automation, AMC: one row of three */}
+          <motion.div variants={fadeUp}>
+            <BentoCard service={cctv} />
+          </motion.div>
+          <motion.div variants={fadeUp}>
+            <BentoCard service={entrance} />
+          </motion.div>
+          <motion.div variants={fadeUp}>
+            <BentoCard service={amc} />
           </motion.div>
         </motion.div>
       </Container>

@@ -14,8 +14,12 @@ export const homeFAQs: FAQ[] = [
     a: 'Everything common in a business environment — screen replacements, keyboard and battery swaps, SSD/RAM upgrades, data recovery, virus and malware cleanup, OS reinstalls, charging port and motherboard work. We service HP, Dell, Lenovo, Asus, Acer, MSI, Apple, Microsoft Surface, Samsung and LG. Most repairs are ready in 24–72 hours.',
   },
   {
-    q: 'Are you an authorised Microsoft, Zoho, or Google Workspace partner?',
-    a: 'Yes — we work as authorised resellers and implementation partners for Microsoft 365, Google Workspace, and Zoho One. That means you get proper licensing, vendor-backed support escalation, and configuration guidance — not just a key emailed to you.',
+    q: 'Which software do you supply and set up?',
+    a: 'Microsoft 365, Google Workspace, Tally, and antivirus. We handle licensing, setup, migration from whatever you are on now, and training for your team — licensing, migration, and configuration done properly, not just a key emailed to you.',
+  },
+  {
+    q: 'Do you work with homes or only businesses?',
+    a: 'Both. For homes we supply laptops, handle repairs, and install CCTV and automatic gates — including sliding, swing and roller gates. For businesses we do the full range: hardware, software, office WiFi, CCTV, entrance automation, and AMC contracts with a written scope and response time.',
   },
   {
     q: 'Do you serve all of Kerala, or only specific districts?',

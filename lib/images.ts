@@ -53,7 +53,7 @@ export const images = {
   automationFeature: {
     src: u('photo-1551288049-bebda4e38f71'),
     alt: 'Analytics dashboard on a laptop screen',
-    intent: 'Zoho-style dashboard or WhatsApp business chat flow mockup',
+    intent: 'Business dashboard or WhatsApp business chat flow mockup',
   },
   hardwareCategory: {
     src: u('photo-1496181133206-80ce9b88a853'),

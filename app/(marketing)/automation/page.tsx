@@ -13,10 +13,10 @@ import { cn } from '@/lib/utils'
 
 export const metadata = {
   title: {
-    absolute: 'Business Automation & Zoho Implementation in Kerala | ITSolute',
+    absolute: 'Business Automation & Custom Systems in Kerala | ITSolute',
   },
   description:
-    'Zoho implementations, WhatsApp Business flows, custom dashboards, invoicing automation. Scale a Kerala business without scaling the headcount.',
+    'WhatsApp Business flows, custom dashboards, invoicing automation, and custom business systems. Scale a Kerala business without scaling the headcount.',
   alternates: { canonical: `${SITE_URL}/automation` },
 }
 
@@ -183,7 +183,7 @@ export default function AutomationPage() {
             serviceSchema({
               name: 'Business Automation & Custom Builds',
               description:
-                'WhatsApp flows, dashboards, custom workflows, and Zoho implementations for Kerala SMBs.',
+                'WhatsApp flows, dashboards, custom workflows, and custom business systems for Kerala SMBs.',
               slug: 'automation',
               serviceType: 'Business Process Automation',
               priceRange: { low: '25000', high: '300000' },

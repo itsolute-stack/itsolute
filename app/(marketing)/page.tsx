@@ -19,21 +19,33 @@ import { ArrowLink } from '@/components/shared/ArrowLink'
 import { Button } from '@/components/ui/button'
 import { homeCopy } from '@/lib/content/copy/home'
 import { homeFAQs } from '@/lib/content/faqs'
+import { SHOW_TESTIMONIALS } from '@/lib/content/testimonials'
 import { images } from '@/lib/images'
 import { localBusinessSchema, faqSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
 
+/** Shared by the meta, Open Graph and Twitter descriptions so they can't drift. */
+const HOME_DESCRIPTION =
+  'Laptops & repairs, CCTV, automatic gates, boom barriers, WiFi and IT AMC for homes and businesses. Based in Kottayam, serving Kerala. Free site survey.'
+
 export const metadata = {
   // `absolute` because this title already carries the brand. A bare string
   // would go through the root layout's '%s | ITSolute Systems' template and
-  // render "... | ITSolute Systems | ITSolute Systems".
+  // render "... | ITSolute | ITSolute Systems".
   title: {
-    absolute:
-      'Computer Hardware, Laptops & IT Services in Kottayam | ITSolute Systems',
+    absolute: 'Laptops, CCTV, Gate Automation & IT Services in Kottayam | ITSolute',
   },
-  description:
-    'Business laptops, software, networking, laptop repair, and automation for Kerala SMBs. Based in Kottayam — serving offices, clinics, schools across Kerala. Free quote.',
+  description: HOME_DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/` },
+  openGraph: {
+    title: 'Laptops, CCTV, Gate Automation & IT Services in Kottayam | ITSolute',
+    description: HOME_DESCRIPTION,
+    url: `${SITE_URL}/`,
+  },
+  twitter: {
+    title: 'Laptops, CCTV, Gate Automation & IT Services in Kottayam | ITSolute',
+    description: HOME_DESCRIPTION,
+  },
 }
 
 export default function HomePage() {
@@ -95,7 +107,10 @@ export default function HomePage() {
       <ScenariosGrid />
       <IndustriesGrid />
       <ProcessSteps />
-      <TestimonialGrid />
+
+      {/* Off until real, named client quotes exist — see SHOW_TESTIMONIALS
+          in lib/content/testimonials.ts for how to turn it back on. */}
+      {SHOW_TESTIMONIALS ? <TestimonialGrid /> : null}
 
       {/* AMC closing — positioned AFTER the scenarios and testimonials so cold visitors
           see proof of capability first, then the retainer pitch. */}

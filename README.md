@@ -187,7 +187,7 @@ Every image on the site is a placeholder from Unsplash, marked with a yellow `TO
 |---|---|---|
 | `hero` | Home hero (right column) | Laptop on Kerala office desk, slightly desaturated, electric-blue light leak |
 | `amcFeature` | Home — featured AMC row | Office IT setup with documentation on desk, blue color grade |
-| `automationFeature` | Home — featured Automation row | Zoho-style dashboard or WhatsApp Business chat flow mockup |
+| `automationFeature` | Home — featured Automation row | Business dashboard or WhatsApp Business chat flow mockup |
 | `hardwareCategory` | Hardware page (any extension) | Business laptop product shot |
 | `serverRack` | Hardware page | Server rack with clean cabling |
 | `networking` | Hardware section / networking anchor | Network cabling, patch panel |

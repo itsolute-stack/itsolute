@@ -247,7 +247,7 @@ export const industryContent: Record<string, IndustryContent> = {
       },
       {
         q: 'Which CRM do you recommend for a real estate office?',
-        a: 'It depends on how you sell and how many branches you run. We implement Zoho CRM and others, set up to fit your process. We’ll recommend based on your team size, pipeline, and budget rather than pushing one product.',
+        a: 'It depends on how you sell and how many branches you run. We implement CRM systems set up to fit your process. We’ll recommend based on your team size, pipeline, and budget rather than pushing one product.',
       },
       {
         q: 'Can you connect multiple branch offices?',

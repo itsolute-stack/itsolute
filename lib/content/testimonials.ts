@@ -7,6 +7,19 @@ export type Testimonial = {
 }
 
 /**
+ * The homepage testimonial section is OFF. The quotes below are realistic
+ * placeholders, not real clients, and publishing them would be inventing
+ * social proof — so the section is not rendered rather than shown with
+ * invented quotes.
+ *
+ * TO RE-ENABLE: replace every entry below with a verified quote from a real,
+ * named client (and delete its `todo`), then flip this flag to true. It is
+ * read by app/(marketing)/page.tsx, which renders <TestimonialGrid /> only
+ * when it is on. The component and this data file are otherwise untouched.
+ */
+export const SHOW_TESTIMONIALS = false
+
+/**
  * NOTE: These are realistic placeholder testimonials.
  * Replace with verified quotes from real clients before launch.
  */
@@ -37,7 +50,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      'The Zoho One implementation paid for itself in three months. We finally have one place to look at the business.',
+      'The custom dashboard paid for itself in three months. We finally have one place to look at the business.',
     name: 'Director',
     title: 'Operations Head',
     company: 'Logistics company, Ernakulam',

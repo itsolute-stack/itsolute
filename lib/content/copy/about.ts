@@ -24,7 +24,7 @@ export const aboutCopy = {
     members: [
       { initials: 'SC', name: 'Founder', role: 'Strategy & customer relationships' },
       { initials: 'IT', name: 'Tech Lead', role: 'Networks, infrastructure, security' },
-      { initials: 'AU', name: 'Automation Lead', role: 'Zoho, integrations, custom builds' },
+      { initials: 'AU', name: 'Automation Lead', role: 'Integrations and custom builds' },
       { initials: 'OP', name: 'Operations', role: 'Onsite support & client success' },
     ],
   },

@@ -47,13 +47,12 @@ export const services: Service[] = [
   {
     slug: 'software',
     title: 'Software & Licensing',
-    tagline: 'Microsoft 365, Google Workspace, Zoho, Tally — set up properly.',
+    tagline: 'Microsoft 365, Google Workspace, Tally — set up properly.',
     description:
-      'Authorised reseller and implementation partner. Licensing, migration, and configuration — not just a key emailed to you.',
+      'Licensing, migration, and configuration done properly — not just a key emailed to you.',
     icon: AppWindow,
     features: [
       'Microsoft 365 & Google Workspace',
-      'Zoho One implementations',
       'Tally licensing & support',
       'Antivirus & endpoint protection',
     ],
@@ -102,7 +101,6 @@ export const services: Service[] = [
     features: [
       'WhatsApp & CRM flows',
       'Multi-branch dashboards',
-      'Zoho One builds',
       'API integrations',
     ],
     href: '/automation',

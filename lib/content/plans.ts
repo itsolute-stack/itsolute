@@ -66,7 +66,7 @@ export const amcIncludes = [
     items: [
       'OS reinstalls, patching, license management',
       'Microsoft 365 / Google Workspace administration',
-      'Business application support (Tally, Zoho, others)',
+      'Business application support (Tally and others)',
     ],
   },
   {

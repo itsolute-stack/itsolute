@@ -77,7 +77,7 @@ export default function TermsPage() {
               <p>
                 We also provide technology implementation services that may use third-party
                 platforms including Meta (WhatsApp Business API, Facebook, Instagram), Google
-                Workspace, Microsoft 365, and Zoho. Where our services involve these platforms, the
+                Workspace and Microsoft 365. Where our services involve these platforms, the
                 respective platform&rsquo;s terms of service apply in addition to these Terms.
               </p>
 
@@ -96,7 +96,7 @@ export default function TermsPage() {
                   <a href="/privacy">Privacy Policy</a>
                 </li>
                 <li>
-                  Where our services involve third-party platforms (Meta, Google, Microsoft, Zoho),
+                  Where our services involve third-party platforms (Meta, Google, Microsoft),
                   you also agree to comply with those platforms&rsquo; policies
                 </li>
               </ul>
@@ -124,7 +124,7 @@ export default function TermsPage() {
               <p>
                 Where we implement, configure, or manage services on third-party platforms on your
                 behalf (including Meta WhatsApp Business API, Facebook Pages, Instagram Business,
-                Google Workspace, Microsoft 365, or Zoho), the following applies:
+                Google Workspace or Microsoft 365), the following applies:
               </p>
               <ul>
                 <li>
@@ -295,7 +295,7 @@ export default function TermsPage() {
 
               <h3>6.4 Third-party software</h3>
               <p>
-                Software licences supplied by ITSolute (Microsoft 365, Zoho, Google Workspace,
+                Software licences supplied by ITSolute (Microsoft 365, Google Workspace,
                 Tally, etc.) remain subject to the respective vendor&rsquo;s licence terms. ITSolute
                 acts as a reseller or implementation partner; the software itself is not our
                 intellectual property.
@@ -344,7 +344,7 @@ export default function TermsPage() {
                 </li>
                 <li>
                   We are not liable for failures, outages, or policy changes by third-party
-                  platforms (Meta, Google, Microsoft, Zoho, Vercel, or any other provider)
+                  platforms (Meta, Google, Microsoft, Vercel, or any other provider)
                 </li>
                 <li>
                   We are not liable for data loss resulting from hardware failure, ransomware, or

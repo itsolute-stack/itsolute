@@ -14,7 +14,7 @@ export const automationCopy = {
       { title: 'Lead capture & routing', body: 'From web, WhatsApp, and Meta/Google ads into one CRM pipeline.' },
       { title: 'Invoicing & payments', body: 'Automated invoicing, Razorpay/Stripe collection, reconciliation.' },
       { title: 'Reports & dashboards', body: 'Daily, weekly, monthly — pushed to email or Slack, not chased on demand.' },
-      { title: 'CRM implementations', body: 'Zoho CRM, HubSpot, custom — set up to fit your sales process, not the other way.' },
+      { title: 'CRM implementations', body: 'Set up to fit your sales process, not the other way.' },
       { title: 'Multi-branch dashboards', body: 'One view of every branch — revenue, jobs, inventory, people.' },
       { title: 'Custom workflows', body: 'Anything that’s repeatable, rule-based, and currently being done by hand.' },
       { title: 'API integrations', body: 'Connecting the tools you already use so they stop being separate islands.' },
@@ -66,7 +66,7 @@ export const automationCopy = {
         problem:
           'Each branch was on its own paperwork. Owner had no real-time view of jobs, crew, or revenue.',
         solution:
-          'Zoho One implementation with custom dashboards. WhatsApp lead capture into the CRM. Branch-level revenue and crew-utilization reports auto-generated weekly.',
+          'A custom business system with dashboards. WhatsApp lead capture into the CRM. Branch-level revenue and crew-utilization reports auto-generated weekly.',
         outcome:
           'New branches now go live in two weeks instead of two months. Owner runs the operation from one screen.',
       },

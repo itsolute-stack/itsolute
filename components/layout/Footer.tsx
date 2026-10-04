@@ -23,8 +23,8 @@ export function Footer() {
           <div className="col-span-2 md:col-span-4 lg:col-span-2">
             <Logo theme="dark" size="md" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-slate-400">
-              The complete IT partner for Kerala businesses. Hardware, software, support, and
-              automation — under one roof.
+              IT and automation for homes and businesses across Kerala. Hardware,
+              repairs, CCTV, gates, networking and support — under one roof.
             </p>
             <div className="mt-6 space-y-3 text-sm text-slate-300">
               <a

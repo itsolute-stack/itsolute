@@ -125,7 +125,6 @@ export const KEYWORDS = [
   'business laptops Kottayam',
   'computer hardware Kerala',
   'laptop dealer Kottayam',
-  'HP Dell Lenovo dealer Kerala',
   'office computers Kerala',
   'refurbished laptops Kottayam',
   // Laptop care
@@ -136,7 +135,6 @@ export const KEYWORDS = [
   'virus removal Kerala',
   // Software
   'Microsoft 365 reseller Kerala',
-  'Zoho partner Kerala',
   'Tally licensing Kottayam',
   // Networking
   'office WiFi Kottayam',
@@ -150,8 +148,12 @@ export const KEYWORDS = [
   'point to point wireless Kerala',
   // Automation
   'business automation Kerala',
-  'Zoho implementation Kerala',
   'WhatsApp business automation Kerala',
+  // CCTV & entrance automation
+  'CCTV installation Kottayam',
+  'automatic gate Kottayam',
+  'boom barrier Kerala',
+  'gate automation Kerala',
   // AMC (de-prioritized but kept)
   'IT AMC Kerala',
   'computer AMC Kottayam',

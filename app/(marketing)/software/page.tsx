@@ -11,10 +11,10 @@ import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
   title: {
-    absolute: 'Microsoft 365, Zoho & Software Licensing in Kerala | ITSolute',
+    absolute: 'Microsoft 365, Google Workspace & Software Licensing in Kerala | ITSolute',
   },
   description:
-    'Microsoft 365, Google Workspace, Zoho One, Tally, and antivirus licensing — setup, migration, and training included. For SMBs across Kerala.',
+    'Microsoft 365, Google Workspace, Tally, and antivirus licensing — setup, migration, and training included. For SMBs across Kerala.',
   alternates: { canonical: `${SITE_URL}/software` },
 }
 
@@ -129,7 +129,7 @@ export default function SoftwarePage() {
             serviceSchema({
               name: 'Software Licensing & Implementation',
               description:
-                'Microsoft 365, Google Workspace, Zoho One implementations and migrations for Kerala SMBs.',
+                'Microsoft 365, Google Workspace, Tally licensing, setup and migrations for Kerala SMBs.',
               slug: 'software',
               serviceType: 'Software Licensing',
               priceRange: { low: '500', high: '200000' },

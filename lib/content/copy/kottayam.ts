@@ -97,7 +97,7 @@ export const kottayamFAQs: FAQ[] = [
   },
   {
     q: 'Can you supply and set up computers for a new Kottayam office?',
-    a: 'That’s one of the most common things we do. We supply the laptops and desktops, set up the network and WiFi, license the software (Microsoft 365, Google Workspace, Zoho, Tally), and hand over a documented, working office — with GST invoicing throughout.',
+    a: 'That’s one of the most common things we do. We supply the laptops and desktops, set up the network and WiFi, license the software (Microsoft 365, Google Workspace, Tally), and hand over a documented, working office — with GST invoicing throughout.',
   },
   {
     q: 'Do you issue GST invoices?',

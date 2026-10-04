@@ -2,7 +2,7 @@ export const softwareCopy = {
   hero: {
     eyebrow: 'SOFTWARE',
     headline: 'Software licensing, set up properly.',
-    sub: 'Microsoft 365, Google Workspace, Zoho One, Tally. Authorised reseller, proper licensing, full implementation — not just a key emailed to you.',
+    sub: 'Microsoft 365, Google Workspace, Tally and antivirus. Proper licensing, full implementation — not just a key emailed to you.',
     primaryCta: 'Talk to us',
     secondaryCta: 'WhatsApp us',
   },
@@ -22,12 +22,6 @@ export const softwareCopy = {
         body: 'Gmail on your domain, Drive, Meet, Calendar. We set up sharing, security, and proper admin policies.',
         features: ['Domain setup & DNS', 'Account migration', 'Drive & sharing policies', 'Admin training'],
       },
-      {
-        title: 'Zoho One',
-        startingFrom: 'Single license, 40+ apps',
-        body: 'CRM, books, inventory, projects, HR — one suite, one login. Implementation done right makes Zoho one of the highest-ROI tools an SMB can buy.',
-        features: ['CRM implementation', 'Books & invoicing', 'Custom workflows', 'Staff training'],
-      },
     ],
   },
   implementation: {
@@ -39,9 +33,9 @@ export const softwareCopy = {
     eyebrow: 'MIGRATIONS',
     headline: 'Move off legacy without losing anything.',
     points: [
-      'Tally to cloud-based accounting (Zoho Books, others).',
+      'Tally to cloud-based accounting.',
       'Self-hosted or POP3 email to Microsoft 365 or Google Workspace.',
-      'On-prem file servers to OneDrive, Google Drive, or Zoho WorkDrive.',
+      'On-prem file servers to OneDrive or Google Drive.',
       'Spreadsheet-based ops to a real CRM and inventory system.',
     ],
   },

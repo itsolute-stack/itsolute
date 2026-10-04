@@ -42,7 +42,7 @@ export const clusters = {
     slug: 'software-and-productivity',
     name: 'Software & productivity',
     shortName: 'Software',
-    description: 'Microsoft 365, Google Workspace, Zoho, Tally, antivirus.',
+    description: 'Microsoft 365, Google Workspace, Tally, antivirus.',
     hubUrl: '/software',
     hubLabel: 'See software services',
   },

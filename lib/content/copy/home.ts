@@ -5,15 +5,16 @@
 
 export const homeCopy = {
   hero: {
-    eyebrow: 'LAPTOPS · SOFTWARE · NETWORKING · KERALA',
-    headlineLineOne: 'IT that just works.',
-    headlineLineTwo: 'For businesses that mean business.',
-    sub: 'Laptops, networks, software, repairs, automation — and the team to keep it all running. Serving Kottayam, Kochi, and businesses across Kerala.',
-    primaryCta: 'Get a free IT consultation',
+    eyebrow: 'LAPTOPS · CCTV · GATE AUTOMATION · NETWORKING · KOTTAYAM',
+    headlineLineOne: 'IT and automation that just works.',
+    headlineLineTwo: 'For homes and businesses across Kerala.',
+    sub: 'Laptops and repairs, CCTV, automatic gates and boom barriers, office WiFi, software and AMC — one team, one number. Based in Kottayam, serving Ernakulam, Pathanamthitta, Alappuzha and across Kerala.',
+    primaryCta: 'Get a free quote',
     secondaryCta: 'Talk on WhatsApp',
     whatsappMessage:
       "Hi ITSolute, I'd like to know more about your services.",
-    trustStrip: 'Trusted by clinics · schools · offices · shops · across Kerala',
+    trustStrip:
+      'Trusted by homes · villas · apartments · clinics · schools · offices · shops',
   },
   problem: {
     eyebrow: 'THE PROBLEM',
@@ -37,7 +38,7 @@ export const homeCopy = {
   },
   services: {
     eyebrow: 'WHAT WE DO',
-    headline: 'Everything your business needs from IT — under one roof.',
+    headline: 'Everything you need from IT and automation — under one roof.',
   },
   whyUs: {
     eyebrow: 'WHY ITSOLUTE',
@@ -94,7 +95,7 @@ export const homeCopy = {
   featuredAutomation: {
     eyebrow: 'PREMIUM CAPABILITY',
     headline: 'Stop doing IT work that software should do for you.',
-    body: 'We build automation that runs your business while you sleep. WhatsApp lead flows, automated invoicing, multi-branch dashboards, Zoho One implementations — systems that scale a business without scaling the headcount.',
+    body: 'We build automation that runs your business while you sleep. WhatsApp lead flows, automated invoicing, multi-branch dashboards, custom business systems — systems that scale a business without scaling the headcount.',
     note: 'Built by a team that has been deploying these systems across Kerala for years. Ask us for a live walkthrough.',
     cta: 'See how we automate',
   },
@@ -116,7 +117,7 @@ export const homeCopy = {
     body: 'Most of our hardware, software, and repair clients move to an AMC after the first project. Predictable monthly cost, < 2hr response, onsite + remote support, written SLAs.',
     metrics: [
       { value: '< 2hr', label: 'Response time' },
-      { value: '24/7', label: 'WhatsApp support' },
+      { value: 'Mon–Sat 9–7', label: 'WhatsApp support' },
       { value: 'Written', label: 'SLA + scope' },
     ],
     cta: 'See AMC plans',
@@ -127,7 +128,7 @@ export const homeCopy = {
   },
   finalCta: {
     headline:
-      'Whether you need a laptop, a network, or a fix — we’re 10 minutes away in Kottayam.',
+      'Whether you need a laptop, a camera, a gate, or a fix — we’re 10 minutes away in Kottayam.',
     sub: 'Walk into our Parthas Lane office. WhatsApp us a photo of the problem. Or book a free onsite consultation anywhere in Kerala.',
     primary: 'Book a free consultation',
     secondary: 'WhatsApp us',

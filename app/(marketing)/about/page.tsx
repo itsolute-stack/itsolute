@@ -63,9 +63,15 @@ export default function AboutPage() {
             headline={aboutCopy.team.headline}
             sub={aboutCopy.team.sub}
           />
-          <p className="mt-4 font-mono text-xs uppercase tracking-widest text-amber-600">
-            {aboutCopy.team.note}
-          </p>
+          {/* Internal reminder only. This was rendering the literal string
+              "TODO: Replace placeholder cards..." to real visitors; gated to
+              development like the PlaceholderImage chips so it stays useful
+              to us without shipping. */}
+          {process.env.NODE_ENV === 'development' ? (
+            <p className="mt-4 font-mono text-xs uppercase tracking-widest text-amber-600">
+              {aboutCopy.team.note}
+            </p>
+          ) : null}
 
           <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {aboutCopy.team.members.map((m) => (

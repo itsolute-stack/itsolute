@@ -46,7 +46,7 @@ export function EntranceDistrictPage({ slug }: { slug: string }) {
         primaryCta={{ label: 'Free site survey', href: CONTACT_HREF }}
         secondaryCta={{ label: 'WhatsApp us', message: d.whatsappMessage }}
         image={{
-          src: `/images/entrance-automation/${d.slug}.png`,
+          src: `/images/entrance-automation/${d.slug}.jpg`,
           alt: `Automatic gate and boom barrier installation in ${d.district}, Kerala`,
           intent: `Hero photo for ${d.district} entrance automation — gate or boom barrier at a local property`,
         }}

@@ -93,7 +93,7 @@ export const networkingCopy = {
       },
       {
         title: 'Genuine equipment, warranty preserved',
-        body: 'TP-Link, MikroTik, Ubiquiti, Cisco — authorised channels, manufacturer warranty on every box.',
+        body: 'TP-Link, MikroTik, Ubiquiti, Cisco — genuine products with manufacturer warranty.',
       },
       {
         title: 'Documentation on handover',

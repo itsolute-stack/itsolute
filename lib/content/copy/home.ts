@@ -71,11 +71,6 @@ export const homeCopy = {
     eyebrow: 'WHAT MOST CLIENTS START WITH',
     headline: 'Hardware, from a single laptop to a full office.',
     body: 'Laptops, desktops, and peripherals — new or refurbished — for home, students, and business. From one machine to a 50-machine office rollout, with genuine warranty, GST invoicing, and delivery across Kerala.',
-    metrics: [
-      { value: '100+', label: 'Models in stock or sourcable' },
-      { value: '48hr', label: 'Typical Kerala delivery' },
-      { value: '12mo', label: 'Manufacturer warranty' },
-    ],
     cta: 'Browse hardware',
   },
   featuredLaptopCare: {
@@ -114,9 +109,9 @@ export const homeCopy = {
   amcClosing: {
     eyebrow: 'THE LONG-TERM RELATIONSHIP',
     headline: 'Stop calling four vendors. Get one IT team on retainer.',
-    body: 'Most of our hardware, software, and repair clients move to an AMC after the first project. Predictable monthly cost, < 2hr response, onsite + remote support, written SLAs.',
+    body: 'Most of our hardware, software, and repair clients move to an AMC after the first project. Predictable monthly cost, priority response for AMC clients, onsite + remote support, written SLAs.',
     metrics: [
-      { value: '< 2hr', label: 'Response time' },
+      { value: 'Priority', label: 'Response for AMC clients' },
       { value: 'Mon–Sat 9–7', label: 'WhatsApp support' },
       { value: 'Written', label: 'SLA + scope' },
     ],

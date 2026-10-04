@@ -5,7 +5,6 @@ import { ProblemSection } from '@/components/home/ProblemSection'
 import { ServicesBento } from '@/components/home/ServicesBento'
 import { WhyUs } from '@/components/home/WhyUs'
 import { FeatureRow } from '@/components/home/FeatureRow'
-import { ScenariosGrid } from '@/components/home/ScenariosGrid'
 import { IndustriesGrid } from '@/components/home/IndustriesGrid'
 import { ProcessSteps } from '@/components/home/ProcessSteps'
 import { TestimonialGrid } from '@/components/home/TestimonialGrid'
@@ -64,7 +63,6 @@ export default function HomePage() {
         headline={homeCopy.featuredHardware.headline}
         body={homeCopy.featuredHardware.body}
         cta={{ label: homeCopy.featuredHardware.cta, href: '/hardware' }}
-        metrics={[...homeCopy.featuredHardware.metrics]}
         image={images.hardwareFeature}
       />
 
@@ -104,7 +102,6 @@ export default function HomePage() {
         image={images.automationFeature}
       />
 
-      <ScenariosGrid />
       <IndustriesGrid />
       <ProcessSteps />
 
@@ -112,8 +109,8 @@ export default function HomePage() {
           in lib/content/testimonials.ts for how to turn it back on. */}
       {SHOW_TESTIMONIALS ? <TestimonialGrid /> : null}
 
-      {/* AMC closing — positioned AFTER the scenarios and testimonials so cold visitors
-          see proof of capability first, then the retainer pitch. */}
+      {/* AMC closing — kept late on the page so cold visitors read the
+          capability sections before the retainer pitch. */}
       <Section theme="dark">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-center">

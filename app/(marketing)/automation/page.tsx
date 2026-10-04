@@ -135,36 +135,6 @@ export default function AutomationPage() {
         </Container>
       </Section>
 
-      {/* Anonymized scenarios */}
-      <Section theme="light">
-        <Container>
-          <SectionHeader
-            eyebrow={automationCopy.scenarios.eyebrow}
-            headline={automationCopy.scenarios.headline}
-            sub={automationCopy.scenarios.body}
-          />
-
-          <div className="mt-16 grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5">
-            {automationCopy.scenarios.items.map((sc) => (
-              <article
-                key={sc.title}
-                className="flex flex-col gap-5 rounded-lg border border-slate-200 bg-white p-6 md:p-8"
-              >
-                <p className="font-mono text-xs uppercase tracking-widest text-slate-500">
-                  {sc.industry}
-                </p>
-                <h3 className="text-xl md:text-2xl font-medium tracking-tight text-[color:var(--color-ink)] leading-snug">
-                  {sc.title}
-                </h3>
-
-                <ScenarioField label="Problem" body={sc.problem} />
-                <ScenarioField label="Solution" body={sc.solution} />
-                <ScenarioField label="Outcome" body={sc.outcome} accent />
-              </article>
-            ))}
-          </div>
-        </Container>
-      </Section>
 
       <FinalCTA
         headline={automationCopy.finalCta.headline}
@@ -205,29 +175,5 @@ export default function AutomationPage() {
         }}
       />
     </>
-  )
-}
-
-function ScenarioField({
-  label,
-  body,
-  accent,
-}: {
-  label: string
-  body: string
-  accent?: boolean
-}) {
-  return (
-    <div className="flex flex-col gap-1">
-      <p
-        className={cn(
-          'font-mono text-[10px] uppercase tracking-widest',
-          accent ? 'text-[color:var(--color-electric)]' : 'text-slate-500',
-        )}
-      >
-        {label}
-      </p>
-      <p className="text-sm md:text-base text-slate-600 leading-relaxed">{body}</p>
-    </div>
   )
 }

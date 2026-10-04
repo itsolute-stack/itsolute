@@ -35,7 +35,7 @@ export const homeFAQs: FAQ[] = [
   },
   {
     q: 'How quickly do you respond when something breaks?',
-    a: 'For AMC clients, most issues get a response within 2 hours during business hours, and a resolution path the same business day. For one-off and walk-in customers, response time depends on workload but we’re fast on WhatsApp — message us and we’ll triage immediately.',
+    a: 'AMC clients get priority response during business hours, with the agreed response time written into the contract rather than promised in the abstract. For one-off and walk-in customers, response depends on workload but we’re fast on WhatsApp — message us and we’ll triage immediately.',
   },
   {
     q: 'What does an AMC contract typically cover?',

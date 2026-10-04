@@ -24,8 +24,13 @@ import { localBusinessSchema, faqSchema } from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
-  title:
-    'Computer Hardware, Laptops & IT Services in Kottayam | ITSolute Systems',
+  // `absolute` because this title already carries the brand. A bare string
+  // would go through the root layout's '%s | ITSolute Systems' template and
+  // render "... | ITSolute Systems | ITSolute Systems".
+  title: {
+    absolute:
+      'Computer Hardware, Laptops & IT Services in Kottayam | ITSolute Systems',
+  },
   description:
     'Business laptops, software, networking, laptop repair, and automation for Kerala SMBs. Based in Kottayam — serving offices, clinics, schools across Kerala. Free quote.',
   alternates: { canonical: `${SITE_URL}/` },

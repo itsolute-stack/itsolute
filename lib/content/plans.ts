@@ -20,7 +20,7 @@ export const amcPlans: Plan[] = [
       'Scheduled onsite visits — frequency agreed in your contract',
       'Hardware, software, and network coverage',
       'Microsoft 365 / Google Workspace administration',
-      'Monthly health report',
+      'Regular health reports',
     ],
   },
   {
@@ -32,7 +32,7 @@ export const amcPlans: Plan[] = [
       'Scheduled onsite visits — frequency agreed in your contract',
       'Everything in Starter',
       'Backup management & disaster recovery drills',
-      'Quarterly IT roadmap review',
+      'Periodic IT roadmap review — schedule agreed in your contract',
       'Dedicated account contact',
     ],
     highlight: true,
@@ -89,8 +89,8 @@ export const amcIncludes = [
   {
     category: 'Reporting',
     items: [
-      'Monthly health report',
-      'Quarterly IT roadmap',
+      'Regular health reports',
+      'Periodic IT roadmap review — schedule agreed in your contract',
       'Asset register kept current',
     ],
   },

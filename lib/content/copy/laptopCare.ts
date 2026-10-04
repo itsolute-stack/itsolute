@@ -28,7 +28,7 @@ export const laptopCareCopy = {
     items: [
       { icon: Monitor, title: 'Cracked or dead screens', body: 'OEM-grade replacements for all common laptop models.' },
       { icon: Keyboard, title: 'Broken keyboards & keys', body: 'Individual key, full keyboard, or trackpad replacements.' },
-      { icon: BatteryCharging, title: 'Dying batteries', body: 'Diagnose, source, and swap — typically same-day for popular models.' },
+      { icon: BatteryCharging, title: 'Dying batteries', body: 'Diagnose, source, and swap — quicker for popular models we stock.' },
       { icon: Gauge, title: 'Slow performance', body: 'RAM and SSD upgrades that bring older laptops back to life.' },
       { icon: Thermometer, title: 'Overheating & fan issues', body: 'Thermal paste, fan replacement, cleaning and dust removal.' },
       { icon: Droplets, title: 'Liquid damage recovery', body: 'Cleaning, drying, board-level inspection — best chances at fast intervention.' },
@@ -47,8 +47,8 @@ export const laptopCareCopy = {
         body: 'Sourced through trusted suppliers. We tell you when a part is OEM vs. compatible.',
       },
       {
-        title: 'Service warranty on every repair',
-        body: 'Typically 3–6 months on the part and the work. In writing, with the bill.',
+        title: 'Written record of every repair',
+        body: 'What we replaced, what we did, and what it cost — in writing, with the bill.',
       },
       {
         title: 'No-obligation diagnosis',
@@ -56,7 +56,7 @@ export const laptopCareCopy = {
       },
       {
         title: 'Fast turnaround',
-        body: 'Most repairs ready in 24–72 hours. Screen and battery swaps often same-day when the part’s in stock.',
+        body: 'Most repairs ready in 24–72 hours. Screen and battery swaps are quicker when the part’s in stock.',
       },
       {
         title: 'Data privacy taken seriously',
@@ -110,8 +110,8 @@ export const laptopCareCopy = {
       },
       {
         index: '05',
-        title: 'Handover + warranty',
-        body: 'Signed receipt, warranty card, and a copy of the diagnostic. Call us if anything recurs.',
+        title: 'Handover',
+        body: 'Signed receipt and a copy of the diagnostic. Call us if anything recurs.',
       },
     ],
   },
@@ -142,7 +142,7 @@ export const laptopCareCopy = {
 export const laptopCareFAQs = [
   {
     q: 'How long does a typical laptop repair take?',
-    a: 'Most repairs are completed within 24–72 hours of approval. Screen replacements and battery swaps are usually same-day if the part is in stock. Complex board-level repair or data recovery can take longer — we tell you exactly how long at the quote stage.',
+    a: 'Most repairs are completed within 24–72 hours of approval. Screen replacements and battery swaps are quicker if the part is in stock. Complex board-level repair or data recovery can take longer — we tell you exactly how long at the quote stage.',
   },
   {
     q: 'Do you repair MacBooks?',
@@ -153,8 +153,8 @@ export const laptopCareFAQs = [
     a: 'Bring it in. We do logical and basic physical-level data recovery, with a typical success rate above 80% on drives that haven’t been opened by anyone else. We do not charge for recovery attempts that fail. For clean-room class recoveries we partner with specialised labs and quote you transparently.',
   },
   {
-    q: 'Do you offer warranty on repairs?',
-    a: 'Every repair carries a written 3–6 month warranty on the part and the work, depending on the component. The warranty card comes with your bill, and we honour it on any walk-in, no questions asked.',
+    q: 'What cover comes with a repair?',
+    a: 'We tell you at the quote stage exactly what cover applies to the part and the work for your specific repair, and it goes in writing with your bill. If anything recurs, walk back in and we will look at it.',
   },
   {
     q: 'Do you do onsite repair for offices?',

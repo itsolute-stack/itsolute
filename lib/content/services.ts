@@ -63,7 +63,7 @@ export const services: Service[] = [
     title: 'Laptop Care & Repair',
     tagline: 'Screen, keyboard, battery, data recovery — fixed, not guessed.',
     description:
-      'Genuine parts, service warranty, no-obligation diagnosis. Most repairs ready in 24–72 hours. Walk in or drop off.',
+      'Genuine parts, no-obligation diagnosis, everything in writing. Most repairs ready in 24–72 hours. Walk in or drop off.',
     icon: Wrench,
     features: [
       'Screen, keyboard, battery repair',

@@ -355,7 +355,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       points: [
         { title: 'Access done right', body: 'RFID, FASTag, and loop detectors set up so the right vehicles pass quickly and the barrier closes safely.' },
         { title: 'Integrated with your systems', body: 'Ties into CCTV, number-plate cameras, and access records — because we install those too.' },
-        { title: 'High-duty, genuine units', body: 'Barriers rated for your traffic volume, from trusted brands through trusted suppliers, with warranty.' },
+        { title: 'High-duty, genuine units', body: 'Barriers rated for your traffic volume, from trusted brands through trusted suppliers, with manufacturer warranty.' },
         { title: 'Safety and anti-crash', body: 'Loop and safety sensors so the arm never drops on a vehicle or person.' },
         { title: 'Battery backup', body: 'Keeps the entrance controlled through power cuts, standard in every install.' },
         { title: 'AMC for high-cycle reliability', body: 'Barriers cycle constantly — our AMC keeps the motor, arm, and sensors serviced.' },

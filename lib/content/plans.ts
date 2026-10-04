@@ -16,8 +16,8 @@ export const amcPlans: Plan[] = [
     positioning: 'Essentials for small offices.',
     for: 'Up to 10 staff · single location',
     features: [
-      'Remote support within 4 business hours',
-      '1 scheduled onsite visit per month',
+      'Standard response',
+      'Scheduled onsite visits — frequency agreed in your contract',
       'Hardware, software, and network coverage',
       'Microsoft 365 / Google Workspace administration',
       'Monthly health report',
@@ -28,8 +28,8 @@ export const amcPlans: Plan[] = [
     positioning: 'For businesses that depend on IT working.',
     for: '10–25 staff · 1–2 locations',
     features: [
-      'Remote support within 2 business hours',
-      'Weekly scheduled onsite visit',
+      'Priority response',
+      'Scheduled onsite visits — frequency agreed in your contract',
       'Everything in Starter',
       'Backup management & disaster recovery drills',
       'Quarterly IT roadmap review',
@@ -42,7 +42,8 @@ export const amcPlans: Plan[] = [
     positioning: 'Full coverage for multi-branch operations.',
     for: '25+ staff · multi-location',
     features: [
-      'Same-business-day onsite SLA',
+      'Highest-priority response + onsite support',
+      'Scheduled onsite visits — frequency agreed in your contract',
       'Onsite engineer presence on request',
       'Everything in Growth',
       'Multi-branch network monitoring',

@@ -7,7 +7,7 @@ export type FAQ = { q: string; a: string }
 export const homeFAQs: FAQ[] = [
   {
     q: 'Do you supply only new laptops, or refurbished too?',
-    a: 'Both. New laptops come with full manufacturer warranty and GST invoicing. Refurbished laptops are tested, reset, and shipped with a 6-month ITSolute warranty — great for stretching budgets without compromising on reliability. We tell you honestly which option fits your use case.',
+    a: 'Both. New laptops come with full manufacturer warranty and GST invoicing. Refurbished laptops are tested and reset before they go out — great for stretching budgets without compromising on reliability. We tell you honestly which option fits your use case, and what cover comes with it.',
   },
   {
     q: 'What kind of laptop repair do you handle?',
@@ -58,7 +58,7 @@ export const amcFAQs: FAQ[] = [
   },
   {
     q: 'How many onsite visits are included?',
-    a: 'It depends on the tier. Smaller AMCs include scheduled monthly visits; larger ones include weekly visits or onsite presence on demand. Emergency onsite visits beyond the included count are billed at a pre-agreed rate, never as a surprise.',
+    a: 'It depends on the tier. Every AMC includes scheduled onsite visits, with the frequency agreed and written into your contract rather than fixed in advance here. Emergency onsite visits beyond the included count are billed at a pre-agreed rate, never as a surprise.',
   },
   {
     q: 'What happens if a covered laptop needs hardware replacement?',

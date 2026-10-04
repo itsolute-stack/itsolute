@@ -33,7 +33,7 @@ export const aboutCopy = {
     headline: 'Built in Kottayam. By technicians, not salespeople.',
     paragraphs: [
       'Parthas Lane is where the work happens. A real workshop with benches, parts, scopes, anti-static mats, and a team that has been fixing and building computers across Kerala for over a decade.',
-      'You can walk in. You can call us. You can WhatsApp a photo of your broken laptop and we will tell you what is possible. Most diagnoses happen the same day. Most repairs go out within 72 hours.',
+      'You can walk in. You can call us. You can WhatsApp a photo of your broken laptop and we will tell you what is possible. Most repairs go out within 72 hours.',
       'The team behind ITSolute Systems has been quietly running IT operations for Kerala businesses for years — through clinics, schools, offices, and homes. ITSolute is what we put on the door when we decided it deserved its own brand.',
     ],
     sisterLine:

@@ -23,7 +23,7 @@ export const metadata = {
     absolute: 'IT Services in Kottayam · Hardware, Repair, Networking, AMC | ITSolute',
   },
   description:
-    'Local IT company in Kottayam — business laptops, laptop repair, software licensing, office WiFi, AMC support, and automation. On-site visits, same-day response, GST invoicing. Office on Parthas Lane.',
+    'Local IT company in Kottayam — business laptops, laptop repair, software licensing, office WiFi, AMC support, and automation. On-site visits, fast local response, GST invoicing. Office on Parthas Lane.',
   alternates: { canonical: `${SITE_URL}/kottayam` },
 }
 

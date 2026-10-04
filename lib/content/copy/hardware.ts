@@ -16,7 +16,7 @@ export const hardwareCopy = {
       },
       {
         title: 'Laptops (refurbished)',
-        body: 'Tested, reset, shipped with 6-month ITSolute warranty.',
+        body: 'Tested and reset before they go out, with GST invoicing.',
       },
       {
         title: 'Desktops',

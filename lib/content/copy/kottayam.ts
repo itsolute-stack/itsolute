@@ -37,8 +37,8 @@ export const kottayamCopy = {
         body: 'On-site visits across Kottayam town and the surrounding areas — not everything can be fixed over a phone call, and we don’t pretend otherwise.',
       },
       {
-        title: 'Same-day response',
-        body: 'When something critical breaks — Tally down during filing, office WiFi dead, a dead laptop before a deadline — we prioritise same-day attention for Kottayam clients.',
+        title: 'Fast local response',
+        body: 'When something critical breaks — Tally down during filing, office WiFi dead, a dead laptop before a deadline — Kottayam clients get a fast response from our Parthas Lane workshop.',
       },
       {
         title: 'A real office you can visit',
@@ -85,7 +85,7 @@ export const kottayamFAQs: FAQ[] = [
   },
   {
     q: 'Do you provide on-site IT support in Kottayam?',
-    a: 'Yes. On-site support across Kottayam is our default — for office networking, hardware installs, AMC visits, and anything that can’t be sorted remotely. For critical issues we prioritise same-day attention for Kottayam clients.',
+    a: 'Yes. On-site support across Kottayam is our default — for office networking, hardware installs, AMC visits, and anything that can’t be sorted remotely. For critical issues Kottayam clients get a fast response from our Parthas Lane workshop.',
   },
   {
     q: 'Which areas around Kottayam do you cover?',

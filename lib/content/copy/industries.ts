@@ -44,7 +44,7 @@ export const industryContent: Record<string, IndustryContent> = {
     pains: [
       {
         title: 'Downtime during OPD hours',
-        body: 'When billing or EMR freezes with a full waiting room, every minute costs you. We build in backups, uptime monitoring, and same-day response so a glitch doesn’t become a lost morning.',
+        body: 'When billing or EMR freezes with a full waiting room, every minute costs you. We build in backups, uptime monitoring, and a fast response from our Kottayam workshop so a glitch doesn’t become a lost morning.',
       },
       {
         title: 'Patient data on the same WiFi as everyone',
@@ -75,8 +75,8 @@ export const industryContent: Record<string, IndustryContent> = {
         a: 'For a typical outpatient clinic with 5–7 PCs, network, and basic software, expect roughly ₹2.5–4.5 lakhs upfront plus ₹3,000–12,000/month for AMC. Multi-doctor and imaging-heavy clinics scale from there. We quote fixed prices before starting.',
       },
       {
-        q: 'Do you provide same-day support if our billing system goes down?',
-        a: 'Yes. Uptime matters most for clinics, so AMC clients get priority, same-day attention for critical failures — and we build in backups and standby hardware so a single failure doesn’t stop the day.',
+        q: 'How quickly do you respond if our billing system goes down?',
+        a: 'Uptime matters most for clinics, so AMC clients get priority attention for critical failures — and we build in backups and standby hardware so a single failure doesn’t stop the day.',
       },
       {
         q: 'Can you work with our existing EMR software?',
@@ -314,7 +314,7 @@ export const industryContent: Record<string, IndustryContent> = {
       },
       {
         q: 'What happens if the billing counter fails during business hours?',
-        a: 'AMC clients get priority, same-day response for counter failures, and we build in backups and standby options so a single failure doesn’t stop trading. Uptime is the whole point for retail.',
+        a: 'AMC clients get priority response for counter failures, and we build in backups and standby options so a single failure doesn’t stop trading. Uptime is the whole point for retail.',
       },
     ],
     serviceName: 'IT Services for Retail & Restaurants',

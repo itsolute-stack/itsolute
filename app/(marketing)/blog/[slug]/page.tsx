@@ -98,7 +98,9 @@ export default async function PostPage({
     '@type': 'Article',
     headline: frontmatter.title,
     description: frontmatter.excerpt,
-    image: frontmatter.image,
+    // Absolute, like every other URL in our schema — a relative path here is
+    // not reliably resolved by consumers of the JSON-LD.
+    image: frontmatter.image ? `${SITE_URL}${frontmatter.image}` : undefined,
     datePublished: frontmatter.date,
     dateModified: frontmatter.updated || frontmatter.date,
     author: {

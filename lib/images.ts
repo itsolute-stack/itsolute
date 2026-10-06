@@ -45,7 +45,7 @@ export const images = {
   },
   entranceFeature: {
     // Real local asset (not an Unsplash placeholder).
-    src: '/images/entrance-automation/hub.png',
+    src: '/images/entrance-automation/hub.jpg',
     alt: 'Automatic gate and boom barrier entrance automation',
     intent:
       'Automatic gate or boom barrier at a Kerala property — swap for a real ITSolute install photo when available',

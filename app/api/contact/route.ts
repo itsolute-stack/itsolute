@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true })
   }
 
-  const { name, business, phone, email, service, message } = parsed.data
+  const { name, business, phone, email, service, message, source, meta } = parsed.data
 
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
@@ -45,18 +45,30 @@ export async function POST(req: Request) {
 
   const resend = new Resend(apiKey)
 
-  const subject = `New enquiry: ${name} · ${business} · ${service}`
+  // Landing-page leads carry no business/email and do carry ad attribution.
+  const isLanding = Boolean(source)
+  const metaEntries = Object.entries(meta ?? {}).filter(([, v]) => v)
+
+  const subject = isLanding
+    ? `New ${source} lead: ${name} · ${service}`
+    : `New enquiry: ${name} · ${business} · ${service}`
+
   const text = [
-    `New enquiry from the ITSolute website.`,
+    isLanding
+      ? `New lead from a Google Ads landing page (${source}).`
+      : `New enquiry from the ITSolute website.`,
     ``,
     `Name:      ${name}`,
-    `Business:  ${business}`,
+    ...(business ? [`Business:  ${business}`] : []),
     `Phone:     +91 ${phone}`,
-    `Email:     ${email}`,
+    ...(email ? [`Email:     ${email}`] : []),
     `Service:   ${service}`,
     ``,
     `Message:`,
     message,
+    ...(metaEntries.length
+      ? [``, `— Ad attribution —`, ...metaEntries.map(([k, v]) => `${k.padEnd(10)} ${v}`)]
+      : []),
   ].join('\n')
 
   const html = `
@@ -64,13 +76,26 @@ export async function POST(req: Request) {
       <h2 style="color:#1e4ed8;">New enquiry from itsolute.com</h2>
       <table style="width:100%;border-collapse:collapse;margin-top:16px;">
         <tr><td style="padding:8px 0;font-weight:600;width:140px;">Name</td><td>${escapeHtml(name)}</td></tr>
-        <tr><td style="padding:8px 0;font-weight:600;">Business</td><td>${escapeHtml(business)}</td></tr>
+        ${business ? `<tr><td style="padding:8px 0;font-weight:600;">Business</td><td>${escapeHtml(business)}</td></tr>` : ''}
         <tr><td style="padding:8px 0;font-weight:600;">Phone</td><td><a href="tel:+91${phone}">+91 ${phone}</a></td></tr>
-        <tr><td style="padding:8px 0;font-weight:600;">Email</td><td><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
+        ${email ? `<tr><td style="padding:8px 0;font-weight:600;">Email</td><td><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>` : ''}
         <tr><td style="padding:8px 0;font-weight:600;">Service</td><td>${escapeHtml(service)}</td></tr>
       </table>
       <h3 style="margin-top:24px;">Message</h3>
       <p style="white-space:pre-wrap;line-height:1.6;color:#475569;">${escapeHtml(message)}</p>
+      ${
+        metaEntries.length
+          ? `<h3 style="margin-top:24px;">Ad attribution</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;color:#475569;">
+        ${metaEntries
+          .map(
+            ([k, v]) =>
+              `<tr><td style="padding:4px 0;font-weight:600;width:140px;">${escapeHtml(k)}</td><td>${escapeHtml(v)}</td></tr>`,
+          )
+          .join('')}
+      </table>`
+          : ''
+      }
     </div>
   `
 
@@ -78,7 +103,7 @@ export async function POST(req: Request) {
     const result = await resend.emails.send({
       from: RESEND_FROM,
       to: RESEND_TO,
-      replyTo: email,
+      ...(email ? { replyTo: email } : {}),
       subject,
       text,
       html,

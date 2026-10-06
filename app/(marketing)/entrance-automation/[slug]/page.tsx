@@ -70,7 +70,7 @@ export default async function EntranceProductPage({
         primaryCta={{ label: 'Request a site survey', href: contactHref }}
         secondaryCta={{ label: 'WhatsApp us', message: p.whatsappMessage }}
         image={{
-          src: `/images/entrance-automation/${slug}.png`,
+          src: `/images/entrance-automation/${slug}.jpg`,
           alt: `${p.serviceName} across Kerala by ITSolute`,
         }}
       />

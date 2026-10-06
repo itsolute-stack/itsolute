@@ -165,11 +165,25 @@ export function LandingPage({ page, district }: { page: LpPage; district: string
               {page.choices.items.map((c) => (
                 <div
                   key={c.label}
-                  className="flex flex-col rounded-lg border border-slate-200 bg-white p-5"
+                  className="flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-white"
                 >
+                  {/* aspect-square matches the 1:1 source, so nothing reflows as it loads */}
+                  <div className="relative aspect-square w-full bg-slate-100">
+                    <Image
+                      src={c.image.src}
+                      alt={c.image.alt}
+                      fill
+                      sizes="(min-width: 1024px) 23vw, (min-width: 640px) 45vw, 92vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
                   <h3 className="text-base font-medium tracking-tight text-[color:var(--color-ink)]">
                     {c.label}
                   </h3>
+                  {c.note ? (
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{c.note}</p>
+                  ) : null}
                   {c.price ? (
                     <p className="mt-2 text-2xl font-semibold tracking-tight text-[color:var(--color-ink)]">
                       {c.price}
@@ -179,8 +193,9 @@ export function LandingPage({ page, district }: { page: LpPage; district: string
                   <FormScrollButton
                     label="Get quote for this"
                     preset={c.preset}
-                    className="mt-auto w-full border border-slate-300 pt-3 text-[color:var(--color-ink)] hover:border-slate-400"
+                    className="mt-auto w-full border border-slate-300 text-[color:var(--color-ink)] hover:border-slate-400"
                   />
+                  </div>
                 </div>
               ))}
             </div>
@@ -209,6 +224,22 @@ export function LandingPage({ page, district }: { page: LpPage; district: string
                 </li>
               ))}
             </ul>
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {page.included.images.map((img) => (
+                <div
+                  key={img.src}
+                  className="relative aspect-[3/2] w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-100"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(min-width: 640px) 46vw, 92vw"
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
             <p className="mt-6 text-sm leading-relaxed text-slate-500">
               {page.included.addOns}
             </p>

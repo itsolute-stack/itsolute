@@ -79,7 +79,7 @@ export const projects: Project[] = []
 /** Filter labels for the product type, in the same order as the pricing table. */
 export const projectTypeLabels: Record<ProjectType, string> = {
   'sliding-gate': 'Sliding gates',
-  'roller-gate': 'Roller gates',
+  'roller-gate': 'Roller gates (wheel-drive)',
   'swing-gate': 'Swing gates',
   'boom-barrier': 'Boom barriers',
 }

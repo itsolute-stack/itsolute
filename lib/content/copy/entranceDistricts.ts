@@ -30,10 +30,10 @@ export const entranceGateTypes: GateTypeRow[] = [
     blurb: 'Rack-driven motor sized to your gate, for driveways with room alongside to slide.',
   },
   {
-    label: 'Roller gate automation',
+    label: 'Roller gate automation (wheel-drive swing gate)',
     from: '₹48,000',
     href: GATES_HREF,
-    blurb: 'For rolling shutters and roller gates on shops, garages and compounds.',
+    blurb: 'A swing gate driven by wheel motors at the bottom of each leaf that roll along the ground — useful where there is no room for a sliding gate to park alongside.',
   },
   {
     label: 'Swing gate — single-arm',

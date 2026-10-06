@@ -243,7 +243,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       headline: 'Gate automation pricing, by gate type.',
       rows: [
         { label: 'Sliding gate', from: '₹40,000', minPrice: 40000 },
-        { label: 'Roller gate', from: '₹48,000', minPrice: 48000 },
+        { label: 'Roller gate (wheel-drive swing gate)', from: '₹48,000', minPrice: 48000 },
         { label: 'Swing gate — single-arm', from: '₹55,000', minPrice: 55000 },
         { label: 'Swing gate — two-arm', from: '₹75,000', minPrice: 75000 },
       ],

@@ -112,9 +112,22 @@ export type LpPage = {
   choices: {
     heading: string
     note?: string
-    items: { label: string; price?: string; bestFor: string; preset: string }[]
+    items: {
+      label: string
+      price?: string
+      bestFor: string
+      preset: string
+      /** Extra line under the title — used to explain what a roller gate is. */
+      note?: string
+      image: { src: string; alt: string }
+    }[]
   }
-  included: { heading: string; items: string[]; addOns: string }
+  included: {
+    heading: string
+    items: string[]
+    addOns: string
+    images: { src: string; alt: string }[]
+  }
   retrofit?: { heading: string; body: string }
   faqs: { q: string; a: string }[]
   finalCtaHeading: string
@@ -134,8 +147,8 @@ export const lpGateAutomation: LpPage = {
   whatsappMessage:
     "Hi ITSolute, I'd like a quote for an automatic gate in {district}.",
   heroImage: {
-    src: '/images/entrance-automation/automatic-gates.jpg',
-    alt: 'Automatic sliding gate installed at a Kerala home',
+    src: '/images/lp/gate-hero.jpg',
+    alt: 'View from the driver’s seat of a car waiting at a dark slatted automatic gate on a wet driveway',
   },
   pain: {
     heading: 'No more getting out of the car to open the gate.',
@@ -161,24 +174,42 @@ export const lpGateAutomation: LpPage = {
         price: '₹40,000',
         bestFor: 'Most Kerala homes with side space',
         preset: 'Sliding',
+        image: {
+          src: '/images/lp/gate-sliding.jpg',
+          alt: 'Dark horizontal-slat sliding gate closed across a paved driveway in front of a white house',
+        },
       },
       {
         label: 'Roller gate',
         price: '₹48,000',
         bestFor: 'Compact entrances',
-        preset: 'Roller',
+        // Customers routinely read "roller gate" as a rolling shutter. It is not.
+        note: 'Swing gate driven by wheel motors that roll on the ground.',
+        preset: 'Roller (wheel-drive)',
+        image: {
+          src: '/images/lp/gate-roller.jpg',
+          alt: 'Open double-leaf swing gate with bronze wheel-drive motor units at the bottom of each leaf resting on paving',
+        },
       },
       {
         label: 'Swing gate — single arm',
         price: '₹55,000',
         bestFor: 'Narrow gates',
         preset: 'Swing',
+        image: {
+          src: '/images/lp/gate-swing-single.jpg',
+          alt: 'Single-leaf dark slatted swing gate with an arm motor mounted on the gate pillar',
+        },
       },
       {
         label: 'Swing gate — two arm',
         price: '₹75,000',
         bestFor: 'Wide driveways',
         preset: 'Swing',
+        image: {
+          src: '/images/lp/gate-swing-double.jpg',
+          alt: 'Double-leaf dark slatted swing gate standing open onto a paved forecourt',
+        },
       },
     ],
   },
@@ -190,6 +221,16 @@ export const lpGateAutomation: LpPage = {
       'Remote control + RFID access',
       'Professional installation & setup',
       'Manufacturer warranty',
+    ],
+    images: [
+      {
+        src: '/images/blog/automatic-gate-safety-sensors.jpg',
+        alt: 'Photocell safety sensor mounted on a brick gate pillar beside a dark metal gate',
+      },
+      {
+        src: '/images/blog/automatic-gate-power-cut-battery-backup.jpg',
+        alt: 'Open gate control cabinet showing the control board, backup battery and an arm motor',
+      },
     ],
     addOns:
       'Optional: voice control (a WiFi smart-switch module that works with most standard gate motors with a remote-control input) · AMC maintenance plans.',
@@ -227,7 +268,7 @@ export const lpGateAutomation: LpPage = {
   finalCtaHeading: 'Get your free site survey in {district}',
   formStepOne: {
     legend: 'What kind of gate?',
-    options: ['Sliding', 'Swing', 'Roller', 'Not sure'],
+    options: ['Sliding', 'Swing', 'Roller (wheel-drive)', 'Not sure'],
   },
 }
 
@@ -242,8 +283,8 @@ export const lpBoomBarrier: LpPage = {
   priceNote: '+ GST · professional installation included',
   whatsappMessage: "Hi ITSolute, I'd like a quote for a boom barrier in {district}.",
   heroImage: {
-    src: '/images/entrance-automation/boom-barriers.jpg',
-    alt: 'Automatic boom barrier at a vehicle entrance',
+    src: '/images/lp/barrier-hero.jpg',
+    alt: 'Car waiting at a raised boom barrier on the approach road to a building entrance',
   },
   pain: {
     heading: 'Stop unknown vehicles at the gate.',
@@ -273,21 +314,37 @@ export const lpBoomBarrier: LpPage = {
         label: 'Apartments & flats',
         bestFor: 'Resident vehicles in and out all day',
         preset: 'Apartment',
+        image: {
+          src: '/images/lp/barrier-apartment.jpg',
+          alt: 'Boom barrier at the vehicle entrance of an apartment block with towers behind',
+        },
       },
       {
         label: 'Office compounds',
         bestFor: 'Staff and visitor parking',
         preset: 'Office',
+        image: {
+          src: '/images/lp/barrier-office.jpg',
+          alt: 'Boom barrier at an office compound entrance with a glass tower behind',
+        },
       },
       {
         label: 'Commercial parking',
         bestFor: 'High traffic, paid or managed access',
         preset: 'Commercial parking',
+        image: {
+          src: '/images/lp/barrier-parking.jpg',
+          alt: 'Boom barrier at the entrance to a covered commercial car park',
+        },
       },
       {
         label: 'Hospitals, schools & institutions',
         bestFor: 'Controlled access on a busy campus',
         preset: 'Other',
+        image: {
+          src: '/images/lp/barrier-institution.jpg',
+          alt: 'Boom barrier at a campus entrance with white institutional buildings behind',
+        },
       },
     ],
   },
@@ -298,6 +355,16 @@ export const lpBoomBarrier: LpPage = {
       'Remote control + RFID access',
       'Professional installation & setup',
       'Manufacturer warranty',
+    ],
+    images: [
+      {
+        src: '/images/blog/automatic-gate-safety-sensors.jpg',
+        alt: 'Photocell safety sensor mounted on a brick gate pillar beside a dark metal gate',
+      },
+      {
+        src: '/images/blog/automatic-gate-power-cut-battery-backup.jpg',
+        alt: 'Open gate control cabinet showing the control board, backup battery and an arm motor',
+      },
     ],
     addOns: 'Optional: AMC maintenance plans · combine with an automatic gate.',
   },

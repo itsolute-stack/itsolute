@@ -189,6 +189,28 @@ export function LandingPage({ page, district }: { page: LpPage; district: string
                       {c.price}
                     </p>
                   ) : null}
+                  {c.priceAc || c.priceDc ? (
+                    <dl className="mt-3 flex flex-col gap-1.5">
+                      {c.priceAc ? (
+                        <div className="flex items-baseline justify-between gap-2">
+                          <dt className="text-xs text-slate-500">Standard (AC)</dt>
+                          <dd className="text-lg font-semibold tracking-tight text-[color:var(--color-ink)]">
+                            from {c.priceAc}
+                          </dd>
+                        </div>
+                      ) : null}
+                      {c.priceDc ? (
+                        <div className="flex items-baseline justify-between gap-2">
+                          <dt className="text-xs text-slate-500">
+                            {c.priceAc ? 'Premium (DC)' : 'DC motor'}
+                          </dt>
+                          <dd className="text-lg font-semibold tracking-tight text-[color:var(--color-ink)]">
+                            from {c.priceDc}
+                          </dd>
+                        </div>
+                      ) : null}
+                    </dl>
+                  ) : null}
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">{c.bestFor}</p>
                   <FormScrollButton
                     label="Get quote for this"
@@ -199,6 +221,33 @@ export function LandingPage({ page, district }: { page: LpPage; district: string
                 </div>
               ))}
             </div>
+            {page.acVsDc ? (
+              <div className="mt-10 max-w-3xl rounded-lg border border-slate-200 bg-white p-5 md:p-6">
+                <h3 className="text-base font-medium tracking-tight text-[color:var(--color-ink)]">
+                  {page.acVsDc.heading}
+                </h3>
+                <dl className="mt-4 flex flex-col gap-3">
+                  {page.acVsDc.rows.map((r) => (
+                    <div
+                      key={r.label}
+                      className="grid grid-cols-1 gap-1 border-t border-slate-100 pt-3 sm:grid-cols-[6rem_1fr_1fr] sm:gap-4"
+                    >
+                      <dt className="font-mono text-xs uppercase tracking-widest text-slate-500">
+                        {r.label}
+                      </dt>
+                      <dd className="text-sm text-slate-700">
+                        <span className="font-medium text-[color:var(--color-ink)]">AC · </span>
+                        {r.ac}
+                      </dd>
+                      <dd className="text-sm text-slate-700">
+                        <span className="font-medium text-[color:var(--color-ink)]">DC · </span>
+                        {r.dc}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ) : null}
             {page.choices.note ? (
               <p className="mt-6 max-w-3xl text-sm leading-relaxed text-slate-500">
                 {page.choices.note}

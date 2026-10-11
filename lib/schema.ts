@@ -115,9 +115,10 @@ export function serviceSchema(opts: {
 
 /**
  * Product/Offer markup for pages that list several priced variants (the gate
- * types, the boom barrier). Prices are "from" figures excluding GST, so each
+ * types, the boom barrier). Prices are "from" figures including GST, so each
  * Offer carries a priceSpecification with `minPrice` and
- * `valueAddedTaxIncluded: false` rather than a flat `price`.
+ * `valueAddedTaxIncluded: true` rather than a flat `price` — entrance
+ * automation prices are quoted inclusive of GST.
  *
  * Deliberately no aggregateRating/review — we don't publish self-issued ratings.
  */
@@ -147,7 +148,7 @@ export function productOffersSchema(opts: {
             '@type': 'UnitPriceSpecification',
             priceCurrency: 'INR',
             minPrice: item.minPrice,
-            valueAddedTaxIncluded: false,
+            valueAddedTaxIncluded: true,
           },
         },
       },

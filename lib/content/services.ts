@@ -141,12 +141,12 @@ export const services: Service[] = [
     title: 'Entrance Automation',
     tagline: 'Automatic gates and boom barriers, installed and maintained.',
     description:
-      'Automatic sliding/swing gate and boom barrier installation across Kerala — safety sensors, RFID/FASTag access, battery backup, and AMC. For homes, apartments, and commercial sites.',
+      'Automatic sliding/swing gate and boom barrier installation across Kerala — safety sensors, remote control access, and AMC. For homes, apartments, and commercial sites.',
     icon: Fence,
     features: [
       'Automatic gates (sliding & swing)',
-      'Boom barriers (RFID / FASTag)',
-      'Safety sensors & battery backup',
+      'Boom barriers (arm up to 5 m)',
+      'Safety sensors & remote control',
       'Entrance automation AMC',
     ],
     href: '/entrance-automation',

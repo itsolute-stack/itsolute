@@ -269,7 +269,7 @@ export function EntranceDistrictPage({ slug }: { slug: string }) {
               description: d.metaDescription,
               slug: `entrance-automation/${d.slug}`,
               serviceType: 'Gate automation and boom barrier installation',
-              priceRange: { low: '40000', high: '200000' },
+              priceRange: { low: '34000', high: '200000' },
               areaServed: [
                 { '@type': 'AdministrativeArea', name: `${d.district} district` },
                 ...d.towns.map((town) => ({ '@type': 'City', name: town })),

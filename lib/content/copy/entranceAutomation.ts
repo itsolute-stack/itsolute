@@ -15,6 +15,18 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import type { FAQ } from '@/lib/content/faqs'
+import {
+  entranceProduct,
+  GATE_FROM,
+  BARRIER_FROM,
+  ENTRANCE_PRICE_NOTE,
+  BARRIER_PRICE_NOTE,
+  POWER_CUT_ANSWER,
+  ACCESS_ANSWER,
+  INSTALLATION_ANSWER,
+  GATE_FROM_MIN,
+  BARRIER_FROM_MIN,
+} from '@/lib/content/entrancePricing'
 import type { PageVideo } from '@/components/shared/VideoEmbed'
 
 /**
@@ -47,13 +59,13 @@ export const entranceHubCopy = {
         title: 'Automatic Gates',
         href: '/entrance-automation/automatic-gates',
         tagline: 'Sliding and swing gate automation.',
-        blurb: 'Motorise a new or existing sliding or swing gate — with remote, keypad or RFID access, safety sensors, and battery backup. For homes, villas, apartments, and commercial compounds.',
+        blurb: 'Motorise a new or existing sliding or swing gate — opened from a remote, with safety sensors fitted as standard. For homes, villas, apartments, and commercial compounds.',
       },
       {
         title: 'Boom Barriers',
         href: '/entrance-automation/boom-barriers',
         tagline: 'Fast barriers for parking and access control.',
-        blurb: 'High-duty boom barriers for car parks, apartments, offices, and commercial entrances — with RFID/FASTag, loop detectors, and integration into your access and CCTV systems.',
+        blurb: 'Boom barriers for car parks, apartments, offices, and commercial entrances — DC motor, arm up to 5 m, opened from a remote, with safety sensors fitted as standard.',
       },
     ],
   },
@@ -115,11 +127,11 @@ export const entranceHubFAQs: FAQ[] = [
   },
   {
     q: 'Do gates and barriers work during a power cut?',
-    a: 'With battery backup, yes — which we fit as standard given how common power cuts are in Kerala. The gate or barrier keeps operating for a period on backup, and can be released manually if needed.',
+    a: POWER_CUT_ANSWER,
   },
   {
     q: 'Can you connect the entrance to CCTV and access control?',
-    a: 'Yes, and it’s one of our main advantages. Because we also install networks, CCTV, and access control, we can tie your gate or barrier into cameras, intercoms, RFID, and access records so the whole entrance works as one system.',
+    a: 'Yes, and it’s one of our main advantages. Because we also install networks and CCTV, we can tie your gate or barrier into cameras and intercoms so the whole entrance works as one system.',
   },
   {
     q: 'Do you offer AMC for gates and barriers?',
@@ -167,12 +179,12 @@ export const entranceProducts: Record<string, EntranceProduct> = {
   'automatic-gates': {
     slug: 'automatic-gates',
     metaTitle:
-      'Automatic Gate Installation in Kottayam & Kerala — Sliding, Swing, Roller | ITSolute',
+      `Automatic Gate Installation in Kottayam & Kerala — From ${GATE_FROM} incl. GST | ITSolute`,
     metaDescription:
-      'Automatic gate installation from ₹40,000 — sliding, swing and roller gates with safety sensors, battery backup and RFID access. Free site survey across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
+      `Automatic gate installation from ${GATE_FROM} including GST — sliding, swing and roller gates with safety sensors and 2 remotes in the motor kit. Free site survey across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.`,
     serviceName: 'Automatic Gate Installation',
     serviceType: 'Automatic Gate Installation',
-    priceLow: '40000',
+    priceLow: String(GATE_FROM_MIN),
     priceHigh: '200000',
     whatsappMessage: 'Hi ITSolute, I want to automate my gate (sliding / swing).',
     guides: [
@@ -186,7 +198,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     hero: {
       eyebrow: 'AUTOMATIC GATES · KOTTAYAM & KERALA',
       headline: 'Never get out of the car to open the gate again.',
-      sub: 'Sliding and swing gate automation for homes, villas, apartments, and commercial compounds across Kerala — with remote, keypad, or RFID access, safety sensors, and battery backup for power cuts.',
+      sub: 'Sliding, swing and roller gate automation for homes, villas, apartments, and commercial compounds across Kerala — opened from a remote, with safety sensors fitted as standard.',
     },
     install: {
       eyebrow: 'WHAT WE INSTALL',
@@ -194,11 +206,10 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       items: [
         { icon: DoorOpen, title: 'Sliding gate motors', body: 'Rack-driven motors sized to your gate’s weight and length, for smooth reliable travel.' },
         { icon: Fence, title: 'Swing gate motors', body: 'Arm or underground motors for single and double swing gates.' },
-        { icon: RadioTower, title: 'Remote control', body: 'Handheld remotes for the whole household, added or removed as needed.' },
-        { icon: ScanLine, title: 'Keypad & RFID access', body: 'Code keypads and RFID tags/cards so you control who can open it.' },
-        { icon: Mic, title: 'Voice control (Alexa / Google)', body: 'A WiFi smart-switch module wired into the motor’s existing remote-control input, giving Alexa and Google Home voice control alongside the app, RFID, and remote. Works with most standard gate motors with a remote-control input.' },
-        { icon: ShieldCheck, title: 'Safety sensors', body: 'Photocells and obstacle detection so the gate never closes on a person or vehicle.' },
-        { icon: BatteryCharging, title: 'Battery backup', body: 'Keeps the gate working through a power cut, with manual release as a fallback.' },
+        { icon: RadioTower, title: 'Remote control', body: 'Two remotes come with every motor kit, and extra remotes are available.' },
+        { icon: Mic, title: 'Voice control (Alexa / Google)', body: 'On DC motors, a WiFi smart-switch module wired into the motor’s remote-control input gives Alexa and Google Home voice control alongside the remote. Not available on AC motors.' },
+        { icon: ShieldCheck, title: 'Safety sensors', body: 'A photocell pair is included, so the gate stops rather than closing on a person or vehicle.' },
+        { icon: BatteryCharging, title: 'Battery backup (DC only)', body: 'Available on DC motors — built in on some brands, a ₹5,500 add-on on others. AC motors stop in a power cut and open with the manual release key.' },
         { icon: Cctv, title: 'Intercom & CCTV integration', body: 'See and speak to visitors, and tie the gate into your camera system.' },
         { icon: KeyRound, title: 'Retrofit existing gates', body: 'We motorise your existing sliding or swing gate — you don’t need a new one.' },
       ],
@@ -223,7 +234,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         { title: 'Motor sized to your gate', body: 'We match the motor to your gate’s weight and length — an undersized motor is the most common cause of early failure.' },
         { title: 'Genuine motors, real warranty', body: 'Motors from trusted brands through trusted suppliers, with manufacturer warranty on every unit.' },
         { title: 'Battery backup for power cuts', body: 'Fitted as standard, because a gate that dies with the power isn’t much use in Kerala.' },
-        { title: 'Connected, not standalone', body: 'Integrated with intercom, RFID, and CCTV where you want it — because we install those too.' },
+        { title: 'Connected, not standalone', body: 'Tied into intercom and CCTV where you want it — because we install those too.' },
         { title: 'AMC to keep it moving', body: 'Ongoing servicing so sensors, motor, and battery stay in good order.' },
       ],
     },
@@ -234,7 +245,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         { index: '01', title: 'Site survey', body: 'We measure the gate, check the weight and travel, and assess power and layout — free across Kerala.' },
         { index: '02', title: 'Recommend & quote', body: 'The right motor and access method for your gate, with a fixed written quote. Approved before we start.' },
         { index: '03', title: 'Install & wire', body: 'Motor, sensors, wiring, and access fitted neatly, with the electrical side done properly.' },
-        { index: '04', title: 'Configure & test', body: 'Remotes, keypad/RFID, safety sensors, and backup set up and tested, with a walkthrough for you.' },
+        { index: '04', title: 'Configure & test', body: 'Remotes, safety sensors and the manual release set up and tested, with a walkthrough for you.' },
         { index: '05', title: 'Support & AMC', body: 'Optional AMC to keep the gate serviced and reliable year-round.' },
       ],
     },
@@ -242,13 +253,34 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       eyebrow: 'INDICATIVE PRICING',
       headline: 'Gate automation pricing, by gate type.',
       rows: [
-        { label: 'Sliding gate', from: '₹40,000', minPrice: 40000 },
-        { label: 'Roller gate (wheel-drive swing gate)', from: '₹48,000', minPrice: 48000 },
-        { label: 'Swing gate — single-arm', from: '₹55,000', minPrice: 55000 },
-        { label: 'Swing gate — two-arm', from: '₹75,000', minPrice: 75000 },
+        {
+          label: 'Sliding gate — standard (AC motor)',
+          from: entranceProduct('sliding').ac!.from,
+          minPrice: entranceProduct('sliding').ac!.minPrice,
+        },
+        {
+          label: 'Sliding gate — premium (DC motor)',
+          from: entranceProduct('sliding').dc.from,
+          minPrice: entranceProduct('sliding').dc.minPrice,
+        },
+        {
+          label: 'Swing gate — single arm (DC motor)',
+          from: entranceProduct('swing-single').dc.from,
+          minPrice: entranceProduct('swing-single').dc.minPrice,
+        },
+        {
+          label: 'Swing gate — double arm (DC motor)',
+          from: entranceProduct('swing-double').dc.from,
+          minPrice: entranceProduct('swing-double').dc.minPrice,
+        },
+        {
+          label: 'Roller gate — wheel-drive swing (DC motor)',
+          from: entranceProduct('roller').dc.from,
+          minPrice: entranceProduct('roller').dc.minPrice,
+        },
       ],
       disclaimer:
-        'All prices exclude GST. Indicative starting prices, installed — the final quote follows a free site survey, since gate size and weight, motor type, access method, and wiring runs all affect the total.',
+        ENTRANCE_PRICE_NOTE,
     },
     retrofit: {
       eyebrow: 'RETROFIT',
@@ -259,7 +291,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         'We check weight, travel and the condition of hinges, track and rollers first',
         'A gate that drags or sags gets corrected before the motor goes on — otherwise the motor takes the strain',
         'Retrofitting is normally far cheaper than replacing a sound gate',
-        'Safety sensors and battery backup are fitted as standard, same as a new install',
+        'Safety sensors are fitted as standard, same as a new install',
       ],
     },
     amc: {
@@ -270,7 +302,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         'Scheduled motor and mechanism servicing',
         'Safety-sensor alignment and testing',
         'Battery-backup health checks and replacement',
-        'Remote and access (keypad/RFID) sync',
+        'Remote pairing and handover',
         'Priority response when the gate fails',
       ],
     },
@@ -292,8 +324,8 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         a: 'We fit battery backup as standard, so the gate keeps working for a period on backup power. There’s also a manual release so you can always open the gate by hand if needed. Given how common power cuts are in Kerala, we treat backup as essential, not optional.',
       },
       {
-        q: 'Can I open the gate from my phone or with an RFID tag?',
-        a: 'Yes. Beyond handheld remotes, we can set up keypad codes, RFID tags/cards, and — depending on the system — phone-based control, plus intercom so you can see and speak to visitors before opening. We configure the access method that fits how you actually use the entrance.',
+        q: 'How do I open the gate?',
+        a: ACCESS_ANSWER,
       },
       {
         q: 'Do you offer AMC for automatic gates?',
@@ -306,10 +338,10 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     slug: 'boom-barriers',
     metaTitle: 'Boom Barrier Installation in Kottayam & Kerala | ITSolute',
     metaDescription:
-      'Boom barrier installation from ₹59,000 for apartments, offices and commercial parking — RFID access, loop detectors and battery backup. Free site survey across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
+      `Boom barrier installation from ${BARRIER_FROM} including GST for apartments, offices and commercial parking — DC motor, arm up to 5 m, 2 remotes and safety sensors. Free site survey across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.`,
     serviceName: 'Boom Barrier Installation',
     serviceType: 'Boom Barrier Installation',
-    priceLow: '59000',
+    priceLow: String(BARRIER_FROM_MIN),
     priceHigh: '150000',
     whatsappMessage: 'Hi ITSolute, I want to install a boom barrier.',
     guides: [
@@ -320,20 +352,18 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     hero: {
       eyebrow: 'BOOM BARRIERS · KOTTAYAM & KERALA',
       headline: 'Control vehicle access without a guard at the gate.',
-      sub: 'Boom barrier installation for car parks, apartments, offices, and commercial entrances across Kerala — with RFID/FASTag access, loop detectors, CCTV integration, and battery backup.',
+      sub: 'Boom barrier installation for car parks, apartments, offices, and commercial entrances across Kerala — DC motor, arm up to 5 m, opened from a remote, with safety sensors fitted as standard.',
     },
     install: {
       eyebrow: 'WHAT WE INSTALL',
       headline: 'The full boom-barrier setup, fitted and integrated.',
       items: [
         { icon: RectangleHorizontal, title: 'Boom barrier units', body: 'Straight, folding, and curved arms sized to your entrance width and traffic.' },
-        { icon: ScanLine, title: 'RFID & FASTag access', body: 'Tags, cards, or FASTag so registered vehicles pass without stopping.' },
-        { icon: Car, title: 'Loop detectors', body: 'In-ground sensors that detect vehicles for safe auto-close and free exit.' },
-        { icon: RadioTower, title: 'Remote & push-button', body: 'Handheld remotes and guard-booth push-button control.' },
-        { icon: Mic, title: 'Voice control (Alexa / Google)', body: 'A WiFi smart-switch module wired into the barrier motor’s existing remote-control input, giving Alexa and Google Home voice control alongside the app, RFID, and remote. Works with most standard barrier motors with a remote-control input.' },
+        { icon: RadioTower, title: 'Remote control', body: 'Two remotes come with the barrier, and extra remotes are available.' },
+        { icon: Mic, title: 'Voice control (Alexa / Google)', body: 'A WiFi smart-switch module wired into the barrier motor’s remote-control input gives Alexa and Google Home voice control alongside the remote. Boom barriers run on DC motors, so this is always an option.' },
         { icon: ShieldCheck, title: 'Safety & anti-crash', body: 'Sensors so the arm never drops on a vehicle or person.' },
-        { icon: Cctv, title: 'Access control & CCTV', body: 'Integrate with number-plate cameras, access records, and your CCTV.' },
-        { icon: BatteryCharging, title: 'Battery backup', body: 'Keeps the barrier operating through power cuts.' },
+        { icon: Cctv, title: 'CCTV integration', body: 'Tie the entrance into your camera system — because we install those too.' },
+        { icon: BatteryCharging, title: 'Battery backup', body: 'Available on the DC motor — built in on some brands, a ₹5,500 add-on on others. A manual release raises the arm by hand either way.' },
         { icon: Siren, title: 'High-duty motors', body: 'Rated for high-traffic entrances that cycle all day.' },
       ],
     },
@@ -353,7 +383,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       eyebrow: 'WHY ITSOLUTE FOR BARRIERS',
       headline: 'A barrier is only as good as the access system behind it.',
       points: [
-        { title: 'Access done right', body: 'RFID, FASTag, and loop detectors set up so the right vehicles pass quickly and the barrier closes safely.' },
+        { title: 'Access done right', body: 'Remotes paired and safety sensors aligned so the right vehicles pass quickly and the arm closes safely.' },
         { title: 'Integrated with your systems', body: 'Ties into CCTV, number-plate cameras, and access records — because we install those too.' },
         { title: 'High-duty, genuine units', body: 'Barriers rated for your traffic volume, from trusted brands through trusted suppliers, with manufacturer warranty.' },
         { title: 'Safety and anti-crash', body: 'Loop and safety sensors so the arm never drops on a vehicle or person.' },
@@ -366,7 +396,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       headline: 'Five steps from open entry to controlled access.',
       steps: [
         { index: '01', title: 'Site survey', body: 'We assess the entrance width, traffic volume, and access needs — free across Kerala.' },
-        { index: '02', title: 'Recommend & quote', body: 'The right barrier, arm, and access method (RFID/FASTag/loop), with a fixed written quote.' },
+        { index: '02', title: 'Recommend & quote', body: 'The right barrier and arm length for your entrance, with a fixed written quote.' },
         { index: '03', title: 'Install & wire', body: 'Barrier, loops, sensors, and access hardware fitted and wired properly.' },
         { index: '04', title: 'Configure & test', body: 'Access tags, loop detection, safety, and backup set up and tested, with a walkthrough.' },
         { index: '05', title: 'Support & AMC', body: 'Optional AMC to keep a high-cycle barrier reliable year-round.' },
@@ -376,10 +406,14 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       eyebrow: 'INDICATIVE PRICING',
       headline: 'Boom barrier pricing.',
       rows: [
-        { label: 'Boom barrier', from: '₹59,000', minPrice: 59000 },
+        {
+          label: 'Boom barrier (DC motor, arm up to 5 m)',
+          from: entranceProduct('boom-barrier').dc.from,
+          minPrice: entranceProduct('boom-barrier').dc.minPrice,
+        },
       ],
       disclaimer:
-        'All prices exclude GST. Indicative starting price, installed — the final quote follows a free site survey, since entrance width, traffic volume, access method, and integration all affect the total.',
+        BARRIER_PRICE_NOTE,
     },
     amc: {
       eyebrow: 'AMC & MAINTENANCE',
@@ -388,7 +422,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       points: [
         'Scheduled motor and arm-balance servicing',
         'Loop-detector and safety-sensor testing',
-        'RFID/FASTag access and reader checks',
+        'Remote pairing and safety sensor alignment checks',
         'Battery-backup health checks and replacement',
         'Priority response when the barrier fails',
       ],
@@ -396,7 +430,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     faqs: [
       {
         q: 'Can the barrier open automatically for registered vehicles?',
-        a: 'Yes — that’s the most common setup. With RFID tags, cards, or FASTag, registered vehicles are read as they approach and the barrier opens without anyone stopping or a guard pressing a button. Visitors can be handled by remote, push-button, or an intercom at the entry.',
+        a: 'Registered users open the barrier with a remote — two come with the barrier and extra remotes are available. Visitors are handled by whoever is on the gate, or by an intercom if you add one.',
       },
       {
         q: 'How fast does a boom barrier operate?',

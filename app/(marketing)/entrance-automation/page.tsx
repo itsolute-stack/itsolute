@@ -22,7 +22,7 @@ export const metadata = {
     absolute: 'Entrance Automation in Kerala — Automatic Gates & Boom Barriers | ITSolute',
   },
   description:
-    'Automatic gates from ₹40,000 and boom barriers from ₹59,000, installed across Kottayam, Ernakulam, Pathanamthitta and Alappuzha. Safety sensors, battery backup and RFID access as standard. Free site survey.',
+    'Automatic gates from ₹34,000 and boom barriers from ₹60,000, all incl. GST, installed across Kottayam, Ernakulam, Pathanamthitta and Alappuzha. Motor kit, 2 remotes and safety sensors included. Free site survey.',
   alternates: { canonical: `${SITE_URL}/entrance-automation` },
 }
 
@@ -192,10 +192,10 @@ export default function EntranceAutomationPage() {
             serviceSchema({
               name: 'Entrance Automation — Automatic Gates & Boom Barriers',
               description:
-                'Automatic gate and boom barrier installation across Kerala for homes, apartments, offices, and commercial sites — with safety sensors, RFID access, battery backup, and AMC.',
+                'Automatic gate and boom barrier installation across Kerala for homes, apartments, offices, and commercial sites — with safety sensors, remote control access, and AMC.',
               slug: 'entrance-automation',
               serviceType: 'Entrance Automation',
-              priceRange: { low: '25000', high: '250000' },
+              priceRange: { low: '34000', high: '250000' },
             }),
           ),
         }}

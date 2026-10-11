@@ -12,8 +12,28 @@
  *   - no testimonials or ratings (none are real yet)
  *   - no same-day promises, no ITSolute-issued warranty (manufacturer only)
  *   - no countdowns or scarcity
- * Prices exclude GST and are starting points confirmed by a written quote.
+ * Prices INCLUDE GST, cover the motor kit only, and installation is quoted
+ * separately after the free site survey. See lib/content/entrancePricing.ts.
  */
+
+import {
+  GATE_PRODUCTS,
+  entranceProduct,
+  GATE_ANCHOR,
+  BARRIER_ANCHOR,
+  ENTRANCE_INCLUDED,
+  BARRIER_INCLUDED,
+  ENTRANCE_ADDONS,
+  BARRIER_ADDONS,
+  ENTRANCE_PRICE_NOTE,
+  BARRIER_PRICE_NOTE,
+  AC_VS_DC,
+  POWER_CUT_ANSWER,
+  ACCESS_ANSWER,
+  INSTALLATION_ANSWER,
+  GATE_FROM,
+  BARRIER_FROM,
+} from '@/lib/content/entrancePricing'
 
 export const LP_DISTRICTS = [
   'kottayam',
@@ -91,8 +111,7 @@ export const LP_SHARED = {
     hours: 'Mon–Sat, 9:00–19:00',
     areas: 'Serving Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
   },
-  priceNote:
-    'Final price depends on gate size and weight — confirmed in a fixed written quote after a free site survey. Prices exclude GST.',
+  priceNote: ENTRANCE_PRICE_NOTE,
 } as const
 
 export type LpPage = {
@@ -114,10 +133,15 @@ export type LpPage = {
     note?: string
     items: {
       label: string
+      /** Standard (AC) tier — absent where the product is DC-only. */
+      priceAc?: string
+      /** Premium (DC) tier. */
+      priceDc?: string
+      /** Single price, for the barrier tiles which have no tiers. */
       price?: string
       bestFor: string
       preset: string
-      /** Extra line under the title — used to explain what a roller gate is. */
+      /** Extra line under the title — the roller clarifier, battery note, etc. */
       note?: string
       image: { src: string; alt: string }
     }[]
@@ -128,6 +152,8 @@ export type LpPage = {
     addOns: string
     images: { src: string; alt: string }[]
   }
+  /** AC vs DC comparison — gates only; the barrier is DC-only. */
+  acVsDc?: typeof AC_VS_DC
   retrofit?: { heading: string; body: string }
   faqs: { q: string; a: string }[]
   finalCtaHeading: string
@@ -138,12 +164,12 @@ export type LpPage = {
 export const lpGateAutomation: LpPage = {
   slug: 'gate-automation',
   source: 'lp-gate',
-  title: 'Automatic Gates in {district} — From ₹40,000 | Free Site Survey | ITSolute',
+  title: `Automatic Gates in {district} — From ${GATE_FROM} incl. GST | Free Site Survey | ITSolute`,
   eyebrow: 'AUTOMATIC GATES · {DISTRICT}',
   h1: 'Automatic Gates for Your Home in {district}',
   sub: 'Open your gate with one tap — from your car, your phone or your sit-out. Sliding, swing and roller gate automation, installed by a Kottayam-based team.',
-  priceAnchor: 'From ₹40,000',
-  priceNote: '+ GST · safety sensors & battery backup included',
+  priceAnchor: GATE_ANCHOR,
+  priceNote: '2 remotes & safety sensors included',
   whatsappMessage:
     "Hi ITSolute, I'd like a quote for an automatic gate in {district}.",
   heroImage: {
@@ -161,7 +187,7 @@ export const lpGateAutomation: LpPage = {
       },
       {
         title: 'Security',
-        body: 'Gate stays closed and locked unless you open it.',
+        body: 'Gate stays shut until you open it.',
       },
     ],
   },
@@ -171,8 +197,10 @@ export const lpGateAutomation: LpPage = {
     items: [
       {
         label: 'Sliding gate',
-        price: '₹40,000',
-        bestFor: 'Most Kerala homes with side space',
+        priceAc: entranceProduct('sliding').ac!.from,
+        priceDc: entranceProduct('sliding').dc!.from,
+        note: 'Battery backup available on DC.',
+        bestFor: entranceProduct('sliding').bestFor,
         preset: 'Sliding',
         image: {
           src: '/images/lp/gate-sliding.jpg',
@@ -180,21 +208,9 @@ export const lpGateAutomation: LpPage = {
         },
       },
       {
-        label: 'Roller gate',
-        price: '₹48,000',
-        bestFor: 'Compact entrances',
-        // Customers routinely read "roller gate" as a rolling shutter. It is not.
-        note: 'Swing gate driven by wheel motors that roll on the ground.',
-        preset: 'Roller (wheel-drive)',
-        image: {
-          src: '/images/lp/gate-roller.jpg',
-          alt: 'Open double-leaf swing gate with bronze wheel-drive motor units at the bottom of each leaf resting on paving',
-        },
-      },
-      {
         label: 'Swing gate — single arm',
-        price: '₹55,000',
-        bestFor: 'Narrow gates',
+        priceDc: entranceProduct('swing-single').dc.from,
+        bestFor: entranceProduct('swing-single').bestFor,
         preset: 'Swing',
         image: {
           src: '/images/lp/gate-swing-single.jpg',
@@ -202,38 +218,45 @@ export const lpGateAutomation: LpPage = {
         },
       },
       {
-        label: 'Swing gate — two arm',
-        price: '₹75,000',
-        bestFor: 'Wide driveways',
+        label: 'Swing gate — double arm',
+        priceDc: entranceProduct('swing-double').dc.from,
+        bestFor: entranceProduct('swing-double').bestFor,
         preset: 'Swing',
         image: {
           src: '/images/lp/gate-swing-double.jpg',
           alt: 'Double-leaf dark slatted swing gate standing open onto a paved forecourt',
         },
       },
+      {
+        label: 'Roller gate (wheel-drive swing)',
+        priceDc: entranceProduct('roller').dc.from,
+        note: entranceProduct('roller').note,
+        bestFor: entranceProduct('roller').bestFor,
+        preset: 'Roller (wheel-drive)',
+        image: {
+          src: '/images/lp/gate-roller.jpg',
+          alt: 'Open double-leaf swing gate with bronze wheel-drive motor units at the bottom of each leaf resting on paving',
+        },
+      },
     ],
   },
+  acVsDc: AC_VS_DC,
   included: {
     heading: 'Included as standard',
-    items: [
-      'Safety sensors',
-      'Battery backup — works during power cuts',
-      'Remote control + RFID access',
-      'Professional installation & setup',
-      'Manufacturer warranty',
-    ],
+    items: ENTRANCE_INCLUDED,
+    // Only the sensors photo: the battery cabinet shot used to sit here and
+    // implied battery backup was included, which it is not.
     images: [
       {
         src: '/images/blog/automatic-gate-safety-sensors.jpg',
         alt: 'Photocell safety sensor mounted on a brick gate pillar beside a dark metal gate',
       },
       {
-        src: '/images/blog/automatic-gate-power-cut-battery-backup.jpg',
-        alt: 'Open gate control cabinet showing the control board, backup battery and an arm motor',
+        src: '/images/lp/gate-sliding.jpg',
+        alt: 'Dark horizontal-slat sliding gate closed across a paved driveway',
       },
     ],
-    addOns:
-      'Optional: voice control (a WiFi smart-switch module that works with most standard gate motors with a remote-control input) · AMC maintenance plans.',
+    addOns: ENTRANCE_ADDONS,
   },
   retrofit: {
     heading: 'Already have a gate?',
@@ -242,7 +265,11 @@ export const lpGateAutomation: LpPage = {
   faqs: [
     {
       q: 'What happens during a power cut?',
-      a: 'Battery backup is fitted as standard, so the gate keeps working. There is also a manual release so the gate can always be moved by hand.',
+      a: POWER_CUT_ANSWER,
+    },
+    {
+      q: 'AC or DC motor — which should I choose?',
+      a: 'AC is the lower starting price and does the job, but it cannot take battery backup, so in a power cut you open the gate by hand with the manual release. DC costs more, runs smoother and quieter, can have battery backup, and is the only option if you want voice control. If power cuts are frequent where you are, DC is worth the difference; if not, AC is honest value.',
     },
     {
       q: 'Is it safe for children and pets?',
@@ -258,11 +285,15 @@ export const lpGateAutomation: LpPage = {
     },
     {
       q: 'How much will my gate cost?',
-      a: 'From ₹40,000 plus GST. The exact figure depends on your gate size and weight, and comes to you in a fixed written quote after the free site survey.',
+      a: `Sliding gates start from ${GATE_FROM}, swing gates from ₹40,000 and roller gates from ₹46,000 — all including GST, for the motor kit. The exact figure depends on your gate size and weight, and installation is quoted after the free site survey.`,
+    },
+    {
+      q: 'Is installation included?',
+      a: INSTALLATION_ANSWER,
     },
     {
       q: 'Do you maintain it after installation?',
-      a: 'Yes — AMC plans are available, covering scheduled checks of the battery, the safety sensors and the moving parts.',
+      a: 'Yes — AMC plans are available, covering scheduled checks of the safety sensors, the moving parts and, where fitted, the backup battery.',
     },
   ],
   finalCtaHeading: 'Get your free site survey in {district}',
@@ -275,12 +306,12 @@ export const lpGateAutomation: LpPage = {
 export const lpBoomBarrier: LpPage = {
   slug: 'boom-barrier',
   source: 'lp-barrier',
-  title: 'Boom Barriers in {district} — From ₹59,000 | Free Site Survey | ITSolute',
+  title: `Boom Barriers in {district} — From ${BARRIER_FROM} incl. GST | Free Site Survey | ITSolute`,
   eyebrow: 'BOOM BARRIERS · {DISTRICT}',
   h1: 'Boom Barriers for Apartments, Offices & Parking in {district}',
-  sub: 'Control every vehicle that enters. Automatic boom barriers with remote and RFID access, installed by a Kottayam-based team.',
-  priceAnchor: 'From ₹59,000',
-  priceNote: '+ GST · professional installation included',
+  sub: 'Control every vehicle that enters. Automatic boom barriers opened from a remote, installed by a Kottayam-based team.',
+  priceAnchor: BARRIER_ANCHOR,
+  priceNote: 'DC motor · arm up to 5 m · 2 remotes included',
   whatsappMessage: "Hi ITSolute, I'd like a quote for a boom barrier in {district}.",
   heroImage: {
     src: '/images/lp/barrier-hero.jpg',
@@ -291,11 +322,11 @@ export const lpBoomBarrier: LpPage = {
     items: [
       {
         title: 'Unauthorised parking',
-        body: 'Only residents and staff get in.',
+        body: 'Only people with a remote get in.',
       },
       {
         title: 'Guard workload',
-        body: 'Residents tap an RFID tag — no manual opening.',
+        body: 'Open from a remote, no manual lifting.',
       },
       {
         title: 'Peak-hour queues',
@@ -309,6 +340,7 @@ export const lpBoomBarrier: LpPage = {
   },
   choices: {
     heading: 'Built for sites like yours.',
+    note: BARRIER_PRICE_NOTE,
     items: [
       {
         label: 'Apartments & flats',
@@ -350,28 +382,25 @@ export const lpBoomBarrier: LpPage = {
   },
   included: {
     heading: 'Included as standard',
-    items: [
-      'Barrier unit & arm',
-      'Remote control + RFID access',
-      'Professional installation & setup',
-      'Manufacturer warranty',
-    ],
+    items: BARRIER_INCLUDED,
+    // Barrier photos only — this pair used to be two gate photos, one of them
+    // a battery cabinet implying backup was included.
     images: [
       {
-        src: '/images/blog/automatic-gate-safety-sensors.jpg',
-        alt: 'Photocell safety sensor mounted on a brick gate pillar beside a dark metal gate',
+        src: '/images/lp/barrier-apartment.jpg',
+        alt: 'Boom barrier at the vehicle entrance of an apartment block with towers behind',
       },
       {
-        src: '/images/blog/automatic-gate-power-cut-battery-backup.jpg',
-        alt: 'Open gate control cabinet showing the control board, backup battery and an arm motor',
+        src: '/images/lp/barrier-parking.jpg',
+        alt: 'Boom barrier at the entrance to a covered commercial car park',
       },
     ],
-    addOns: 'Optional: AMC maintenance plans · combine with an automatic gate.',
+    addOns: BARRIER_ADDONS,
   },
   faqs: [
     {
       q: 'What happens during a power cut?',
-      a: 'Battery backup keeps the barrier working. There is also a manual release so the arm can be raised by hand, which matters for emergency vehicle access.',
+      a: 'Boom barriers run on a DC motor, so battery backup is available — built in on some brands and a ₹5,500 add-on on others. Either way the barrier has a manual release so the arm can be raised by hand, which matters for emergency vehicle access.',
     },
     {
       q: 'Is it safe for vehicles and people?',
@@ -379,7 +408,7 @@ export const lpBoomBarrier: LpPage = {
     },
     {
       q: 'How do residents get access?',
-      a: 'RFID tags, issued per vehicle. Each tag can be cancelled individually, so when someone leaves or loses a tag you cancel that one without reissuing to everybody.',
+      a: ACCESS_ANSWER,
     },
     {
       q: 'Will it work outdoors in Kerala rain?',
@@ -387,7 +416,11 @@ export const lpBoomBarrier: LpPage = {
     },
     {
       q: 'How much does a boom barrier cost?',
-      a: 'From ₹59,000 plus GST. The exact figure depends on your lane width and how many vehicles pass per day, and comes to you in a fixed written quote after the free site survey.',
+      a: `From ${BARRIER_FROM} including GST, for the barrier, a DC motor, an arm up to 5 m, 2 remotes and safety sensors. Installation is quoted after the free site survey.`,
+    },
+    {
+      q: 'Is installation included?',
+      a: INSTALLATION_ANSWER,
     },
     {
       q: 'Do you maintain it after installation?',

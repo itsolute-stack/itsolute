@@ -19,9 +19,28 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { d } = await searchParams
   const { name } = resolveDistrict(d)
+  const title = withDistrict(lpBoomBarrier.title, name)
+  const description = lpBoomBarrier.sub
+  const image = `${SITE_URL}${lpBoomBarrier.heroImage.src}`
+
   return {
-    title: { absolute: withDistrict(lpBoomBarrier.title, name) },
-    description: lpBoomBarrier.sub,
+    title: { absolute: title },
+    description,
+    // Set per page — without these the share preview inherited the root
+    // layout's "Business laptops, software…" copy, which is the wrong pitch
+    // entirely for an entrance-automation ad click.
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/lp/boom-barrier`,
+      images: [{ url: image, alt: lpBoomBarrier.heroImage.alt }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+    },
     robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
     // Self-canonical. Without this the page inherits the root layout's
     // canonical (the homepage), which would tell crawlers this is a

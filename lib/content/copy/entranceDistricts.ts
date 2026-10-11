@@ -1,5 +1,13 @@
 import type { FAQ } from '@/lib/content/faqs'
 import type { PageVideo } from '@/components/shared/VideoEmbed'
+import {
+  entranceProduct,
+  GATE_FROM,
+  BARRIER_FROM,
+  ENTRANCE_PRICE_NOTE as SHARED_PRICE_NOTE,
+  POWER_CUT_ANSWER,
+  ACCESS_ANSWER,
+} from '@/lib/content/entrancePricing'
 
 /**
  * District landing pages for entrance automation (automatic gates + boom
@@ -21,43 +29,48 @@ export type GateTypeRow = {
   blurb: string
 }
 
-/** The five products, with "from" prices excluding GST. */
+/** The products, with "from" prices INCLUDING GST, for the motor kit. */
 export const entranceGateTypes: GateTypeRow[] = [
   {
-    label: 'Sliding gate automation',
-    from: '₹40,000',
+    label: 'Sliding gate — standard (AC motor)',
+    from: entranceProduct('sliding').ac!.from,
     href: GATES_HREF,
-    blurb: 'Rack-driven motor sized to your gate, for driveways with room alongside to slide.',
+    blurb: 'Rack-driven motor sized to your gate, for driveways with room alongside to slide. AC motors cannot take battery backup.',
   },
   {
-    label: 'Roller gate automation (wheel-drive swing gate)',
-    from: '₹48,000',
+    label: 'Sliding gate — premium (DC motor)',
+    from: entranceProduct('sliding').dc.from,
     href: GATES_HREF,
-    blurb: 'A swing gate driven by wheel motors at the bottom of each leaf that roll along the ground — useful where there is no room for a sliding gate to park alongside.',
+    blurb: 'Smoother and quieter than AC, and the version that can take battery backup and voice control.',
   },
   {
-    label: 'Swing gate — single-arm',
-    from: '₹55,000',
+    label: 'Swing gate — single arm (DC motor)',
+    from: entranceProduct('swing-single').dc.from,
     href: GATES_HREF,
     blurb: 'One arm motor for a single-leaf swing gate with room to swing inward.',
   },
   {
-    label: 'Swing gate — two-arm',
-    from: '₹75,000',
+    label: 'Swing gate — double arm (DC motor)',
+    from: entranceProduct('swing-double').dc.from,
     href: GATES_HREF,
     blurb: 'Two arm motors for a double-leaf gate, synchronised to open together.',
   },
   {
-    label: 'Boom barrier',
-    from: '₹59,000',
+    label: 'Roller gate — wheel-drive swing (DC motor)',
+    from: entranceProduct('roller').dc.from,
+    href: GATES_HREF,
+    blurb: 'A swing gate driven by wheel motors at the bottom of each leaf that roll along the ground — for sites with no room for a sliding gate to park alongside.',
+  },
+  {
+    label: 'Boom barrier (DC motor, arm up to 5 m)',
+    from: entranceProduct('boom-barrier').dc.from,
     href: BARRIERS_HREF,
-    blurb: 'Fast arm barrier for parking and vehicle access, with RFID or remote entry.',
+    blurb: 'Fast arm barrier for parking and vehicle access, opened from a remote.',
   },
 ]
 
 /** Matches the tax-note convention used on the product pricing tables. */
-export const ENTRANCE_PRICE_NOTE =
-  'All prices exclude GST. Indicative starting prices, installed — the final quote follows a free site survey, since gate size and weight, motor type, access method, and wiring runs all affect the total.'
+export const ENTRANCE_PRICE_NOTE = SHARED_PRICE_NOTE
 
 export const entranceIncluded = {
   eyebrow: 'WHAT’S INCLUDED',
@@ -72,12 +85,12 @@ export const entranceIncluded = {
       body: 'Fitted as standard, so the gate keeps working through a power cut — with a manual release as the fallback.',
     },
     {
-      title: 'Remote & RFID access',
-      body: 'Handheld remotes plus RFID tags or cards, so you control who can open the entrance.',
+      title: 'Remote control',
+      body: 'Two remotes come with every motor kit, and extra remotes are available.',
     },
     {
       title: 'Voice control',
-      body: 'A WiFi smart-switch module wired into the motor’s existing remote-control input, giving Alexa and Google Home voice control alongside the app, RFID and remote. Works with most standard gate motors with a remote-control input.',
+      body: 'On DC motors, a WiFi smart-switch module wired into the motor’s remote-control input gives Alexa and Google Home voice control alongside the remote. Not available on AC motors.',
     },
   ],
 }
@@ -104,7 +117,7 @@ export const entranceProcess = {
     {
       index: '04',
       title: 'Configure & test',
-      body: 'Remotes, RFID, safety sensors and backup set up and tested, with a walkthrough for you.',
+      body: 'Remotes, safety sensors and the manual release set up and tested, with a walkthrough for you.',
     },
     {
       index: '05',
@@ -122,7 +135,7 @@ export const entranceAmcBlock = {
     'Scheduled motor and mechanism servicing',
     'Safety-sensor alignment and testing',
     'Battery-backup health checks and replacement',
-    'Remote and RFID access sync',
+    'Remote pairing and handover',
     'Priority response when the entrance fails',
   ],
 }
@@ -154,7 +167,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     district: 'Kottayam',
     metaTitle: 'Automatic Gate & Boom Barrier Installation in Kottayam | ITSolute',
     metaDescription:
-      'Automatic gate and boom barrier installation across Kottayam — sliding, swing and roller gates from ₹40,000, boom barriers from ₹59,000. Free site survey in Ettumanoor, Pala and Changanassery.',
+      'Automatic gate and boom barrier installation across Kottayam — sliding gates from ₹34,000 incl. GST, boom barriers from ₹60,000. Free site survey in Ettumanoor, Pala and Changanassery.',
     whatsappMessage: 'Hi ITSolute, I want a gate or boom barrier automated in Kottayam.',
     guides: [
       'automatic-gate-price-kerala',
@@ -201,7 +214,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       },
       {
         q: 'Do you install boom barriers for schools and hospitals?',
-        a: 'Yes, and they’re a common install in Kottayam given how many institutions are here. For a school or hospital the priorities are different from a home: the barrier has to handle constant daily use, open fast enough not to queue traffic at the gate, and fail safe. We size the barrier to the entrance width and the traffic it actually sees, and set up RFID or remote access for staff and regular vehicles.',
+        a: 'Yes, and they’re a common install in Kottayam given how many institutions are here. For a school or hospital the priorities are different from a home: the barrier has to handle constant daily use, open fast enough not to queue traffic at the gate, and fail safe. We size the barrier to the entrance width and the traffic it actually sees, and set up remotes for staff and regular vehicles.',
       },
       {
         q: 'How often does an AMC visit happen in Kottayam?',
@@ -215,7 +228,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     district: 'Ernakulam',
     metaTitle: 'Automatic Gate & Boom Barrier Installation in Ernakulam | ITSolute',
     metaDescription:
-      'Boom barrier and automatic gate installation across Ernakulam — barriers from ₹59,000, gates from ₹40,000. RFID access for residents and staff. Free site survey in Kakkanad, Edappally and Aluva.',
+      'Boom barrier and automatic gate installation across Ernakulam — barriers from ₹60,000 incl. GST, gates from ₹34,000. Free site survey in Kakkanad, Edappally and Aluva.',
     whatsappMessage: 'Hi ITSolute, I want a boom barrier or gate automated in Ernakulam.',
     guides: [
       'apartment-gate-automation-kerala',
@@ -225,7 +238,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     hero: {
       eyebrow: 'ENTRANCE AUTOMATION · ERNAKULAM',
       headline: 'Automatic Gate & Boom Barrier Installation in Ernakulam',
-      sub: 'Apartment blocks, office compounds and commercial parking across Ernakulam — boom barriers with RFID tags for residents and staff, sized for entrances that cycle hundreds of times a day, plus sliding gates for warehouses and commercial yards.',
+      sub: 'Apartment blocks, office compounds and commercial parking across Ernakulam — boom barriers opened from a remote, sized for entrances that cycle hundreds of times a day, plus sliding gates for warehouses and commercial yards.',
     },
     angle: {
       eyebrow: 'BUILT FOR HIGH-TRAFFIC ENTRANCES',
@@ -233,7 +246,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       paragraphs: [
         'Most of what we install in Ernakulam isn’t a single home gate — it’s a shared entrance. Apartment blocks in Kakkanad and Edappally, office compounds around Vyttila and Kalamassery, commercial parking that fills and empties twice a day. These entrances don’t open five times a day; they open hundreds of times, which changes what you should buy.',
         'Duty cycle is the thing people under-spec. A barrier rated for light residential use will physically work at an apartment gate and then wear out early, because the motor was never designed for that number of cycles. We size the barrier and motor to the traffic the entrance actually sees, not to the lowest quote — and for a shared entrance that difference usually pays for itself well before the warranty ends.',
-        'The access method matters just as much. With a hundred residents or staff, handing out remotes stops working quickly. RFID tags issued per flat or per employee let you add and remove access without recalling hardware, and keep a record of who came through. For apartment associations that also means one person can manage the tag list rather than fielding calls about lost remotes.',
+        'How people open it matters just as much. Every motor kit comes with two remotes, and extra remotes are available — so on a shared entrance the practical question is how many remotes the association issues and who holds them. For a block where a guard is on the gate anyway, a smaller number of remotes plus the guard opening for visitors is usually how it settles.',
       ],
     },
     towns: [
@@ -253,8 +266,8 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
         a: 'Yes — apartment and gated-community entrances are among the most common barriers we fit in Ernakulam. The practical questions are the entrance width, how many vehicles pass through on a busy evening, whether you want residents to pass without stopping, and how visitors are handled. We survey the gate, size the barrier to that traffic, and give the association a fixed written quote it can take to a committee meeting.',
       },
       {
-        q: 'How does RFID work for residents and staff?',
-        a: 'Each vehicle gets a tag or card registered to that flat or employee. As a registered vehicle approaches, the reader recognises it and the barrier opens without anyone stopping or a guard pressing a button. Access is managed as a list, so a tag can be deactivated when someone moves out or leaves, without having to collect hardware back. Visitors are handled separately by remote, push-button or an intercom at the gate.',
+        q: 'How do residents and staff open the barrier?',
+        a: 'By remote. Two remotes come with the barrier and extra remotes are available, so an association can issue as many as it needs. Where a guard is on the gate, the usual arrangement is a smaller number of resident remotes plus the guard opening for visitors. Every barrier also has a manual release to raise the arm by hand.',
       },
       {
         q: 'How many cycles a day can a boom barrier handle?',
@@ -276,7 +289,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     district: 'Pathanamthitta',
     metaTitle: 'Automatic Gate & Boom Barrier Installation in Pathanamthitta | ITSolute',
     metaDescription:
-      'Automatic gate installation across Pathanamthitta — sliding, swing and roller gates from ₹40,000, boom barriers from ₹59,000. App access and battery backup. Free survey in Thiruvalla, Adoor and Ranni.',
+      'Automatic gate installation across Pathanamthitta — sliding gates from ₹34,000 incl. GST, boom barriers from ₹60,000. Remote and voice control on DC motors. Free survey in Thiruvalla, Adoor and Ranni.',
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Pathanamthitta.',
     guides: [
       'automatic-gate-nri-homes-kerala',
@@ -293,7 +306,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       headline: 'The gate has to work when nobody’s standing at it.',
       paragraphs: [
         'A large share of the houses we automate in Pathanamthitta are owned by families living abroad. The house might be occupied by parents, looked after by a caretaker, or empty for months at a stretch — and in every one of those cases the person who needs to let someone in isn’t the person standing at the gate.',
-        'That changes what the gate has to do. Phone-based access means you can open the entrance for a relative, a caretaker or a delivery without anyone carrying a remote, and without leaving a key with someone. RFID tags handle the people who come regularly — a caretaker, a driver — so access can be given and taken back without a handover.',
+        'That changes what the gate has to do. On a DC motor you can add a WiFi smart-switch module, which brings phone and voice control — so you can open the entrance for a relative, a caretaker or a delivery without anyone carrying a remote and without leaving a key with someone. The people who come regularly get a remote of their own; two come with every motor kit and extra remotes are available.',
         'Reliability matters more here too, because there’s often nobody around to work around a fault. Battery backup is fitted as standard so a power cut doesn’t strand anyone outside, and there’s always a manual release. An AMC is worth more on a house that sits unattended than on one you’re in every day: scheduled servicing means someone checks the motor, sensors and battery on a schedule rather than the fault being discovered by whoever next turns up at the gate.',
       ],
     },
@@ -309,7 +322,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     faqs: [
       {
         q: 'Can I open the gate from abroad?',
-        a: 'Yes — with phone-based control, opening the gate isn’t tied to being near it. You can let in a relative, a caretaker or a delivery from wherever you are, as long as both you and the gate have an internet connection. We set this up and test it with you during the handover rather than leaving you an app to figure out, and we’ll be straight about what it depends on: if the house loses internet, phone control is the part that stops working, which is why remotes and RFID stay in place as the local fallback.',
+        a: 'Yes, on a DC motor with the WiFi smart-switch module added — opening the gate is then not tied to being near it. You can let in a relative, a caretaker or a delivery from wherever you are, as long as both you and the gate have an internet connection. We set this up and test it with you during the handover rather than leaving you an app to figure out, and we’ll be straight about what it depends on: if the house loses internet, phone control is the part that stops working, which is why the remotes, and the manual release key, stay in place as the local fallback.',
       },
       {
         q: 'What happens if the power fails while the house is empty?',
@@ -335,7 +348,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     district: 'Alappuzha',
     metaTitle: 'Automatic Gate & Boom Barrier Installation in Alappuzha | ITSolute',
     metaDescription:
-      'Automatic gate and boom barrier installation across Alappuzha — gates from ₹40,000, barriers from ₹59,000. Weather-sealed motors for coastal humidity. Free survey in Cherthala and Kayamkulam.',
+      'Automatic gate and boom barrier installation across Alappuzha — gates from ₹34,000 incl. GST, barriers from ₹60,000. Weather-sealed motors for coastal humidity. Free survey in Cherthala and Kayamkulam.',
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Alappuzha.',
     guides: [
       'automatic-gate-maintenance-amc-kerala',
@@ -375,7 +388,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       },
       {
         q: 'Do you install gates for resorts and homestays?',
-        a: 'Yes, and they need thinking about differently from a private home. The entrance gets used by guests who don’t know it, frequently after dark and in rain, so safety sensors and obvious, predictable operation matter more than a sophisticated access setup. We usually keep guest-side operation simple and give staff remote or RFID access, and we’ll plan the install around your check-in times so the entrance isn’t out of action when guests are arriving.',
+        a: 'Yes, and they need thinking about differently from a private home. The entrance gets used by guests who don’t know it, frequently after dark and in rain, so safety sensors and obvious, predictable operation matter more than a sophisticated access setup. We usually keep guest-side operation simple and give staff their own remotes, and we’ll plan the install around your check-in times so the entrance isn’t out of action when guests are arriving.',
       },
       {
         q: 'Do you serve Cherthala, Kayamkulam and the rest of Alappuzha?',

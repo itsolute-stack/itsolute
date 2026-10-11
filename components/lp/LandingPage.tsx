@@ -18,6 +18,9 @@ import {
   LpAttribution,
 } from '@/components/lp/LpActions'
 import { LP_SHARED, withDistrict, type LpPage } from '@/lib/content/copy/landing'
+import { GoogleRatingBadge, ReviewsSection } from '@/components/lp/Reviews'
+import type { PlaceReviews } from '@/lib/reviews/googlePlaces'
+import type { FeaturedReview } from '@/lib/content/featuredReviews'
 import { SITE, GMAPS_URL } from '@/lib/content/site'
 
 /**
@@ -35,7 +38,19 @@ import { SITE, GMAPS_URL } from '@/lib/content/site'
 
 const TRUST_ICONS = [FileText, ShieldCheck, Wrench, MapPin]
 
-export function LandingPage({ page, district }: { page: LpPage; district: string }) {
+export function LandingPage({
+  page,
+  district,
+  place,
+  featured,
+}: {
+  page: LpPage
+  district: string
+  /** Live Google data, or null when the Places call failed — then the badge
+   *  and the reviews section both render nothing. */
+  place: PlaceReviews | null
+  featured: FeaturedReview[]
+}) {
   const d = (s: string) => withDistrict(s, district)
   const waMessage = d(page.whatsappMessage)
 
@@ -111,6 +126,8 @@ export function LandingPage({ page, district }: { page: LpPage; district: string
                     )
                   })}
                 </ul>
+
+                <GoogleRatingBadge place={place} />
               </div>
 
               <div className="lg:col-span-5">
@@ -335,6 +352,9 @@ export function LandingPage({ page, district }: { page: LpPage; district: string
             </p>
           </Container>
         </section>
+
+        {/* Google reviews — hidden entirely when the Places call fails */}
+        <ReviewsSection place={place} featured={featured} />
 
         {/* FAQ */}
         <section className="bg-slate-50 py-12 md:py-16">

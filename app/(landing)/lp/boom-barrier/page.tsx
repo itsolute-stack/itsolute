@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { LandingPage } from '@/components/lp/LandingPage'
 import { SITE_URL } from '@/lib/content/site'
+import { getPlaceReviews } from '@/lib/reviews/googlePlaces'
+import { featuredReviews } from '@/lib/content/featuredReviews'
 import { lpBoomBarrier, resolveDistrict, withDistrict } from '@/lib/content/copy/landing'
 
 type SearchParams = Promise<{ d?: string | string[] }>
@@ -53,5 +55,14 @@ export async function generateMetadata({
 export default async function Page({ searchParams }: { searchParams: SearchParams }) {
   const { d } = await searchParams
   const { name } = resolveDistrict(d)
-  return <LandingPage page={lpBoomBarrier} district={name} />
+  // Server-side only — the API key never reaches the browser.
+  const place = await getPlaceReviews()
+  return (
+    <LandingPage
+      page={lpBoomBarrier}
+      district={name}
+      place={place}
+      featured={featuredReviews.barrier}
+    />
+  )
 }

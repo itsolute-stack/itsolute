@@ -13,7 +13,8 @@
  *   - no same-day promises, no ITSolute-issued warranty (manufacturer only)
  *   - no countdowns or scarcity
  * Prices INCLUDE GST, cover the motor kit only, and installation is quoted
- * separately after the free site survey. See lib/content/entrancePricing.ts.
+ * separately after the free site survey. RFID is an add-on, never included.
+ * See lib/content/entrancePricing.ts.
  */
 
 import {
@@ -269,7 +270,7 @@ export const lpGateAutomation: LpPage = {
     },
     {
       q: 'AC or DC motor — which should I choose?',
-      a: 'AC is the lower starting price and does the job, but it cannot take battery backup, so in a power cut you open the gate by hand with the manual release. DC costs more, runs smoother and quieter, can have battery backup, and is the only option if you want voice control. If power cuts are frequent where you are, DC is worth the difference; if not, AC is honest value.',
+      a: 'AC is the lower starting price and does the job. It has no battery of its own, but it runs from your home inverter connection through a power cut — we wire that in during installation. DC costs more, runs smoother and quieter, carries its own battery backup on two 12V batteries, and is the only option if you want voice control. If you already have a house inverter, AC is honest value; if you do not, or you want the gate independent of it, DC is worth the difference.',
     },
     {
       q: 'Is it safe for children and pets?',
@@ -293,7 +294,7 @@ export const lpGateAutomation: LpPage = {
     },
     {
       q: 'Do you maintain it after installation?',
-      a: 'Yes — AMC plans are available, covering scheduled checks of the safety sensors, the moving parts and, where fitted, the backup battery.',
+      a: 'Yes — AMC plans are available, covering scheduled checks of the safety sensors, the moving parts and, where fitted, the backup batteries.',
     },
   ],
   finalCtaHeading: 'Get your free site survey in {district}',
@@ -309,7 +310,7 @@ export const lpBoomBarrier: LpPage = {
   title: `Boom Barriers in {district} — From ${BARRIER_FROM} incl. GST | Free Site Survey | ITSolute`,
   eyebrow: 'BOOM BARRIERS · {DISTRICT}',
   h1: 'Boom Barriers for Apartments, Offices & Parking in {district}',
-  sub: 'Control every vehicle that enters. Automatic boom barriers opened from a remote, installed by a Kottayam-based team.',
+  sub: 'Control every vehicle that enters. Automatic boom barriers with remote control, and RFID tags for residents and staff as an add-on, installed by a Kottayam-based team.',
   priceAnchor: BARRIER_ANCHOR,
   priceNote: 'DC motor · arm up to 5 m · 2 remotes included',
   whatsappMessage: "Hi ITSolute, I'd like a quote for a boom barrier in {district}.",
@@ -322,11 +323,11 @@ export const lpBoomBarrier: LpPage = {
     items: [
       {
         title: 'Unauthorised parking',
-        body: 'Only people with a remote get in.',
+        body: 'Only registered tags and remotes get in.',
       },
       {
         title: 'Guard workload',
-        body: 'Open from a remote, no manual lifting.',
+        body: 'Residents tap an RFID tag — no manual opening.',
       },
       {
         title: 'Peak-hour queues',
@@ -400,7 +401,7 @@ export const lpBoomBarrier: LpPage = {
   faqs: [
     {
       q: 'What happens during a power cut?',
-      a: 'Boom barriers run on a DC motor, so battery backup is available — built in on some brands and a ₹5,500 add-on on others. Either way the barrier has a manual release so the arm can be raised by hand, which matters for emergency vehicle access.',
+      a: 'Boom barriers run on a DC motor, so battery backup is available on two 12V batteries — built in on some brands and a ₹5,500 add-on on others. Either way the barrier has a manual release so the arm can be raised by hand, which matters for emergency vehicle access.',
     },
     {
       q: 'Is it safe for vehicles and people?',

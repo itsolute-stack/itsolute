@@ -26,6 +26,7 @@ import {
   INSTALLATION_ANSWER,
   GATE_FROM_MIN,
   BARRIER_FROM_MIN,
+  RFID_ADDON_NOTE,
 } from '@/lib/content/entrancePricing'
 import type { PageVideo } from '@/components/shared/VideoEmbed'
 
@@ -65,7 +66,7 @@ export const entranceHubCopy = {
         title: 'Boom Barriers',
         href: '/entrance-automation/boom-barriers',
         tagline: 'Fast barriers for parking and access control.',
-        blurb: 'Boom barriers for car parks, apartments, offices, and commercial entrances — DC motor, arm up to 5 m, opened from a remote, with safety sensors fitted as standard.',
+        blurb: 'Boom barriers for car parks, apartments, offices, and commercial entrances — DC motor, arm up to 5 m, remote control as standard and RFID tags available as an add-on.',
       },
     ],
   },
@@ -207,9 +208,10 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         { icon: DoorOpen, title: 'Sliding gate motors', body: 'Rack-driven motors sized to your gate’s weight and length, for smooth reliable travel.' },
         { icon: Fence, title: 'Swing gate motors', body: 'Arm or underground motors for single and double swing gates.' },
         { icon: RadioTower, title: 'Remote control', body: 'Two remotes come with every motor kit, and extra remotes are available.' },
+        { icon: ScanLine, title: 'RFID access (add-on)', body: `Readers, tags and cards issued per person or per vehicle. ${RFID_ADDON_NOTE}` },
         { icon: Mic, title: 'Voice control (Alexa / Google)', body: 'On DC motors, a WiFi smart-switch module wired into the motor’s remote-control input gives Alexa and Google Home voice control alongside the remote. Not available on AC motors.' },
         { icon: ShieldCheck, title: 'Safety sensors', body: 'A photocell pair is included, so the gate stops rather than closing on a person or vehicle.' },
-        { icon: BatteryCharging, title: 'Battery backup (DC only)', body: 'Available on DC motors — built in on some brands, a ₹5,500 add-on on others. AC motors stop in a power cut and open with the manual release key.' },
+        { icon: BatteryCharging, title: 'Power cuts', body: 'DC motors carry battery backup on two 12V batteries — built in on some brands, a ₹5,500 add-on on others. AC motors have no battery but run from your home inverter connection, which we can wire in at installation.' },
         { icon: Cctv, title: 'Intercom & CCTV integration', body: 'See and speak to visitors, and tie the gate into your camera system.' },
         { icon: KeyRound, title: 'Retrofit existing gates', body: 'We motorise your existing sliding or swing gate — you don’t need a new one.' },
       ],
@@ -360,10 +362,11 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       items: [
         { icon: RectangleHorizontal, title: 'Boom barrier units', body: 'Straight, folding, and curved arms sized to your entrance width and traffic.' },
         { icon: RadioTower, title: 'Remote control', body: 'Two remotes come with the barrier, and extra remotes are available.' },
+        { icon: ScanLine, title: 'RFID access (add-on)', body: `Tags or cards for residents and staff, issued and revoked per vehicle. ${RFID_ADDON_NOTE}` },
         { icon: Mic, title: 'Voice control (Alexa / Google)', body: 'A WiFi smart-switch module wired into the barrier motor’s remote-control input gives Alexa and Google Home voice control alongside the remote. Boom barriers run on DC motors, so this is always an option.' },
         { icon: ShieldCheck, title: 'Safety & anti-crash', body: 'Sensors so the arm never drops on a vehicle or person.' },
         { icon: Cctv, title: 'CCTV integration', body: 'Tie the entrance into your camera system — because we install those too.' },
-        { icon: BatteryCharging, title: 'Battery backup', body: 'Available on the DC motor — built in on some brands, a ₹5,500 add-on on others. A manual release raises the arm by hand either way.' },
+        { icon: BatteryCharging, title: 'Battery backup', body: 'The DC motor takes battery backup on two 12V batteries — built in on some brands, a ₹5,500 add-on on others. A manual release raises the arm by hand either way.' },
         { icon: Siren, title: 'High-duty motors', body: 'Rated for high-traffic entrances that cycle all day.' },
       ],
     },
@@ -430,7 +433,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     faqs: [
       {
         q: 'Can the barrier open automatically for registered vehicles?',
-        a: 'Registered users open the barrier with a remote — two come with the barrier and extra remotes are available. Visitors are handled by whoever is on the gate, or by an intercom if you add one.',
+        a: ACCESS_ANSWER,
       },
       {
         q: 'How fast does a boom barrier operate?',

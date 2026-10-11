@@ -11,13 +11,16 @@
  *   - Prices are a starting point for the MOTOR KIT, not an installed price.
  *     Installation is quoted after the free site survey; civil work is the
  *     customer's scope.
- *   - AC motors cannot take battery backup. They stop in a power cut and are
- *     opened with the manual release key. Only DC motors can have backup —
- *     built in on some brands, a ₹5,500 add-on on others.
+ *   - Power cuts. AC motors have no built-in battery, but they keep working in
+ *     a power cut when powered from the home inverter connection — we can wire
+ *     that during installation. DC motors have battery backup using two 12V
+ *     batteries, built in on some brands and a ₹5,500 add-on on others.
  *   - Voice control is DC only. Never imply it works with an AC motor.
  *   - Every motor has a manual release key.
- *   - RFID is NOT offered. Access is by remote control, plus voice control on
- *     DC motors. Do not reintroduce readers, tags or cards anywhere.
+ *   - Access is by remote control (2 included), with RFID readers, tags, cards
+ *     and transmitters available AS AN ADD-ON — never described as included or
+ *     standard, and never priced on a page. Voice control is DC-only. Keypad
+ *     and FASTag are not offered.
  *   - Warranty is the manufacturer's, from 2 years, and varies by brand. Never
  *     state a single fixed period.
  *   - Multiple brands, budget to premium — but no brand names on any page.
@@ -112,9 +115,9 @@ export const BARRIER_INCLUDED = [
   'Manufacturer warranty (from 2 years, varies by brand)',
 ]
 
-export const ENTRANCE_ADDONS = `Battery backup for DC motors (${BATTERY_ADDON}) · Voice control for DC motors (Alexa / Google Home) · AMC maintenance plans.`
+export const ENTRANCE_ADDONS = `RFID access (tags/cards) · Battery backup for DC motors (${BATTERY_ADDON}) · Voice control for DC motors (Alexa / Google Home) · AMC maintenance plans.`
 
-export const BARRIER_ADDONS = `Battery backup (${BATTERY_ADDON}, where not built in) · AMC maintenance plans · combine with an automatic gate.`
+export const BARRIER_ADDONS = `RFID access (tags/cards) · Battery backup (${BATTERY_ADDON}, where not built in) · AMC maintenance plans · combine with an automatic gate.`
 
 /** The note that must sit under every gate price table. */
 export const ENTRANCE_PRICE_NOTE =
@@ -137,8 +140,8 @@ export const AC_VS_DC = {
     },
     {
       label: 'Power cut',
-      ac: 'Stops until power returns — open by manual release key',
-      dc: 'Battery backup available, so it keeps working',
+      ac: 'Runs on your home inverter connection, wired in at installation',
+      dc: 'Battery backup — two 12V batteries',
     },
     {
       label: 'Running',
@@ -150,11 +153,18 @@ export const AC_VS_DC = {
 
 /** Power-cut behaviour, written once so every page tells the same story. */
 export const POWER_CUT_ANSWER =
-  'It depends on the motor. An AC motor stops until power comes back, and you open the gate by hand with the manual release key that comes with every motor. A DC motor with battery backup keeps working — the battery is built in on some brands and a ₹5,500 add-on on others.'
+  'Either motor can keep working. An AC motor has no battery of its own, but it runs from your home inverter connection — we can wire it in during installation. A DC motor has its own battery backup using two 12V batteries, built in on some brands and a ₹5,500 add-on on others. Every motor also has a manual release key so the gate can be opened by hand.'
 
-/** Access methods. RFID is deliberately absent — we do not offer it. */
+/**
+ * Access methods. RFID is an ADD-ON — quoted after the survey, never described
+ * as included or standard, and never priced on a page.
+ */
 export const ACCESS_ANSWER =
-  'By remote control — two are included, and extra remotes are available. On DC motors you can add voice control through Alexa or Google Home. Every motor also has a manual release key so the gate can be opened by hand.'
+  'By remote control — two are included with every motor kit, and extra remotes are available. RFID access is available as an add-on: readers, tags or cards issued per person or per vehicle, quoted after your free site survey. On DC motors you can add voice control through Alexa or Google Home. Every motor also has a manual release key.'
+
+/** The one approved way to describe RFID. Never add a price. */
+export const RFID_ADDON_NOTE =
+  'RFID access available as an add-on — quoted after your free site survey.'
 
 export const INSTALLATION_ANSWER =
   'The starting price covers the motor kit, 2 remotes, safety sensors, rack/track and welding. Installation is quoted after the free site survey, because it depends on your gate and site. Civil work, if any, is the customer’s scope.'

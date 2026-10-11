@@ -11,14 +11,14 @@ relatedPosts:
   - boom-barrier-price-kerala
   - rfid-vs-remote-gate-access
   - automatic-gate-maintenance-amc-kerala
-keywords: ["apartment gate automation", "flat complex gate Kerala", "villa project gate automation", "society gate automation Kochi", "apartment boom barrier", "apartment gate remote access"]
+keywords: ["apartment gate automation", "flat complex gate Kerala", "villa project gate automation", "society gate automation Kochi", "apartment boom barrier", "apartment gate RFID access"]
 faqs:
   - q: "Why does an apartment gate cost more than a house gate?"
     a: "Mostly duty cycle. A gate serving thirty flats may open several hundred times a day, where a house gate opens a handful. That needs a motor rated for the cycles, and under-specifying it is the most common and most expensive mistake on a shared entrance — the unit fails within a year or two and the association pays twice."
   - q: "Should a complex use a gate or a boom barrier?"
     a: "Often both. A barrier handles daytime vehicle flow quickly, and a gate secures the boundary — including against people on foot, which a barrier does not. Many complexes run the barrier during the day and close the gate overnight. If vehicle throughput is the problem, the barrier is what solves it."
   - q: "How should resident access be managed?"
-    a: "By remote. Two come with the motor kit and extra remotes are available, so the association decides how many to issue and to whom. Keep a written register of who holds which remote — remotes are anonymous, so the register is the only record you have. Where a guard is on the gate, a modest number of resident remotes plus the guard opening for visitors is the arrangement that holds up best."
+    a: "RFID tags, available as an add-on and issued per vehicle rather than per flat, with a written register of which tag belongs to whom. The reason is revocation: when a tenant leaves or a tag is lost you cancel that one tag and nobody else is disturbed. Two remotes come with the motor kit for the people who need one, and extra remotes are available."
   - q: "How do visitors and deliveries get in?"
     a: "Decide this before installation, because every complex needs an answer and the default is the security guard's phone ringing constantly. The usual options are a guard-operated button or an intercom to the flats."
   - q: "Who is responsible for maintaining a shared gate?"
@@ -60,13 +60,13 @@ If throughput at the entrance is the complaint — cars queuing on the road wait
 
 On a shared entrance, access is an administrative problem wearing a hardware costume.
 
-**Remotes are what you have.** Two come with the motor kit, and extra remotes are available. We don't fit RFID tag or card readers, so if another quote offers them you're comparing different systems.
+**Use RFID, per vehicle.** It's an add-on, quoted after the survey, and on a shared entrance it earns its cost. Not per flat — a flat with two cars needs two tags, or the tags get shared and the register becomes fiction.
 
-**Decide the number deliberately.** Thirty flats with two cars each is sixty potential remotes, which is a lot of hardware to issue and keep track of. Most blocks settle on a smaller number of resident remotes plus a guard who opens for visitors — if somebody is on the gate anyway, they absorb the exceptions.
+**Expect turnover.** Tenants change. That's the whole argument for tags over remotes on a block: withdrawing access from one remote holder means re-pairing the receiver and re-issuing to everybody, so in practice nobody does it. A tag is revoked on its own.
 
-**Keep a written register.** A remote is anonymous: the gate knows a valid signal arrived, not who sent it. A list of which remote went to which flat is the only record you have, and it's what lets you act when somebody moves out.
+**Keep a written register.** The controller stores tag numbers. A list of which number belongs to which flat and vehicle is what makes cancellation possible. Without it you have anonymous numbers and no way to act on a departure.
 
-**Know the limitation.** If a remote goes missing, the fix is re-pairing the receiver — which stops the lost one working but means re-pairing the others too. That's a real job across thirty remotes, and it's the practical reason to keep the number modest rather than handing one to everybody.
+**Keep remotes for the people who need them.** Two come with the motor kit, and extras are available — useful for a manager or a maintenance contact. The bulk of residents are better on tags.
 
 ## The visitor question
 
@@ -76,7 +76,7 @@ Pick one before installation:
 
 - **Guard button** — simplest, needs someone present.
 - **Intercom to the flats** — the resident decides, no guard needed.
-- **Keypad code for visitors** — convenient, and only honest if someone actually changes it periodically.
+- **A visitor RFID tag held at the gate** — handed over and handed back, where a guard is on duty.
 
 If you don't choose, the answer becomes "the guard's phone rings all day", and after a few weeks someone props the gate open. A propped-open gate is the real failure mode of shared entrance automation, and it's always an access-design problem rather than a hardware one.
 
@@ -111,7 +111,7 @@ A shared gate wears several times faster than a residential one, so **quarterly*
 Settle three things in writing at handover:
 
 1. **Who holds the maintenance contract** and what it covers.
-2. **Who keeps the remote register** and processes joiners and leavers.
+2. **Who keeps the RFID register** and processes joiners and leavers.
 3. **Who holds the manual release key**, and their backup.
 
 [Gate maintenance in Kerala](/blog/automatic-gate-maintenance-amc-kerala) sets out what a service visit actually checks and why the battery and sensors are the items that fail without warning.
@@ -119,7 +119,7 @@ Settle three things in writing at handover:
 ## What we'd put in a quote for a complex
 
 - A motor rated for the measured daily cycle count, not the gate's weight alone
-- **A photocell safety sensor pair and 2 remotes** included with the motor kit, with battery backup available on the DC motor
+- **A photocell safety sensor pair and 2 remotes** included with the motor kit, with RFID tags and battery backup available as add-ons
 - Additional photocells or a safety edge where foot traffic justifies it
 - A defined visitor method, chosen by the association, not defaulted
 - A barrier alongside the gate where vehicle throughput is the real constraint

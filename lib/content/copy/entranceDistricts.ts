@@ -7,6 +7,7 @@ import {
   ENTRANCE_PRICE_NOTE as SHARED_PRICE_NOTE,
   POWER_CUT_ANSWER,
   ACCESS_ANSWER,
+  RFID_ADDON_NOTE,
 } from '@/lib/content/entrancePricing'
 
 /**
@@ -35,13 +36,13 @@ export const entranceGateTypes: GateTypeRow[] = [
     label: 'Sliding gate — standard (AC motor)',
     from: entranceProduct('sliding').ac!.from,
     href: GATES_HREF,
-    blurb: 'Rack-driven motor sized to your gate, for driveways with room alongside to slide. AC motors cannot take battery backup.',
+    blurb: 'Rack-driven motor sized to your gate, for driveways with room alongside to slide. No battery of its own, but it runs from your home inverter connection.',
   },
   {
     label: 'Sliding gate — premium (DC motor)',
     from: entranceProduct('sliding').dc.from,
     href: GATES_HREF,
-    blurb: 'Smoother and quieter than AC, and the version that can take battery backup and voice control.',
+    blurb: 'Smoother and quieter than AC, and the version that carries its own battery backup on two 12V batteries, plus voice control.',
   },
   {
     label: 'Swing gate — single arm (DC motor)',
@@ -81,12 +82,12 @@ export const entranceIncluded = {
       body: 'Photocells and obstacle detection as standard, so the gate stops rather than closing on a person, pet or vehicle.',
     },
     {
-      title: 'Battery backup',
-      body: 'Fitted as standard, so the gate keeps working through a power cut — with a manual release as the fallback.',
+      title: 'Power cuts',
+      body: 'DC motors take battery backup on two 12V batteries — built in on some brands, a ₹5,500 add-on on others. AC motors run from your home inverter connection, which we can wire in at installation. Every motor has a manual release key.',
     },
     {
-      title: 'Remote control',
-      body: 'Two remotes come with every motor kit, and extra remotes are available.',
+      title: 'Remote & RFID access',
+      body: `Two remotes come with every motor kit, and extra remotes are available. ${RFID_ADDON_NOTE}`,
     },
     {
       title: 'Voice control',
@@ -117,7 +118,7 @@ export const entranceProcess = {
     {
       index: '04',
       title: 'Configure & test',
-      body: 'Remotes, safety sensors and the manual release set up and tested, with a walkthrough for you.',
+      body: 'Remotes, any RFID tags, safety sensors and the manual release set up and tested, with a walkthrough for you.',
     },
     {
       index: '05',
@@ -246,7 +247,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       paragraphs: [
         'Most of what we install in Ernakulam isn’t a single home gate — it’s a shared entrance. Apartment blocks in Kakkanad and Edappally, office compounds around Vyttila and Kalamassery, commercial parking that fills and empties twice a day. These entrances don’t open five times a day; they open hundreds of times, which changes what you should buy.',
         'Duty cycle is the thing people under-spec. A barrier rated for light residential use will physically work at an apartment gate and then wear out early, because the motor was never designed for that number of cycles. We size the barrier and motor to the traffic the entrance actually sees, not to the lowest quote — and for a shared entrance that difference usually pays for itself well before the warranty ends.',
-        'How people open it matters just as much. Every motor kit comes with two remotes, and extra remotes are available — so on a shared entrance the practical question is how many remotes the association issues and who holds them. For a block where a guard is on the gate anyway, a smaller number of remotes plus the guard opening for visitors is usually how it settles.',
+        'How people open it matters just as much. With a hundred residents or staff, handing out remotes stops working quickly. RFID tags, available as an add-on and issued per flat or per vehicle, let you add and remove access without recalling hardware — so when a tenant moves out you revoke that tag and nobody else is disturbed. Two remotes come with every motor kit, and the usual arrangement is remotes for the people who need them plus tags for everyone else.',
       ],
     },
     towns: [
@@ -267,7 +268,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       },
       {
         q: 'How do residents and staff open the barrier?',
-        a: 'By remote. Two remotes come with the barrier and extra remotes are available, so an association can issue as many as it needs. Where a guard is on the gate, the usual arrangement is a smaller number of resident remotes plus the guard opening for visitors. Every barrier also has a manual release to raise the arm by hand.',
+        a: 'Two remotes come with the barrier, and extra remotes are available. For a block with a lot of residents, RFID tags are the practical option — available as an add-on, issued per flat or per vehicle, and revocable one at a time when somebody moves out, so you are not recalling hardware from everybody. Every barrier also has a manual release to raise the arm by hand.',
       },
       {
         q: 'How many cycles a day can a boom barrier handle?',
@@ -307,7 +308,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       paragraphs: [
         'A large share of the houses we automate in Pathanamthitta are owned by families living abroad. The house might be occupied by parents, looked after by a caretaker, or empty for months at a stretch — and in every one of those cases the person who needs to let someone in isn’t the person standing at the gate.',
         'That changes what the gate has to do. On a DC motor you can add a WiFi smart-switch module, which brings phone and voice control — so you can open the entrance for a relative, a caretaker or a delivery without anyone carrying a remote and without leaving a key with someone. The people who come regularly get a remote of their own; two come with every motor kit and extra remotes are available.',
-        'Reliability matters more here too, because there’s often nobody around to work around a fault. Battery backup is fitted as standard so a power cut doesn’t strand anyone outside, and there’s always a manual release. An AMC is worth more on a house that sits unattended than on one you’re in every day: scheduled servicing means someone checks the motor, sensors and battery on a schedule rather than the fault being discovered by whoever next turns up at the gate.',
+        'Reliability matters more here too, because there’s often nobody around to work around a fault. A DC motor carries battery backup on two 12V batteries, and an AC motor can be wired to the house inverter connection, so a power cut doesn’t strand anyone outside — and there’s always a manual release key. An AMC is worth more on a house that sits unattended than on one you’re in every day: scheduled servicing means someone checks the motor, sensors and battery on a schedule rather than the fault being discovered by whoever next turns up at the gate.',
       ],
     },
     towns: [
@@ -326,7 +327,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       },
       {
         q: 'What happens if the power fails while the house is empty?',
-        a: 'Battery backup is fitted as standard, so the gate keeps operating for a period after a cut rather than freezing in place. There’s also a manual release so anyone on site can open the gate by hand without tools. For a house that’s often unattended this matters more than it does elsewhere — the failure mode you want is "still works", not "someone is locked out and nobody is home to sort it".',
+        a: 'It keeps working either way, as long as it was set up for it. A DC motor runs on battery backup — two 12V batteries, built in on some brands and a ₹5,500 add-on on others. An AC motor has no battery of its own but runs from the home inverter connection, which we wire in at installation. There’s also a manual release key so anyone on site can open the gate by hand. For a house that’s often unattended this matters more than it does elsewhere — the failure mode you want is "still works", not "someone is locked out and nobody is home to sort it".',
       },
       {
         q: 'Who maintains the gate when I’m not in the country?',

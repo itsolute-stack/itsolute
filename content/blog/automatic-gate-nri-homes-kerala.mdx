@@ -18,7 +18,7 @@ faqs:
   - q: "What happens if the internet or power at the house fails?"
     a: "App control depends on the house having power and a working connection, so it is the first thing to stop in an outage — and it needs a DC motor with a WiFi smart-switch module added. That is exactly why the people on the ground should hold their own remotes rather than depending on someone abroad pressing a button, and why every motor keeps a manual release key."
   - q: "How do I let a caretaker or a delivery in without giving away access permanently?"
-    a: "Give the people who come regularly their own remote — two come with the motor kit and extra remotes are available. For a one-off delivery, opening from the app at the time is the better answer precisely because it leaves nothing behind. App and voice control need a DC motor with a WiFi smart-switch module added."
+    a: "Give the people who come regularly their own credential — a remote, or an RFID tag if you want to be able to revoke it individually. Tags are an add-on, quoted after the survey. For a one-off delivery, opening from the app at the time is the better answer precisely because it leaves nothing behind. App and voice control need a DC motor with a WiFi smart-switch module added."
   - q: "Is an automatic gate a good idea for a house that sits empty?"
     a: "It helps, with one condition: someone has to look after it. An empty house is harder on hardware than an occupied one, because nobody notices the small faults. A gate that is maintained on a schedule is an asset for an empty property; a gate that nobody has checked in two years is one more thing to fail when you arrive."
   - q: "Who looks after the gate while we are away?"
@@ -37,7 +37,7 @@ Houses that stand empty still have visitors. A caretaker. A gardener. A relative
 
 There are two layers worth getting right, and the common mistake is using only one.
 
-**Give the regulars their own remote.** Anyone who comes routinely — caretaker, gardener, family — should have one. Two remotes come with the motor kit and extras are available, so order enough at quote stage rather than discovering the gap later. Be aware remotes are anonymous: if one goes missing, stopping it means re-pairing the receiver and re-pairing the others too. [Remote, voice or manual](/blog/rfid-vs-remote-gate-access) sets out the options.
+**Give the regulars their own credential.** Anyone who comes routinely — caretaker, gardener, family — should have one. Two remotes come with the motor kit and extras are available. For a house you're not at, an **RFID tag** is often the better choice: it's issued per person and revoked individually, so when a caretaker changes you cancel that tag without recalling anything. Tags are an add-on, quoted after the survey. [RFID vs remote vs voice](/blog/rfid-vs-remote-gate-access) sets out the trade-off.
 
 **Keep app control for the exceptions.** Voice and app control come from a **WiFi smart-switch module** added to the control side. It works with most standard gate motors that have a remote-control input, and it's brand-agnostic — it doesn't tie you to a particular motor. From a phone, anywhere, you can trigger the gate.
 
@@ -70,14 +70,14 @@ For an occupied house, an AMC is a convenience. For a house that stands empty, i
 Two practical points that are easy to arrange and easy to forget:
 
 - **Somebody on the ground must know the manual release** — where it is, how it works, and where the key lives. The key must not be inside the gate it opens. If your caretaker can't open the gate by hand in an outage, nobody can.
-- **Keep a written record of who holds which remote.** Remotes are anonymous — the gate knows a valid signal arrived, not who sent it. Without a list you have no way to act when a caretaker changes.
+- **Keep a written record of who holds which tag.** The controller stores tag numbers, not names. Without a list, cancelling the right one when a caretaker changes is guesswork.
 
 ## What we'd suggest for an NRI home
 
 - **A photocell safety sensor pair and 2 remotes** with every motor kit, and a DC motor so battery backup is possible
-- **Extra remotes** for the caretaker and anyone who comes regularly
+- **RFID tags** for the caretaker and anyone who comes regularly, revocable one at a time
 - **A WiFi smart-switch module** for app control, as the layer for one-off visitors rather than the primary method
-- **A written register of who holds which remote**, kept by you and by whoever manages the house
+- **A written register of who holds which tag or remote**, kept by you and by whoever manages the house
 - **An AMC**, scheduled around the monsoon, so the silent failures are found on a visit
 - **A named local contact** who knows the manual release
 
@@ -91,6 +91,6 @@ If that's your situation, our [entrance automation in Pathanamthitta](/entrance-
 
 ## The bottom line
 
-Give the people who come regularly their own remote, keep app control for the unexpected visitor, and don't let either substitute for a DC motor with battery backup and a maintenance schedule. The gate you can open from abroad is a nice feature. The gate that still opens when you land is the one worth paying for.
+Give the people who come regularly their own revocable tag, keep app control for the unexpected visitor, and don't let either substitute for a DC motor with battery backup and a maintenance schedule. The gate you can open from abroad is a nice feature. The gate that still opens when you land is the one worth paying for.
 
 See our [automatic gate installation service](/entrance-automation/automatic-gates), or [WhatsApp us](https://wa.me/918547533005?text=Hi%20ITSolute%2C%20I%27m%20abroad%20and%20want%20to%20automate%20the%20gate%20at%20our%20house%20in%20Kerala.) — we can survey the property and deal with a family member or caretaker locally while keeping you in the loop. We cover Kottayam, Ernakulam, Pathanamthitta and Alappuzha.

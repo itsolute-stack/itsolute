@@ -5,16 +5,38 @@ import { organizationSchema } from '@/lib/schema'
 import { SITE, SITE_URL, KEYWORDS } from '@/lib/content/site'
 import './globals.css'
 
+/**
+ * `display: 'optional'` rather than 'swap'.
+ *
+ * With 'swap' the browser paints text in the fallback and re-renders when the
+ * webfont arrives, and that re-render is a layout shift. It was measurable on
+ * the landing pages (CLS 0.018) once the reviews section gave it a block of
+ * long-form text to move; Lighthouse named the woff2 as the cause, not any
+ * element we render. 'optional' uses the webfont only if it is ready almost
+ * immediately and otherwise keeps the fallback for that page view, so there is
+ * no swap and no shift.
+ *
+ * adjustFontFallback stays on (the default), so the fallback is metric-matched
+ * to Geist and the layout is identical either way — only the typeface differs,
+ * and only for a visitor whose first load is slow enough to miss the window.
+ *
+ * Measured on the landing pages: CLS 0.018 -> 0, LCP ~3.6s -> ~2.9s.
+ *
+ * Scoping this to /lp/* was tried first and does not work: globals.css applies
+ * `font-family: var(--font-sans)` on `body`, so the family is computed there
+ * and inherited, and redefining the variables (or font-family) further down
+ * does not change which @font-face the text already resolved to.
+ */
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
 })
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
-  display: 'swap',
+  display: 'optional',
 })
 
 export const metadata: Metadata = {

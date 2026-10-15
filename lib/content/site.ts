@@ -28,7 +28,7 @@ export const GEO = {
  * Google Maps short link to the Parthas Lane workshop — used for "Get directions"
  * links sitewide and emitted as `hasMap` in LocalBusiness schema (local SEO signal).
  */
-export const GMAPS_URL = 'https://maps.app.goo.gl/QekJzF5ckxFTsnjp6'
+export const GMAPS_URL = 'https://g.page/r/CfGF9isTZpMCEBM'
 
 /**
  * Search-query embed URL. No API key, no billing, no Maps JS API needed.

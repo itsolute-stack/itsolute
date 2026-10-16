@@ -52,6 +52,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
                     label="WhatsApp"
                     value={SITE.contact.phoneDisplay}
                     href={whatsappLink('Hi ITSolute, I have a question.')}
+                    dataLocation="contact_rail"
                     external
                   />
                   <ContactRow
@@ -59,6 +60,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
                     label="Phone"
                     value={SITE.contact.phoneDisplay}
                     href={`tel:${SITE.contact.phoneTel}`}
+                    dataLocation="contact_rail"
                   />
                   <ContactRow
                     icon={<Mail className="h-5 w-5" />}
@@ -126,12 +128,15 @@ function ContactRow({
   value,
   href,
   external,
+  dataLocation,
 }: {
   icon: React.ReactNode
   label: string
   value: string
   href?: string
   external?: boolean
+  /** Reported as `location` on GA4 call_click / whatsapp_click. */
+  dataLocation?: string
 }) {
   const inner = (
     <div className="flex items-start gap-3">
@@ -147,6 +152,7 @@ function ContactRow({
       <li>
         <a
           href={href}
+          data-location={dataLocation}
           {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           className="block transition-opacity hover:opacity-80"
         >

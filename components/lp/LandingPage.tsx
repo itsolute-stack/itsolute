@@ -19,6 +19,7 @@ import {
 } from '@/components/lp/LpActions'
 import { LP_SHARED, withDistrict, type LpPage } from '@/lib/content/copy/landing'
 import { GoogleRatingBadge, ReviewsSection } from '@/components/lp/Reviews'
+import { PricingView } from '@/components/lp/PricingView'
 import type { PlaceReviews } from '@/lib/reviews/googlePlaces'
 import type { FeaturedReview } from '@/lib/content/featuredReviews'
 import { SITE, GMAPS_URL } from '@/lib/content/site'
@@ -74,9 +75,14 @@ export function LandingPage({
           <div className="flex items-center gap-2">
             <CallAction
               label="Call"
+              dataLocation="lp_topbar"
               className="border border-slate-300 text-[color:var(--color-ink)]"
             />
-            <WhatsAppAction message={waMessage} label="WhatsApp" />
+            <WhatsAppAction
+              message={waMessage}
+              label="WhatsApp"
+              dataLocation="lp_topbar"
+            />
           </div>
         </Container>
       </header>
@@ -109,7 +115,11 @@ export function LandingPage({
                     label="Get My Free Site Survey"
                     className="bg-[color:var(--color-electric)] text-white"
                   />
-                  <WhatsAppAction message={waMessage} label="Chat on WhatsApp" />
+                  <WhatsAppAction
+                    message={waMessage}
+                    label="Chat on WhatsApp"
+                    dataLocation="lp_hero"
+                  />
                 </div>
 
                 <ul className="mt-7 grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -173,6 +183,7 @@ export function LandingPage({
         </section>
 
         {/* Price cards (gates) / audience tiles (barriers) */}
+        <PricingView page={page.source === 'lp-barrier' ? 'barrier' : 'gate'}>
         <section className="bg-slate-50 py-12 md:py-16">
           <Container>
             <h2 className="text-2xl font-medium tracking-tight text-[color:var(--color-ink)] md:text-3xl">
@@ -272,6 +283,8 @@ export function LandingPage({
             ) : null}
           </Container>
         </section>
+
+        </PricingView>
 
         {/* Included */}
         <section className="py-12 md:py-16">
@@ -420,9 +433,14 @@ export function LandingPage({
                   and {SITE.contact.phoneDisplay} if you&rsquo;d rather just talk.
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <WhatsAppAction message={waMessage} label="Chat on WhatsApp" />
+                  <WhatsAppAction
+                    message={waMessage}
+                    label="Chat on WhatsApp"
+                    dataLocation="lp_final_cta"
+                  />
                   <CallAction
                     label={`Call ${SITE.contact.phoneDisplay}`}
+                    dataLocation="lp_final_cta"
                     className="border border-white/20 text-white"
                   />
                 </div>

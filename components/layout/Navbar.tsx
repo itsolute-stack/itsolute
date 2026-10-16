@@ -70,6 +70,7 @@ export function Navbar() {
             variant="primary"
             size="sm"
             label="WhatsApp us"
+            dataLocation="nav_desktop"
             onClick={handleNavWhatsAppClick}
           />
         </div>
@@ -124,6 +125,7 @@ export function Navbar() {
                 <WhatsAppButton
                   variant="primary"
                   size="lg"
+                  dataLocation="nav_mobile"
                   onClick={handleNavWhatsAppClick}
                 />
                 <Button asChild variant="outlineDark" size="lg">

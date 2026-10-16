@@ -40,11 +40,14 @@ export function WhatsAppAction({
   label = 'WhatsApp',
   className,
   showIcon = true,
+  dataLocation,
 }: {
   message: string
   label?: string
   className?: string
   showIcon?: boolean
+  /** Reported as `location` on the GA4 whatsapp_click event. */
+  dataLocation?: string
 }) {
   return (
     <a
@@ -52,6 +55,7 @@ export function WhatsAppAction({
       target="_blank"
       rel="noopener noreferrer"
       onClick={fireWhatsAppOnce}
+      data-location={dataLocation}
       className={cn(
         'inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 text-sm font-medium transition-colors',
         // Dark ink on WhatsApp green, not white: white on #25D366 is 1.98:1 and
@@ -70,15 +74,19 @@ export function CallAction({
   label = 'Call',
   className,
   showIcon = true,
+  dataLocation,
 }: {
   label?: string
   className?: string
   showIcon?: boolean
+  /** Reported as `location` on the GA4 call_click event. */
+  dataLocation?: string
 }) {
   return (
     <a
       href={`tel:${PHONE_TEL}`}
       onClick={fireCallOnce}
+      data-location={dataLocation}
       className={cn(
         'inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 text-sm font-medium transition-colors',
         className,
@@ -161,9 +169,14 @@ export function StickyActionBar({ whatsappMessage }: { whatsappMessage: string }
     >
       <CallAction
         label="Call"
+        dataLocation="lp_sticky_bar"
         className="border border-slate-300 text-[color:var(--color-ink)]"
       />
-      <WhatsAppAction message={whatsappMessage} label="WhatsApp" />
+      <WhatsAppAction
+        message={whatsappMessage}
+        label="WhatsApp"
+        dataLocation="lp_sticky_bar"
+      />
       <FormScrollButton
         label="Quote"
         className="bg-[color:var(--color-electric)] text-white"

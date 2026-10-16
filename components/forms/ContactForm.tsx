@@ -18,7 +18,7 @@ import {
 import { contactSchema, type ContactInput } from '@/lib/validation/contact'
 import { whatsappLink } from '@/lib/whatsapp'
 import { contactCopy } from '@/lib/content/copy/contact'
-import { trackLeadConversion } from '@/lib/gtag'
+import { trackLeadConversion, trackEvent } from '@/lib/gtag'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -32,7 +32,18 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
   // or the WhatsApp fallback — so one lead never counts twice.
   const conversionFired = useRef(false)
 
-  function fireConversionOnce() {
+  // GA4 form_start — once per page load, on first real interaction.
+  const startedRef = useRef(false)
+  function markStarted() {
+    if (startedRef.current) return
+    startedRef.current = true
+    trackEvent('form_start', { form_name: 'contact_form' })
+  }
+
+  function fireConversionOnce(method: 'email' | 'whatsapp_fallback') {
+    trackEvent('form_submit', { form_name: 'contact_form', method })
+    // The Ads conversion stays guarded to once per session; the GA4 event above
+    // is intentionally outside the guard so analytics sees each submission.
     if (conversionFired.current) return
     conversionFired.current = true
     trackLeadConversion()
@@ -74,7 +85,7 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
         return
       }
       // Genuine successful submission — fire the Google Ads lead conversion once.
-      fireConversionOnce()
+      fireConversionOnce('email')
       setStatus('success')
       reset()
     } catch {
@@ -84,7 +95,10 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
 
   if (status === 'success') {
     return (
-      <div className="flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-8">
+      <div
+        data-clarity-mask="true"
+        className="flex flex-col gap-4 rounded-lg border border-slate-200 bg-white p-8"
+      >
         <h3 className="text-2xl font-medium tracking-tight text-[color:var(--color-ink)]">
           {contactCopy.form.successHeading}
         </h3>
@@ -93,6 +107,7 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
         </p>
         <a
           href={whatsappLink('Hi ITSolute, I just submitted the contact form.')}
+          data-location="contact_form_success"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-2 inline-flex items-center gap-2 text-[color:var(--color-electric)] hover:underline"
@@ -108,6 +123,9 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
+      data-clarity-mask="true"
+      onFocusCapture={markStarted}
+      onInput={markStarted}
       className="flex flex-col gap-5 rounded-lg border border-slate-200 bg-white p-6 md:p-8"
     >
       <div className="flex flex-col gap-1.5">
@@ -183,7 +201,8 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
               href={fallbackWa}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={fireConversionOnce}
+              data-location="contact_form_fallback"
+              onClick={() => fireConversionOnce('whatsapp_fallback')}
             >
               <MessageCircle className="h-4 w-4" />
               Send what you wrote on WhatsApp
@@ -199,6 +218,7 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
         </Button>
         <a
           href={whatsappLink('Hi ITSolute, I have a question.')}
+          data-location="contact_form"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-sm text-[color:var(--color-electric)] hover:underline"

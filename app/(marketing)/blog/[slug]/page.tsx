@@ -76,6 +76,21 @@ const mdxOptions = {
   },
 } as Parameters<typeof MDXRemote>[0]['options']
 
+/**
+ * MDX link override. Post bodies contain WhatsApp CTAs written as plain
+ * markdown links, which have nowhere to hang a data-location. This tags any
+ * wa.me or tel: link in the body as `page_body` so the delegated GA4 listener
+ * reports where the click came from instead of "unknown". Every other link is
+ * passed through untouched.
+ */
+const mdxComponents = {
+  a: ({ href, ...rest }: React.ComponentPropsWithoutRef<'a'>) => {
+    const isContact =
+      typeof href === 'string' && (href.includes('wa.me') || href.startsWith('tel:'))
+    return <a href={href} {...(isContact ? { 'data-location': 'page_body' } : {})} {...rest} />
+  },
+}
+
 export default async function PostPage({
   params,
 }: {
@@ -218,7 +233,7 @@ export default async function PostPage({
               prose-blockquote:text-slate-700 prose-blockquote:not-italic
             "
           >
-            <MDXRemote source={content} options={mdxOptions} />
+            <MDXRemote source={content} options={mdxOptions} components={mdxComponents} />
           </div>
 
           {frontmatter.faqs ? <PostFAQ faqs={frontmatter.faqs} /> : null}

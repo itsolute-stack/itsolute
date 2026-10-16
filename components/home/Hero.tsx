@@ -77,6 +77,7 @@ export function Hero() {
               </Button>
               <a
                 href={whatsappLink(homeCopy.hero.whatsappMessage)}
+                data-location="hero"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-accent)] transition-colors"

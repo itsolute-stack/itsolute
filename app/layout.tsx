@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { organizationSchema } from '@/lib/schema'
+import { EngagementTracking } from '@/components/analytics/EngagementTracking'
 import { SITE, SITE_URL, KEYWORDS } from '@/lib/content/site'
 import './globals.css'
 
@@ -107,8 +108,14 @@ export default function RootLayout({
         {children}
 
         {/*
-          Google tag (gtag.js) — Google Ads AW-18221570748.
-          Production only, so local-dev testing never pollutes conversion data.
+          Google tag (gtag.js) — one script, two destinations.
+
+          Google Ads AW-18221570748 drives conversions and is unchanged. GA4 is
+          configured on the SAME gtag.js rather than loading a second copy, so
+          analytics costs no extra request. Order matters only in that both
+          configs must come after the init.
+
+          Production only, so local-dev testing never pollutes either property.
         */}
         {process.env.NODE_ENV === 'production' ? (
           <>
@@ -120,10 +127,36 @@ export default function RootLayout({
               {`window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'AW-18221570748');`}
+                gtag('config', 'AW-18221570748');${
+                  process.env.NEXT_PUBLIC_GA4_ID
+                    ? `\n                gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID}');`
+                    : ''
+                }`}
             </Script>
           </>
         ) : null}
+
+        {/*
+          Microsoft Clarity — session recordings and heatmaps.
+
+          lazyOnload so it loads after everything that matters and cannot touch
+          LCP. Form fields are masked at the markup level with
+          data-clarity-mask on each form, not just via the Clarity dashboard,
+          so a dashboard change can't silently start recording names and phone
+          numbers.
+        */}
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_CLARITY_ID ? (
+          <Script id="ms-clarity" strategy="lazyOnload">
+            {`(function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");`}
+          </Script>
+        ) : null}
+
+        {/* GA4 engagement events — delegated clicks and scroll depth. */}
+        <EngagementTracking />
 
         <Script
           id="org-schema"

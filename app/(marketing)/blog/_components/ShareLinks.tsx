@@ -46,6 +46,9 @@ export function ShareLinks({
       </span>
       <a
         href={whatsappLink(waMessage)}
+        // Sharing the article, not contacting us — tagged distinctly so it can be
+        // filtered out of lead-intent whatsapp_click reporting.
+        data-location="blog_share"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Share on WhatsApp"

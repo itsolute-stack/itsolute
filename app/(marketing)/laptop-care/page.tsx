@@ -202,6 +202,7 @@ export default function LaptopCarePage() {
             <Button asChild size="lg" variant="primary">
               <a
                 href={whatsappLink(laptopCareCopy.hero.whatsappMessage)}
+                data-location="page_body"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -48,6 +48,7 @@ export function FinalCTA({
             </Button>
             <a
               href={whatsappLink(whatsappMessage)}
+              data-location="final_cta"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-accent)] transition-colors"

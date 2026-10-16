@@ -16,6 +16,9 @@ type Props = {
   /** Optional click handler (e.g. conversion tracking). Only the callers that
    *  pass it fire on click — every other WhatsApp button is unaffected. */
   onClick?: () => void
+  /** Where this button sits, reported as `location` on the GA4 whatsapp_click
+   *  event. Defaults to "unknown" via the delegated listener if omitted. */
+  dataLocation?: string
 }
 
 export function WhatsAppButton({
@@ -25,6 +28,7 @@ export function WhatsAppButton({
   label = 'WhatsApp us',
   className,
   onClick,
+  dataLocation,
 }: Props) {
   const href = whatsappLink(message)
 
@@ -35,6 +39,7 @@ export function WhatsAppButton({
         target="_blank"
         rel="noopener noreferrer"
         onClick={onClick}
+        data-location={dataLocation}
         aria-label="Chat with us on WhatsApp"
         className={cn(
           'fixed bottom-5 right-5 z-40 md:hidden',
@@ -57,7 +62,13 @@ export function WhatsAppButton({
       size={size}
       className={className}
     >
-      <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+        data-location={dataLocation}
+      >
         <MessageCircle className="h-4 w-4" />
         {label}
       </a>

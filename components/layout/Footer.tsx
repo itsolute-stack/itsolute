@@ -29,6 +29,7 @@ export function Footer() {
             <div className="mt-6 space-y-3 text-sm text-slate-300">
               <a
                 href={`tel:${SITE.contact.phoneTel}`}
+                data-location="footer"
                 className="flex items-center gap-2 hover:text-white"
               >
                 <Phone className="h-4 w-4" />
@@ -36,6 +37,7 @@ export function Footer() {
               </a>
               <a
                 href={whatsappLink()}
+                data-location="footer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-white"

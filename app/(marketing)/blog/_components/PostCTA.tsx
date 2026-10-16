@@ -31,6 +31,7 @@ export function PostCTA({ cluster }: { cluster: Cluster }) {
         <Button asChild size="md" variant="secondary">
           <a
             href={whatsappLink(message)}
+            data-location="page_body"
             target="_blank"
             rel="noopener noreferrer"
           >

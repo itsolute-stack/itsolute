@@ -96,12 +96,46 @@ export default function PrivacyPage() {
                 networks. We do not sell your data. We never have.
               </p>
 
-              <h3>Cookies</h3>
+              <h3>Cookies and analytics</h3>
               <p>
-                Our website uses only technically necessary cookies — those required for the site to
-                function. We do not use advertising cookies or third-party analytics cookies that
-                track you across other websites. If we add analytics in future (e.g. Google
-                Analytics), we will update this policy and ask for your consent where required.
+                Alongside the cookies needed for the site to function, we use Google Analytics and
+                Google Ads to understand how visitors find and use the site — which pages are
+                viewed, which buttons are clicked, how far down a page people scroll, and whether an
+                enquiry came from an advertisement. We also use Microsoft Clarity, which records
+                anonymised sessions and builds heatmaps so we can see where pages confuse people.
+              </p>
+              <p>
+                Form fields are masked in those recordings, so the name and phone number you type
+                are not captured. We do not sell your data and we do not use these tools to build a
+                profile of you across other websites.
+              </p>
+              <p>
+                This data is processed by Google and Microsoft as part of their services. Their
+                handling of it is covered by{' '}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google&rsquo;s privacy policy
+                </a>{' '}
+                and{' '}
+                <a
+                  href="https://privacy.microsoft.com/privacystatement"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Microsoft&rsquo;s privacy statement
+                </a>
+                . You can opt out of Google Analytics with Google&rsquo;s{' '}
+                <a
+                  href="https://tools.google.com/dlpage/gaoptout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  browser opt-out add-on
+                </a>
+                .
               </p>
 
               <h2>3. How We Use Your Information</h2>

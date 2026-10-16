@@ -5,6 +5,7 @@ import { ArrowLeft, Check, MessageCircle } from 'lucide-react'
 import { whatsappLink } from '@/lib/whatsapp'
 import { LP_LOCATION_OPTIONS } from '@/lib/content/copy/landing'
 import { fireLeadOnce, fireWhatsAppOnce, readAttribution } from '@/components/lp/lpTracking'
+import { trackEvent } from '@/lib/gtag'
 import { cn } from '@/lib/utils'
 
 /**
@@ -30,6 +31,15 @@ type Props = {
 const PHONE_RE = /^[6-9]\d{9}$/
 
 export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Props) {
+  // GA4 form identity: lp-gate -> lp_gate_quote, lp-barrier -> lp_barrier_quote
+  const formName = source === 'lp-barrier' ? 'lp_barrier_quote' : 'lp_gate_quote'
+  // form_start fires once per page load, on the first real interaction.
+  const startedRef = useRef(false)
+  function markStarted() {
+    if (startedRef.current) return
+    startedRef.current = true
+    trackEvent('form_start', { form_name: formName })
+  }
   const [step, setStep] = useState(1)
   const [type, setType] = useState('')
   const [location, setLocation] = useState(() =>
@@ -103,6 +113,7 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
       })
       if (!res.ok) throw new Error('submit failed')
       fireLeadOnce()
+      trackEvent('form_submit', { form_name: formName, method: 'email' })
       setStatus('done')
     } catch {
       setFallbackWa(fallback)
@@ -114,6 +125,7 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
     return (
       <div
         data-quote-form
+        data-clarity-mask="true"
         className="rounded-lg border border-slate-200 bg-white p-6 text-center"
       >
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--color-electric)]/10">
@@ -131,6 +143,7 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
           target="_blank"
           rel="noopener noreferrer"
           onClick={fireWhatsAppOnce}
+          data-location="lp_form_success"
           className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 text-sm font-medium text-[color:var(--color-ink)]"
         >
           <MessageCircle aria-hidden className="h-4 w-4" />
@@ -143,6 +156,7 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
   return (
     <form
       data-quote-form
+      data-clarity-mask="true"
       onSubmit={onSubmit}
       className="rounded-lg border border-slate-200 bg-white p-5 md:p-6"
     >
@@ -182,6 +196,7 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
                 key={o}
                 type="button"
                 onClick={() => {
+                  markStarted()
                   setType(o)
                   setStep(2)
                 }}
@@ -210,6 +225,7 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
                 key={o.value}
                 type="button"
                 onClick={() => {
+                  markStarted()
                   setLocation(o.value)
                   setStep(3)
                 }}
@@ -240,7 +256,10 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
             id={`lp-name-${source}`}
             ref={nameRef}
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              markStarted()
+              setName(e.target.value)
+            }}
             autoComplete="name"
             className="mt-1 min-h-12 w-full rounded-md border border-slate-300 px-3 text-base text-[color:var(--color-ink)] outline-none focus:border-[color:var(--color-electric)]"
           />
@@ -258,7 +277,10 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
             <input
               id={`lp-phone-${source}`}
               value={phone}
-              onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+              onChange={(e) => {
+                markStarted()
+                setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))
+              }}
               inputMode="numeric"
               autoComplete="tel-national"
               maxLength={10}
@@ -290,9 +312,14 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
                 href={fallbackWa}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-location="lp_form_fallback"
                 onClick={() => {
                   fireLeadOnce()
                   fireWhatsAppOnce()
+                  trackEvent('form_submit', {
+                    form_name: formName,
+                    method: 'whatsapp_fallback',
+                  })
                 }}
                 className="mt-3 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-[#25D366] px-5 text-sm font-medium text-[color:var(--color-ink)]"
               >

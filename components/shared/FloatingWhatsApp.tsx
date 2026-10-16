@@ -16,5 +16,12 @@ export function FloatingWhatsApp({ message }: { message?: string }) {
     fired.current = true
     trackWhatsAppClick()
   }
-  return <WhatsAppButton variant="floating" message={message} onClick={handleClick} />
+  return (
+    <WhatsAppButton
+      variant="floating"
+      dataLocation="floating_bubble"
+      message={message}
+      onClick={handleClick}
+    />
+  )
 }

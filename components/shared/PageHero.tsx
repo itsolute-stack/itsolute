@@ -60,7 +60,12 @@ export function PageHero({
           {primaryCta ? (
             <Button asChild size="lg" variant="primary">
               {primaryCta.href.startsWith('http') ? (
-                <a href={primaryCta.href} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={primaryCta.href}
+                  data-location="hero"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {primaryCta.label}
                 </a>
               ) : (
@@ -71,6 +76,7 @@ export function PageHero({
           {secondaryCta ? (
             <a
               href={whatsappLink(secondaryCta.message)}
+              data-location="hero"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-accent)] transition-colors"

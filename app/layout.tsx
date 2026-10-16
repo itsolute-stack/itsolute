@@ -108,12 +108,16 @@ export default function RootLayout({
         {children}
 
         {/*
-          Google tag (gtag.js) — one script, two destinations.
+          Google tag (gtag.js) — Google Ads AW-18221570748.
 
-          Google Ads AW-18221570748 drives conversions and is unchanged. GA4 is
-          configured on the SAME gtag.js rather than loading a second copy, so
-          analytics costs no extra request. Order matters only in that both
-          configs must come after the init.
+          GA4 is NOT configured here. It is attached to this same tag from the
+          Google Analytics UI ("Use the Google tag found on your website"), so
+          Google injects the GA4 destination server-side. Adding a
+          gtag('config', 'G-…') line as well would configure the destination
+          twice and count every page view twice — don't reintroduce it.
+
+          Custom events sent via trackEvent() carry no `send_to`, so they go to
+          every configured destination, GA4 included, automatically.
 
           Production only, so local-dev testing never pollutes either property.
         */}
@@ -127,11 +131,7 @@ export default function RootLayout({
               {`window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', 'AW-18221570748');${
-                  process.env.NEXT_PUBLIC_GA4_ID
-                    ? `\n                gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID}');`
-                    : ''
-                }`}
+                gtag('config', 'AW-18221570748');`}
             </Script>
           </>
         ) : null}

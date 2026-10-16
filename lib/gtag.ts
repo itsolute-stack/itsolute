@@ -61,17 +61,19 @@ export function trackWhatsAppClick(): void {
   })
 }
 
-/** GA4 measurement ID. Empty in dev and when the env var isn't set. */
-export const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID ?? ''
-
 /**
  * Fire a GA4 custom event.
  *
+ * No `send_to` is passed, so the event goes to every destination configured on
+ * the page's Google tag. GA4 is attached to that tag from the Google Analytics
+ * UI rather than configured in our code, so these events reach it
+ * automatically — there is no measurement ID to wire up here.
+ *
  * Separate from the Google Ads conversion helpers above, which stay exactly as
  * they are: those are guarded to fire once per session because a conversion
- * must not be double-counted. GA4 events are analytics, so they fire on EVERY
- * interaction — otherwise a second click on a different button would be
- * invisible and placement comparisons would be wrong.
+ * must not be double-counted. These analytics events fire on EVERY interaction
+ * — otherwise a second click on a different button would be invisible and
+ * placement comparisons would be wrong.
  *
  * Safely no-ops when gtag isn't loaded (local dev, or env vars unset). Never
  * throws, never blocks the interaction it's reporting.

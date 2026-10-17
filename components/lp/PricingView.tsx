@@ -32,14 +32,28 @@ export function PricingView({
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
-          if (e.isIntersecting) {
+          if (!e.isIntersecting) continue
+          // Either measure counts as "looked at the prices":
+          //   - the section fills at least 40% of the viewport, which is what
+          //     happens on a phone where the section is taller than the screen
+          //   - or at least half of the section is on screen, which is what
+          //     happens on a desktop where it fits
+          const fillsViewport =
+            e.intersectionRect.height >= window.innerHeight * 0.4
+          const mostlyVisible = e.intersectionRatio >= 0.5
+          if (fillsViewport || mostlyVisible) {
             trackEvent('pricing_view', { page })
             io.disconnect()
             return
           }
         }
       },
-      { threshold: 0.5 },
+      // Several thresholds so the callback runs as the section scrolls
+      // through, not only when it crosses one ratio. With a single 0.5
+      // threshold the callback never ran on mobile, because a section taller
+      // than the viewport can never be 50% visible — so pricing_view never
+      // fired on phones, which is most of the paid traffic.
+      { threshold: [0, 0.1, 0.25, 0.5] },
     )
     io.observe(el)
     return () => io.disconnect()

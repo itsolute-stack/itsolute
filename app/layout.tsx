@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { organizationSchema } from '@/lib/schema'
 import { EngagementTracking } from '@/components/analytics/EngagementTracking'
+import { MetaPixelPageViews } from '@/components/analytics/MetaPixelPageViews'
 import { SITE, SITE_URL, KEYWORDS } from '@/lib/content/site'
 import './globals.css'
 
@@ -153,6 +154,50 @@ export default function RootLayout({
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");`}
           </Script>
+        ) : null}
+
+        {/*
+          Meta Pixel.
+
+          Gated on NEXT_PUBLIC_META_PIXEL_ID only — deliberately NOT on
+          NODE_ENV, unlike the Google and Clarity tags above. The pixel has to
+          be loadable locally for Events Manager → Test events to see anything,
+          which is the only way to verify it before shipping. The consequence is
+          that a dev server with the variable set in .env.local sends real
+          events to the real pixel; comment the line out there when you are not
+          testing.
+
+          Lives in the ROOT layout, so it covers the (marketing) and (landing)
+          route groups alike — the /lp/* landing pages included — and Next
+          loads it exactly once across client-side navigations.
+        */}
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID ? (
+          <>
+            <Script id="meta-pixel" strategy="afterInteractive">
+              {`!function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window,document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '${process.env.NEXT_PUBLIC_META_PIXEL_ID}');
+                fbq('track', 'PageView');`}
+            </Script>
+            <noscript>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                height="1"
+                width="1"
+                style={{ display: 'none' }}
+                alt=""
+                src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_META_PIXEL_ID}&ev=PageView&noscript=1`}
+              />
+            </noscript>
+            {/* PageView on client-side route changes; the snippet covers load. */}
+            <MetaPixelPageViews />
+          </>
         ) : null}
 
         {/* GA4 engagement events — delegated clicks and scroll depth. */}

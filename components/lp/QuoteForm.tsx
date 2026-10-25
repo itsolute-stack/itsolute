@@ -6,6 +6,7 @@ import { whatsappLink } from '@/lib/whatsapp'
 import { LP_LOCATION_OPTIONS } from '@/lib/content/copy/landing'
 import { fireLeadOnce, fireWhatsAppOnce, readAttribution } from '@/components/lp/lpTracking'
 import { trackEvent } from '@/lib/gtag'
+import { trackLead } from '@/lib/fbq'
 import { cn } from '@/lib/utils'
 
 /**
@@ -35,6 +36,8 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
   const formName = source === 'lp-barrier' ? 'lp_barrier_quote' : 'lp_gate_quote'
   // form_start fires once per page load, on the first real interaction.
   const startedRef = useRef(false)
+  // Meta Lead guard — once per successful submission.
+  const metaLeadFired = useRef(false)
   function markStarted() {
     if (startedRef.current) return
     startedRef.current = true
@@ -114,6 +117,13 @@ export function QuoteForm({ source, stepOne, districtName, whatsappMessage }: Pr
       if (!res.ok) throw new Error('submit failed')
       fireLeadOnce()
       trackEvent('form_submit', { form_name: formName, method: 'email' })
+      // Meta Lead, once per submission, success path only. The WhatsApp
+      // fallback is a wa.me link, so the delegated listener reports that route
+      // as trackLead('whatsapp') instead of counting it as a form lead.
+      if (!metaLeadFired.current) {
+        metaLeadFired.current = true
+        trackLead(`form-${source}`)
+      }
       setStatus('done')
     } catch {
       setFallbackWa(fallback)

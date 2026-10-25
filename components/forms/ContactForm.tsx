@@ -19,6 +19,7 @@ import { contactSchema, type ContactInput } from '@/lib/validation/contact'
 import { whatsappLink } from '@/lib/whatsapp'
 import { contactCopy } from '@/lib/content/copy/contact'
 import { trackLeadConversion, trackEvent } from '@/lib/gtag'
+import { trackLead } from '@/lib/fbq'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -31,6 +32,9 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
   // Fire the lead conversion at most once per form, whether via email success
   // or the WhatsApp fallback — so one lead never counts twice.
   const conversionFired = useRef(false)
+  // Separate guard for the Meta Lead event: it fires only on a successful
+  // submission, where the Ads guard above also covers the WhatsApp fallback.
+  const metaLeadFired = useRef(false)
 
   // GA4 form_start — once per page load, on first real interaction.
   const startedRef = useRef(false)
@@ -86,6 +90,13 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
       }
       // Genuine successful submission — fire the Google Ads lead conversion once.
       fireConversionOnce('email')
+      // Meta Lead, once per submission. Only on the success path: the WhatsApp
+      // fallback below is a wa.me link, so the delegated listener already
+      // reports that route as trackLead('whatsapp').
+      if (!metaLeadFired.current) {
+        metaLeadFired.current = true
+        trackLead('form-contact')
+      }
       setStatus('success')
       reset()
     } catch {

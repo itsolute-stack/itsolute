@@ -168,3 +168,37 @@ export const RFID_ADDON_NOTE =
 
 export const INSTALLATION_ANSWER =
   'The starting price covers the motor kit, 2 remotes, safety sensors, rack/track and welding. Installation is quoted after the free site survey, because it depends on your gate and site. Civil work, if any, is the customer’s scope.'
+
+/* -------------------------------------------------------------------------
+ * Products we install but do not yet publish a price for.
+ *
+ * Video door phones, smart door locks and curtain/blind motors vary enough by
+ * model that a single "from" figure would mislead more than it helps, so the
+ * slots below are intentionally empty. While a slot is empty the product page
+ * renders NO_PRICE_NOTE in place of the price table, and emits no Offer
+ * schema — an ItemList of zero offers is worse than no ItemList.
+ *
+ * To publish a price later, add rows here and nothing else needs to change:
+ *
+ *   export const VIDEO_DOOR_PHONE_PRICES: PriceRow[] = [
+ *     { label: '2-wire indoor + outdoor unit', from: '₹X', minPrice: X },
+ *   ]
+ *
+ * Keep every figure GST-inclusive, like the gate and barrier prices above.
+ * ---------------------------------------------------------------------- */
+
+/** Structurally identical to EntranceProduct['pricing']['rows'][number]. */
+export type PriceRow = { label: string; from: string; minPrice: number }
+
+/** Empty on purpose — see the note above. */
+export const VIDEO_DOOR_PHONE_PRICES: PriceRow[] = []
+
+/** Empty on purpose — see the note above. */
+export const SMART_LOCK_PRICES: PriceRow[] = []
+
+/** Empty on purpose — see the note above. */
+export const CURTAIN_MOTOR_PRICES: PriceRow[] = []
+
+/** Shown instead of a price table while a product's price slot is empty. */
+export const NO_PRICE_NOTE =
+  'Price depends on the model and your site — quoted after a free site survey.'

@@ -12,6 +12,11 @@ import {
   RectangleHorizontal,
   Siren,
   Mic,
+  Video,
+  Wifi,
+  Smartphone,
+  Users,
+  Fingerprint,
   type LucideIcon,
 } from 'lucide-react'
 import type { FAQ } from '@/lib/content/faqs'
@@ -27,14 +32,22 @@ import {
   GATE_FROM_MIN,
   BARRIER_FROM_MIN,
   RFID_ADDON_NOTE,
+  VIDEO_DOOR_PHONE_PRICES,
+  SMART_LOCK_PRICES,
 } from '@/lib/content/entrancePricing'
 import type { PageVideo } from '@/components/shared/VideoEmbed'
 
 /**
- * Entrance Automation — physical access automation (automatic gates + boom
- * barriers). Deliberately separate from /automation (business-process
- * automation). Hub at /entrance-automation, two product children driven by
- * `entranceProducts` via /entrance-automation/[slug].
+ * Entrance Automation — physical access automation: automatic gates, boom
+ * barriers, video door phones and smart door locks. Deliberately separate
+ * from /automation (business-process automation). Hub at /entrance-automation,
+ * product children driven by `entranceProducts` via
+ * /entrance-automation/[slug].
+ *
+ * Gates and barriers publish a starting price from entrancePricing.ts. Door
+ * phones and locks do not: their price slots there are intentionally empty,
+ * so those pages render the "quoted after a free site survey" note and emit
+ * no Offer schema until the slots are filled.
  *
  * Content shape mirrors /cctv: hero → what we install → who → why → process →
  * pricing tiers → AMC → FAQ → CTA. Service area is Kerala-wide.
@@ -67,6 +80,43 @@ export const entranceHubCopy = {
         href: '/entrance-automation/boom-barriers',
         tagline: 'Fast barriers for parking and access control.',
         blurb: 'Boom barriers for car parks, apartments, offices, and commercial entrances — DC motor, arm up to 5 m, remote control as standard and RFID tags available as an add-on.',
+      },
+      {
+        title: 'Video Door Phones',
+        href: '/entrance-automation/video-door-phones',
+        tagline: 'See who is there before you open.',
+        blurb: 'An outdoor camera unit at the entrance and a monitor inside, wired or over Wi-Fi. Answering on your phone and visitor recording are available on selected models, and multi-apartment systems suit flats.',
+      },
+      {
+        title: 'Smart Door Locks',
+        href: '/entrance-automation/smart-door-locks',
+        tagline: 'Fingerprint, PIN, card or app.',
+        blurb: 'Keyless entry fitted to the door you already have, with a mechanical key as backup. Unlock methods vary by model, and temporary codes for guests or domestic help are available on selected models.',
+      },
+    ],
+  },
+
+  /** Ties the four products together — the reason to buy more than one. */
+  complete: {
+    eyebrow: 'THE COMPLETE ENTRANCE',
+    headline: 'Four products, or one entrance that works as a whole.',
+    body: 'Most people start with one thing — a gate that is tiring to push, or a key too many people have. The parts are worth more together than separately: the door phone shows you who is outside, the gate or lock lets them in without you walking out, and the cameras keep the record. Because we install all of it, the integration is planned at the survey instead of discovered afterwards.',
+    points: [
+      {
+        title: 'Gate + video door phone',
+        body: 'Answer the call from inside and open the gate in the same action, on compatible setups — no walking out to see who rang.',
+      },
+      {
+        title: 'Door phone + smart lock',
+        body: 'Release the front door for someone you have just seen and spoken to, instead of leaving a key with a neighbour.',
+      },
+      {
+        title: 'Everything + CCTV',
+        body: 'The door phone covers the moment someone calls. Cameras cover the rest of the day, so the entrance is not watched twice and the gaps are not missed.',
+      },
+      {
+        title: 'One team, one cable plan',
+        body: 'Gate, door phone, lock and cameras all need power and cable to the same few places. Planned once, it is one set of conduit instead of four visits.',
       },
     ],
   },
@@ -174,6 +224,12 @@ export type EntranceProduct = {
   retrofit?: { eyebrow: string; headline: string; body: string; points: string[] }
   /** Optional YouTube video. Leave undefined and nothing renders. */
   video?: PageVideo
+  /**
+   * Set only while the hero photo does not exist yet: the hero then renders
+   * through PlaceholderImage, which falls back to a styled block instead of a
+   * broken image. Delete the field once the photo is in place.
+   */
+  heroIntent?: string
 }
 
 export const entranceProducts: Record<string, EntranceProduct> = {
@@ -456,6 +512,312 @@ export const entranceProducts: Record<string, EntranceProduct> = {
         q: 'Do you offer AMC for boom barriers?',
         a: 'Yes, and for a high-traffic barrier it’s strongly recommended. Barriers cycle constantly, so motor, arm balance, loop detectors, and access hardware all need regular servicing. Our AMC covers this and can be combined with your other ITSolute AMC under one contract.',
       },
+    ],
+  },
+
+  'video-door-phones': {
+    slug: 'video-door-phones',
+    metaTitle: 'Video Door Phone Installation in Kerala | ITSolute',
+    metaDescription:
+      'See and speak to whoever is at your door before you open it. Wired and Wi-Fi systems for homes, flats and clinics. Free site survey across Kerala.',
+    serviceName: 'Video Door Phone Installation',
+    serviceType: 'Video Door Phone Installation',
+    priceLow: '',
+    priceHigh: '',
+    whatsappMessage: 'Hi ITSolute, I want to install a video door phone.',
+    heroIntent:
+      'Indoor video door phone monitor mounted in a Kerala home hallway, showing a visitor at the outdoor unit',
+    hero: {
+      eyebrow: 'VIDEO DOOR PHONES \u00b7 KERALA',
+      headline: 'Video Door Phone Installation in Kerala',
+      sub: 'See and talk to whoever is at your door before you open it. An outdoor camera unit at the gate or entrance, a monitor inside, and on selected models the same call on your phone \u2014 installed across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
+    },
+    install: {
+      eyebrow: 'WHAT WE INSTALL',
+      headline: 'An outdoor unit, a screen inside, and a way to answer.',
+      items: [
+        {
+          icon: Video,
+          title: 'Outdoor unit and indoor monitor',
+          body: 'A camera, microphone and call button at the entrance, wired to a screen inside the house. Press, look, talk, decide \u2014 the whole point is that you never open the door to find out who it is.',
+        },
+        {
+          icon: Wifi,
+          title: 'Wired or Wi-Fi',
+          body: 'Wired systems run a cable from the gate to the monitor and are the steadier choice for a new build or a rewire. Wi-Fi and IP systems avoid that cable run, which matters in a finished house. We advise which suits your site at the survey.',
+        },
+        {
+          icon: Smartphone,
+          title: 'Answer on your phone \u2014 on selected models',
+          body: 'On selected models the call also reaches a mobile app, so the door can be answered from the next room or another city. Visitor snapshots and recording are available on selected models too.',
+        },
+        {
+          icon: Users,
+          title: 'Multi-apartment systems',
+          body: 'For flats, one outdoor panel at the main entrance calls the right apartment, with a monitor in each. Sized at the survey around the number of flats and the cable routes the building already has.',
+        },
+      ],
+    },
+    who: {
+      eyebrow: 'WHO IT\u2019S FOR',
+      headline: 'Anywhere someone has to decide whether to open the door.',
+      items: [
+        'Homes and villas where the gate is far enough from the house that walking out to check is a nuisance',
+        'Apartments and flats needing one entrance panel and a monitor per flat',
+        'Offices where reception is not always staffed',
+        'Clinics managing who comes through outside consulting hours',
+      ],
+    },
+    why: {
+      eyebrow: 'WHY ITSOLUTE',
+      headline: 'The door phone is one part of the entrance, not a box on its own.',
+      points: [
+        {
+          title: 'It can open the gate',
+          body: 'On compatible setups the indoor unit or app can trigger your automatic gate or release a smart lock \u2014 so the same press that answers the visitor also lets them in. We confirm what will talk to what before quoting.',
+        },
+        {
+          title: 'It sits beside your CCTV',
+          body: 'A door phone shows you the moment someone calls. CCTV shows you everything else. We install both, so the two cover the entrance between them instead of overlapping.',
+        },
+        {
+          title: 'Cabling done once',
+          body: 'We also do structured cabling and networking, so the run from the gate to the monitor is planned with the rest of the house rather than surface-clipped afterwards.',
+        },
+        {
+          title: 'Honest about models',
+          body: 'App answering, recording and snapshots depend on the model. We tell you which features your chosen unit actually has before you buy it, not after.',
+        },
+      ],
+    },
+    process: {
+      eyebrow: 'HOW IT GOES',
+      headline: 'Survey first, because the cable route decides the system.',
+      steps: [
+        {
+          index: '01',
+          title: 'Free site survey',
+          body: 'We look at the gate, the door, the distance between them and what cabling exists. That decides wired or Wi-Fi more than any preference does.',
+        },
+        {
+          index: '02',
+          title: 'Written quote',
+          body: 'A fixed written quote listing the exact units, how many monitors, and which features that model supports. Nothing is ordered before you approve it.',
+        },
+        {
+          index: '03',
+          title: 'Installation',
+          body: 'Outdoor unit mounted at a sensible height and angle, cable run, monitor fitted inside, and any gate or lock integration wired and tested.',
+        },
+        {
+          index: '04',
+          title: 'Handover',
+          body: 'We walk you through answering, the app if your model has one, and what to do if the screen goes blank. Warranty paperwork handed over with it.',
+        },
+      ],
+    },
+    pricing: {
+      eyebrow: 'PRICING',
+      headline: 'Quoted after the survey.',
+      rows: VIDEO_DOOR_PHONE_PRICES,
+      disclaimer:
+        'Video door phones vary too much by model \u2014 wired or Wi-Fi, one monitor or several, recording or not \u2014 for a single starting figure to mean anything useful. We quote in writing after the free site survey.',
+    },
+    amc: {
+      eyebrow: 'AFTER INSTALLATION',
+      headline: 'Keeping it working past the first year.',
+      body: 'A door phone is used every day and lives half outdoors, so the outdoor unit takes weather and the indoor unit takes wear. An AMC keeps both checked rather than waiting for the screen to go dark on a day you need it.',
+      points: [
+        'Outdoor unit cleaned, sealed and checked for water ingress',
+        'Camera angle and night visibility re-checked',
+        'Monitor, call button and door release tested end to end',
+        'App and network settings re-checked on models that use them',
+        'Can be combined with your other ITSolute AMC under one contract',
+      ],
+    },
+    faqs: [
+      {
+        q: 'Wired or Wi-Fi \u2014 which should I choose?',
+        a: 'Wired is the steadier of the two, because the picture and the call do not depend on your Wi-Fi reaching the gate. It suits a new build or a rewire, when the cable can be run without disturbing finished walls. Wi-Fi and IP systems avoid that cable run entirely, which is usually the deciding factor in a house that is already finished. We look at the distance from gate to monitor and your existing Wi-Fi coverage at the survey, and tell you which one your site actually supports.',
+      },
+      {
+        q: 'Can I answer the door from my phone?',
+        a: 'On selected models, yes \u2014 the call reaches a mobile app as well as the indoor monitor, so you can see and speak to a visitor from another room or another country. It is not standard on every unit, so it is one of the first things we confirm when you tell us what you want. If answering remotely matters to you, say so at the survey and we will specify a model that does it.',
+      },
+      {
+        q: 'Does a video door phone work in a power cut?',
+        a: 'It depends on the setup. The units run on mains power, so on their own they stop when the power does. Where staying up through a cut matters, we wire the system to your home inverter connection during installation, the same way we do for AC gate motors \u2014 tell us at the survey and we will plan for it. Some models also hold a short internal backup, but that varies by model and is not something to rely on.',
+      },
+      {
+        q: 'Can the door phone open my automatic gate?',
+        a: 'On compatible setups, yes. The indoor unit, or the app on models that have one, can trigger the gate motor or release a smart lock, so answering the visitor and letting them in are the same action. It depends on both the door phone and the gate controller supporting it, which is why we check the combination before quoting rather than promising it in advance.',
+      },
+      {
+        q: 'We have a flat with many apartments. Does that work?',
+        a: 'Yes. One outdoor panel at the main entrance calls the specific flat, and each flat gets its own monitor. The sizing depends on how many flats there are and what cable routes the building already has, so for apartments the survey matters more than usual \u2014 retrofitting a riser in a finished building is a different job from wiring one under construction. We cover apartments across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
+      },
+      {
+        q: 'Do you offer AMC for video door phones?',
+        a: 'Yes. The outdoor unit sits in the weather and the indoor unit gets used several times a day, so both benefit from being checked on a schedule rather than when something fails. An AMC covers cleaning and sealing the outdoor unit, re-checking the camera angle and night visibility, and testing the call and door release end to end. It can be combined with your other ITSolute AMC under one contract.',
+      },
+    ],
+    guides: [
+      'apartment-gate-automation-kerala',
+      'rfid-vs-remote-gate-access',
+      'automatic-gate-power-cut-battery-backup',
+    ],
+  },
+
+  'smart-door-locks': {
+    slug: 'smart-door-locks',
+    metaTitle: 'Smart Door Lock Installation in Kerala | ITSolute',
+    metaDescription:
+      'Fingerprint, PIN, card or app \u2014 unlock options vary by model, with a mechanical key backup. Fitted to existing doors. Free site survey across Kerala.',
+    serviceName: 'Smart Door Lock Installation',
+    serviceType: 'Smart Door Lock Installation',
+    priceLow: '',
+    priceHigh: '',
+    whatsappMessage: 'Hi ITSolute, I want to install a smart door lock.',
+    heroIntent:
+      'Smart door lock with a fingerprint reader and keypad fitted to a wooden front door in a Kerala home',
+    hero: {
+      eyebrow: 'SMART DOOR LOCKS \u00b7 KERALA',
+      headline: 'Smart Door Lock Installation in Kerala \u2014 Fingerprint, PIN & App',
+      sub: 'Stop carrying a key you can lose. Fingerprint, PIN, card or phone depending on the model, with a mechanical key as backup \u2014 fitted to the door you already have, across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
+    },
+    install: {
+      eyebrow: 'WHAT WE INSTALL',
+      headline: 'Several ways in, and always a way in when the battery dies.',
+      items: [
+        {
+          icon: Fingerprint,
+          title: 'Fingerprint and PIN',
+          body: 'The two most-used methods on most locks: a registered fingerprint, or a code on the keypad. Which methods your lock has depends on the model, so we confirm the combination before you buy.',
+        },
+        {
+          icon: ScanLine,
+          title: 'Card and app \u2014 on selected models',
+          body: 'RFID cards or tags suit a household where not everyone wants to register a fingerprint. App unlocking over Bluetooth or Wi-Fi is available on selected models.',
+        },
+        {
+          icon: KeyRound,
+          title: 'Mechanical key backup',
+          body: 'A physical key override is the point of the whole design. Keep it somewhere other than inside the door it opens, and a flat battery is an inconvenience rather than a locksmith call.',
+        },
+        {
+          icon: BatteryCharging,
+          title: 'Battery powered, with warnings',
+          body: 'These locks run on batteries and warn you well before they run out, usually by beeping or flashing at every unlock for days. Replacing them is a two-minute job we show you at handover.',
+        },
+      ],
+    },
+    who: {
+      eyebrow: 'WHO IT\u2019S FOR',
+      headline: 'Doors that too many people need to open.',
+      items: [
+        'Homes where keys get copied, lost, or left with a neighbour',
+        'Families where children arrive home before the adults do',
+        'Houses that domestic help, a driver or a caretaker needs access to',
+        'Small offices and clinics where staff change and keys never come back',
+      ],
+    },
+    why: {
+      eyebrow: 'WHY ITSOLUTE',
+      headline: 'Fitting it to your actual door is most of the job.',
+      points: [
+        {
+          title: 'The door is checked first',
+          body: 'Door material, thickness, and the existing lock cutout decide which locks will physically fit. We measure at the survey rather than discovering a problem with the door half drilled.',
+        },
+        {
+          title: 'Access you can take back',
+          body: 'On selected models you can issue a temporary code for a guest or for domestic help and remove it afterwards. No copied key stays in circulation.',
+        },
+        {
+          title: 'It joins the entrance',
+          body: 'The lock can work alongside your video door phone and automatic gate on compatible setups, so answering the door and releasing it are one action.',
+        },
+        {
+          title: 'No overselling',
+          body: 'App control, temporary codes and Wi-Fi are model-dependent. We tell you what the lock in your quote does before you commit to it.',
+        },
+      ],
+    },
+    process: {
+      eyebrow: 'HOW IT GOES',
+      headline: 'Measure the door, then choose the lock.',
+      steps: [
+        {
+          index: '01',
+          title: 'Free site survey',
+          body: 'We check the door material, its thickness, the frame and the existing cutout, and ask who needs to get in and how.',
+        },
+        {
+          index: '02',
+          title: 'Written quote',
+          body: 'A fixed written quote naming the model and listing exactly which unlock methods it supports. Nothing ordered before you approve it.',
+        },
+        {
+          index: '03',
+          title: 'Fitting',
+          body: 'Lock fitted to the door, alignment checked so it closes cleanly, fingerprints and codes registered, and any gate or door phone integration tested.',
+        },
+        {
+          index: '04',
+          title: 'Handover',
+          body: 'We show you how to add and remove users, change the battery, and use the mechanical key \u2014 then hand over the warranty paperwork and the spare keys.',
+        },
+      ],
+    },
+    pricing: {
+      eyebrow: 'PRICING',
+      headline: 'Quoted after the survey.',
+      rows: SMART_LOCK_PRICES,
+      disclaimer:
+        'Smart locks range from a simple fingerprint-and-PIN unit to a full app-connected lock, and the door itself affects what will fit. A single starting figure would mislead, so we quote in writing after the free site survey.',
+    },
+    amc: {
+      eyebrow: 'AFTER INSTALLATION',
+      headline: 'A lock that is used a hundred times a week.',
+      body: 'Smart locks fail in slow, predictable ways \u2014 alignment drifts as a door swells, a fingerprint reader gets dirty, batteries go flat at the worst moment. An AMC catches those before they lock someone out.',
+      points: [
+        'Alignment and strike plate re-checked as doors move with humidity',
+        'Fingerprint reader and keypad cleaned and tested',
+        'Battery condition checked and users re-verified',
+        'Stale users and old temporary codes cleared out',
+        'Can be combined with your other ITSolute AMC under one contract',
+      ],
+    },
+    faqs: [
+      {
+        q: 'What happens if the battery dies?',
+        a: 'You get plenty of warning first. These locks start signalling a low battery days before it matters, usually by beeping or flashing each time the door is opened, so running one flat takes sustained ignoring. If it does happen, the mechanical key override opens the door \u2014 which is exactly why we tell you to keep that key somewhere other than inside the house. Some models also take an emergency power source at the keypad to get you in long enough to change the batteries, but that varies by model.',
+      },
+      {
+        q: 'Will a smart lock fit my door?',
+        a: 'Usually, but the door decides. We check the material, the thickness, the frame and the existing lock cutout at the survey, because those determine which models can physically be fitted. Wooden and metal doors are both common and both workable. Where a door is unusually thin, unusually thick, or already cut for an awkward lock, we tell you before quoting rather than after starting \u2014 it is the single most common reason a particular model is ruled out.',
+      },
+      {
+        q: 'Is a smart lock actually safe?',
+        a: 'The lock still throws a physical bolt into the frame \u2014 that part is no different from a conventional lock, and it is what actually resists force. What changes is how you authorise it. Fingerprints and codes cannot be copied the way a key can, and a code can be changed in seconds if you think someone knows it. We fit the lock so it aligns and closes properly, because a smart lock on a door that does not shut cleanly is weaker than a simple one on a door that does.',
+      },
+      {
+        q: 'Can I give someone temporary access?',
+        a: 'On selected models, yes. You can issue a code for a guest, domestic help or a delivery and remove it afterwards, and on app-connected models set one that expires on its own. This is usually the reason people move away from keys in the first place: a key you lend is a key you have to trust someone to return, while a code you issue is one you can withdraw. Tell us at the survey if this matters and we will specify a model that supports it.',
+      },
+      {
+        q: 'Do I need an app, or Wi-Fi?',
+        a: 'No. Fingerprint and keypad models work entirely on their own with no phone, no app and no internet, and for many households that is the right choice \u2014 fewer things to go wrong. An app adds remote unlocking, access logs and codes you can issue from elsewhere, and needs Bluetooth or Wi-Fi depending on the model. It is worth having only if you will use it, so we ask what you actually want before recommending one.',
+      },
+      {
+        q: 'How long does installation take?',
+        a: 'Fitting the lock itself is usually a single visit once the model is agreed. Most of the work is alignment \u2014 making sure the bolt meets the frame cleanly so the lock is not straining every time the door closes. We then register fingerprints and codes for everyone in the household, test any gate or door phone integration, and show you how to add and remove users yourself before we leave.',
+      },
+    ],
+    guides: [
+      'rfid-vs-remote-gate-access',
+      'apartment-gate-automation-kerala',
+      'automatic-gate-power-cut-battery-backup',
     ],
   },
 }

@@ -25,6 +25,7 @@ import {
   videoObjectSchema,
 } from '@/lib/schema'
 import { SITE_URL } from '@/lib/content/site'
+import { NO_PRICE_NOTE } from '@/lib/content/entrancePricing'
 
 export function generateStaticParams() {
   return getAllEntranceSlugs().map((slug) => ({ slug }))
@@ -72,6 +73,10 @@ export default async function EntranceProductPage({
         image={{
           src: `/images/entrance-automation/${slug}.jpg`,
           alt: `${p.serviceName} across Kerala by ITSolute`,
+          // Only set on products whose photo does not exist yet, so they fall
+          // back to a styled block instead of a broken image. Products with a
+          // real photo leave it undefined and render through next/image.
+          intent: p.heroIntent,
         }}
       />
 
@@ -183,25 +188,36 @@ export default async function EntranceProductPage({
         <Container>
           <SectionHeader eyebrow={p.pricing.eyebrow} headline={p.pricing.headline} />
           <div className="mt-12 max-w-2xl">
-            <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
-              <table className="w-full text-left">
-                <tbody>
-                  {p.pricing.rows.map((row, i) => (
-                    <tr key={row.label} className={i > 0 ? 'border-t border-slate-200' : ''}>
-                      <th
-                        scope="row"
-                        className="px-6 py-5 text-base md:text-lg font-normal text-[color:var(--color-ink)]"
-                      >
-                        {row.label}
-                      </th>
-                      <td className="whitespace-nowrap px-6 py-5 text-right font-mono text-lg md:text-xl font-medium tracking-tight text-[color:var(--color-ink)]">
-                        from {row.from}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            {/*
+              An empty price slot is deliberate for products whose cost swings
+              too much by model to quote a useful "from" figure. Render the
+              note instead of an empty table shell — see entrancePricing.ts.
+            */}
+            {p.pricing.rows.length > 0 ? (
+              <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+                <table className="w-full text-left">
+                  <tbody>
+                    {p.pricing.rows.map((row, i) => (
+                      <tr key={row.label} className={i > 0 ? 'border-t border-slate-200' : ''}>
+                        <th
+                          scope="row"
+                          className="px-6 py-5 text-base md:text-lg font-normal text-[color:var(--color-ink)]"
+                        >
+                          {row.label}
+                        </th>
+                        <td className="whitespace-nowrap px-6 py-5 text-right font-mono text-lg md:text-xl font-medium tracking-tight text-[color:var(--color-ink)]">
+                          from {row.from}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <p className="rounded-lg border border-slate-200 bg-white px-6 py-5 text-base md:text-lg leading-relaxed text-[color:var(--color-ink)]">
+                {NO_PRICE_NOTE}
+              </p>
+            )}
             <p className="mt-5 text-sm text-slate-500 leading-relaxed">
               {p.pricing.disclaimer}
             </p>
@@ -344,29 +360,36 @@ export default async function EntranceProductPage({
               description: p.metaDescription,
               slug: `entrance-automation/${slug}`,
               serviceType: p.serviceType,
-              priceRange: { low: p.priceLow, high: p.priceHigh },
+              // Omit the range entirely when there is no published price,
+              // rather than claiming a range of empty strings.
+              priceRange: p.priceLow
+                ? { low: p.priceLow, high: p.priceHigh }
+                : undefined,
             }),
           ),
         }}
       />
-      <Script
-        id={`entrance-offers-schema-${slug}`}
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            productOffersSchema({
-              pageSlug: `entrance-automation/${slug}`,
-              listName: p.pricing.headline,
-              items: p.pricing.rows.map((row) => ({
-                name: `${row.label} — ${p.serviceName}`,
-                description: `${row.label} installed by ITSolute across Kerala, with safety sensors and battery backup as standard. Starting price excludes GST.`,
-                minPrice: row.minPrice,
-              })),
-            }),
-          ),
-        }}
-      />
+      {/* No rows means no published price, so emit no Offer schema at all. */}
+      {p.pricing.rows.length > 0 ? (
+        <Script
+          id={`entrance-offers-schema-${slug}`}
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              productOffersSchema({
+                pageSlug: `entrance-automation/${slug}`,
+                listName: p.pricing.headline,
+                items: p.pricing.rows.map((row) => ({
+                  name: `${row.label} — ${p.serviceName}`,
+                  description: `${row.label} installed by ITSolute across Kerala, with safety sensors and battery backup as standard. Starting price includes GST.`,
+                  minPrice: row.minPrice,
+                })),
+              }),
+            ),
+          }}
+        />
+      ) : null}
       {p.video ? (
         <Script
           id={`entrance-video-schema-${slug}`}

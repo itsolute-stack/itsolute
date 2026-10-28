@@ -22,6 +22,8 @@ import {
 
 export const GATES_HREF = '/entrance-automation/automatic-gates'
 export const BARRIERS_HREF = '/entrance-automation/boom-barriers'
+export const DOOR_PHONES_HREF = '/entrance-automation/video-door-phones'
+export const SMART_LOCKS_HREF = '/entrance-automation/smart-door-locks'
 
 export type GateTypeRow = {
   label: string
@@ -150,6 +152,12 @@ export type EntranceDistrict = {
   hero: { eyebrow: string; headline: string; sub: string }
   angle: { eyebrow: string; headline: string; paragraphs: string[] }
   towns: string[]
+  /**
+   * "Also at your entrance" — points at the door phone and lock pages. Written
+   * per district for the same reason as `guides`: a shared sentence with the
+   * town swapped is what these pages exist to avoid.
+   */
+  alsoAtEntrance: { headline: string; body: string }
   faqs: FAQ[]
   /**
    * Blog guides to surface on this district page, as post slugs. Picked per
@@ -201,6 +209,10 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       'Erattupetta',
       'Mundakayam',
     ],
+    alsoAtEntrance: {
+      headline: 'Also at your entrance',
+      body: 'Our workshop is on Parthas Lane, so Kottayam is the district we reach fastest \u2014 which makes it the easiest place to do the gate and the front door on the same visit. A video door phone lets you see who rang before you walk out, and a smart door lock ends the business of leaving a spare key with a neighbour.',
+    },
     faqs: [
       {
         q: 'How quickly can you do a site survey in Kottayam?',
@@ -263,6 +275,10 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       'Muvattupuzha',
       'Angamaly',
     ],
+    alsoAtEntrance: {
+      headline: 'Also at your entrance',
+      body: 'Shared entrances are the Ernakulam problem: a flat or an office where too many people need access and a key gets copied once too often. A video door phone at the main panel calls the right flat, and a smart door lock issues a code you can withdraw \u2014 both fitted alongside the gate or barrier.',
+    },
     faqs: [
       {
         q: 'Can you install a boom barrier for an apartment association?',
@@ -323,6 +339,10 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       'Kozhencherry',
       'Mallappally',
     ],
+    alsoAtEntrance: {
+      headline: 'Also at your entrance',
+      body: 'Many houses here sit empty for months while the family is abroad, and a caretaker holds the key. A video door phone with app answering on selected models lets you see your own door from wherever you are, and a smart door lock means access can be given for a week and taken back after.',
+    },
     faqs: [
       {
         q: 'Can I open the gate from abroad?',
@@ -382,6 +402,10 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
       'Chengannur',
       'Kuttanad',
     ],
+    alsoAtEntrance: {
+      headline: 'Also at your entrance',
+      body: 'Coastal air is hard on anything with contacts in it, doors included \u2014 and a timber door that swells in the monsoon will fight a badly aligned lock. We fit video door phones and smart door locks here with that in mind, checking the seal on the outdoor unit and the door alignment rather than treating it as an indoor job.',
+    },
     faqs: [
       {
         q: 'Will a gate motor survive the monsoon and salty air here?',

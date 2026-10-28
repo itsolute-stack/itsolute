@@ -15,6 +15,8 @@ import {
   entranceProcess,
   entranceAmcBlock,
   ENTRANCE_PRICE_NOTE,
+  DOOR_PHONES_HREF,
+  SMART_LOCKS_HREF,
 } from '@/lib/content/copy/entranceDistricts'
 import { VideoEmbed } from '@/components/shared/VideoEmbed'
 import { RelatedGuides } from '@/components/shared/RelatedGuides'
@@ -228,6 +230,42 @@ export function EntranceDistrictPage({ slug }: { slug: string }) {
                 </li>
               ))}
             </ul>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Also at your entrance — door phone + smart lock, worded per district */}
+      <Section theme="light">
+        <Container>
+          <div className="max-w-3xl">
+            <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-[color:var(--color-ink)]">
+              {d.alsoAtEntrance.headline}
+            </h2>
+            <p className="mt-6 text-base md:text-lg text-slate-600 leading-relaxed">
+              {d.alsoAtEntrance.body}
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <Link
+                href={DOOR_PHONES_HREF}
+                className="group inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-4 text-base font-medium text-[color:var(--color-ink)] transition-colors hover:border-[color:var(--color-electric)]"
+              >
+                Video door phone installation
+                <ArrowRight
+                  aria-hidden
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                />
+              </Link>
+              <Link
+                href={SMART_LOCKS_HREF}
+                className="group inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-4 text-base font-medium text-[color:var(--color-ink)] transition-colors hover:border-[color:var(--color-electric)]"
+              >
+                Smart door lock installation
+                <ArrowRight
+                  aria-hidden
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                />
+              </Link>
+            </div>
           </div>
         </Container>
       </Section>

@@ -22,7 +22,7 @@ export const metadata = {
     absolute: 'Gate Automation & Entrance Automation in Kerala | ITSolute',
   },
   description:
-    'Automatic gates from ₹34,000 and boom barriers from ₹60,000 incl. GST. Free site survey in Kottayam, Ernakulam and Alappuzha.',
+    'Automatic gates, boom barriers, video door phones and smart door locks. Gates from ₹34,000 incl. GST. Free site survey across Kerala.',
   alternates: { canonical: `${SITE_URL}/entrance-automation` },
 }
 
@@ -60,7 +60,7 @@ export default function EntranceAutomationPage() {
         </Container>
       </Section>
 
-      {/* Products — link to the two children */}
+      {/* Products — link to the four children */}
       <Section theme="dark">
         <Container>
           <SectionHeader
@@ -87,6 +87,32 @@ export default function EntranceAutomationPage() {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* The complete entrance — why the four products are worth combining */}
+      <Section theme="cream">
+        <Container>
+          <SectionHeader
+            eyebrow={entranceHubCopy.complete.eyebrow}
+            headline={entranceHubCopy.complete.headline}
+          />
+          <p className="mt-8 max-w-3xl text-base md:text-lg text-slate-600 leading-relaxed">
+            {entranceHubCopy.complete.body}
+          </p>
+          <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5">
+            {entranceHubCopy.complete.points.map((point) => (
+              <div
+                key={point.title}
+                className="flex flex-col gap-3 rounded-lg border border-slate-200 bg-white p-6"
+              >
+                <h3 className="text-lg font-medium tracking-tight text-[color:var(--color-ink)]">
+                  {point.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{point.body}</p>
+              </div>
             ))}
           </div>
         </Container>

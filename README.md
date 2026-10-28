@@ -82,7 +82,7 @@ All variables live in `.env.example`. Copy to `.env.local` for development and s
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | Yes | Digits only with country code: `918547533005` |
 | `NEXT_PUBLIC_PHONE_NUMBER` | Yes | With `+`: `+918547533005` |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional | Google Analytics 4 measurement ID. Leave blank to skip. |
-| `NEXT_PUBLIC_SITE_URL` | Yes (prod) | Canonical URL — used for metadata, sitemap, schema. e.g. `https://itsolute.com` |
+| `NEXT_PUBLIC_SITE_URL` | Yes (prod) | Canonical URL — used for metadata, sitemap, schema. e.g. `https://www.itsolute.com` |
 
 > The contact form will return a graceful error if `RESEND_API_KEY` is missing — visitors still see a WhatsApp fallback link.
 
@@ -285,7 +285,7 @@ names, no other-business names.
    - `NEXT_PUBLIC_PHONE_NUMBER`
    - `NEXT_PUBLIC_SITE_URL`
 4. Deploy. Vercel handles build, image optimization, edge caching automatically.
-5. Add custom domain (`itsolute.com`) in Vercel → Domains. Update `NEXT_PUBLIC_SITE_URL` to match, then redeploy.
+5. Add both `itsolute.com` and `www.itsolute.com` in Vercel → Domains, with **`www.itsolute.com` as the primary** so the apex redirects to it. Set `NEXT_PUBLIC_SITE_URL=https://www.itsolute.com` to match, then redeploy.
 
 ### Domain verification for Resend
 
@@ -391,17 +391,24 @@ Use the **exact** string `Parthas Lane, Kottayam, Kerala – 686001` and phone
 
 ### Track this
 
-Set up Google Search Console for `itsolute.com` once the domain is live:
-1. Verify ownership via DNS TXT or HTML file
-2. Submit `https://itsolute.com/sitemap.xml`
+Set up Google Search Console as a **Domain property** (`itsolute.com`), not a
+URL-prefix property — a Domain property covers the apex and `www` together, so
+you see one set of numbers instead of the hosts competing:
+1. Verify ownership via DNS TXT
+2. Submit `https://www.itsolute.com/sitemap.xml`
 3. Check Mobile Usability, Core Web Vitals, and Coverage weekly for the first month
 
-### Canonical URL caveat
+### Canonical URL: www, not the apex
 
-While `itsolute.com` is not yet pointed at the Vercel deployment, set
-`NEXT_PUBLIC_SITE_URL` in Vercel to the live `*.vercel.app` URL — that prevents
-search engines from seeing a canonical pointing to a 404. Flip back to
-`https://itsolute.com` once DNS is configured.
+`www.itsolute.com` is the host Vercel serves with a 200; the apex 308-redirects
+to it, deep paths and query strings included. `NEXT_PUBLIC_SITE_URL` must
+therefore be `https://www.itsolute.com`.
+
+Setting the apex there is what broke indexing once already: www answered 200
+while declaring an apex canonical, and the apex redirected back to www, so
+Google indexed both hosts and split the link signals. `lib/content/site.ts`
+now normalises an apex value to www for that reason, but set it correctly
+anyway. Override it only for a preview origin.
 
 Every page emits its own canonical via `metadata.alternates.canonical`,
 built from `SITE_URL`. Changing the env var rewrites them all.
@@ -413,20 +420,20 @@ built from `SITE_URL`. Changing the env var rewrites them all.
 - [ ] **Vercel** → Domains: add `itsolute.com` and `www.itsolute.com`. Pick one
       as canonical and configure the other to redirect.
 - [ ] **Vercel** → Environment Variables → Production: set
-      `NEXT_PUBLIC_SITE_URL=https://itsolute.com`. Trigger a redeploy so it
+      `NEXT_PUBLIC_SITE_URL=https://www.itsolute.com`. Trigger a redeploy so it
       flows into metadata, canonical, sitemap, robots, JSON-LD.
 - [ ] **DNS**: add A/CNAME records as Vercel instructs.
 - [ ] **Resend**: verify the `itsolute.com` domain so `hello@itsolute.com`
       can send. Add SPF, DKIM, and DMARC records to DNS.
-- [ ] **Google Search Console**: add and verify `itsolute.com` (DNS TXT or
-      HTML file). Submit `https://itsolute.com/sitemap.xml`. Request indexing
+- [ ] **Google Search Console**: add and verify `itsolute.com` as a Domain property (DNS TXT or
+      HTML file). Submit `https://www.itsolute.com/sitemap.xml`. Request indexing
       of home + all 7 service pages.
 - [ ] **Bing Webmaster Tools**: add property, submit sitemap.
-- [ ] **Google Business Profile**: update business URL to `https://itsolute.com`.
+- [ ] **Google Business Profile**: update business URL to `https://www.itsolute.com`.
 - [ ] **OG image**: create the actual `/public/og-image.png` (1200×630)
       with the ITSolute wordmark + tagline. Until this exists, link previews
       will look broken.
-- [ ] **Rich Results Test**: run `https://itsolute.com` through
+- [ ] **Rich Results Test**: run `https://www.itsolute.com` through
       `https://search.google.com/test/rich-results` — should show
       Organization, LocalBusiness, FAQPage with no errors.
 
@@ -438,7 +445,7 @@ Walk through this before flipping the DNS:
 
 - [ ] Google Business Profile claimed at the Parthas Lane address (see Local SEO Setup above)
 - [ ] Justdial / Sulekha / IndiaMART listings created with identical NAP
-- [ ] `NEXT_PUBLIC_SITE_URL` in Vercel matches the actually-live URL (not 404 itsolute.com)
+- [ ] `NEXT_PUBLIC_SITE_URL` in Vercel is `https://www.itsolute.com` — the host that returns 200, not the redirecting apex
 - [ ] All `TODO:` chips on images replaced with real photographs
 - [ ] All `TODO: Replace with real testimonial` markers resolved
 - [ ] All `TODO: verify` notes on case-study metrics confirmed or corrected
@@ -542,13 +549,13 @@ These URLs propagate to:
 
 ### Off-site reciprocal links
 
-Add `https://itsolute.com` as the website URL on each profile (Instagram bio,
+Add `https://www.itsolute.com` as the website URL on each profile (Instagram bio,
 X profile, Facebook About → Website). The reciprocal link strengthens the
 `sameAs` signal — Google verifies the relationship goes both ways.
 
 ### After a deploy
 
-- Run https://itsolute.com through https://search.google.com/test/rich-results — Organization should now show the three social URLs under `sameAs`.
+- Run https://www.itsolute.com through https://search.google.com/test/rich-results — Organization should now show the three social URLs under `sameAs`.
 - Refresh Facebook's cache via https://developers.facebook.com/tools/debug/ → paste the URL → "Scrape Again".
 - Share the URL once on X to confirm the card renders with `@ITSoluteSystems` attribution.
 

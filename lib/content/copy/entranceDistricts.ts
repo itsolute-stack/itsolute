@@ -166,9 +166,10 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
   kottayam: {
     slug: 'kottayam',
     district: 'Kottayam',
-    metaTitle: 'Automatic Gate & Boom Barrier Installation in Kottayam | ITSolute',
+    metaTitle:
+      'Gate Automation in Kottayam — Automatic Gates & Boom Barriers | ITSolute',
     metaDescription:
-      'Automatic gate and boom barrier installation across Kottayam — sliding gates from ₹34,000 incl. GST, boom barriers from ₹60,000. Free site survey in Ettumanoor, Pala and Changanassery.',
+      `Sliding gates from ${GATE_FROM} incl. GST, barriers from ${BARRIER_FROM}. Free site survey in Ettumanoor, Pala and Changanassery.`,
     whatsappMessage: 'Hi ITSolute, I want a gate or boom barrier automated in Kottayam.',
     guides: [
       'automatic-gate-price-kerala',
@@ -227,9 +228,10 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
   ernakulam: {
     slug: 'ernakulam',
     district: 'Ernakulam',
-    metaTitle: 'Automatic Gate & Boom Barrier Installation in Ernakulam | ITSolute',
+    metaTitle:
+      'Gate Automation in Ernakulam — Automatic Gates & Boom Barriers | ITSolute',
     metaDescription:
-      'Boom barrier and automatic gate installation across Ernakulam — barriers from ₹60,000 incl. GST, gates from ₹34,000. Free site survey in Kakkanad, Edappally and Aluva.',
+      `Barriers from ${BARRIER_FROM} incl. GST for apartments and car parks, gates from ${GATE_FROM}. Free site survey in Kakkanad, Edappally and Aluva.`,
     whatsappMessage: 'Hi ITSolute, I want a boom barrier or gate automated in Ernakulam.',
     guides: [
       'apartment-gate-automation-kerala',
@@ -288,9 +290,10 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
   pathanamthitta: {
     slug: 'pathanamthitta',
     district: 'Pathanamthitta',
-    metaTitle: 'Automatic Gate & Boom Barrier Installation in Pathanamthitta | ITSolute',
+    metaTitle:
+      'Gate Automation in Pathanamthitta — Automatic Gates & Boom Barriers | ITSolute',
     metaDescription:
-      'Automatic gate installation across Pathanamthitta — sliding gates from ₹34,000 incl. GST, boom barriers from ₹60,000. Remote and voice control on DC motors. Free survey in Thiruvalla, Adoor and Ranni.',
+      `Gates from ${GATE_FROM} incl. GST with remote or voice control on DC motors. Free site survey in Thiruvalla, Adoor and Ranni.`,
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Pathanamthitta.',
     guides: [
       'automatic-gate-nri-homes-kerala',
@@ -347,9 +350,10 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
   alappuzha: {
     slug: 'alappuzha',
     district: 'Alappuzha',
-    metaTitle: 'Automatic Gate & Boom Barrier Installation in Alappuzha | ITSolute',
+    metaTitle:
+      'Gate Automation in Alappuzha — Automatic Gates & Boom Barriers | ITSolute',
     metaDescription:
-      'Automatic gate and boom barrier installation across Alappuzha — gates from ₹34,000 incl. GST, barriers from ₹60,000. Weather-sealed motors for coastal humidity. Free survey in Cherthala and Kayamkulam.',
+      `Gates from ${GATE_FROM} incl. GST, weather-sealed for coastal humidity; barriers from ${BARRIER_FROM}. Free site survey in Cherthala and Kayamkulam.`,
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Alappuzha.',
     guides: [
       'automatic-gate-maintenance-amc-kerala',

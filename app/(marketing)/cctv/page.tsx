@@ -208,6 +208,23 @@ export default function CctvPage() {
           <p className="mt-8 max-w-2xl text-sm text-slate-500 leading-relaxed">
             {cctvCopy.tiers.disclaimer}
           </p>
+          <p className="mt-4 max-w-2xl text-sm text-slate-500 leading-relaxed">
+            Securing the entrance as well? Pair your CCTV with{' '}
+            <Link
+              href="/entrance-automation/automatic-gates"
+              className="text-[color:var(--color-electric)] hover:underline"
+            >
+              automatic gate installation
+            </Link>{' '}
+            or{' '}
+            <Link
+              href="/entrance-automation/boom-barriers"
+              className="text-[color:var(--color-electric)] hover:underline"
+            >
+              boom barrier installation
+            </Link>
+            {' '}— one team wires the cameras, the gate and everything between them.
+          </p>
         </Container>
       </Section>
 

@@ -19,10 +19,10 @@ import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
   title: {
-    absolute: 'Entrance Automation in Kerala — Automatic Gates & Boom Barriers | ITSolute',
+    absolute: 'Gate Automation & Entrance Automation in Kerala | ITSolute',
   },
   description:
-    'Automatic gates from ₹34,000 and boom barriers from ₹60,000, all incl. GST, installed across Kottayam, Ernakulam, Pathanamthitta and Alappuzha. Motor kit, 2 remotes and safety sensors included. Free site survey.',
+    'Automatic gates from ₹34,000 and boom barriers from ₹60,000 incl. GST. Free site survey in Kottayam, Ernakulam and Alappuzha.',
   alternates: { canonical: `${SITE_URL}/entrance-automation` },
 }
 

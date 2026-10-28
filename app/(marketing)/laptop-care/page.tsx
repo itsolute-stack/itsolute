@@ -15,11 +15,15 @@ import { SITE_URL } from '@/lib/content/site'
 
 export const metadata = {
   title: {
-    absolute:
-      'Laptop Repair in Kottayam · Screen, Keyboard, Battery, Data Recovery | ITSolute',
+    absolute: 'Laptop Repair in Kottayam — Screen, Battery, Keyboard | 24–72 hr',
   },
+  // "Free diagnosis" was asked for and is not true for the audience this
+  // snippet targets: diagnosis is ₹250 for walk-ins, waived only if they go
+  // ahead with the repair, and free just for businesses and AMC clients
+  // (lib/content/copy/laptopCare.ts). Promising free in the SERP would be a
+  // claim the page contradicts, so the hook is the honest version of it.
   description:
-    'Laptop repair in Kottayam — screen replacement, keyboard, battery, SSD upgrade, data recovery, virus removal for students, professionals, and businesses. Most repairs in 24–72 hours.',
+    'Most repairs in 24–72 hours. Diagnosis ₹250, waived if you go ahead. Walk in to our Parthas Lane workshop in Kottayam — screen, battery, keyboard, SSD.',
   alternates: { canonical: `${SITE_URL}/laptop-care` },
   openGraph: {
     title:

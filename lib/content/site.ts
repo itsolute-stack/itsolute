@@ -37,9 +37,33 @@ export const GMAPS_URL = 'https://g.page/r/CfGF9isTZpMCEBM'
 export const GMAPS_EMBED_URL =
   'https://maps.google.com/maps?q=ITSolute+Systems+Parthas+Lane+Kottayam+686001&output=embed'
 
-/** Canonical site URL — override with NEXT_PUBLIC_SITE_URL in Vercel. */
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://itsolute.com'
+/**
+ * Canonical site URL — the host Vercel actually serves with a 200.
+ *
+ * That is `www.itsolute.com`: the apex 308-redirects to it, including deep
+ * paths and query strings. Everything SEO-visible is built from this one
+ * constant — metadataBase, every canonical, the sitemap, robots Host and
+ * Sitemap, and all JSON-LD — so the host has to be right here and nowhere
+ * else.
+ *
+ * It was previously the apex, which put the site in a contradiction: www
+ * returned 200 while declaring an apex canonical, and the apex redirected
+ * straight back to www. Google resolved it by indexing both hosts and mostly
+ * preferring www, so link signals were split across two origins.
+ *
+ * NEXT_PUBLIC_SITE_URL still wins, because preview deployments need their own
+ * origin, but an apex value is normalised to www rather than trusted. A stale
+ * Vercel variable is exactly how this broke, and silently re-emitting a
+ * canonical that contradicts the redirect is not worth preserving as an
+ * option. Any other host (a *.vercel.app preview, localhost) passes through
+ * untouched.
+ */
+function canonicalSiteUrl(): string {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.itsolute.com'
+  return configured.replace(/^https?:\/\/itsolute\.com/, 'https://www.itsolute.com')
+}
+
+export const SITE_URL = canonicalSiteUrl()
 
 export const SITE = {
   name: 'ITSolute Systems',

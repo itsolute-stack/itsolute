@@ -204,6 +204,24 @@ export default function NetworkingPage() {
           <p className="mt-8 max-w-2xl text-sm text-slate-500 leading-relaxed">
             {networkingCopy.tiers.disclaimer}
           </p>
+          <p className="mt-4 max-w-2xl text-sm text-slate-500 leading-relaxed">
+            Running cable to the gate at the same time is far cheaper than
+            returning for it later — see{' '}
+            <Link
+              href="/entrance-automation/automatic-gates"
+              className="text-[color:var(--color-electric)] hover:underline"
+            >
+              automatic gate installation
+            </Link>{' '}
+            and{' '}
+            <Link
+              href="/entrance-automation/boom-barriers"
+              className="text-[color:var(--color-electric)] hover:underline"
+            >
+              boom barrier installation
+            </Link>
+            .
+          </p>
         </Container>
       </Section>
 

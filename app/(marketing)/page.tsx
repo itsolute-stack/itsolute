@@ -87,6 +87,16 @@ export default function HomePage() {
         body={homeCopy.featuredEntrance.body}
         note={homeCopy.featuredEntrance.note}
         cta={{ label: homeCopy.featuredEntrance.cta, href: '/entrance-automation' }}
+        secondaryLinks={[
+          {
+            label: 'Automatic gate installation',
+            href: '/entrance-automation/automatic-gates',
+          },
+          {
+            label: 'Boom barrier installation',
+            href: '/entrance-automation/boom-barriers',
+          },
+        ]}
         image={images.entranceFeature}
       />
 

@@ -43,7 +43,7 @@ import type { PageVideo } from '@/components/shared/VideoEmbed'
 export const entranceHubCopy = {
   hero: {
     eyebrow: 'ENTRANCE AUTOMATION · KERALA',
-    headline: 'Gates and barriers that open on their own — reliably.',
+    headline: 'Gate automation and barriers that open on their own — reliably.',
     sub: 'Automatic gate and boom barrier installation for homes, apartments, offices, and commercial sites across Kerala. Installed by a team that also handles the wiring, access control, and CCTV it connects to — so it actually works together.',
     whatsappMessage: 'Hi ITSolute, I want to automate an entrance (gate / boom barrier).',
   },
@@ -180,9 +180,9 @@ export const entranceProducts: Record<string, EntranceProduct> = {
   'automatic-gates': {
     slug: 'automatic-gates',
     metaTitle:
-      `Automatic Gate Installation in Kottayam & Kerala — From ${GATE_FROM} incl. GST | ITSolute`,
+      `Automatic Gate Installation in Kerala — Sliding, Swing & Roller | From ${GATE_FROM}`,
     metaDescription:
-      `Automatic gate installation from ${GATE_FROM} including GST — sliding, swing and roller gates with safety sensors and 2 remotes in the motor kit. Free site survey across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.`,
+      `Sliding, swing and roller gates from ${GATE_FROM} incl. GST, with sensors and 2 remotes. Free site survey in Kottayam, Ernakulam and Alappuzha.`,
     serviceName: 'Automatic Gate Installation',
     serviceType: 'Automatic Gate Installation',
     priceLow: String(GATE_FROM_MIN),
@@ -338,9 +338,9 @@ export const entranceProducts: Record<string, EntranceProduct> = {
 
   'boom-barriers': {
     slug: 'boom-barriers',
-    metaTitle: 'Boom Barrier Installation in Kottayam & Kerala | ITSolute',
+    metaTitle: `Boom Barrier Installation in Kerala | From ${BARRIER_FROM} | ITSolute`,
     metaDescription:
-      `Boom barrier installation from ${BARRIER_FROM} including GST for apartments, offices and commercial parking — DC motor, arm up to 5 m, 2 remotes and safety sensors. Free site survey across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.`,
+      `Boom barriers from ${BARRIER_FROM} incl. GST for apartments, offices and car parks. Arm to 5 m. Free site survey in Kottayam, Ernakulam and Alappuzha.`,
     serviceName: 'Boom Barrier Installation',
     serviceType: 'Boom Barrier Installation',
     priceLow: String(BARRIER_FROM_MIN),

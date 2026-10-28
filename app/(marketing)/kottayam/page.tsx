@@ -136,6 +136,24 @@ export default function KottayamPage() {
               </div>
             ))}
           </div>
+          <p className="mt-10 max-w-2xl text-base text-slate-600 leading-relaxed">
+            Being local matters most for the jobs that need a site visit. We do{' '}
+            <Link
+              href="/entrance-automation/automatic-gates"
+              className="text-[color:var(--color-electric)] hover:underline"
+            >
+              automatic gate installation
+            </Link>{' '}
+            and{' '}
+            <Link
+              href="/entrance-automation/boom-barriers"
+              className="text-[color:var(--color-electric)] hover:underline"
+            >
+              boom barrier installation
+            </Link>{' '}
+            across Kottayam district, with a free site survey before anything is
+            quoted.
+          </p>
         </Container>
       </Section>
 

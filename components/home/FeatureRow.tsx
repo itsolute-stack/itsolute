@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { Eyebrow } from '@/components/shared/Eyebrow'
@@ -18,6 +19,13 @@ type FeatureRowProps = {
   body: string
   note?: string
   cta: { label: string; href: string }
+  /**
+   * Extra links beside the main CTA, for the specific pages behind a hub.
+   * The entrance row points at the hub, but "automatic gate installation" and
+   * "boom barrier installation" are what people actually search for, and those
+   * pages had no link from anywhere the homepage could pass authority through.
+   */
+  secondaryLinks?: { label: string; href: string }[]
   metrics?: { value: string; label: string }[]
   image: { src: string; alt: string; intent: string }
 }
@@ -30,6 +38,7 @@ export function FeatureRow({
   body,
   note,
   cta,
+  secondaryLinks,
   metrics,
   image,
 }: FeatureRowProps) {
@@ -146,6 +155,25 @@ export function FeatureRow({
                 {cta.label}
               </ArrowLink>
             </div>
+
+            {secondaryLinks?.length ? (
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                {secondaryLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className={cn(
+                      'text-sm underline underline-offset-4 transition-colors',
+                      isDark
+                        ? 'text-slate-300 hover:text-white'
+                        : 'text-slate-600 hover:text-[color:var(--color-ink)]',
+                    )}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
           </motion.div>
         </motion.div>
       </Container>

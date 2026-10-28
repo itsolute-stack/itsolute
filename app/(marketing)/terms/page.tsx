@@ -19,6 +19,10 @@ const CONTACT_EMAIL = SITE.contact.email
 const COMPANY = SITE.name
 const ADDRESS = SITE.hq.addressLine
 const PHONE = SITE.contact.phoneDisplay
+/**
+ * Display name of the site, for prose. The link beside it uses SITE_URL so we
+ * never link at the apex, which only 308-redirects to the www host.
+ */
 const SITE_DOMAIN = 'itsolute.com'
 
 export default function TermsPage() {
@@ -63,7 +67,7 @@ export default function TermsPage() {
                 These Terms of Service (&ldquo;Terms&rdquo;) constitute a legally binding agreement between
                 you (&ldquo;Client&rdquo;, &ldquo;you&rdquo;, or &ldquo;your&rdquo;) and {COMPANY} (&ldquo;ITSolute&rdquo;,
                 &ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;), a company operating at {ADDRESS}. By accessing our
-                website at <a href={`https://${SITE_DOMAIN}`}>{SITE_DOMAIN}</a> or engaging us for
+                website at <a href={SITE_URL}>{SITE_DOMAIN}</a> or engaging us for
                 any IT services, you agree to be bound by these Terms.
               </p>
 

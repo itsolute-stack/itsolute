@@ -39,7 +39,12 @@ export async function generateMetadata({
   if (!post) return {}
   const { title, excerpt, image, date, updated, keywords } = post.frontmatter
   return {
-    title: { absolute: `${title} | ITSolute Systems` },
+    // `absolute` so the root template does not append the brand either: post
+    // headlines are long, and "| ITSolute Systems" spent 19 characters pushing
+    // the end of the headline past where Google cuts a title. The brand is
+    // already on the SERP line above, and openGraph/twitter below carry the
+    // bare headline for the same reason.
+    title: { absolute: title },
     description: excerpt,
     keywords,
     alternates: { canonical: `${SITE_URL}/blog/${slug}` },

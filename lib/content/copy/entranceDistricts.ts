@@ -167,7 +167,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     slug: 'kottayam',
     district: 'Kottayam',
     metaTitle:
-      'Gate Automation in Kottayam — Automatic Gates & Boom Barriers | ITSolute',
+      'Gate Automation Kottayam — Gates & Boom Barriers',
     metaDescription:
       `Sliding gates from ${GATE_FROM} incl. GST, barriers from ${BARRIER_FROM}. Free site survey in Ettumanoor, Pala and Changanassery.`,
     whatsappMessage: 'Hi ITSolute, I want a gate or boom barrier automated in Kottayam.',
@@ -229,7 +229,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     slug: 'ernakulam',
     district: 'Ernakulam',
     metaTitle:
-      'Gate Automation in Ernakulam — Automatic Gates & Boom Barriers | ITSolute',
+      'Gate Automation Ernakulam — Gates & Boom Barriers',
     metaDescription:
       `Barriers from ${BARRIER_FROM} incl. GST for apartments and car parks, gates from ${GATE_FROM}. Free site survey in Kakkanad, Edappally and Aluva.`,
     whatsappMessage: 'Hi ITSolute, I want a boom barrier or gate automated in Ernakulam.',
@@ -291,7 +291,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     slug: 'pathanamthitta',
     district: 'Pathanamthitta',
     metaTitle:
-      'Gate Automation in Pathanamthitta — Automatic Gates & Boom Barriers | ITSolute',
+      'Gate Automation Pathanamthitta — Gates & Barriers',
     metaDescription:
       `Gates from ${GATE_FROM} incl. GST with remote or voice control on DC motors. Free site survey in Thiruvalla, Adoor and Ranni.`,
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Pathanamthitta.',
@@ -351,7 +351,7 @@ export const entranceDistricts: Record<string, EntranceDistrict> = {
     slug: 'alappuzha',
     district: 'Alappuzha',
     metaTitle:
-      'Gate Automation in Alappuzha — Automatic Gates & Boom Barriers | ITSolute',
+      'Gate Automation Alappuzha — Gates & Boom Barriers',
     metaDescription:
       `Gates from ${GATE_FROM} incl. GST, weather-sealed for coastal humidity; barriers from ${BARRIER_FROM}. Free site survey in Cherthala and Kayamkulam.`,
     whatsappMessage: 'Hi ITSolute, I want a gate automated in Alappuzha.',

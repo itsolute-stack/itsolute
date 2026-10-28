@@ -179,8 +179,7 @@ export type EntranceProduct = {
 export const entranceProducts: Record<string, EntranceProduct> = {
   'automatic-gates': {
     slug: 'automatic-gates',
-    metaTitle:
-      `Automatic Gate Installation in Kerala — Sliding, Swing & Roller | From ${GATE_FROM}`,
+    metaTitle: `Automatic Gates in Kerala from ${GATE_FROM} | Sliding & Swing`,
     metaDescription:
       `Sliding, swing and roller gates from ${GATE_FROM} incl. GST, with sensors and 2 remotes. Free site survey in Kottayam, Ernakulam and Alappuzha.`,
     serviceName: 'Automatic Gate Installation',
@@ -338,7 +337,9 @@ export const entranceProducts: Record<string, EntranceProduct> = {
 
   'boom-barriers': {
     slug: 'boom-barriers',
-    metaTitle: `Boom Barrier Installation in Kerala | From ${BARRIER_FROM} | ITSolute`,
+    // "| ITSolute" dropped: it pushed this to 61 characters, and the brand is
+    // the least useful thing in a title that already has the keyword and price.
+    metaTitle: `Boom Barriers in Kerala from ${BARRIER_FROM} | Installation`,
     metaDescription:
       `Boom barriers from ${BARRIER_FROM} incl. GST for apartments, offices and car parks. Arm to 5 m. Free site survey in Kottayam, Ernakulam and Alappuzha.`,
     serviceName: 'Boom Barrier Installation',

@@ -86,7 +86,7 @@ export function ProductPage({
         secondaryCta={{ label: 'WhatsApp us', message: p.whatsappMessage }}
         image={{
           src: `/images/${imageDir}/${slug}.jpg`,
-          alt: `${p.serviceName} across Kerala by ITSolute`,
+          alt: p.heroAlt ?? `${p.serviceName} across Kerala by ITSolute`,
           // Only set on products whose photo does not exist yet, so they fall
           // back to a styled block instead of a broken image. Products with a
           // real photo leave it undefined and render through next/image.

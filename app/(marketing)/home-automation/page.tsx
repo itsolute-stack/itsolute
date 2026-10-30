@@ -41,9 +41,7 @@ export default function HomeAutomationPage() {
         }}
         image={{
           src: '/images/home-automation/hub.jpg',
-          alt: 'Home automation installed by ITSolute in a Kerala home',
-          intent:
-            'Kerala living room showing an automated gate visible through the window, motorised curtains and a wall-mounted door phone monitor',
+          alt: 'Motorised curtains, a video door phone monitor and an automatic gate in a Kerala home',
         }}
       />
 

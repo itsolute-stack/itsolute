@@ -109,6 +109,8 @@ export const homeAutomationHub = {
 export const homeAutomationProducts: Record<string, EntranceProduct> = {
   'curtain-blind-motors': {
     slug: 'curtain-blind-motors',
+    heroAlt:
+      'Motorised curtains drawing open across a wide living room window in a Kerala home',
     contactService: 'curtain-blind-motors',
     metaTitle: 'Motorised Curtains & Blinds in Kerala | ITSolute',
     metaDescription:
@@ -118,8 +120,6 @@ export const homeAutomationProducts: Record<string, EntranceProduct> = {
     priceLow: '',
     priceHigh: '',
     whatsappMessage: 'Hi ITSolute, I want to motorise my curtains or blinds.',
-    heroIntent:
-      'Motorised curtains drawing across a wide living room window in a Kerala home, remote control in the foreground',
     hero: {
       eyebrow: 'CURTAIN & BLIND MOTORS \u00b7 KERALA',
       headline: 'Motorised Curtain & Blind Installation in Kerala',

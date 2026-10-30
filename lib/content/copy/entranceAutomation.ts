@@ -231,6 +231,11 @@ export type EntranceProduct = {
    */
   heroIntent?: string
   /**
+   * Descriptive alt text for the hero photo. Falls back to a generic
+   * "<service> across Kerala by ITSolute" when a product has not set one.
+   */
+  heroAlt?: string
+  /**
    * `?service=` value for this product's contact CTAs, when it has its own
    * option in the contact form. Falls back to the section default.
    */
@@ -522,6 +527,8 @@ export const entranceProducts: Record<string, EntranceProduct> = {
 
   'video-door-phones': {
     slug: 'video-door-phones',
+    heroAlt:
+      'Indoor video door phone monitor showing a visitor standing at the outdoor camera unit of a Kerala home',
     contactService: 'video-door-phones',
     metaTitle: 'Video Door Phone Installation in Kerala | ITSolute',
     metaDescription:
@@ -531,8 +538,6 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     priceLow: '',
     priceHigh: '',
     whatsappMessage: 'Hi ITSolute, I want to install a video door phone.',
-    heroIntent:
-      'Indoor video door phone monitor mounted in a Kerala home hallway, showing a visitor at the outdoor unit',
     hero: {
       eyebrow: 'VIDEO DOOR PHONES \u00b7 KERALA',
       headline: 'Video Door Phone Installation in Kerala',
@@ -676,6 +681,8 @@ export const entranceProducts: Record<string, EntranceProduct> = {
 
   'smart-door-locks': {
     slug: 'smart-door-locks',
+    heroAlt:
+      'Smart door lock with a fingerprint reader and keypad fitted to the front door of a Kerala home',
     contactService: 'smart-door-locks',
     metaTitle: 'Smart Door Lock Installation in Kerala | ITSolute',
     metaDescription:
@@ -685,8 +692,6 @@ export const entranceProducts: Record<string, EntranceProduct> = {
     priceLow: '',
     priceHigh: '',
     whatsappMessage: 'Hi ITSolute, I want to install a smart door lock.',
-    heroIntent:
-      'Smart door lock with a fingerprint reader and keypad fitted to a wooden front door in a Kerala home',
     hero: {
       eyebrow: 'SMART DOOR LOCKS \u00b7 KERALA',
       headline: 'Smart Door Lock Installation in Kerala \u2014 Fingerprint, PIN & App',

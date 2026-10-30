@@ -42,6 +42,7 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
       { label: 'Networking & Office WiFi', href: '/networking' },
       { label: 'CCTV & Surveillance', href: '/cctv' },
       { label: 'Entrance Automation', href: '/entrance-automation' },
+      { label: 'Home Automation', href: '/home-automation' },
       { label: 'Automation', href: '/automation' },
       { label: 'ITSolute Connect', href: '/connect' },
       { label: 'AMC Contracts', href: '/amc' },

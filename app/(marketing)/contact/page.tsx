@@ -178,6 +178,17 @@ function mapServiceParam(p?: string) {
       return 'CCTV & surveillance'
     case 'entrance-automation':
       return 'Entrance automation (gates / barriers)'
+    // These must match lib/content/copy/contact.ts serviceOptions exactly —
+    // the form preselects by string equality, so a near-miss silently
+    // preselects nothing.
+    case 'video-door-phones':
+      return 'Video door phone'
+    case 'smart-door-locks':
+      return 'Smart door lock'
+    case 'curtain-blind-motors':
+      return 'Curtain / blind motors'
+    case 'home-automation':
+      return 'Home automation'
     case 'automation':
       return 'Automation / custom build'
     case 'amc':

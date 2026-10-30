@@ -83,7 +83,7 @@ export const homeCopy = {
   featuredEntrance: {
     eyebrow: 'ENTRANCE AUTOMATION',
     headline: 'Gates and barriers that open on their own.',
-    body: 'Automatic sliding, swing and roller gates from ₹34,000, and boom barriers for parking and vehicle access from ₹60,000 — motor kit, 2 remotes and safety sensors included. Installed across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
+    body: 'Automatic sliding, swing and roller gates from ₹34,000, and boom barriers for parking and vehicle access from ₹60,000 — motor kit, 2 remotes and safety sensors included. We also fit video door phones and smart door locks, so the whole entrance works together. Installed across Kottayam, Ernakulam, Pathanamthitta and Alappuzha.',
     note: 'Prices include GST. Free site survey, and a fixed written quote before anything is ordered.',
     cta: 'See entrance automation',
   },

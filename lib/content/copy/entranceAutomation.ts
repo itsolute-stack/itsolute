@@ -230,6 +230,11 @@ export type EntranceProduct = {
    * broken image. Delete the field once the photo is in place.
    */
   heroIntent?: string
+  /**
+   * `?service=` value for this product's contact CTAs, when it has its own
+   * option in the contact form. Falls back to the section default.
+   */
+  contactService?: string
 }
 
 export const entranceProducts: Record<string, EntranceProduct> = {
@@ -517,6 +522,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
 
   'video-door-phones': {
     slug: 'video-door-phones',
+    contactService: 'video-door-phones',
     metaTitle: 'Video Door Phone Installation in Kerala | ITSolute',
     metaDescription:
       'See and speak to whoever is at your door before you open it. Wired and Wi-Fi systems for homes, flats and clinics. Free site survey across Kerala.',
@@ -670,6 +676,7 @@ export const entranceProducts: Record<string, EntranceProduct> = {
 
   'smart-door-locks': {
     slug: 'smart-door-locks',
+    contactService: 'smart-door-locks',
     metaTitle: 'Smart Door Lock Installation in Kerala | ITSolute',
     metaDescription:
       'Fingerprint, PIN, card or app \u2014 unlock options vary by model, with a mechanical key backup. Fitted to existing doors. Free site survey across Kerala.',

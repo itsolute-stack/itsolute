@@ -96,6 +96,11 @@ export default function HomePage() {
             label: 'Boom barrier installation',
             href: '/entrance-automation/boom-barriers',
           },
+          {
+            label: 'Video door phones & smart locks',
+            href: '/entrance-automation',
+          },
+          { label: 'Home automation', href: '/home-automation' },
         ]}
         image={images.entranceFeature}
       />

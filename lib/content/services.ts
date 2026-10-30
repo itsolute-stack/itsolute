@@ -7,6 +7,7 @@ import {
   Headphones,
   Cctv,
   Fence,
+  House,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -150,5 +151,20 @@ export const services: Service[] = [
       'Entrance automation AMC',
     ],
     href: '/entrance-automation',
+  },
+  {
+    slug: 'home-automation',
+    title: 'Home Automation',
+    tagline: 'Gates, door phones, locks and curtains that work together.',
+    description:
+      'Automating the parts of a home you use every day \u2014 the gate, the door, and the curtains \u2014 across Kerala. Each piece works on its own, and they join up if you want them to.',
+    icon: House,
+    features: [
+      'Motorised curtains & blinds',
+      'Video door phones & smart locks',
+      'App and voice control on selected models',
+      'Home automation AMC',
+    ],
+    href: '/home-automation',
   },
 ]

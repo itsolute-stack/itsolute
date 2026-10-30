@@ -25,6 +25,95 @@ export const GEO = {
 } as const
 
 /**
+ * Every office, in one place.
+ *
+ * NAP (name, address, phone) has to be byte-identical wherever it appears —
+ * footer, contact page, location pages, schema — because local search treats a
+ * mismatch as two different businesses. So no component writes an address as
+ * a literal; they all read from here.
+ *
+ * Kottayam is the head office and the primary address; Bengaluru is a second
+ * office. `visitNote` is not decoration: Kottayam is a workshop people walk
+ * into, Bengaluru is appointment-only, and saying otherwise would send someone
+ * across a city to a closed door.
+ */
+export type SiteLocation = {
+  id: 'kottayam' | 'bengaluru'
+  /** Shown above the address, e.g. "Head office". */
+  label: string
+  street: string
+  locality: string
+  region: string
+  postalCode: string
+  country: string
+  countryName: string
+  /** One line, matching the Google Business Profile exactly. */
+  addressLine: string
+  /** Compact form for tight spaces. Still unambiguous. */
+  shortAddress: string
+  geo: { latitude: number; longitude: number }
+  /** Directions link. */
+  mapsUrl: string
+  /** Keyless search-query embed. */
+  mapsEmbedUrl: string
+  /** Visitor policy. Never imply walk-ins where there are none. */
+  visitNote: string
+  /** Accessible title for the embedded map iframe. */
+  mapTitle: string
+}
+
+export const LOCATIONS: Record<'kottayam' | 'bengaluru', SiteLocation> = {
+  kottayam: {
+    id: 'kottayam',
+    label: 'Head office',
+    street: ADDRESS.street,
+    locality: ADDRESS.locality,
+    region: ADDRESS.region,
+    postalCode: ADDRESS.postalCode,
+    country: ADDRESS.country,
+    countryName: ADDRESS.countryName,
+    addressLine: ADDRESS.full,
+    shortAddress: ADDRESS.short,
+    geo: GEO,
+    mapsUrl: 'https://g.page/r/CfGF9isTZpMCEBM',
+    mapsEmbedUrl:
+      'https://maps.google.com/maps?q=ITSolute+Systems+Parthas+Lane+Kottayam+686001&output=embed',
+    visitNote: 'Walk-ins welcome',
+    mapTitle: 'ITSolute Systems on Google Maps \u2014 Parthas Lane, Kottayam',
+  },
+  bengaluru: {
+    id: 'bengaluru',
+    label: 'Bengaluru office',
+    street: 'Indiqube Lakeside, Plot No 80/2, Hobli, Green Glen Layout, Bellandur',
+    locality: 'Bengaluru',
+    region: 'Karnataka',
+    country: 'IN',
+    countryName: 'India',
+    postalCode: '560103',
+    addressLine:
+      'Indiqube Lakeside, Plot No 80/2, Hobli, Green Glen Layout, Bellandur, Bengaluru, Karnataka 560103',
+    shortAddress: 'Green Glen Layout, Bellandur, Bengaluru \u2013 560103',
+    /**
+     * Geocoded from "Green Glen Layout, Bellandur, Bengaluru 560103" via
+     * OpenStreetMap, so it is accurate to the layout rather than the building
+     * entrance. Replace with the pin from the verified Google Business
+     * Profile when convenient \u2014 schema geo should match what Google already
+     * holds for the listing.
+     */
+    geo: { latitude: 12.9269039, longitude: 77.6701877 },
+    mapsUrl:
+      'https://www.google.com/maps/search/?api=1&query=Indiqube+Lakeside+Green+Glen+Layout+Bellandur+Bengaluru+560103',
+    mapsEmbedUrl:
+      'https://maps.google.com/maps?q=Indiqube+Lakeside+Green+Glen+Layout+Bellandur+Bengaluru+560103&output=embed',
+    visitNote: 'Visits by appointment',
+    mapTitle: 'ITSolute Systems on Google Maps \u2014 Bellandur, Bengaluru',
+  },
+}
+
+/** Head office first \u2014 the order every list of offices uses. */
+export const LOCATION_LIST: SiteLocation[] = [LOCATIONS.kottayam, LOCATIONS.bengaluru]
+
+/**
  * Google Maps short link to the Parthas Lane workshop — used for "Get directions"
  * links sitewide and emitted as `hasMap` in LocalBusiness schema (local SEO signal).
  */
@@ -84,6 +173,8 @@ export const SITE = {
     shortAddress: ADDRESS.short,
   },
   geo: GEO,
+  /** Both offices. Head office first. */
+  locations: LOCATION_LIST,
   contact: {
     phoneDisplay: '+91 85475 33005',
     phoneTel: '+918547533005',

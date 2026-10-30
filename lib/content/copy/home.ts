@@ -8,7 +8,7 @@ export const homeCopy = {
     eyebrow: 'LAPTOPS · CCTV · GATE AUTOMATION · NETWORKING · KOTTAYAM',
     headlineLineOne: 'IT and automation that just works.',
     headlineLineTwo: 'For homes and businesses across Kerala.',
-    sub: 'Laptops and repairs, CCTV, automatic gates and boom barriers, office WiFi, software and AMC — one team, one number. Based in Kottayam, serving Ernakulam, Pathanamthitta, Alappuzha and across Kerala.',
+    sub: 'Laptops and repairs, CCTV, automatic gates and boom barriers, office WiFi, software and AMC — one team, one number. Based in Kottayam, serving Ernakulam, Pathanamthitta, Alappuzha, across Kerala and Bengaluru.',
     primaryCta: 'Get a free quote',
     secondaryCta: 'Talk on WhatsApp',
     whatsappMessage:

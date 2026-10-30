@@ -14,7 +14,7 @@ export const metadata = {
     absolute: 'About ITSolute Systems · IT Company in Kottayam, Kerala',
   },
   description:
-    'ITSolute Systems is a Kottayam-based IT services company serving SMBs across Kerala. Hardware, software, repair, networking, automation — under one roof.',
+    'ITSolute Systems is a Kottayam-based IT services company serving SMBs across Kerala and Bengaluru. Hardware, software, repair, networking, automation — under one roof.',
   alternates: { canonical: `${SITE_URL}/about` },
 }
 

@@ -2,7 +2,7 @@ export const aboutCopy = {
   hero: {
     eyebrow: 'ABOUT',
     headline: 'Built in Kerala. For Kerala businesses.',
-    sub: 'ITSolute Systems exists because the average Kerala SMB deserves better than four uncoordinated vendors.',
+    sub: 'ITSolute Systems exists because the average Kerala SMB deserves better than four uncoordinated vendors. We work from Kottayam and Bengaluru.',
   },
   story: {
     eyebrow: 'OUR STORY',
@@ -32,7 +32,7 @@ export const aboutCopy = {
     eyebrow: 'THE WORKSHOP',
     headline: 'Built in Kottayam. By technicians, not salespeople.',
     paragraphs: [
-      'Parthas Lane is where the work happens. A real workshop with benches, parts, scopes, anti-static mats, and a team that has been fixing and building computers across Kerala for over a decade.',
+      'Parthas Lane is where the work happens. A real workshop with benches, parts, scopes, anti-static mats, and a team that has been fixing and building computers across Kerala for over a decade. A second office in Bellandur, Bengaluru now runs entrance automation work across that city — visits there are by appointment.',
       'You can walk in. You can call us. You can WhatsApp a photo of your broken laptop and we will tell you what is possible. Most repairs go out within 72 hours.',
       'The team behind ITSolute Systems has been quietly running IT operations for Kerala businesses for years — through clinics, schools, offices, and homes. ITSolute is what we put on the door when we decided it deserved its own brand.',
     ],

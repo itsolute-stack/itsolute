@@ -1,14 +1,15 @@
 import Script from 'next/script'
-import { Phone, MessageCircle, Mail, MapPin, Clock } from 'lucide-react'
+import Link from 'next/link'
+import { Phone, MessageCircle, Mail, MapPin, Clock, CalendarCheck } from 'lucide-react'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { PageHero } from '@/components/shared/PageHero'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { LocationMap } from '@/components/contact/LocationMap'
 import { whatsappLink } from '@/lib/whatsapp'
-import { SITE, SITE_URL, GMAPS_URL } from '@/lib/content/site'
+import { SITE, SITE_URL, LOCATIONS } from '@/lib/content/site'
 import { contactCopy } from '@/lib/content/copy/contact'
-import { localBusinessSchema, breadcrumbSchema } from '@/lib/schema'
+import { localBusinessSchema, bengaluruBusinessSchema, breadcrumbSchema } from '@/lib/schema'
 
 export const metadata = {
   title: {
@@ -70,9 +71,9 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
                   />
                   <ContactRow
                     icon={<MapPin className="h-5 w-5" />}
-                    label="HQ"
-                    value={SITE.hq.addressLine}
-                    href={GMAPS_URL}
+                    label={LOCATIONS.kottayam.label}
+                    value={LOCATIONS.kottayam.addressLine}
+                    href={LOCATIONS.kottayam.mapsUrl}
                     external
                   />
                   <ContactRow
@@ -87,13 +88,78 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
                     {contactCopy.areaLabel}
                   </p>
                   <p className="mt-3 text-base text-[color:var(--color-ink)] leading-relaxed">
-                    {SITE.serviceAreas.join(' · ')}
+                    {/*
+                      Display only. SITE.serviceAreas feeds the Kottayam
+                      LocalBusiness areaServed and is left alone; Bengaluru has
+                      its own LocalBusiness node with its own areaServed.
+                    */}
+                    {[...SITE.serviceAreas, 'Bengaluru'].join(' · ')}
                   </p>
                 </div>
               </div>
 
               {/* Embedded map + directions link */}
-              <LocationMap />
+              <LocationMap location={LOCATIONS.kottayam} />
+            </div>
+          </div>
+
+          {/*
+            Second office. Deliberately below the head office, and labelled
+            "Visits by appointment" everywhere it appears — nobody should
+            cross Bengaluru expecting a counter.
+          */}
+          <div className="mt-16 border-t border-slate-200 pt-16">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 lg:items-center">
+              <div className="flex flex-col gap-6">
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-widest text-slate-500">
+                    SECOND OFFICE
+                  </p>
+                  <h2 className="mt-3 text-3xl md:text-4xl font-medium tracking-tight text-[color:var(--color-ink)]">
+                    {LOCATIONS.bengaluru.label}
+                  </h2>
+                </div>
+                <ul className="flex flex-col gap-5">
+                  <ContactRow
+                    icon={<MapPin className="h-5 w-5" />}
+                    label="Address"
+                    value={LOCATIONS.bengaluru.addressLine}
+                    href={LOCATIONS.bengaluru.mapsUrl}
+                    external
+                  />
+                  <ContactRow
+                    icon={<Phone className="h-5 w-5" />}
+                    label="Phone"
+                    value={SITE.contact.phoneDisplay}
+                    href={`tel:${SITE.contact.phoneTel}`}
+                    dataLocation="contact_bengaluru"
+                  />
+                  <ContactRow
+                    icon={<Clock className="h-5 w-5" />}
+                    label={contactCopy.hoursLabel}
+                    value={SITE.hours.display}
+                  />
+                  <ContactRow
+                    icon={<CalendarCheck className="h-5 w-5" />}
+                    label="Visiting"
+                    value={LOCATIONS.bengaluru.visitNote}
+                  />
+                </ul>
+                <div className="border-t border-slate-200 pt-6">
+                  <p className="text-base text-slate-600 leading-relaxed">
+                    Entrance automation across Bengaluru is run from this
+                    office.{' '}
+                    <Link
+                      href="/bangalore"
+                      className="text-[color:var(--color-electric)] hover:underline"
+                    >
+                      See gate automation in Bangalore
+                    </Link>
+                    .
+                  </p>
+                </div>
+              </div>
+              <LocationMap location={LOCATIONS.bengaluru} />
             </div>
           </div>
         </Container>
@@ -104,6 +170,12 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+      />
+      <Script
+        id="contact-bengaluru-localbusiness-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(bengaluruBusinessSchema()) }}
       />
       <Script
         id="contact-breadcrumb-schema"

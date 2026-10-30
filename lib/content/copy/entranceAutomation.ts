@@ -57,7 +57,7 @@ export const entranceHubCopy = {
   hero: {
     eyebrow: 'ENTRANCE AUTOMATION · KERALA',
     headline: 'Gate automation and barriers that open on their own — reliably.',
-    sub: 'Automatic gate and boom barrier installation for homes, apartments, offices, and commercial sites across Kerala. Installed by a team that also handles the wiring, access control, and CCTV it connects to — so it actually works together.',
+    sub: 'Automatic gate and boom barrier installation for homes, apartments, offices, and commercial sites across Kerala and Bengaluru. Installed by a team that also handles the wiring, access control, and CCTV it connects to — so it actually works together.',
     whatsappMessage: 'Hi ITSolute, I want to automate an entrance (gate / boom barrier).',
   },
   intro: {

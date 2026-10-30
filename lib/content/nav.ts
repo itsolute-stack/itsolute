@@ -70,6 +70,7 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     links: [
       { label: 'About', href: '/about' },
       { label: 'IT Services in Kottayam', href: '/kottayam' },
+      { label: 'Gate Automation in Bangalore', href: '/bangalore' },
       { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contact' },
       { label: 'Privacy', href: '/privacy' },

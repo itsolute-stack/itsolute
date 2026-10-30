@@ -149,6 +149,33 @@ export default function EntranceAutomationPage() {
         </Container>
       </Section>
 
+      {/* Also serving Bengaluru — the second office's city */}
+      <Section theme="cream" size="md">
+        <Container>
+          <div className="max-w-3xl">
+            <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-[color:var(--color-ink)]">
+              Also serving Bengaluru
+            </h2>
+            <p className="mt-6 text-base md:text-lg text-slate-600 leading-relaxed">
+              Our second office is at Bellandur, and entrance automation across
+              Bengaluru is run from there — villas, apartments, gated
+              communities and offices, with the same free site survey and fixed
+              written quote.
+            </p>
+            <Link
+              href="/bangalore"
+              className="group mt-8 inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-5 py-3 text-base font-medium text-[color:var(--color-ink)] transition-all hover:border-[color:var(--color-electric)]"
+            >
+              Gate automation in Bangalore
+              <ArrowRight
+                aria-hidden
+                className="h-4 w-4 text-[color:var(--color-electric)] transition-transform group-hover:translate-x-1"
+              />
+            </Link>
+          </div>
+        </Container>
+      </Section>
+
       {/* Why us */}
       <Section theme="cream">
         <Container>

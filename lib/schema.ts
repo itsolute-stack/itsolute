@@ -1,4 +1,4 @@
-import { SITE, SITE_URL, SOCIAL_URLS, GMAPS_URL } from '@/lib/content/site'
+import { SITE, SITE_URL, SOCIAL_URLS, GMAPS_URL, LOCATIONS } from '@/lib/content/site'
 
 /* ============================================================================
  * JSON-LD generators. Each returns a plain object — JSON.stringify in <Script>.
@@ -8,6 +8,7 @@ export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORGANIZATION_ID,
     name: SITE.name,
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
@@ -22,9 +23,16 @@ export function organizationSchema() {
       postalCode: SITE.hq.postalCode,
       addressCountry: SITE.hq.countryCode,
     },
+    areaServed: [
+      ...SITE.serviceAreas.map((area) => ({ '@type': 'City', name: area })),
+      { '@type': 'City', name: 'Bengaluru' },
+    ],
     sameAs: [...SOCIAL_URLS, SITE.sister.url],
   }
 }
+
+/** Stable @id for the Organization, so branches can point at their parent. */
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`
 
 /** Stable @id for the LocalBusiness — other schema blocks reference this. */
 export const LOCAL_BUSINESS_ID = `${SITE_URL}/#localbusiness`
@@ -66,6 +74,64 @@ export function localBusinessSchema() {
       name: area,
     })),
     hasMap: GMAPS_URL,
+    sameAs: [...SOCIAL_URLS, SITE.sister.url],
+    priceRange: '₹₹',
+  }
+}
+
+/** Stable @id for the Bengaluru branch. */
+export const BENGALURU_BUSINESS_ID = `${SITE_URL}/bangalore#localbusiness`
+
+/**
+ * The Bengaluru office as its own LocalBusiness.
+ *
+ * A second address on a page that already carries the Kottayam LocalBusiness
+ * is ambiguous unless the two are distinct nodes, so this gets its own @id and
+ * declares its relationship both ways — branchOf and parentOrganization — to
+ * the Organization. The Kottayam node is left exactly as it was: it is the
+ * primary listing and has history behind it.
+ *
+ * Everything here reads from LOCATIONS.bengaluru, so the schema address and
+ * the visible address cannot disagree.
+ */
+export function bengaluruBusinessSchema() {
+  const loc = LOCATIONS.bengaluru
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': BENGALURU_BUSINESS_ID,
+    name: SITE.name,
+    image: `${SITE_URL}/opengraph-image`,
+    description:
+      'Entrance automation for Bengaluru homes, apartments and offices — automatic gates, boom barriers, video door phones and smart door locks, plus IT support.',
+    url: `${SITE_URL}/bangalore`,
+    telephone: SITE.contact.phoneSchema,
+    email: SITE.contact.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: loc.street,
+      addressLocality: loc.locality,
+      addressRegion: loc.region,
+      postalCode: loc.postalCode,
+      addressCountry: loc.country,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: loc.geo.latitude,
+      longitude: loc.geo.longitude,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: SITE.hours.days,
+        opens: SITE.hours.opens,
+        closes: SITE.hours.closes,
+      },
+    ],
+    areaServed: { '@type': 'City', name: 'Bengaluru' },
+    branchOf: { '@id': ORGANIZATION_ID },
+    parentOrganization: { '@id': ORGANIZATION_ID },
+    hasMap: loc.mapsUrl,
     sameAs: [...SOCIAL_URLS, SITE.sister.url],
     priceRange: '₹₹',
   }

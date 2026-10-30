@@ -3,7 +3,7 @@ import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin, Clock } from '
 import { Container } from './Container'
 import { Logo } from '@/components/shared/Logo'
 import { whatsappLink } from '@/lib/whatsapp'
-import { SITE, SOCIAL, GMAPS_URL } from '@/lib/content/site'
+import { SITE, SOCIAL } from '@/lib/content/site'
 import { footerNav } from '@/lib/content/nav'
 
 /** Minimal inline X (Twitter) glyph — Lucide doesn't ship one. */
@@ -23,7 +23,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-4 lg:col-span-2">
             <Logo theme="dark" size="md" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-slate-400">
-              IT and automation for homes and businesses across Kerala. Hardware,
+              IT and automation for homes and businesses across Kerala and Bengaluru. Hardware,
               repairs, CCTV, gates, networking and support — under one roof.
             </p>
             <div className="mt-6 space-y-3 text-sm text-slate-300">
@@ -52,16 +52,30 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
                 {SITE.contact.email}
               </a>
-              <a
-                href={GMAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Find ITSolute Systems on Google Maps"
-                className="flex items-start gap-2 hover:text-white transition-colors"
-              >
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>{SITE.hq.addressLine}</span>
-              </a>
+              {/*
+                Both offices, head office first. Addresses come from
+                LOCATIONS so they match the contact page, /bangalore and the
+                schema exactly — local search reads a mismatched NAP as a
+                different business.
+              */}
+              {SITE.locations.map((loc) => (
+                <div key={loc.id} className="flex flex-col gap-1">
+                  <a
+                    href={loc.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Find the ITSolute Systems ${loc.label.toLowerCase()} on Google Maps`}
+                    className="flex items-start gap-2 transition-colors hover:text-white"
+                  >
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                    <span>
+                      <span className="text-slate-300">{loc.label}:</span>{' '}
+                      {loc.addressLine}
+                    </span>
+                  </a>
+                  <span className="pl-6 text-xs text-slate-500">{loc.visitNote}</span>
+                </div>
+              ))}
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
                 {SITE.hours.display}
@@ -93,7 +107,7 @@ export function Footer() {
         <div className="mt-16 border-t border-white/10 pt-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <p className="font-mono text-xs text-slate-500">
-              ITSolute Systems © {new Date().getFullYear()} · Kottayam, Kerala
+              ITSolute Systems © {new Date().getFullYear()} · Kottayam, Kerala · Bengaluru, Karnataka
             </p>
             <p className="font-mono text-xs text-slate-500">
               Sister brand:{' '}

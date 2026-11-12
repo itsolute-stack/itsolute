@@ -77,11 +77,16 @@ export function getAllPosts(): Post[] {
  * Order of preference:
  *   1. `relatedPosts` from frontmatter — hand-picked slugs, in the given order.
  *   2. Other posts in the same cluster, newest first.
- *   3. Posts from other clusters, newest first.
+ *   3. Posts from other clusters IN THE SAME GROUP, newest first.
  *
- * Hand-picked entries always lead. If fewer than `count` are listed, the rest
- * is topped up from (2) and (3) so the row still fills, rather than leaving a
- * short row — listing one post promotes it, it doesn't suppress the others.
+ * Hand-picked entries always lead. Step 3 is capped to the cluster's group
+ * (see ClusterGroup) and will not cross it, so a thin cluster returns a short
+ * row rather than a padded one. That cap is the point: before it, a laptop
+ * buying guide recommended a curtain motor guide, because the fallback sorted
+ * every other post by date and the newest happened to be about curtains. Two
+ * genuinely related posts are worth more than three where the third is
+ * filler.
+ *
  * Slugs that don't resolve are skipped (and warned about in development).
  */
 export function getRelatedPosts(currentSlug: string, count = 3): Post[] {
@@ -114,11 +119,17 @@ export function getRelatedPosts(currentSlug: string, count = 3): Post[] {
       !seen.has(p.frontmatter.slug) &&
       p.frontmatter.cluster === current.frontmatter.cluster,
   )
-  const others = all.filter(
+
+  // Cross-cluster top-up, but only within the same group. Crossing from IT to
+  // automation (or back) produced pairings no reader would want, so the row is
+  // allowed to come up short instead.
+  const group = clusters[current.frontmatter.cluster].group
+  const sameGroup = all.filter(
     (p) =>
       !seen.has(p.frontmatter.slug) &&
-      p.frontmatter.cluster !== current.frontmatter.cluster,
+      p.frontmatter.cluster !== current.frontmatter.cluster &&
+      clusters[p.frontmatter.cluster].group === group,
   )
 
-  return [...picked, ...sameCluster, ...others].slice(0, count)
+  return [...picked, ...sameCluster, ...sameGroup].slice(0, count)
 }

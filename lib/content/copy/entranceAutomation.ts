@@ -673,9 +673,9 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       },
     ],
     guides: [
+      'video-door-phone-guide-kerala',
       'apartment-gate-automation-kerala',
-      'rfid-vs-remote-gate-access',
-      'automatic-gate-power-cut-battery-backup',
+      'smart-door-lock-buying-guide-kerala',
     ],
   },
 
@@ -827,9 +827,9 @@ export const entranceProducts: Record<string, EntranceProduct> = {
       },
     ],
     guides: [
-      'rfid-vs-remote-gate-access',
-      'apartment-gate-automation-kerala',
-      'automatic-gate-power-cut-battery-backup',
+      'smart-door-lock-buying-guide-kerala',
+      'video-door-phone-guide-kerala',
+      'automatic-gate-nri-homes-kerala',
     ],
   },
 }

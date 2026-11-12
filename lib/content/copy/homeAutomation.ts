@@ -254,7 +254,11 @@ export const homeAutomationProducts: Record<string, EntranceProduct> = {
         a: 'On selected models, yes, alongside app control and schedules that open in the morning and close at dusk. It is not standard across every motor, and a motor without it cannot gain it later, so it is one of the first things to settle if it matters to you. Remote control is included on everything we fit, and for many households that turns out to be what gets used daily.',
       },
     ],
-    guides: [],
+    guides: [
+      'motorised-curtains-blinds-guide-kerala',
+      'video-door-phone-guide-kerala',
+      'smart-door-lock-buying-guide-kerala',
+    ],
   },
 }
 

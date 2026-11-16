@@ -26,6 +26,7 @@ export function organizationSchema() {
     areaServed: [
       ...SITE.serviceAreas.map((area) => ({ '@type': 'City', name: area })),
       { '@type': 'City', name: 'Bengaluru' },
+      { '@type': 'State', name: 'Karnataka' },
     ],
     sameAs: [...SOCIAL_URLS, SITE.sister.url],
   }

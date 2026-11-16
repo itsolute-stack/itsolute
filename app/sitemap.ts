@@ -7,6 +7,7 @@ import { getAllEntranceDistrictSlugs } from '@/lib/content/copy/entranceDistrict
 import { getAllHomeAutomationSlugs } from '@/lib/content/copy/homeAutomation'
 import { getAllBangaloreServiceSlugs } from '@/lib/content/copy/bangaloreServices'
 import { getAllBangaloreAreaSlugs } from '@/lib/content/copy/bangaloreAreas'
+import { getAllKarnatakaCitySlugs } from '@/lib/content/copy/karnataka'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -38,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/amc', priority: 0.8, changeFreq: 'monthly' },
     { path: '/kottayam', priority: 0.9, changeFreq: 'monthly' },
     { path: '/bangalore', priority: 0.9, changeFreq: 'monthly' },
+    { path: '/karnataka', priority: 0.9, changeFreq: 'monthly' },
     { path: '/blog', priority: 0.8, changeFreq: 'weekly' },
     { path: '/contact', priority: 0.8, changeFreq: 'monthly' },
     { path: '/about', priority: 0.6, changeFreq: 'monthly' },
@@ -87,6 +89,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
+  const karnatakaCityPages = getAllKarnatakaCitySlugs().map((slug) => ({
+    url: `${base}/karnataka/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
   const entranceDistrictPages = getAllEntranceDistrictSlugs().map((slug) => ({
     url: `${base}/entrance-automation/${slug}`,
     lastModified: now,
@@ -106,6 +115,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...homeAutomationPages,
     ...bangaloreServicePages,
     ...bangaloreAreaPages,
+    ...karnatakaCityPages,
     ...industryPages,
     ...blogPosts,
   ]

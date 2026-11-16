@@ -11,6 +11,7 @@ import { FAQ } from '@/components/home/FAQ'
 import { LocationMap } from '@/components/contact/LocationMap'
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
 import { bangaloreCopy, BENGALURU_AREAS, BANGALORE_SERVICE_LINKS } from '@/lib/content/copy/bangalore'
+import { bangaloreAreas } from '@/lib/content/copy/bangaloreAreas'
 import {
   entranceIncluded,
   entranceProcess,
@@ -228,17 +229,30 @@ export default function BangalorePage() {
             headline={bangaloreCopy.areas.headline}
             sub={bangaloreCopy.areas.body}
           />
-          <div className="mt-10 flex flex-wrap gap-3">
-            {BENGALURU_AREAS.map((area) => (
-              <span
-                key={area}
-                className="inline-flex items-center gap-2 rounded-md border border-slate-200 bg-white px-5 py-3 text-base font-medium text-[color:var(--color-ink)]"
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+            {Object.values(bangaloreAreas).map((a) => (
+              <Link
+                key={a.slug}
+                href={`/bangalore/${a.slug}`}
+                className="group flex flex-col gap-2 rounded-lg border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-[color:var(--color-electric)]"
               >
-                <MapPin aria-hidden className="h-4 w-4 text-[color:var(--color-electric)]" />
-                {area}
-              </span>
+                <span className="inline-flex items-center gap-2 text-lg font-medium tracking-tight text-[color:var(--color-ink)]">
+                  <MapPin aria-hidden className="h-4 w-4 text-[color:var(--color-electric)]" />
+                  {a.areaName}
+                </span>
+                <span className="text-sm leading-relaxed text-slate-600">
+                  {a.intro.headline}
+                </span>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-medium text-[color:var(--color-electric)]">
+                  See the area
+                  <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
+          <p className="mt-8 text-sm leading-relaxed text-slate-500">
+            We cover the whole city, including {BENGALURU_AREAS.join(', ')}.
+          </p>
         </Container>
       </Section>
 

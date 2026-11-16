@@ -1,5 +1,12 @@
 import type { FAQ } from '@/lib/content/faqs'
-import { GATE_FROM, BARRIER_FROM } from '@/lib/content/entrancePricing'
+import { regionGateFrom, regionBarrierFrom } from '@/lib/content/entrancePricing'
+
+/**
+ * Karnataka pricing throughout. Bengaluru carries the uplift, so a Kerala
+ * figure on this page would undercut every quote the team gives here.
+ */
+const GATE_FROM = regionGateFrom('karnataka').from
+const BARRIER_FROM = regionBarrierFrom('karnataka').from
 
 /**
  * /bangalore — the Bengaluru location page.

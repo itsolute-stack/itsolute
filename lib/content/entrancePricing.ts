@@ -76,6 +76,117 @@ export const ENTRANCE_PRODUCTS: EntranceProduct[] = [
   },
 ]
 
+/* -------------------------------------------------------------------------
+ * Regional pricing.
+ *
+ * Karnataka costs us more to serve than Kerala — the team travels from the
+ * Bengaluru office and the logistics behind it differ — so every from-price
+ * carries a flat uplift. It is flat on purpose: a percentage would produce
+ * figures like ₹43,450 that read as precision we do not have, and the Kerala
+ * numbers are already round starting points rather than computed ones.
+ *
+ * Derived, never retyped. Kerala stays the single set of literals in this
+ * file, and Karnataka is those literals plus the uplift, so changing a Kerala
+ * price moves the Karnataka price with it and the two cannot drift.
+ * ---------------------------------------------------------------------- */
+
+export type PriceRegion = 'kerala' | 'karnataka'
+
+/** Flat per-product uplift on every Karnataka from-price. */
+export const BANGALORE_UPLIFT = 5000
+
+/** ₹39,000 — Indian digit grouping, which matches every price already shown. */
+function inr(n: number): string {
+  return `₹${n.toLocaleString('en-IN')}`
+}
+
+function upliftTier(tier: MotorTier, by: number): MotorTier {
+  const minPrice = tier.minPrice + by
+  return { from: inr(minPrice), minPrice }
+}
+
+/**
+ * The product list for a region. Kerala returns the literals above untouched;
+ * Karnataka returns the same products with every tier lifted.
+ */
+export function getEntrancePrices(region: PriceRegion): EntranceProduct[] {
+  if (region === 'kerala') return ENTRANCE_PRODUCTS
+  return ENTRANCE_PRODUCTS.map((p) => ({
+    ...p,
+    ac: p.ac ? upliftTier(p.ac, BANGALORE_UPLIFT) : undefined,
+    dc: upliftTier(p.dc, BANGALORE_UPLIFT),
+  }))
+}
+
+/** One product, priced for a region. */
+export function regionProduct(
+  key: EntranceProduct['key'],
+  region: PriceRegion,
+): EntranceProduct {
+  const p = getEntrancePrices(region).find((x) => x.key === key)
+  if (!p) throw new Error(`Unknown entrance product: ${key}`)
+  return p
+}
+
+/** Gates only, priced for a region. The barrier is sold separately. */
+export function regionGateProducts(region: PriceRegion): EntranceProduct[] {
+  return getEntrancePrices(region).filter((p) => p.key !== 'boom-barrier')
+}
+
+/** Headline anchors per region — the cheapest gate and the barrier. */
+export function regionGateFrom(region: PriceRegion): MotorTier {
+  const sliding = regionProduct('sliding', region)
+  return sliding.ac ?? sliding.dc
+}
+
+export function regionBarrierFrom(region: PriceRegion): MotorTier {
+  return regionProduct('boom-barrier', region).dc
+}
+
+/**
+ * The tier rows a price table shows, priced for a region.
+ *
+ * The labels and blurbs live here rather than beside each table so Kerala and
+ * Karnataka describe the same motor identically — only the figure differs.
+ * Callers attach their own `href`, because a Kerala page points at
+ * /entrance-automation/* and a Bangalore page at /bangalore/*.
+ */
+export type GateTierRow = {
+  key: EntranceProduct['key']
+  label: string
+  from: string
+  minPrice: number
+  blurb: string
+}
+
+const TIER_BLURBS: Record<string, string> = {
+  'sliding-ac':
+    'Rack-driven motor sized to your gate, for driveways with room alongside to slide. No battery of its own, but it runs from your inverter connection.',
+  'sliding-dc':
+    'Smoother and quieter than AC, and the version that carries its own battery backup on two 12V batteries, plus voice control.',
+  'swing-single':
+    'One arm motor for a single-leaf swing gate with room to swing inward.',
+  'swing-double':
+    'Two arm motors for a double-leaf gate, synchronised to open together.',
+  roller:
+    'A swing gate driven by wheel motors at the bottom of each leaf that roll along the ground \u2014 for sites with no room for a sliding gate to park alongside.',
+  'boom-barrier':
+    'Fast arm barrier for parking and vehicle access, opened from a remote.',
+}
+
+export function regionGateTierRows(region: PriceRegion): GateTierRow[] {
+  const P = (k: EntranceProduct['key']) => regionProduct(k, region)
+  const sliding = P('sliding')
+  return [
+    { key: 'sliding', label: 'Sliding gate \u2014 standard (AC motor)', from: sliding.ac!.from, minPrice: sliding.ac!.minPrice, blurb: TIER_BLURBS['sliding-ac'] },
+    { key: 'sliding', label: 'Sliding gate \u2014 premium (DC motor)', from: sliding.dc.from, minPrice: sliding.dc.minPrice, blurb: TIER_BLURBS['sliding-dc'] },
+    { key: 'swing-single', label: 'Swing gate \u2014 single arm (DC motor)', from: P('swing-single').dc.from, minPrice: P('swing-single').dc.minPrice, blurb: TIER_BLURBS['swing-single'] },
+    { key: 'swing-double', label: 'Swing gate \u2014 double arm (DC motor)', from: P('swing-double').dc.from, minPrice: P('swing-double').dc.minPrice, blurb: TIER_BLURBS['swing-double'] },
+    { key: 'roller', label: 'Roller gate \u2014 wheel-drive swing (DC motor)', from: P('roller').dc.from, minPrice: P('roller').dc.minPrice, blurb: TIER_BLURBS.roller },
+    { key: 'boom-barrier', label: 'Boom barrier (DC motor, arm up to 5 m)', from: P('boom-barrier').dc.from, minPrice: P('boom-barrier').dc.minPrice, blurb: TIER_BLURBS['boom-barrier'] },
+  ]
+}
+
 export function entranceProduct(key: EntranceProduct['key']): EntranceProduct {
   const p = ENTRANCE_PRODUCTS.find((x) => x.key === key)
   if (!p) throw new Error(`Unknown entrance product: ${key}`)

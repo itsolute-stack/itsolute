@@ -12,13 +12,22 @@ import { LocationMap } from '@/components/contact/LocationMap'
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
 import { bangaloreCopy, BENGALURU_AREAS } from '@/lib/content/copy/bangalore'
 import {
-  entranceGateTypes,
   entranceIncluded,
   entranceProcess,
   entranceAmcBlock,
   ENTRANCE_PRICE_NOTE,
 } from '@/lib/content/copy/entranceDistricts'
-import { INSTALLATION_ANSWER } from '@/lib/content/entrancePricing'
+import {
+  INSTALLATION_ANSWER,
+  regionGateTierRows,
+  regionGateFrom,
+  regionBarrierFrom,
+} from '@/lib/content/entrancePricing'
+
+/** Karnataka prices on every Bengaluru page. */
+const TIERS = regionGateTierRows('karnataka')
+const KA_GATE_FROM = regionGateFrom('karnataka').from
+const KA_BARRIER_FROM = regionBarrierFrom('karnataka').from
 import { LOCATIONS, SITE, SITE_URL } from '@/lib/content/site'
 import {
   serviceSchema,
@@ -32,7 +41,7 @@ const LOC = LOCATIONS.bengaluru
 export const metadata = {
   title: { absolute: 'Gate Automation in Bangalore — Gates & Boom Barriers' },
   description:
-    'Automatic gates from ₹34,000 and boom barriers from ₹60,000 incl. GST for Bengaluru villas, apartments and offices. Free site survey.',
+    `Automatic gates from ${KA_GATE_FROM} and boom barriers from ${KA_BARRIER_FROM} incl. GST for Bengaluru villas, apartments and offices. Free site survey.`,
   alternates: { canonical: `${SITE_URL}/bangalore` },
   openGraph: {
     title: 'Gate Automation in Bangalore — Gates & Boom Barriers',
@@ -128,7 +137,7 @@ export default function BangalorePage() {
             <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
               <table className="w-full text-left">
                 <tbody>
-                  {entranceGateTypes.map((row, i) => (
+                  {TIERS.map((row, i) => (
                     <tr key={row.label} className={i > 0 ? 'border-t border-slate-200' : ''}>
                       <th
                         scope="row"

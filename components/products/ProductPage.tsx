@@ -59,6 +59,10 @@ type Props = {
   offerDescription: (rowLabel: string) => string
   /** Optional extra section rendered above the guides block. */
   extraSection?: React.ReactNode
+  /** Overrides the sitewide areaServed on the Service schema. */
+  areaServed?: { '@type': string; name: string }[]
+  /** The LocalBusiness delivering this service. Defaults to the head office. */
+  providerId?: string
 }
 
 export function ProductPage({
@@ -73,6 +77,8 @@ export function ProductPage({
   finalCta,
   offerDescription,
   extraSection,
+  areaServed,
+  providerId,
 }: Props) {
   const contactHref = `/contact?service=${contactService}`
 
@@ -358,6 +364,8 @@ export function ProductPage({
               priceRange: p.priceLow
                 ? { low: p.priceLow, high: p.priceHigh }
                 : undefined,
+              areaServed,
+              providerId,
             }),
           ),
         }}

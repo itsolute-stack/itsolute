@@ -10,7 +10,7 @@ import { FinalCTA } from '@/components/home/FinalCTA'
 import { FAQ } from '@/components/home/FAQ'
 import { LocationMap } from '@/components/contact/LocationMap'
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
-import { bangaloreCopy, BENGALURU_AREAS } from '@/lib/content/copy/bangalore'
+import { bangaloreCopy, BENGALURU_AREAS, BANGALORE_SERVICE_LINKS } from '@/lib/content/copy/bangalore'
 import {
   entranceIncluded,
   entranceProcess,
@@ -119,6 +119,37 @@ export default function BangalorePage() {
                 <span className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-white transition-colors group-hover:text-[color:var(--color-accent)]">
                   See {item.title.toLowerCase()}
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Every Bengaluru service page */}
+      <Section theme="light">
+        <Container>
+          <SectionHeader
+            eyebrow="GATE AUTOMATION IN BANGALORE"
+            headline="Pick the page for what you actually need."
+          />
+          <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+            {BANGALORE_SERVICE_LINKS.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="group flex flex-col gap-3 rounded-lg border border-slate-200 bg-white p-6 transition-all hover:-translate-y-0.5 hover:border-[color:var(--color-electric)]"
+              >
+                <h3 className="text-lg font-medium tracking-tight text-[color:var(--color-ink)]">
+                  {l.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{l.blurb}</p>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-medium text-[color:var(--color-electric)]">
+                  See details
+                  <ArrowRight
+                    aria-hidden
+                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  />
                 </span>
               </Link>
             ))}

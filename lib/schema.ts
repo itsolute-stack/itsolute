@@ -149,6 +149,12 @@ export function serviceSchema(opts: {
    * entries for the towns they actually cover.
    */
   areaServed?: { '@type': string; name: string }[]
+  /**
+   * Which LocalBusiness delivers this service. Defaults to the Kottayam node.
+   * Bengaluru and Karnataka pages pass the branch, so the service is attached
+   * to the office that actually turns up, not to the head office.
+   */
+  providerId?: string
 }) {
   const base = {
     '@context': 'https://schema.org',
@@ -156,7 +162,7 @@ export function serviceSchema(opts: {
     name: opts.name,
     description: opts.description,
     serviceType: opts.serviceType ?? opts.name,
-    provider: { '@id': LOCAL_BUSINESS_ID },
+    provider: { '@id': opts.providerId ?? LOCAL_BUSINESS_ID },
     areaServed:
       opts.areaServed ??
       SITE.serviceAreas.map((area) => ({

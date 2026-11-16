@@ -5,6 +5,7 @@ import { getAllIndustrySlugs } from '@/lib/content/copy/industries'
 import { getAllEntranceSlugs } from '@/lib/content/copy/entranceAutomation'
 import { getAllEntranceDistrictSlugs } from '@/lib/content/copy/entranceDistricts'
 import { getAllHomeAutomationSlugs } from '@/lib/content/copy/homeAutomation'
+import { getAllBangaloreServiceSlugs } from '@/lib/content/copy/bangaloreServices'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -71,6 +72,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
+  const bangaloreServicePages = getAllBangaloreServiceSlugs().map((slug) => ({
+    url: `${base}/bangalore/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }))
+
   const entranceDistrictPages = getAllEntranceDistrictSlugs().map((slug) => ({
     url: `${base}/entrance-automation/${slug}`,
     lastModified: now,
@@ -88,6 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...entrancePages,
     ...entranceDistrictPages,
     ...homeAutomationPages,
+    ...bangaloreServicePages,
     ...industryPages,
     ...blogPosts,
   ]

@@ -32,6 +32,22 @@ export const BENGALURU_AREAS = [
   'Koramangala',
 ] as const
 
+/**
+ * The eight Bengaluru service pages, in the order the hub lists them: the
+ * gate types first (what most people arrive searching for), then the barrier,
+ * then service, then the two door products.
+ */
+export const BANGALORE_SERVICE_LINKS = [
+  { title: 'Automatic gates', href: '/bangalore/gate-automation', blurb: 'All gate types, and which one your plot actually takes.' },
+  { title: 'Sliding gate automation', href: '/bangalore/sliding-gate-automation', blurb: 'Rack-driven motors for plots with wall to park the gate against.' },
+  { title: 'Swing gate automation', href: '/bangalore/swing-gate-automation', blurb: 'Single and double arm openers for gates built on hinges.' },
+  { title: 'Roller gate automation', href: '/bangalore/roller-gate-automation', blurb: 'Wheel-drive gates for sloped approaches and plots with no side space.' },
+  { title: 'Boom barriers', href: '/bangalore/boom-barriers', blurb: 'For gated communities, tech parks and basement car parks.' },
+  { title: 'Gate service, repair & AMC', href: '/bangalore/gate-repair-amc', blurb: 'Gate not closing, sensor faults, remote replacement, scheduled servicing.' },
+  { title: 'Video door phones', href: '/bangalore/video-door-phones', blurb: 'Multi-flat panels and villa systems, wired or over Wi-Fi.' },
+  { title: 'Smart door locks', href: '/bangalore/smart-door-locks', blurb: 'Fingerprint, PIN and card entry for owned and rented flats.' },
+] as const
+
 export const bangaloreCopy = {
   hero: {
     eyebrow: 'ENTRANCE AUTOMATION \u00b7 BENGALURU',

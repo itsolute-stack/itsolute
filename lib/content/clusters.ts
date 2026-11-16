@@ -114,6 +114,16 @@ export const clusters = {
     hubLabel: 'See home automation',
     group: 'automation',
   },
+  karnataka: {
+    slug: 'karnataka',
+    name: 'Karnataka',
+    shortName: 'Karnataka',
+    description:
+      'Gate automation, boom barriers and entrance automation for Bengaluru and the rest of Karnataka.',
+    hubUrl: '/karnataka',
+    hubLabel: 'See Karnataka',
+    group: 'automation',
+  },
 } as const satisfies Record<string, Cluster>
 
 export type ClusterSlug = keyof typeof clusters

@@ -32,7 +32,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true })
   }
 
-  const { name, business, phone, email, service, message, source, meta } = parsed.data
+  const { name, business, phone, email, service, message, source, meta, location } =
+    parsed.data
 
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
@@ -49,9 +50,12 @@ export async function POST(req: Request) {
   const isLanding = Boolean(source)
   const metaEntries = Object.entries(meta ?? {}).filter(([, v]) => v)
 
+  // Location goes in the subject so Bengaluru leads are separable in an inbox
+  // without opening them.
+  const where = location ? ` · ${location}` : ''
   const subject = isLanding
-    ? `New ${source} lead: ${name} · ${service}`
-    : `New enquiry: ${name} · ${business} · ${service}`
+    ? `New ${source} lead: ${name} · ${service}${where}`
+    : `New enquiry: ${name} · ${business} · ${service}${where}`
 
   const text = [
     isLanding
@@ -63,6 +67,7 @@ export async function POST(req: Request) {
     `Phone:     +91 ${phone}`,
     ...(email ? [`Email:     ${email}`] : []),
     `Service:   ${service}`,
+    ...(location ? [`Location:  ${location}`] : []),
     ``,
     `Message:`,
     message,

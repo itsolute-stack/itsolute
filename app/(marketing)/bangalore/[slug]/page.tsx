@@ -131,6 +131,7 @@ export default async function BangaloreServicePage({
       parentName="Bengaluru"
       // The Bengaluru branch delivers these, not the Kottayam head office.
       providerId={BENGALURU_BUSINESS_ID}
+      ctaPrefix="blr"
       areaServed={BENGALURU_AREA_SERVED}
       finalCta={{
         headline: 'Get your Bengaluru entrance surveyed.',

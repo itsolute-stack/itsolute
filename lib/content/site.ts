@@ -62,6 +62,15 @@ export type SiteLocation = {
   mapTitle: string
 }
 
+/**
+ * Public link to the Bangalore Business Profile, or '' when it is not set yet.
+ *
+ * Everything that depends on it degrades rather than breaking: the map falls
+ * back to an address search, the directions link falls back to the same, and
+ * hasMap/sameAs are omitted from the schema rather than emitted empty.
+ */
+export const GBP_BLR_URL = process.env.NEXT_PUBLIC_GBP_BLR_URL ?? ''
+
 export const LOCATIONS: Record<'kottayam' | 'bengaluru', SiteLocation> = {
   kottayam: {
     id: 'kottayam',
@@ -101,10 +110,15 @@ export const LOCATIONS: Record<'kottayam' | 'bengaluru', SiteLocation> = {
      * holds for the listing.
      */
     geo: { latitude: 12.9269039, longitude: 77.6701877 },
+    // Prefer the Business Profile when it is configured, so the pin is the
+    // claimed listing rather than a plain address search. Falls back to the
+    // address when the env var is empty.
     mapsUrl:
+      process.env.NEXT_PUBLIC_GBP_BLR_URL ||
       'https://www.google.com/maps/search/?api=1&query=Indiqube+Lakeside+Green+Glen+Layout+Bellandur+Bengaluru+560103',
-    mapsEmbedUrl:
-      'https://maps.google.com/maps?q=Indiqube+Lakeside+Green+Glen+Layout+Bellandur+Bengaluru+560103&output=embed',
+    mapsEmbedUrl: process.env.NEXT_PUBLIC_GBP_BLR_URL
+      ? `https://maps.google.com/maps?q=${encodeURIComponent(process.env.NEXT_PUBLIC_GBP_BLR_URL)}&output=embed`
+      : 'https://maps.google.com/maps?q=Indiqube+Lakeside+Green+Glen+Layout+Bellandur+Bengaluru+560103&output=embed',
     visitNote: 'Visits by appointment',
     mapTitle: 'ITSolute Systems on Google Maps \u2014 Bellandur, Bengaluru',
   },

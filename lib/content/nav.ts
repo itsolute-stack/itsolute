@@ -66,6 +66,18 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     ],
   },
   {
+    /** Second-state coverage. Bengaluru first — it is the office. */
+    heading: 'Karnataka',
+    links: [
+      { label: 'Bangalore', href: '/bangalore' },
+      { label: 'Karnataka', href: '/karnataka' },
+      { label: 'Mysuru', href: '/karnataka/mysuru' },
+      { label: 'Mangaluru', href: '/karnataka/mangaluru' },
+      { label: 'Hubballi-Dharwad', href: '/karnataka/hubballi-dharwad' },
+      { label: 'Belagavi', href: '/karnataka/belagavi' },
+    ],
+  },
+  {
     heading: 'Company',
     links: [
       { label: 'About', href: '/about' },

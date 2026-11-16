@@ -23,7 +23,14 @@ import { trackLead } from '@/lib/fbq'
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
 
-export function ContactForm({ defaultService }: { defaultService?: string }) {
+export function ContactForm({
+  defaultService,
+  defaultLocation,
+}: {
+  defaultService?: string
+  /** Preselected from ?loc= — see mapLocationParam in the contact page. */
+  defaultLocation?: string
+}) {
   const [status, setStatus] = useState<Status>('idle')
   const [serverError, setServerError] = useState<string | null>(null)
   // Pre-filled WhatsApp link built from the visitor's own input, shown when the
@@ -62,10 +69,11 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
     reset,
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { service: defaultService ?? '' },
+    defaultValues: { service: defaultService ?? '', location: defaultLocation ?? '' },
   })
 
   const service = watch('service')
+  const location = watch('location')
 
   function failToWhatsApp(values: ContactInput, message: string) {
     setFallbackWa(whatsappLink(buildFallbackMessage(values)))
@@ -178,6 +186,24 @@ export function ContactForm({ defaultService }: { defaultService?: string }) {
           </SelectTrigger>
           <SelectContent>
             {contactCopy.serviceOptions.map((opt) => (
+              <SelectItem key={opt} value={opt}>
+                {opt}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </Field>
+
+      <Field label={contactCopy.locationLabel} id="location" error={errors.location?.message}>
+        <Select
+          value={location}
+          onValueChange={(v) => setValue('location', v, { shouldValidate: true })}
+        >
+          <SelectTrigger id="location">
+            <SelectValue placeholder="Choose a location" />
+          </SelectTrigger>
+          <SelectContent>
+            {contactCopy.locationOptions.map((opt) => (
               <SelectItem key={opt} value={opt}>
                 {opt}
               </SelectItem>

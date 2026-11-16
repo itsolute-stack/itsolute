@@ -29,6 +29,13 @@ export const contactSchema = z
       .refine((v) => indianPhoneRegex.test(v), 'Enter a valid Indian mobile number'),
     email: z.string().email('Enter a valid email').optional(),
     service: z.string().min(1, 'Select a service'),
+    /**
+     * Where the job is. Optional at the schema level because the landing page
+     * forms don't ask, and because an older cached form should not start
+     * failing validation. Carried into the lead subject so Bengaluru enquiries
+     * can be separated from Kerala ones at a glance.
+     */
+    location: z.string().max(60).optional(),
     message: z.string().min(10, 'Tell us a bit more (at least 10 characters)').max(2000),
     /** Honeypot — must stay empty; the route silently drops anything that fills it. */
     website: z.string().max(0).optional(),

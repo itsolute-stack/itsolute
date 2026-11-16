@@ -10,6 +10,7 @@ import { FAQ } from '@/components/home/FAQ'
 import { karnatakaHub, karnatakaCities } from '@/lib/content/copy/karnataka'
 import { BANGALORE_SERVICE_LINKS } from '@/lib/content/copy/bangalore'
 import { regionGateTierRows } from '@/lib/content/entrancePricing'
+import { BangaloreReviews, FindUsOnGoogle } from '@/components/bangalore/BangaloreReviews'
 import { ENTRANCE_PRICE_NOTE } from '@/lib/content/copy/entranceDistricts'
 import { SITE_URL } from '@/lib/content/site'
 import {
@@ -40,6 +41,7 @@ export default function KarnatakaPage() {
   return (
     <>
       <PageHero
+        dataLocation="ka_hero"
         eyebrow={karnatakaHub.hero.eyebrow}
         headline={karnatakaHub.hero.headline}
         sub={karnatakaHub.hero.sub}
@@ -123,6 +125,9 @@ export default function KarnatakaPage() {
               </table>
             </div>
             <p className="mt-5 text-sm text-slate-500 leading-relaxed">{ENTRANCE_PRICE_NOTE}</p>
+            <div className="mt-6">
+              <FindUsOnGoogle />
+            </div>
           </div>
         </Container>
       </Section>
@@ -197,6 +202,8 @@ export default function KarnatakaPage() {
         </Container>
       </Section>
 
+      <BangaloreReviews />
+
       <FAQ
         eyebrow="QUESTIONS"
         headline="Working with us across Karnataka."
@@ -204,6 +211,7 @@ export default function KarnatakaPage() {
       />
 
       <FinalCTA
+        dataLocation="ka_final_cta"
         headline="Tell us where you are and what the entrance is."
         sub="Site survey on request across Karnataka. Fixed written quote before you commit, with travel named separately."
         primary="Request a site survey"

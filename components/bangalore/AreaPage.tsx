@@ -38,6 +38,7 @@ export function AreaPage({ area }: { area: BangaloreArea }) {
   return (
     <>
       <PageHero
+        dataLocation="blr_hero"
         eyebrow={area.hero.eyebrow}
         headline={area.hero.headline}
         sub={area.hero.sub}
@@ -172,6 +173,7 @@ export function AreaPage({ area }: { area: BangaloreArea }) {
       <FAQ eyebrow="QUESTIONS" headline={`Common questions in ${area.areaName}.`} faqs={area.faqs} />
 
       <FinalCTA
+        dataLocation="blr_final_cta"
         headline={`Get your ${area.areaName} gate surveyed.`}
         sub="Free site survey across Bengaluru. Fixed written quote before you commit, and prices that include GST."
         primary="Request a site survey"

@@ -74,14 +74,32 @@ function normalise(raw: RawReview): GoogleReview | null {
   }
 }
 
-export async function getPlaceReviews(): Promise<PlaceReviews | null> {
+/**
+ * Which listing a page's reviews come from.
+ *
+ * Kerala pages read the Kottayam profile, Bengaluru and Karnataka pages read
+ * the Bangalore one. Mixing them would put Kottayam reviews under a Bengaluru
+ * heading, which is the kind of thing that is technically a caching decision
+ * and practically a lie.
+ */
+export type ReviewRegion = 'kerala' | 'karnataka'
+
+function placeIdFor(region: ReviewRegion): string | undefined {
+  return region === 'karnataka'
+    ? process.env.GOOGLE_PLACE_ID_BLR
+    : process.env.GOOGLE_PLACE_ID
+}
+
+export async function getPlaceReviews(
+  region: ReviewRegion = 'kerala',
+): Promise<PlaceReviews | null> {
   if (typeof window !== 'undefined') {
     // Belt and braces: this module must never execute in the browser.
     throw new Error('getPlaceReviews is server-only')
   }
 
   const apiKey = process.env.GOOGLE_PLACES_API_KEY
-  const placeId = process.env.GOOGLE_PLACE_ID
+  const placeId = placeIdFor(region)
   if (!apiKey || !placeId) {
     // Not configured (e.g. local dev) — hide the section rather than fake it.
     return null
@@ -97,7 +115,7 @@ export async function getPlaceReviews(): Promise<PlaceReviews | null> {
     })
 
     if (!res.ok) {
-      console.error(`[reviews] Places API returned ${res.status}`)
+      console.error(`[reviews:${region}] Places API returned ${res.status}`)
       return null
     }
 

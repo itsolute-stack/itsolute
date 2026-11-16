@@ -1,4 +1,4 @@
-import { SITE, SITE_URL, SOCIAL_URLS, GMAPS_URL, LOCATIONS } from '@/lib/content/site'
+import { SITE, SITE_URL, SOCIAL_URLS, GMAPS_URL, LOCATIONS, GBP_BLR_URL } from '@/lib/content/site'
 
 /* ============================================================================
  * JSON-LD generators. Each returns a plain object — JSON.stringify in <Script>.
@@ -132,8 +132,13 @@ export function bengaluruBusinessSchema() {
     areaServed: { '@type': 'City', name: 'Bengaluru' },
     branchOf: { '@id': ORGANIZATION_ID },
     parentOrganization: { '@id': ORGANIZATION_ID },
-    hasMap: loc.mapsUrl,
-    sameAs: [...SOCIAL_URLS, SITE.sister.url],
+    // hasMap and the profile in sameAs only exist once the Business Profile
+    // URL is configured. Emitting an empty hasMap, or a sameAs that points
+    // nowhere, is worse than omitting both.
+    ...(GBP_BLR_URL ? { hasMap: GBP_BLR_URL } : {}),
+    sameAs: GBP_BLR_URL
+      ? [GBP_BLR_URL, ...SOCIAL_URLS, SITE.sister.url]
+      : [...SOCIAL_URLS, SITE.sister.url],
     priceRange: '₹₹',
   }
 }

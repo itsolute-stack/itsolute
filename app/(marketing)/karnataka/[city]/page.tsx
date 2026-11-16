@@ -16,6 +16,7 @@ import {
   OUTSIDE_BENGALURU_NOTE,
 } from '@/lib/content/copy/karnataka'
 import { regionGateTierRows } from '@/lib/content/entrancePricing'
+import { FindUsOnGoogle } from '@/components/bangalore/BangaloreReviews'
 import { ENTRANCE_PRICE_NOTE } from '@/lib/content/copy/entranceDistricts'
 import { SITE_URL } from '@/lib/content/site'
 import {
@@ -73,6 +74,7 @@ export default async function KarnatakaCityPage({
   return (
     <>
       <PageHero
+        dataLocation="ka_hero"
         eyebrow={c.hero.eyebrow}
         headline={c.hero.headline}
         sub={c.hero.sub}
@@ -177,13 +179,16 @@ export default async function KarnatakaCityPage({
             </div>
             <p className="mt-5 text-sm text-slate-500 leading-relaxed">{ENTRANCE_PRICE_NOTE}</p>
             <p className="mt-3 text-sm text-slate-500 leading-relaxed">{OUTSIDE_BENGALURU_NOTE}</p>
-            <Link
-              href="/karnataka"
-              className="mt-6 inline-flex items-center gap-2 text-base font-medium text-[color:var(--color-electric)] hover:underline"
-            >
-              See how we cover Karnataka
-              <ArrowRight aria-hidden className="h-4 w-4" />
-            </Link>
+            <div className="mt-6 flex flex-col gap-3">
+              <Link
+                href="/karnataka"
+                className="inline-flex items-center gap-2 text-base font-medium text-[color:var(--color-electric)] hover:underline"
+              >
+                See how we cover Karnataka
+                <ArrowRight aria-hidden className="h-4 w-4" />
+              </Link>
+              <FindUsOnGoogle />
+            </div>
           </div>
         </Container>
       </Section>
@@ -221,6 +226,7 @@ export default async function KarnatakaCityPage({
       <FAQ eyebrow="QUESTIONS" headline={`Common questions in ${c.cityName}.`} faqs={c.faqs} />
 
       <FinalCTA
+        dataLocation="ka_final_cta"
         headline={`Get your ${c.cityName} entrance surveyed.`}
         sub="Site survey on request, scheduled from our Bengaluru office. Fixed written quote with travel named separately."
         primary="Request a site survey"

@@ -31,6 +31,11 @@ type Props = {
    * file is dropped in.
    */
   image?: { src: string; alt: string; intent?: string }
+  /**
+   * Overrides the default "hero" GA4 location. Bengaluru and Karnataka pages
+   * pass their own so those leads can be separated from Kerala ones.
+   */
+  dataLocation?: string
 }
 
 export function PageHero({
@@ -40,6 +45,7 @@ export function PageHero({
   primaryCta,
   secondaryCta,
   image,
+  dataLocation = 'hero',
 }: Props) {
   const content = (
     <motion.div
@@ -62,7 +68,7 @@ export function PageHero({
               {primaryCta.href.startsWith('http') ? (
                 <a
                   href={primaryCta.href}
-                  data-location="hero"
+                  data-location={dataLocation}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -76,7 +82,7 @@ export function PageHero({
           {secondaryCta ? (
             <a
               href={whatsappLink(secondaryCta.message)}
-              data-location="hero"
+              data-location={dataLocation}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-accent)] transition-colors"

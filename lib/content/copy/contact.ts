@@ -27,6 +27,8 @@ export const contactCopy = {
     'AMC contract',
     'Something else',
   ],
+  locationLabel: 'Where is the job?',
+  locationOptions: ['Kerala', 'Bengaluru', 'Elsewhere in Karnataka'] as const,
   directHeading: 'Or reach us directly',
   hoursLabel: 'Office hours',
   areaLabel: 'We serve',

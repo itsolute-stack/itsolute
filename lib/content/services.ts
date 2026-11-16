@@ -8,6 +8,7 @@ import {
   Cctv,
   Fence,
   House,
+  MapPin,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -151,6 +152,21 @@ export const services: Service[] = [
       'Entrance automation AMC',
     ],
     href: '/entrance-automation',
+  },
+  {
+    slug: 'karnataka',
+    title: 'Bangalore & Karnataka',
+    tagline: 'Gate automation from our Bengaluru office.',
+    description:
+      'Automatic gates, boom barriers, video door phones and smart locks across Bengaluru and Karnataka, run from the Bellandur office.',
+    icon: MapPin,
+    features: [
+      'Automatic gates and boom barriers',
+      'Bengaluru areas and Karnataka cities',
+      'Karnataka pricing, incl. GST',
+      'Site survey on request outside Bengaluru',
+    ],
+    href: '/karnataka',
   },
   {
     slug: 'home-automation',

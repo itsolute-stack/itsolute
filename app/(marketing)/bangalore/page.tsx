@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { FinalCTA } from '@/components/home/FinalCTA'
 import { FAQ } from '@/components/home/FAQ'
 import { LocationMap } from '@/components/contact/LocationMap'
+import { BangaloreReviews, FindUsOnGoogle } from '@/components/bangalore/BangaloreReviews'
 import { WhatsAppButton } from '@/components/shared/WhatsAppButton'
 import { bangaloreCopy, BENGALURU_AREAS, BANGALORE_SERVICE_LINKS } from '@/lib/content/copy/bangalore'
 import { bangaloreAreas } from '@/lib/content/copy/bangaloreAreas'
@@ -58,6 +59,7 @@ export default function BangalorePage() {
   return (
     <>
       <PageHero
+        dataLocation="blr_hero"
         eyebrow={bangaloreCopy.hero.eyebrow}
         headline={bangaloreCopy.hero.headline}
         sub={bangaloreCopy.hero.sub}
@@ -348,7 +350,10 @@ export default function BangalorePage() {
                 />
               </div>
             </div>
-            <LocationMap location={LOC} />
+            <div className="flex flex-col gap-4">
+              <LocationMap location={LOC} />
+              <FindUsOnGoogle />
+            </div>
           </div>
         </Container>
       </Section>
@@ -403,6 +408,8 @@ export default function BangalorePage() {
         </Container>
       </Section>
 
+      <BangaloreReviews />
+
       <FAQ
         eyebrow="QUESTIONS"
         headline="Common questions from Bengaluru."
@@ -410,6 +417,7 @@ export default function BangalorePage() {
       />
 
       <FinalCTA
+        dataLocation="blr_final_cta"
         headline="Get your Bengaluru entrance surveyed."
         sub="Free site survey across the city. Fixed written quote before you commit."
         primary="Request a site survey"

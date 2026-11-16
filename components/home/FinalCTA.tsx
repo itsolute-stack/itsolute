@@ -17,6 +17,8 @@ type Props = {
   primary?: string
   secondary?: string
   whatsappMessage?: string
+  /** Overrides the default "final_cta" GA4 location. */
+  dataLocation?: string
 }
 
 export function FinalCTA({
@@ -25,6 +27,7 @@ export function FinalCTA({
   primary = 'Book a free audit',
   secondary = 'WhatsApp us',
   whatsappMessage = "Hi ITSolute, I'd like to book a free IT audit.",
+  dataLocation = 'final_cta',
 }: Props) {
   return (
     <Section theme="dark" size="lg" className="relative">
@@ -48,7 +51,7 @@ export function FinalCTA({
             </Button>
             <a
               href={whatsappLink(whatsappMessage)}
-              data-location="final_cta"
+              data-location={dataLocation}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-2 text-white hover:text-[color:var(--color-accent)] transition-colors"

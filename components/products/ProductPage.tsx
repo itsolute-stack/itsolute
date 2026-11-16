@@ -63,6 +63,8 @@ type Props = {
   areaServed?: { '@type': string; name: string }[]
   /** The LocalBusiness delivering this service. Defaults to the head office. */
   providerId?: string
+  /** GA4 location prefix for the hero and final CTA, e.g. 'blr'. */
+  ctaPrefix?: string
 }
 
 export function ProductPage({
@@ -79,12 +81,14 @@ export function ProductPage({
   extraSection,
   areaServed,
   providerId,
+  ctaPrefix,
 }: Props) {
   const contactHref = `/contact?service=${contactService}`
 
   return (
     <>
       <PageHero
+        dataLocation={ctaPrefix ? `${ctaPrefix}_hero` : undefined}
         eyebrow={p.hero.eyebrow}
         headline={p.hero.headline}
         sub={p.hero.sub}
@@ -341,6 +345,7 @@ export function ProductPage({
       />
 
       <FinalCTA
+        dataLocation={ctaPrefix ? `${ctaPrefix}_final_cta` : undefined}
         headline={finalCta.headline}
         sub={finalCta.sub}
         primary="Request a site survey"

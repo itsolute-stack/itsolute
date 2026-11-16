@@ -20,11 +20,12 @@ export const metadata = {
   alternates: { canonical: `${SITE_URL}/contact` },
 }
 
-type SearchParams = Promise<{ service?: string }>
+type SearchParams = Promise<{ service?: string; loc?: string }>
 
 export default async function ContactPage({ searchParams }: { searchParams: SearchParams }) {
-  const { service } = await searchParams
+  const { service, loc } = await searchParams
   const defaultService = mapServiceParam(service)
+  const defaultLocation = mapLocationParam(loc)
 
   return (
     <>
@@ -38,7 +39,10 @@ export default async function ContactPage({ searchParams }: { searchParams: Sear
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <ContactForm defaultService={defaultService} />
+              <ContactForm
+                defaultService={defaultService}
+                defaultLocation={defaultLocation}
+              />
             </div>
 
             <div className="lg:col-span-5 flex flex-col gap-8">
@@ -234,6 +238,26 @@ function ContactRow({
     )
   }
   return <li>{inner}</li>
+}
+
+/**
+ * ?loc= on Karnataka pages. Values must match contactCopy.locationOptions
+ * exactly, because the Select preselects by string equality and a near-miss
+ * silently selects nothing. The Business Profile appointment link points at
+ * ?loc=bengaluru.
+ */
+function mapLocationParam(p?: string) {
+  switch (p) {
+    case 'bengaluru':
+    case 'bangalore':
+      return 'Bengaluru'
+    case 'karnataka':
+      return 'Elsewhere in Karnataka'
+    case 'kerala':
+      return 'Kerala'
+    default:
+      return undefined
+  }
 }
 
 function mapServiceParam(p?: string) {
